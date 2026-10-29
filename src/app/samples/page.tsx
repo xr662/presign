@@ -3,12 +3,13 @@ import { SiteFooter, SiteHeader } from "@/components/site-shell";
 
 export const metadata: Metadata = { title: "示例合同" };
 
-// 四份示例合同都是虚构的，每份按规则清单埋了几处常见问题。T19 做出正文和预先生成的报告。
+// 四份示例合同都是虚构的，每份按规则清单埋了几处常见问题。正文在 data/samples/，标准答案在 answers.json；
+// T19 接上正文和预先生成的报告。
 const SAMPLES = [
   { title: "劳动合同", note: "两年期，试用期、违约金、竞业限制条款有问题" },
-  { title: "三方协议", note: "违约金和“最终解释权归公司所有”这类格式条款" },
-  { title: "录用通知", note: "先签试用期合同、转正再签正式合同" },
-  { title: "实习协议", note: "押金、辞职需批准、单方调岗" },
+  { title: "三方协议", note: "用落户换五年服务期违约金、试用期工资偏低、“最终解释权归甲方所有”" },
+  { title: "录用通知", note: "先签试用期合同再签正式合同、扣毕业证、试用期工资低于上海最低工资" },
+  { title: "实习协议", note: "工服押金、提前结束实习要批准、不服从调岗视为自动离职" },
 ] as const;
 
 export default function SamplesPage() {
