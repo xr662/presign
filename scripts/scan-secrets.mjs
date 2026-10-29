@@ -12,7 +12,7 @@ const RULES = [
   ["API 密钥", /\bsk-[A-Za-z0-9_-]{20,}/],
   ["私钥", /-----BEGIN [A-Z ]*PRIVATE KEY-----/],
   // 形如 LLM_MAIN_API_KEY=xxxx 的赋值（.env.example 里值是空的，不会命中）
-  ["密钥赋值", /(API_KEY|SECRET|TOKEN)s*[=:]s*["']?[A-Za-z0-9_-.]{12,}/],
+  ["密钥赋值", /(API_KEY|SECRET|TOKEN)\s*[=:]\s*["']?[A-Za-z0-9_.-]{12,}/],
   ["Windows 本机路径", /[A-Za-z]:\\Users\\/],
   ["Git Bash 本机路径", /\/[a-z]\/Users\//],
   ["本机用户名", new RegExp(`\\b${userName}\\b`, "i")],
