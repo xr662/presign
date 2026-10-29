@@ -23,8 +23,9 @@
     "corpus:check": "node scripts/corpus/crosscheck.ts",
     "corpus:model": "node scripts/corpus/fetch-model.ts",
     "corpus:build": "node scripts/corpus/build-db.ts",
-    "corpus": "npm run corpus:fetch && npm run corpus:parse && npm run corpus:check && npm run corpus:model && npm run corpus:build",
-    "bench:embed": "node --liftoff-only scripts/corpus/bench-embed.ts"
+    "corpus": "npm run corpus:fetch && npm run corpus:parse && npm run corpus:check && npm run corpus:wage && npm run corpus:model && npm run corpus:build",
+    "bench:embed": "node --liftoff-only scripts/corpus/bench-embed.ts",
+    "corpus:wage": "node scripts/corpus/min-wage.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

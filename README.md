@@ -36,6 +36,8 @@ npm run corpus:build   # 用 data/clean/ 里的条文建库，生成 data/build/
 
 收录 11 部法律、行政法规、司法解释和部门规章，共 524 条，另有最高人民法院发布的 6 个劳动争议典型案例。每部法规都另找了一家政府网站的转载逐条比对（`npm run corpus:check`），521 条逐字一致；其余 3 条的核实过程写在 `data/sources.json`。
 
+最低工资标准截至 2026 年 10 月 1 日，来源见 `data/min-wage-sources.json`：以人社部全国表为底，叠加各省调整文件；40 个常见城市的档位各自注明出处，其他城市由用户选择档位。
+
 重新下载并生成全部数据：`npm run corpus`。
 
 ## 常用命令

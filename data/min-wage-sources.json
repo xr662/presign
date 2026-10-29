@@ -1,0 +1,439 @@
+{
+  "$comment": "最低工资标准的来源。人社部截至 2026-10-01 的原表页面有反爬验证，程序取不到；这里用人社部截至 2026-01-01 的表（四川省人社厅转载，HTML 表格）作底，叠加 1 月到 10 月间各省的调整文件，生成截至 10 月 1 日的表。生成结果与媒体转载的人社部 10 月表截图逐格对过一致（只用来定位哪些省份变了，不作为依据）。还要人工打开人社部原表核对一次，核对后把 verifiedAgainstOriginal 改成 true。",
+  "asOf": "2026-10-01",
+  "original": {
+    "title": "全国各省、自治区、直辖市最低工资标准情况（截至2026年10月1日）",
+    "url": "https://www.mohrss.gov.cn/SYrlzyhshbzb/laodongguanxi_/fwyd/202610/t20261008_585187.html",
+    "publisher": "人力资源和社会保障部",
+    "verifiedAgainstOriginal": false
+  },
+  "base": {
+    "title": "全国各省、自治区、直辖市最低工资标准情况（截至2026年1月1日）",
+    "asOf": "2026-01-01",
+    "url": "https://rst.sc.gov.cn/rst/ylbxjwjgzxx/2026/7/10/89a8ef06cc264d29b282d7c62f362a6b.shtml",
+    "publisher": "四川省人力资源和社会保障厅转载，来源人力资源社会保障部官网"
+  },
+  "adjustments": [
+    {
+      "province": "山西",
+      "doc": "晋政办发〔2026〕29号",
+      "effective": "2026-10-01",
+      "tiers": [
+        {
+          "monthly": 2350,
+          "hourly": 25.3
+        },
+        {
+          "monthly": 2250,
+          "hourly": 24.2
+        },
+        {
+          "monthly": 2150,
+          "hourly": 23.3
+        }
+      ],
+      "url": "https://rsj.changzhi.gov.cn/zwxx/zcfg/202608/t20260818_3197049.html",
+      "publisher": "长治市人社局转载"
+    },
+    {
+      "province": "广东",
+      "doc": "粤府函〔2026〕188号",
+      "effective": "2026-09-01",
+      "tiers": [
+        {
+          "monthly": 2680,
+          "hourly": 25.4
+        },
+        {
+          "monthly": 2300,
+          "hourly": 21.9
+        },
+        {
+          "monthly": 2040,
+          "hourly": 20.2
+        }
+      ],
+      "special": [
+        {
+          "city": "深圳",
+          "monthly": 2700,
+          "hourly": 25.4
+        }
+      ],
+      "url": "https://zhrsj.zhuhai.gov.cn/zw/tzgg/shgs/content/post_3935354.html",
+      "publisher": "珠海市人社局转载",
+      "note": "由四档改为三档"
+    },
+    {
+      "province": "云南",
+      "doc": "云人社发〔2026〕9号",
+      "effective": "2026-09-01",
+      "tiers": [
+        {
+          "monthly": 2270,
+          "hourly": 22
+        },
+        {
+          "monthly": 2120,
+          "hourly": 21
+        },
+        {
+          "monthly": 1970,
+          "hourly": 20
+        }
+      ],
+      "url": "https://rsj.qj.gov.cn/view/gsgg/146119.html",
+      "publisher": "曲靖市人社局转载（二、三档）；一档月标准见昆明市住房公积金管理中心通知",
+      "note": "一档小时标准 22 元只见于人社部表截图，省厅原文待核对"
+    },
+    {
+      "province": "新疆",
+      "doc": "新政发〔2026〕63号",
+      "effective": "2026-10-01",
+      "tiers": [
+        {
+          "monthly": 2270,
+          "hourly": 22.7
+        },
+        {
+          "monthly": 2080,
+          "hourly": 20.8
+        },
+        {
+          "monthly": 1930,
+          "hourly": 19.3
+        }
+      ],
+      "url": "https://rst.xinjiang.gov.cn/xjrst/c112485/202608/cf9bc983a5924369baea2a94b737f1db.shtml",
+      "publisher": "新疆维吾尔自治区人社厅"
+    }
+  ],
+  "cities": [
+    {
+      "city": "北京",
+      "province": "北京",
+      "tier": 1,
+      "doc": "人社部全国表（单档）",
+      "url": "https://rst.sc.gov.cn/rst/ylbxjwjgzxx/2026/7/10/89a8ef06cc264d29b282d7c62f362a6b.shtml"
+    },
+    {
+      "city": "天津",
+      "province": "天津",
+      "tier": 1,
+      "doc": "人社部全国表（单档）",
+      "url": "https://rst.sc.gov.cn/rst/ylbxjwjgzxx/2026/7/10/89a8ef06cc264d29b282d7c62f362a6b.shtml"
+    },
+    {
+      "city": "上海",
+      "province": "上海",
+      "tier": 1,
+      "doc": "人社部全国表（单档）",
+      "url": "https://rst.sc.gov.cn/rst/ylbxjwjgzxx/2026/7/10/89a8ef06cc264d29b282d7c62f362a6b.shtml"
+    },
+    {
+      "city": "拉萨",
+      "province": "西藏",
+      "tier": 1,
+      "doc": "人社部全国表（单档）",
+      "url": "https://rst.sc.gov.cn/rst/ylbxjwjgzxx/2026/7/10/89a8ef06cc264d29b282d7c62f362a6b.shtml"
+    },
+    {
+      "city": "西宁",
+      "province": "青海",
+      "tier": 1,
+      "doc": "人社部全国表（单档）",
+      "url": "https://rst.sc.gov.cn/rst/ylbxjwjgzxx/2026/7/10/89a8ef06cc264d29b282d7c62f362a6b.shtml"
+    },
+    {
+      "city": "广州",
+      "province": "广东",
+      "tier": 1,
+      "doc": "粤府函〔2026〕188号",
+      "url": "https://zhrsj.zhuhai.gov.cn/zw/tzgg/shgs/content/post_3935354.html"
+    },
+    {
+      "city": "珠海",
+      "province": "广东",
+      "tier": 2,
+      "doc": "粤府函〔2026〕188号",
+      "url": "https://zhrsj.zhuhai.gov.cn/zw/tzgg/shgs/content/post_3935354.html"
+    },
+    {
+      "city": "佛山",
+      "province": "广东",
+      "tier": 2,
+      "doc": "粤府函〔2026〕188号",
+      "url": "https://zhrsj.zhuhai.gov.cn/zw/tzgg/shgs/content/post_3935354.html"
+    },
+    {
+      "city": "东莞",
+      "province": "广东",
+      "tier": 2,
+      "doc": "粤府函〔2026〕188号",
+      "url": "https://zhrsj.zhuhai.gov.cn/zw/tzgg/shgs/content/post_3935354.html"
+    },
+    {
+      "city": "中山",
+      "province": "广东",
+      "tier": 2,
+      "doc": "粤府函〔2026〕188号",
+      "url": "https://zhrsj.zhuhai.gov.cn/zw/tzgg/shgs/content/post_3935354.html"
+    },
+    {
+      "city": "惠州",
+      "province": "广东",
+      "tier": 3,
+      "doc": "粤府函〔2026〕188号",
+      "url": "https://zhrsj.zhuhai.gov.cn/zw/tzgg/shgs/content/post_3935354.html"
+    },
+    {
+      "city": "昆明",
+      "province": "云南",
+      "tier": 1,
+      "doc": "云人社发〔2026〕9号",
+      "url": "https://zfgjj.km.gov.cn/c/2026-09-04/5109614.shtml",
+      "note": "五华、盘龙、西山、官渡、呈贡、晋宁区和安宁市、嵩明县"
+    },
+    {
+      "city": "南京",
+      "province": "江苏",
+      "tier": 1,
+      "doc": "苏人社规〔2025〕3号",
+      "url": "https://rsj.nanjing.gov.cn/njsrlzyhshbzj/202512/t20251231_5755673.html",
+      "note": "全市"
+    },
+    {
+      "city": "苏州",
+      "province": "江苏",
+      "tier": 1,
+      "doc": "苏人社规〔2025〕3号",
+      "url": "https://www.suzhou.gov.cn/szsrmzf/zwgg/202601/38821c177c7b4c52ba7ae90bb0bbd7f2.shtml",
+      "note": "苏州市区、张家港、常熟、太仓、昆山"
+    },
+    {
+      "city": "无锡",
+      "province": "江苏",
+      "tier": 1,
+      "doc": "锡人社发〔2026〕2号",
+      "url": "https://hrss.wuxi.gov.cn/doc/2026/01/08/4714322.shtml",
+      "note": "无锡市区、江阴、宜兴"
+    },
+    {
+      "city": "杭州",
+      "province": "浙江",
+      "tier": 1,
+      "doc": "杭政函〔2026〕16号",
+      "url": "https://www.hangzhou.gov.cn/col/col1229063385/art/2026/art_a2440d4b73c845a085256a595e428abb.html",
+      "note": "市区"
+    },
+    {
+      "city": "宁波",
+      "province": "浙江",
+      "tier": 1,
+      "doc": "甬政发〔2026〕13号",
+      "url": "https://www.ningbo.gov.cn/col/col1229897207/2026nd0607q/art/2026/art_42c07faefd204f769f0fadfd6edd5dc2.html",
+      "note": "海曙、江北、镇海、北仑、鄞州、奉化；余姚、慈溪、宁海、象山为第二档"
+    },
+    {
+      "city": "济南",
+      "province": "山东",
+      "tier": 1,
+      "doc": "鲁政字〔2025〕140号",
+      "url": "http://gb.shandong.gov.cn/art/2025/10/15/art_100623_46712.html",
+      "note": "历下、市中、槐荫、天桥、历城；长清、章丘等为第二档"
+    },
+    {
+      "city": "青岛",
+      "province": "山东",
+      "tier": 1,
+      "doc": "鲁政字〔2025〕140号",
+      "url": "http://gb.shandong.gov.cn/art/2025/10/15/art_100623_46712.html",
+      "note": "市南、市北、黄岛、崂山、李沧、城阳、即墨"
+    },
+    {
+      "city": "厦门",
+      "province": "福建",
+      "tier": 1,
+      "doc": "闽人社文〔2025〕14号",
+      "url": "https://www.xm.gov.cn/jdhy/rdhy/202507/t20250718_2945862.htm",
+      "note": "6 个区"
+    },
+    {
+      "city": "福州",
+      "province": "福建",
+      "tier": 2,
+      "doc": "闽人社文〔2025〕14号",
+      "url": "https://rst.fujian.gov.cn/zw/zfxxgk/zfxxgkml/zyywgz/jycj/202501/t20250127_6710184.htm",
+      "note": "鼓楼、台江、仓山、晋安、马尾、长乐、福清、闽侯等执行第二档；福建第一档只有厦门"
+    },
+    {
+      "city": "沈阳",
+      "province": "辽宁",
+      "tier": 1,
+      "doc": "沈人社发〔2025〕32号",
+      "url": "https://rsj.shenyang.gov.cn/zwxx/fdzdgknr/bmwj/202511/t20251128_4945382.html",
+      "note": "和平、沈河、铁西、皇姑、大东、浑南、于洪、沈北新、苏家屯；辽中、新民、法库、康平为 2080 元"
+    },
+    {
+      "city": "大连",
+      "province": "辽宁",
+      "tier": 1,
+      "doc": "大人社规发〔2025〕5号",
+      "url": "https://rst.ln.gov.cn/eportal/ui?pageId=ab4555d39b8b4d06a3c48b4319b3801e&msgDataId=b402634ae4ac4917a204129c3153de92",
+      "note": "全市统一 2230 元"
+    },
+    {
+      "city": "武汉",
+      "province": "湖北",
+      "tier": 1,
+      "doc": "鄂政办发〔2025〕44号",
+      "url": "https://www.wuhan.gov.cn/zwgk/tzgg/202512/t20251227_2703389.shtml",
+      "note": "附件《湖北省分区域最低工资标准》：武汉市区"
+    },
+    {
+      "city": "成都",
+      "province": "四川",
+      "tier": 1,
+      "doc": "川府规〔2024〕4号；成府规〔2025〕4号",
+      "url": "https://www.sc.gov.cn/10462/zfwjts/2025/1/2/60841bcf38d844fb80ad1ea0b2d74e24.shtml",
+      "note": "锦江、青羊、金牛、武侯、成华、龙泉驿、青白江、新都、温江、双流、郫都、新津区及天府新区、东部新区、高新区。2026 年 5 月省人社厅曾征求意见拟调到 2500/2360 元，人社部 10 月 1 日表仍为 2330/2200"
+    },
+    {
+      "city": "重庆",
+      "province": "重庆",
+      "tier": 1,
+      "doc": "渝人社发〔2024〕22号",
+      "url": "https://rlsbj.cq.gov.cn/zczxwdk/ywfl/ldgx_1/202501/t20250102_14041562.html",
+      "note": "渝中、江北、沙坪坝、九龙坡、南岸、北碚、渝北、巴南、大渡口等 29 个区县；城口、丰都、垫江等 12 个县为第二档"
+    },
+    {
+      "city": "西安",
+      "province": "陕西",
+      "tier": 1,
+      "doc": "陕人社发〔2026〕4号",
+      "url": "https://rst.shaanxi.gov.cn/zcfg/zcfgsjk/gfxwj/ldgx/202601/t20260115_3605276.html",
+      "note": "新城、碑林、莲湖、灞桥、未央、雁塔、阎良、临潼、长安、高陵；鄠邑、蓝田、周至为二类"
+    },
+    {
+      "city": "郑州",
+      "province": "河南",
+      "tier": 1,
+      "doc": "豫政〔2025〕25号",
+      "url": "https://public.zhengzhou.gov.cn/D300104X/9804777.jhtml",
+      "note": "全市各开发区、区县（市）统一 2350 元"
+    },
+    {
+      "city": "长沙",
+      "province": "湖南",
+      "tier": 1,
+      "doc": "湘人社规〔2025〕22号；长人社规〔2025〕1号",
+      "url": "https://www.hunan.gov.cn/zqt/zcsd/202509/t20250908_33798758.html",
+      "note": "岳麓（湘江新区）、芙蓉、天心、开福、雨花、望城；长沙县、浏阳、宁乡为第二档"
+    },
+    {
+      "city": "合肥",
+      "province": "安徽",
+      "tier": 1,
+      "doc": "皖政办秘〔2025〕32号",
+      "url": "https://hrss.ah.gov.cn/public/6595721/8771772.html",
+      "note": "合肥市区；肥东、肥西、长丰、庐江、巢湖为第三档"
+    },
+    {
+      "city": "太原",
+      "province": "山西",
+      "tier": 1,
+      "doc": "晋政办发〔2026〕29号",
+      "url": "https://www.taiyuan.gov.cn/zwyw/20260819/30315069.html",
+      "note": "迎泽、尖草坪、杏花岭、万柏林、晋源、小店、古交、清徐；2026-10-01 起"
+    },
+    {
+      "city": "长春",
+      "province": "吉林",
+      "tier": 1,
+      "doc": "吉政函〔2025〕59号",
+      "url": "http://www.jl.gov.cn/gb/2026/zb_426264/szfwj_426266/202602/t20260225_9423877.html",
+      "note": "长春市区（含双阳区、九台区）；农安、榆树、德惠、公主岭为第三档"
+    },
+    {
+      "city": "哈尔滨",
+      "province": "黑龙江",
+      "tier": 1,
+      "doc": "黑政规〔2025〕1号",
+      "url": "https://www.harbin.gov.cn/haerbin/c104546/202512/c01_1094568.shtml",
+      "note": "哈尔滨市区（不含呼兰、阿城、双城，这三个区为第二档）"
+    },
+    {
+      "city": "南昌",
+      "province": "江西",
+      "tier": 1,
+      "doc": "赣府厅字〔2025〕42号",
+      "url": "https://www.jiangxi.gov.cn/jxsrmzf/zcwj103/pc/content/content_1992850075188989952.html",
+      "note": "东湖、西湖、青云谱、青山湖、红谷滩及经开区、高新区；新建区、南昌县为第二档"
+    },
+    {
+      "city": "南宁",
+      "province": "广西",
+      "tier": 1,
+      "doc": "桂政发〔2025〕16号",
+      "url": "http://gxs.gxzf.gov.cn/zfxxgk/fdzdgknr/zcwj/zdyj/t21586326.shtml",
+      "note": "市城区；各县和县级市为第三档"
+    },
+    {
+      "city": "海口",
+      "province": "海南",
+      "tier": 1,
+      "doc": "琼人社规〔2025〕7号",
+      "url": "http://rsj.haikou.gov.cn/xxgk/fdzdgknr/bmwj/202603/t1511996.shtml",
+      "note": "一类：海口、三亚、儋州、三沙"
+    },
+    {
+      "city": "三亚",
+      "province": "海南",
+      "tier": 1,
+      "doc": "琼人社规〔2025〕7号",
+      "url": "http://rsj.haikou.gov.cn/xxgk/fdzdgknr/bmwj/202603/t1511996.shtml"
+    },
+    {
+      "city": "贵阳",
+      "province": "贵州",
+      "tier": 1,
+      "doc": "黔人社发〔2025〕4号",
+      "url": "https://rst.guizhou.gov.cn/zwgk/jdhy/zcwj/202501/t20250122_86668776.html",
+      "note": "云岩、南明、乌当、白云、花溪、观山湖、清镇；开阳为二类，息烽、修文为三类"
+    },
+    {
+      "city": "兰州",
+      "province": "甘肃",
+      "tier": 1,
+      "doc": "甘政办发〔2025〕71号",
+      "url": "https://www.gansu.gov.cn/gsszf/c100055/202512/174252637/files/014ab270136c455c8c6f7b8e867d3416.pdf",
+      "note": "城关、七里河、安宁、西固、红古、兰州新区；永登、榆中、皋兰为二类"
+    },
+    {
+      "city": "银川",
+      "province": "宁夏",
+      "tier": 1,
+      "doc": "宁政规发〔2025〕2号",
+      "url": "https://www.nx.gov.cn/zwgk/gfxwj/202509/t20250918_5026128.html",
+      "note": "兴庆、金凤、西夏、永宁、贺兰、灵武"
+    }
+  ],
+  "pendingCities": [
+    {
+      "city": "石家庄",
+      "province": "河北",
+      "reason": "冀人社字〔2025〕137号由各市确定县区档次，2025 年 12 月调整后的石家庄档次表没找到；2022 年石人社字〔2022〕125号把市区（不含井陉矿区）、正定县列为最高档"
+    },
+    {
+      "city": "呼和浩特",
+      "province": "内蒙古",
+      "reason": "内政办发〔2025〕40号附件没找到；2024 年版一类为新城、回民、玉泉、赛罕、和林格尔"
+    },
+    {
+      "city": "乌鲁木齐",
+      "province": "新疆",
+      "reason": "新政发〔2026〕63号附表没找到；上一轮乌鲁木齐为最高档"
+    }
+  ],
+  "$pendingCities": "待确认的城市不自动带出档位，页面让用户自己选档位"
+}
