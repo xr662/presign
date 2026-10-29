@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-// 不引入网页字体：中文字体文件动辄几 MB，服务器出口只有 2M，
-// 用户打开首页就要多等十几秒。字体栈在 globals.css 里，全部用系统自带字体。
+// 不引入网页字体（shadcn 初始化会自动加 Geist，已去掉）：中文字体文件动辄几 MB，
+// 服务器出口只有 2M，用户打开首页就要多等十几秒。字体栈在 globals.css 里，全部用系统字体。
 
 export const metadata: Metadata = {
   title: {

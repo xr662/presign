@@ -1,13 +1,17 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 /*
- * 色板来自 00_规划/写作与界面规范.md 第 4 节：纸面合同加红笔批注。
+ * 色板来自规划文档《写作与界面规范》第 4 节：纸面合同加红笔批注。
  * 结论等级只用三种批注色：朱红（违法）、橙（要确认）、铅灰（提示）。
- * 深色模式放到 P2，现在固定浅色，避免系统深色时颜色被浏览器自动反转。
+ * shadcn 组件读的是 --background、--primary 这些通用变量，这里全部映射到我们的纸墨色，
+ * 组件不用逐个改样式。深色模式放到 P2，现在固定浅色。
  */
 :root {
   color-scheme: light;
 
+  /* 项目色板 */
   --paper: #faf7f0;
   --paper-2: #f2ede3;
   --ink: #1f1d1a;
@@ -17,10 +21,31 @@
   --red-pen-bg: #fbe9e6;
   --orange: #b54708;
   --orange-bg: #fdf0e1;
-  --pencil: #6b6f76;
+  --pencil: #62666d;
   --pencil-bg: #efefef;
   --ok: #2e6b4f;
   --focus: #1d4ed8;
+
+  /* shadcn 组件变量 → 项目色板 */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #fffdf8;
+  --card-foreground: var(--ink);
+  --popover: #fffdf8;
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: var(--paper-2);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper-2);
+  --muted-foreground: var(--ink-2);
+  --accent: var(--paper-2);
+  --accent-foreground: var(--ink);
+  --destructive: var(--red-pen);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--focus);
+  --radius: 0.375rem;
 }
 
 @theme inline {
@@ -38,22 +63,55 @@
   --color-ok: var(--ok);
   --color-focus: var(--focus);
 
-  /* 正文用无衬线；法条引文用宋体，一眼能和我们自己写的话分开 */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+
+  /*
+   * 不加载网页字体：中文字体文件动辄几 MB，服务器出口只有 2M。
+   * 正文用系统无衬线；法条引文用宋体，一眼能和我们自己写的话分开。
+   */
   --font-sans:
     -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC",
     sans-serif;
+  --font-heading: var(--font-sans);
   --font-law: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Source Han Serif SC", serif;
 }
 
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-sans);
-}
-
-:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 2px;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply font-sans;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
