@@ -56,3 +56,9 @@ AGENTS.md
 # 测试输出
 /test-results/
 /playwright-report/
+
+# 法规原始网页缓存，可用 npm run corpus:fetch 重新下载
+/data/raw/
+
+# 向量模型文件，用 npm run corpus:model 下载，哈希在 data/model-lock.json
+/models/

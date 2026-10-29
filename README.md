@@ -23,6 +23,21 @@ npm run dev
 
 浏览器打开 http://localhost:3000。
 
+法规库是生成文件，不在仓库里。第一次运行前先生成：
+
+```bash
+npm run corpus:model   # 下载向量模型（约 23MB），按 data/model-lock.json 校验哈希
+npm run corpus:build   # 用 data/clean/ 里的条文建库，生成 data/build/law.db
+```
+
+## 法规数据
+
+条文来自国家机关网站公开发布的文本，来源、版本和效力状态见 `data/sources.json`，切分后的条文在 `data/clean/`，每条带条文 ID（如劳动合同法第十九条第一款是 `ldhtf-19-1`）。
+
+收录 11 部法律、行政法规、司法解释和部门规章，共 524 条，另有最高人民法院发布的 6 个劳动争议典型案例。每部法规都另找了一家政府网站的转载逐条比对（`npm run corpus:check`），521 条逐字一致；其余 3 条的核实过程写在 `data/sources.json`。
+
+重新下载并生成全部数据：`npm run corpus`。
+
 ## 常用命令
 
 | 命令                | 作用                                                                     |

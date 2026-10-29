@@ -1,0 +1,197 @@
+{
+  "$comment": "法规语料来源。每份文件记官方页面、版本和效力状态；fetch 按这里下载，parse 按 id 生成条文 ID（如 ldhtf-19-1）。只收国家机关发布的文本，著作权法第五条规定这类文件不适用著作权法。",
+  "sources": [
+    {
+      "id": "ldhtf",
+      "title": "中华人民共和国劳动合同法",
+      "short": "劳动合同法",
+      "level": "法律",
+      "version": "2012年12月28日修正，2013年7月1日起施行",
+      "status": "有效",
+      "url": "https://www.samr.gov.cn/zw/zfxxgk/fdzdgknr/bgt/art/2023/art_0abfdd261c03417b949df19d869add8d.html",
+      "publisher": "国家市场监督管理总局网站转载",
+      "expectArticles": 98,
+      "checkUrls": [
+        "https://xfj.wuhan.gov.cn/zfxxgk/zc/flfg/202405/t20240529_2408770.shtml",
+        "http://hrss.yn.gov.cn/NewsView.aspx?pid=971&nid=19590&cid=682&isZt=7"
+      ]
+    },
+    {
+      "id": "ldhtf-tl",
+      "title": "中华人民共和国劳动合同法实施条例",
+      "short": "劳动合同法实施条例",
+      "level": "行政法规",
+      "version": "国务院令第535号，2008年9月18日公布施行",
+      "status": "有效",
+      "url": "https://www.gov.cn/gongbao/content/2008/content_1107604.htm",
+      "publisher": "中国政府网（国务院公报）",
+      "expectArticles": 38,
+      "checkUrls": [
+        "https://www.beijing.gov.cn/zhengce/gwywj/201105/t20110506_780976.html",
+        "https://jiangsu.chinatax.gov.cn/art/2008/9/18/art_23636_3766.html"
+      ]
+    },
+    {
+      "id": "ldzy-js1",
+      "title": "最高人民法院关于审理劳动争议案件适用法律问题的解释（一）",
+      "short": "劳动争议解释（一）",
+      "level": "司法解释",
+      "version": "法释〔2020〕26号，2021年1月1日起施行",
+      "status": "有效",
+      "abolished": [
+        {
+          "article": 32,
+          "paragraph": 1,
+          "by": "法释〔2025〕12号第二十一条"
+        }
+      ],
+      "url": "https://www.court.gov.cn/zixun/xiangqing/282121.html",
+      "publisher": "最高人民法院网站",
+      "expectArticles": 54,
+      "checkUrls": [
+        "https://www.yunfu.gov.cn/yfrsj/gkmlpt/content/1/1767/mpost_1767052.html",
+        "https://rshj.yantai.gov.cn/art/2021/8/27/art_23404_2904135.html"
+      ]
+    },
+    {
+      "id": "ldzy-js2",
+      "title": "最高人民法院关于审理劳动争议案件适用法律问题的解释（二）",
+      "short": "劳动争议解释（二）",
+      "level": "司法解释",
+      "version": "法释〔2025〕12号，2025年9月1日起施行",
+      "status": "有效",
+      "url": "http://gongbao.court.gov.cn/Details/bb72019c45453f84d920bd6375573e.html",
+      "publisher": "最高人民法院公报",
+      "expectArticles": 21,
+      "checkUrls": [
+        "https://www.hncourt.gov.cn/public/detail.php?id=201607",
+        "http://www.nbhtz.gov.cn/art/2025/8/6/art_1229023005_1815169.html"
+      ],
+      "knownDiffs": {
+        "ldzy-js2-19": "河南高院转载本写\"第三十八条第三项\"，漏了\"第一款\"；最高法公报、最高法发布页、宁波市政府转载均为\"第三十八条第一款第三项\"，以公报为准（10-30 核对）"
+      }
+    },
+    {
+      "id": "ldf",
+      "title": "中华人民共和国劳动法",
+      "short": "劳动法",
+      "level": "法律",
+      "version": "2018年12月29日修正",
+      "status": "有效",
+      "url": "https://www.gd.gov.cn/zwgk/wjk/zcfgk/content/post_2532147.html",
+      "publisher": "广东省人民政府网站转载",
+      "expectArticles": 107,
+      "checkUrls": [
+        "https://ftz.yingkou.gov.cn/zcfg/003003/20190106/1fb76c1c-6827-4be5-b25c-db9b598ec093.html",
+        "https://sfj.changdu.gov.cn/cdssfj/c101174/202605/68e8080a547d4b309798d99507cb6d4d.shtml"
+      ]
+    },
+    {
+      "id": "tjzcf",
+      "title": "中华人民共和国劳动争议调解仲裁法",
+      "short": "劳动争议调解仲裁法",
+      "level": "法律",
+      "version": "2008年5月1日起施行",
+      "status": "有效",
+      "url": "http://www.npc.gov.cn/c2986/c4488/201905/t20190523_48437.html",
+      "publisher": "中国人大网",
+      "expectArticles": 54,
+      "checkUrls": [
+        "https://rsj.gz.gov.cn/zcfg/flfg/content/post_7993971.html",
+        "https://rlsbt.zj.gov.cn/art/2021/4/9/art_1229506656_2267341.html"
+      ]
+    },
+    {
+      "id": "sbf",
+      "title": "中华人民共和国社会保险法",
+      "short": "社会保险法",
+      "level": "法律",
+      "version": "2018年12月29日修正",
+      "status": "有效",
+      "url": "https://www.gov.cn/guoqing/2021-10/29/content_5647616.htm",
+      "publisher": "中国政府网",
+      "expectArticles": 98,
+      "checkUrls": [
+        "http://wjw.hubei.gov.cn/bmdt/ztzl/hbzyjk/fgbz__/202207/t20220701_4200696.shtml",
+        "https://shanghai.chinatax.gov.cn/zcfw/zcfgk/sbf/202202/t462174.html"
+      ]
+    },
+    {
+      "id": "mfd",
+      "title": "中华人民共和国民法典",
+      "short": "民法典",
+      "level": "法律",
+      "version": "2021年1月1日起施行",
+      "status": "有效",
+      "url": "https://www.court.gov.cn/zixun/xiangqing/233181.html",
+      "fallbackUrls": ["http://www.gov.cn/xinwen/2020-06/01/content_5516649.htm"],
+      "publisher": "最高人民法院网站",
+      "onlyArticles": [8, 153, 496, 497, 498, 577, 584, 585, 1259],
+      "$onlyArticles": "民法典 1260 条，只收和签约有关的几条：公序良俗、违反强制性规定无效、格式条款、违约责任、以上以下的计算",
+      "checkMode": "merge",
+      "checkUrls": [
+        "https://www.spp.gov.cn/spp/ssmfdyflvdtpgz/202008/t20200831_478413.shtml",
+        "http://www.gd.jcy.gov.cn/jcyw/xzjc/flfg6/202007/t20200706_2870328.shtml"
+      ],
+      "knownDiffs": {
+        "mfd-8": "最高检网站总则编页面未找到，单一来源（最高法）；10-30 与通行文本人工核对一致，规则不引用",
+        "mfd-153": "同上，单一来源；规则不引用"
+      }
+    },
+    {
+      "id": "gzzf",
+      "title": "工资支付暂行规定",
+      "short": "工资支付暂行规定",
+      "level": "部门规章",
+      "version": "劳部发〔1994〕489号，1995年1月1日起施行",
+      "status": "有效",
+      "url": "https://www.gov.cn/zhengce/2022-08/31/content_5711284.htm",
+      "publisher": "中国政府网",
+      "expectArticles": 20,
+      "checkUrls": [
+        "https://rst.shaanxi.gov.cn/zcfg/zcfgsjk/gz/bwgz/199412/t19941206_3020588.html",
+        "https://rsj.yueyang.gov.cn/7719/7725/content_472952.html"
+      ]
+    },
+    {
+      "id": "zdgz",
+      "title": "最低工资规定",
+      "short": "最低工资规定",
+      "level": "部门规章",
+      "version": "劳动和社会保障部令第21号，2004年3月1日起施行",
+      "status": "有效",
+      "url": "https://www.gov.cn/zhengce/2022-08/31/content_5711292.htm",
+      "publisher": "中国政府网",
+      "expectArticles": 15,
+      "checkUrls": [
+        "https://www.gov.cn/gongbao/content/2004/content_62936.htm",
+        "https://rlsbj.cq.gov.cn/zwgk_182/fdzdgknr/lzyj/rsbgz/202103/t20210305_8969112.html"
+      ]
+    },
+    {
+      "id": "nxj",
+      "title": "职工带薪年休假条例",
+      "short": "职工带薪年休假条例",
+      "level": "行政法规",
+      "version": "国务院令第514号，2008年1月1日起施行",
+      "status": "有效",
+      "url": "https://www.gov.cn/zhengce/2007-12/16/content_2602498.htm",
+      "publisher": "中国政府网",
+      "expectArticles": 10,
+      "checkUrls": [
+        "https://www.gov.cn/gongbao/content/2008/content_859865.htm",
+        "https://www.gov.cn/flfg/2007-12/16/content_835527.htm"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "js2-cases",
+      "title": "最高法发布劳动争议典型案例（与劳动争议解释（二）同日发布）",
+      "url": "https://www.court.gov.cn/zixun/xiangqing/472681.html",
+      "releaseUrl": "https://www.court.gov.cn/fabu/xiangqing/472691.html",
+      "publisher": "最高人民法院网站"
+    }
+  ],
+  "$checkUrls": "checkUrls：另一家政府网站的转载，只用来交叉核对解析结果（corpus:check），不作为入库来源"
+}

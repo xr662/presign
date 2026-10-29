@@ -2,6 +2,7 @@
   "name": "presign",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,13 +17,21 @@
     "check": "npm run lint && npm run typecheck && npm run test && npm run lint:copy && npm run scan && npm run build",
     "contrast": "node scripts/contrast.mjs",
     "shots": "node scripts/screenshot.mjs",
-    "measure:js": "node scripts/measure-js.mjs"
+    "measure:js": "node scripts/measure-js.mjs",
+    "corpus:fetch": "node scripts/corpus/fetch.ts",
+    "corpus:parse": "node scripts/corpus/parse.ts",
+    "corpus:check": "node scripts/corpus/crosscheck.ts",
+    "corpus:model": "node scripts/corpus/fetch-model.ts",
+    "corpus:build": "node scripts/corpus/build-db.ts",
+    "corpus": "npm run corpus:fetch && npm run corpus:parse && npm run corpus:check && npm run corpus:model && npm run corpus:build",
+    "bench:embed": "node --liftoff-only scripts/corpus/bench-embed.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "cn": "^0.5.0",
     "lucide-react": "^1.64.0",
     "next": "16.4.3",
+    "onnxruntime-web": "^1.31.1",
     "radix-ui": "^1.8.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
