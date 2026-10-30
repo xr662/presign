@@ -28,8 +28,18 @@
       "text": "离职后竞业限制没有补偿",
       "gold": ["ldzy-js1-36", "ldhtf-23", "ldzy-js1-38"]
     },
-    { "id": "d06", "kind": "question", "text": "试用期工资打八折", "gold": ["ldhtf-20", "ldhtf-tl-15"] },
-    { "id": "d07", "kind": "question", "text": "单方调岗降薪", "gold": ["ldhtf-35", "ldzy-js1-43"] },
+    {
+      "id": "d06",
+      "kind": "question",
+      "text": "试用期工资打八折",
+      "gold": ["ldhtf-20", "ldhtf-tl-15"]
+    },
+    {
+      "id": "d07",
+      "kind": "question",
+      "text": "单方调岗降薪",
+      "gold": ["ldhtf-35", "ldzy-js1-43"]
+    },
     {
       "id": "d08",
       "kind": "question",

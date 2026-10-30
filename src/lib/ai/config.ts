@@ -24,10 +24,20 @@ export type Limits = {
 
 // 每一步用哪个角色优先。自检和谈判练习用复核角色，其余用主模型；都失败再往后排
 export type Purpose =
-  "ocr" | "extract" | "plan" | "execute" | "verify" | "report" | "practice" | "rerank" | "probe";
+  | "ocr"
+  | "extract"
+  | "plan"
+  | "execute"
+  | "verify"
+  | "report"
+  | "practice"
+  | "rewrite"
+  | "rerank"
+  | "probe";
 
 const ORDER: Record<Purpose, Role[]> = {
   ocr: ["main", "alt", "fallback"],
+  rewrite: ["main", "alt", "fallback"],
   extract: ["main", "alt", "fallback"],
   plan: ["main", "alt", "fallback"],
   execute: ["main", "alt", "fallback"],

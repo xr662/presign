@@ -86,6 +86,16 @@ describe("MCP 服务", () => {
     expect(r.hits[0].text).toMatch(/试用期/);
   });
 
+  it("search_law 带上法条用语的改写后，口语查不到的条文能查到", async () => {
+    const ids = async (args: Record<string, unknown>) =>
+      ((await call("search_law", { top_k: 5, ...args })).hits as { id: string }[]).map((h) => h.id);
+    // 全文检索里"押金"两个字在法条中不出现
+    expect(await ids({ query: "入职交押金" })).not.toContain("ldhtf-9");
+    expect(
+      await ids({ query: "入职交押金", rewrites: ["用人单位以担保或者其他名义向劳动者收取财物"] }),
+    ).toContain("ldhtf-9");
+  });
+
   it("check_probation：差一天满三年的合同试用期 6 个月违法", async () => {
     const r = await call("check_probation", {
       term: { kind: "fixed", start: "2027-07-01", end: "2030-06-29" },

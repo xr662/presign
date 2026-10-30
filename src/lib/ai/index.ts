@@ -1,9 +1,9 @@
 // 服务端专用：密钥只在这里读。被浏览器端代码 import 时，构建会直接报错（server-only）。
 import "server-only";
 
-import { limitsFromEnv, rolesFromEnv } from "./config";
-import { createAi, type Ai } from "./core";
-import { UsageStore } from "./usage";
+import { limitsFromEnv, rolesFromEnv } from "./config.ts";
+import { createAi, type Ai } from "./core.ts";
+import { UsageStore } from "./usage.ts";
 
 let instance: Ai | null = null;
 
@@ -16,5 +16,5 @@ export function ai(): Ai {
   return instance;
 }
 
-export type { Purpose, Role } from "./config";
-export * from "./errors";
+export type { Purpose, Role } from "./config.ts";
+export * from "./errors.ts";

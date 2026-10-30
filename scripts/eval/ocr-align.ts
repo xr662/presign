@@ -11,13 +11,27 @@ const iou = (a: Box, b: Box) => {
   return (ix * iy) / (area(a) + area(b) - ix * iy || 1);
 };
 for (const tag of process.argv.slice(2)) {
-  const { truth, pred } = JSON.parse(readFileSync(`test-results/ocr/${tag}-run1.json`, "utf8")) as { truth: { text: string; box: Box }[]; pred: { text: string }[] };
-  const local = JSON.parse(readFileSync(`test-results/ocr/${tag}-local.json`, "utf8")) as { text: string; box: Box }[];
-  const aligned = alignLines(pred.map((p) => p.text), local);
+  const { truth, pred } = JSON.parse(readFileSync(`test-results/ocr/${tag}-run1.json`, "utf8")) as {
+    truth: { text: string; box: Box }[];
+    pred: { text: string }[];
+  };
+  const local = JSON.parse(readFileSync(`test-results/ocr/${tag}-local.json`, "utf8")) as {
+    text: string;
+    box: Box;
+  }[];
+  const aligned = alignLines(
+    pred.map((p) => p.text),
+    local,
+  );
   const withBox = aligned.filter((a) => a.box);
   const good = withBox.filter((a) => {
-    const t = truth.reduce((b, x) => (similarity(x.text, a.text) > similarity(b.text, a.text) ? x : b), truth[0]);
+    const t = truth.reduce(
+      (b, x) => (similarity(x.text, a.text) > similarity(b.text, a.text) ? x : b),
+      truth[0],
+    );
     return iou(t.box, a.box!) >= 0.5;
   });
-  console.log(`${tag}：模型 ${pred.length} 行，对上框的 ${withBox.length} 行（${((withBox.length / pred.length) * 100).toFixed(0)}%），其中与标准框 IoU≥0.5 的 ${good.length} 行（${((good.length / Math.max(1, withBox.length)) * 100).toFixed(0)}%）`);
+  console.log(
+    `${tag}：模型 ${pred.length} 行，对上框的 ${withBox.length} 行（${((withBox.length / pred.length) * 100).toFixed(0)}%），其中与标准框 IoU≥0.5 的 ${good.length} 行（${((good.length / Math.max(1, withBox.length)) * 100).toFixed(0)}%）`,
+  );
 }

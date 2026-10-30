@@ -25,7 +25,8 @@ import {
 } from "./rules/terms.ts";
 import type { Finding } from "./rules/types.ts";
 import { checkProbationWage } from "./rules/wage.ts";
-import { LawStore, rrf, type Hit } from "./store.ts";
+import { hybridSearch } from "./search.ts";
+import { LawStore } from "./store.ts";
 
 const DB = process.env.LAW_DB_PATH || "data/build/law.db";
 let store: LawStore | null = null;
@@ -81,24 +82,28 @@ export function buildServer(): McpServer {
     "search_law",
     {
       description:
-        "在劳动合同法、实施条例、劳动争议司法解释、民法典相关条文和最高法典型案例里检索。返回条文 ID、标题和原文。",
+        "在劳动合同法、实施条例、劳动争议司法解释、民法典相关条文和最高法典型案例里检索。返回条文 ID、标题和原文。" +
+        "口语和法条用词常常不同（社保／社会保险费，押金／收取财物），把同一个问题的法条说法放进 rewrites，结果一起合并排序。",
       inputSchema: {
         query: z.string().min(1).max(200),
+        rewrites: z
+          .array(z.string().min(1).max(200))
+          .max(3)
+          .default([])
+          .describe("同一问题换成法条用语的说法，最多 3 个"),
         top_k: z.number().int().min(1).max(20).default(8),
       },
       annotations: readOnly,
     },
-    async ({ query, top_k }) => {
+    async ({ query, rewrites, top_k }) => {
       const s = getStore();
-      const lists: Hit[][] = [s.searchText(query, 20)];
-      if (s.hasVectors) {
-        const e = await getEmbedder();
-        if (e) lists.push(s.searchVector(await e.embedQuery(query), 20));
-      }
-      const hits = rrf(lists, top_k).map((h) => {
-        const d = s.getDoc(h.id);
-        return { id: h.id, kind: h.kind, title: h.title, text: d?.text ?? "" };
-      });
+      const e = s.hasVectors ? await getEmbedder() : null;
+      const hits = (await hybridSearch(s, e, [query, ...rewrites], { k: top_k })).map((h) => ({
+        id: h.id,
+        kind: h.kind,
+        title: h.title,
+        text: h.text,
+      }));
       return json({ hits });
     },
   );

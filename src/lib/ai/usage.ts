@@ -5,8 +5,8 @@
 import { mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 import { DatabaseSync } from "node:sqlite";
-import type { Limits } from "./config";
-import { BudgetExceededError } from "./errors";
+import type { Limits } from "./config.ts";
+import { BudgetExceededError } from "./errors.ts";
 
 export type CallRecord = {
   ts: number;
@@ -100,6 +100,16 @@ export class UsageStore {
         `SELECT role, purpose, COUNT(*) AS calls, SUM(ok) AS ok, SUM(requests) AS requests,
                 SUM(input_tokens) AS input, SUM(output_tokens) AS output, ROUND(AVG(latency_ms)) AS avg_ms
          FROM calls WHERE ts >= ? GROUP BY role, purpose ORDER BY calls DESC`,
+      )
+      .all(dayStartCN(now));
+  }
+
+  /** 当天失败的调用按用途、角色、错误类型计数（错误类型只有类名和 HTTP 状态码，没有返回内容） */
+  failures(now = Date.now()) {
+    return this.db
+      .prepare(
+        `SELECT purpose, role, error, COUNT(*) AS calls, ROUND(AVG(latency_ms)) AS avg_ms
+         FROM calls WHERE ok = 0 AND ts >= ? GROUP BY purpose, role, error ORDER BY calls DESC`,
       )
       .all(dayStartCN(now));
   }

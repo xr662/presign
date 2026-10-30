@@ -349,3 +349,106 @@ describe("思考强度按步骤", () => {
     expect(effortFor("verify", r, { REASONING_VERIFY: "off" })).toBeUndefined();
   });
 });
+
+// 平台挂住的请求：一直不返回，直到被取消
+function hanging() {
+  const calls = { n: 0, aborted: 0 };
+  const model = new MockLanguageModelV4({
+    doGenerate: (opts) => {
+      calls.n++;
+      return new Promise((_, reject) => {
+        opts.abortSignal?.addEventListener("abort", () => {
+          calls.aborted++;
+          reject(opts.abortSignal!.reason);
+        });
+      });
+    },
+  });
+  return { model, calls };
+}
+
+// 第 n 次调用（从 0 开始）挂住，其余正常回复
+function hangsOn(n: number, text: string) {
+  const h = hanging();
+  const r = replies([text]);
+  const calls = { n: 0 };
+  const model = new MockLanguageModelV4({
+    doGenerate: (opts) => (calls.n++ === n ? h.model.doGenerate(opts) : r.model.doGenerate(opts)),
+  });
+  return { model, calls, hung: h.calls };
+}
+
+const NOW = Date.UTC(2026, 9, 30, 4);
+const tick = () => new Promise((r) => setTimeout(r, 0));
+
+describe("时限和对冲", () => {
+  it("第一份过了 hedgeMs 没回，向复核模型再发一份；先回来的算数，挂住的那份被取消并记账", async () => {
+    const main = hanging();
+    const alt = replies(["好"]);
+    const { ai, usage } = setup({ main: main.model, alt: alt.model });
+    const r = await ai.generate("plan", { prompt: "测试", hedgeMs: 20 });
+    expect(r.text).toBe("好");
+    await tick();
+    expect(main.calls.aborted).toBe(1);
+    expect(usage.failures(NOW)).toEqual([
+      expect.objectContaining({ role: "main", error: "HedgeCancelled", calls: 1 }),
+    ]);
+  });
+
+  it("第一份在 hedgeMs 内回来，就不发第二份", async () => {
+    const main = replies(["主"]);
+    const alt = replies(["复核"]);
+    const { ai } = setup({ main: main.model, alt: alt.model });
+    expect((await ai.generate("plan", { prompt: "测试", hedgeMs: 200 })).text).toBe("主");
+    expect(alt.calls.n).toBe(0);
+  });
+
+  it("只配了一个角色时，对冲的那份发给同一个角色", async () => {
+    const main = hangsOn(0, "第二份");
+    const { ai } = setup({ main: main.model }, [role("main")]);
+    expect((await ai.generate("plan", { prompt: "测试", hedgeMs: 20 })).text).toBe("第二份");
+    expect(main.calls.n).toBe(2);
+  });
+
+  it("结构化输出同样对冲", async () => {
+    const main = hanging();
+    const alt = replies(['{"n":3}']);
+    const { ai } = setup({ main: main.model, alt: alt.model });
+    const r = await ai.generateObject("rerank", z.object({ n: z.number() }), {
+      prompt: "测试",
+      hedgeMs: 20,
+    });
+    expect(r).toEqual({ n: 3 });
+  });
+
+  it("超过 timeoutMs 算供应商那边的失败，换下一个角色", async () => {
+    const main = hanging();
+    const alt = replies(["好"]);
+    const { ai, usage } = setup({ main: main.model, alt: alt.model });
+    expect((await ai.generate("plan", { prompt: "测试", timeoutMs: 20 })).text).toBe("好");
+    const failed = usage.failures(NOW) as { role: string; error: string }[];
+    expect(failed.map((x) => x.role)).toEqual(["main"]);
+    expect(["TimeoutError", "AbortError"]).toContain(failed[0].error);
+  });
+
+  it("调用方自己取消时直接停，不换角色", async () => {
+    const main = hanging();
+    const alt = replies(["不该用到"]);
+    const { ai } = setup({ main: main.model, alt: alt.model });
+    const ctl = new AbortController();
+    setTimeout(() => ctl.abort(), 20);
+    await expect(
+      ai.generate("plan", { prompt: "测试", abortSignal: ctl.signal, hedgeMs: 200 }),
+    ).rejects.toBeDefined();
+    expect(alt.calls.n).toBe(0);
+  });
+
+  it("两份都失败时报 AllModelsFailedError，不再往下试", async () => {
+    const main = hanging();
+    const alt = failing(503);
+    const { ai } = setup({ main: main.model, alt: alt.model });
+    await expect(
+      ai.generate("plan", { prompt: "测试", hedgeMs: 20, timeoutMs: 60 }),
+    ).rejects.toMatchObject({ name: "AllModelsFailedError", tried: ["main", "alt"] });
+  });
+});

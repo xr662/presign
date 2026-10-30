@@ -15,7 +15,12 @@ const args = process.argv.slice(2);
 const runs = args.includes("--runs") ? Number(args[args.indexOf("--runs") + 1]) : 1;
 const docs = args.filter((a) => !a.startsWith("--") && !/^\d+$/.test(a));
 if (docs.length === 0) docs.push("labor");
-const NAMES: Record<string, string> = { labor: "劳动合同", tripartite: "三方协议", offer: "录用通知", internship: "实习协议" };
+const NAMES: Record<string, string> = {
+  labor: "劳动合同",
+  tripartite: "三方协议",
+  offer: "录用通知",
+  internship: "实习协议",
+};
 
 type Box = [number, number, number, number];
 type Line = { text: string; box: Box };
@@ -42,7 +47,10 @@ const PROMPT_NORM =
 /** 在页面里逐字取坐标，按行合并，坐标换成图片宽高为 1000 的归一化值 */
 async function renderTruth(file: string, photoLike: boolean, out: string) {
   const browser = await chromium.launch({ channel: "msedge" });
-  const page = await browser.newPage({ viewport: { width: 900, height: 1200 }, deviceScaleFactor: 1.5 });
+  const page = await browser.newPage({
+    viewport: { width: 900, height: 1200 },
+    deviceScaleFactor: 1.5,
+  });
   await page.goto(pathToFileURL(file).href);
   if (photoLike) {
     await page.addStyleTag({
@@ -66,7 +74,11 @@ async function renderTruth(file: string, photoLike: boolean, out: string) {
         const r = range.getBoundingClientRect();
         if (r.width === 0 || r.bottom > H || r.top < 0) continue;
         const cy = (r.top + r.bottom) / 2;
-        const row = rows.find((x) => Math.abs((x.y0 + x.y1) / 2 - cy) < r.height * 0.5 && Math.abs(r.left - x.x1) < r.height * 3);
+        const row = rows.find(
+          (x) =>
+            Math.abs((x.y0 + x.y1) / 2 - cy) < r.height * 0.5 &&
+            Math.abs(r.left - x.x1) < r.height * 3,
+        );
         if (row) {
           row.text += s[i];
           row.x0 = Math.min(row.x0, r.left);
@@ -127,13 +139,33 @@ for (const doc of docs) {
         model,
         output: Output.object({ schema }),
         messages: [
-          { role: "user", content: [{ type: "text", text: PROMPT }, { type: "file", data: readFileSync(img), mediaType: "image/png" }] },
+          {
+            role: "user",
+            content: [
+              { type: "text", text: PROMPT },
+              { type: "file", data: readFileSync(img), mediaType: "image/png" },
+            ],
+          },
         ],
       });
       const pred = (r.output.lines as Line[]).map((l) =>
-        pixel ? { ...l, box: [(l.box[0] / pw) * 1000, (l.box[1] / ph) * 1000, (l.box[2] / pw) * 1000, (l.box[3] / ph) * 1000] as Box } : l,
+        pixel
+          ? {
+              ...l,
+              box: [
+                (l.box[0] / pw) * 1000,
+                (l.box[1] / ph) * 1000,
+                (l.box[2] / pw) * 1000,
+                (l.box[3] / ph) * 1000,
+              ] as Box,
+            }
+          : l,
       );
-      const cer = levenshtein(strip(truth.map((l) => l.text).join("")), strip(pred.map((l) => l.text).join(""))) / strip(truth.map((l) => l.text).join("")).length;
+      const cer =
+        levenshtein(
+          strip(truth.map((l) => l.text).join("")),
+          strip(pred.map((l) => l.text).join("")),
+        ) / strip(truth.map((l) => l.text).join("")).length;
       // 每条标准行找文字最接近的预测行，再算框的 IoU
       const ious = truth.map((t) => {
         let best: Line | undefined;
@@ -153,7 +185,10 @@ for (const doc of docs) {
       const line = `${tag} 第${run}次：${((performance.now() - t0) / 1000).toFixed(1)}s，标准 ${truth.length} 行 / 识别 ${pred.length} 行，字错率 ${(cer * 100).toFixed(1)}%，框 IoU 中位数 ${median.toFixed(2)}，IoU≥0.5 的行 ${(ok * 100).toFixed(0)}%，${r.usage.inputTokens}/${r.usage.outputTokens} tokens`;
       console.log(line);
       report.push(line);
-      writeFileSync(`test-results/ocr/${tag}-run${run}.json`, JSON.stringify({ truth, pred }, null, 1));
+      writeFileSync(
+        `test-results/ocr/${tag}-run${run}.json`,
+        JSON.stringify({ truth, pred }, null, 1),
+      );
     }
   }
 }
