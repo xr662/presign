@@ -68,6 +68,26 @@ export function limitsFromEnv(env: Env = process.env): Limits {
   };
 }
 
+// 每一步的思考强度。10-30 实测：抽取一份劳动合同，思考开 high 后输出从 129 涨到 4148 tokens，
+// 耗时从 4.3 秒到 42.5 秒，抽取结果一样。token 是赛事送的、够用，主要代价是等待时间，
+// 所以只在判断最多的自检（high）和报告（medium）上开；识别、抽取、谈判练习要快，不开。
+// 环境变量 REASONING_<用途>（如 REASONING_VERIFY=low、REASONING_EXTRACT=high、REASONING_REPORT=off）可以单独改。
+const PURPOSE_EFFORT: Partial<Record<Purpose, ReasoningEffort>> = {
+  verify: "high",
+  report: "medium",
+};
+
+export function effortFor(
+  purpose: Purpose,
+  r: RoleConfig,
+  env: Env = process.env,
+): ReasoningEffort | undefined {
+  const v = env[`REASONING_${purpose.toUpperCase()}`]?.trim();
+  if (v === "off") return undefined;
+  if (v === "low" || v === "medium" || v === "high") return v;
+  return PURPOSE_EFFORT[purpose] ?? r.reasoningEffort;
+}
+
 export function chainFor(purpose: Purpose, roles: RoleConfig[]): RoleConfig[] {
   return ORDER[purpose].flatMap((r) => roles.filter((x) => x.role === r));
 }

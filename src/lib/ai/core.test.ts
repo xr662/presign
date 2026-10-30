@@ -336,3 +336,16 @@ describe("流式", () => {
     expect(APICallError.isInstance(err.lastError)).toBe(true);
   });
 });
+
+describe("思考强度按步骤", () => {
+  it("默认只有自检和报告开思考，环境变量可以单独改", async () => {
+    const { effortFor } = await import("./config");
+    const r = role("main");
+    expect(effortFor("verify", r, {})).toBe("high");
+    expect(effortFor("report", r, {})).toBe("medium");
+    expect(effortFor("extract", r, {})).toBeUndefined();
+    expect(effortFor("ocr", r, {})).toBeUndefined();
+    expect(effortFor("extract", r, { REASONING_EXTRACT: "high" })).toBe("high");
+    expect(effortFor("verify", r, { REASONING_VERIFY: "off" })).toBeUndefined();
+  });
+});

@@ -21,6 +21,7 @@ import {
 import type { z } from "zod";
 import {
   chainFor,
+  effortFor,
   providerKey,
   type Limits,
   type Purpose,
@@ -53,7 +54,7 @@ export type AiDeps = {
 
 type Attempt<T> = { value: T; usage?: LanguageModelUsage; requests?: number };
 
-function defaultModel(r: RoleConfig): LanguageModel {
+function defaultModel(r: RoleConfig, effort: string | undefined): LanguageModel {
   return createOpenAICompatible({
     name: r.role,
     baseURL: r.baseURL,
@@ -61,9 +62,7 @@ function defaultModel(r: RoleConfig): LanguageModel {
     includeUsage: true,
     // 平台只认 json_schema；json_object 模式下模型不按结构输出（10-30 实测）
     supportsStructuredOutputs: true,
-    transformRequestBody: r.reasoningEffort
-      ? (body) => ({ ...body, reasoning_effort: r.reasoningEffort })
-      : undefined,
+    transformRequestBody: effort ? (body) => ({ ...body, reasoning_effort: effort }) : undefined,
   })(r.model);
 }
 
@@ -83,11 +82,14 @@ function promptOf(o: CallOptions) {
 export function createAi(deps: AiDeps) {
   const now = deps.now ?? Date.now;
   const maxRetries = deps.maxRetries ?? 1;
-  const cache = new Map<Role, LanguageModel>();
-  const modelFor = (r: RoleConfig) => {
+  // 同一个角色按思考强度分别缓存一个模型实例
+  const cache = new Map<string, LanguageModel>();
+  const modelFor = (r: RoleConfig, purpose: Purpose) => {
     if (deps.modelFor) return deps.modelFor(r);
-    if (!cache.has(r.role)) cache.set(r.role, defaultModel(r));
-    return cache.get(r.role)!;
+    const effort = effortFor(purpose, r);
+    const key = `${r.role}:${effort ?? "off"}`;
+    if (!cache.has(key)) cache.set(key, defaultModel(r, effort));
+    return cache.get(key)!;
   };
 
   const record = (
@@ -125,7 +127,7 @@ export function createAi(deps: AiDeps) {
       deps.usage.check(providerKey(r), deps.limits, now());
       const t0 = now();
       try {
-        const res = await fn(modelFor(r), r);
+        const res = await fn(modelFor(r, purpose), r);
         record(r, purpose, t0, true, res.usage, res.requests);
         return res.value;
       } catch (e) {
@@ -232,7 +234,7 @@ export function createAi(deps: AiDeps) {
           let text = "";
           try {
             const s = streamText({
-              model: modelFor(r),
+              model: modelFor(r, purpose),
               maxRetries,
               system: o.system,
               ...promptOf(o),
