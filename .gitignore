@@ -65,3 +65,6 @@ AGENTS.md
 
 # 用量记录数据库（运行时生成）
 /data/runtime/
+
+# 浏览器端识别用的文件，由 scripts/copy-vendor.mjs 从 node_modules 拷来
+/public/vendor/

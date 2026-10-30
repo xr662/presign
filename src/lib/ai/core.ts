@@ -164,7 +164,7 @@ export function createAi(deps: AiDeps) {
     async generateObject<S extends z.ZodType>(
       purpose: Purpose,
       schema: S,
-      o: { system?: string; prompt: string; abortSignal?: AbortSignal },
+      o: { system?: string; prompt?: string; messages?: ModelMessage[]; abortSignal?: AbortSignal },
     ): Promise<z.infer<S>> {
       let note = "";
       for (let i = 0; i < 2; i++) {
@@ -174,7 +174,14 @@ export function createAi(deps: AiDeps) {
               model,
               maxRetries,
               system: o.system,
-              prompt: o.prompt + note,
+              // 重试时把上次的格式问题附在后面；带图片的请求追加一条文字消息
+              ...(o.messages
+                ? {
+                    messages: note
+                      ? [...o.messages, { role: "user" as const, content: note }]
+                      : o.messages,
+                  }
+                : { prompt: (o.prompt ?? "") + note }),
               output: Output.object({ schema }),
               abortSignal: o.abortSignal,
             });

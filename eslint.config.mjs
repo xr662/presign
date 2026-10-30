@@ -8,7 +8,7 @@ const eslintConfig = defineConfig([
   ...nextTs,
   // 格式交给 Prettier，关掉和它冲突的 ESLint 规则
   prettier,
-  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "data/build/**"]),
+  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "data/build/**", "public/vendor/**"]),
 ]);
 
 export default eslintConfig;

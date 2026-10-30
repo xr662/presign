@@ -44,3 +44,16 @@ export class StructuredOutputError extends Error {
     this.attempts = attempts;
   }
 }
+
+export type AiErrorCode = "budget_exceeded" | "no_model" | "all_failed" | "bad_output";
+
+/** 按 code 判断错误类型。比 instanceof 稳：模块被打包或测试替换成两份时 instanceof 会失效 */
+export function aiErrorCode(e: unknown): AiErrorCode | null {
+  const code = (e as { code?: unknown } | null)?.code;
+  return code === "budget_exceeded" ||
+    code === "no_model" ||
+    code === "all_failed" ||
+    code === "bad_output"
+    ? code
+    : null;
+}
