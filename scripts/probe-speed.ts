@@ -3,11 +3,14 @@
 // 两项分开看才知道慢在哪：首字慢是平台排队，生成慢是模型或平台算力。
 // 换供应商（任务书 U6，11 月中旬换 DeepSeek 官方 key）后再跑一次对比。
 // 每个角色 3 次请求，不打印密钥。用法：node scripts/probe-speed.ts [--runs 3]
+// 服务器上没有 .env.local，也没有 npm 依赖：本机用 esbuild 打成单文件传上去，
+// 再用 node --env-file=/etc/presign/env 运行（见 deploy/README.md），密钥文件不用复制。
+import { existsSync } from "node:fs";
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 import { streamText } from "ai";
 import { rolesFromEnv } from "../src/lib/ai/config.ts";
 
-process.loadEnvFile(".env.local");
+if (existsSync(".env.local")) process.loadEnvFile(".env.local");
 const argv = process.argv.slice(2);
 const runs = argv.includes("--runs") ? Number(argv[argv.indexOf("--runs") + 1]) : 3;
 

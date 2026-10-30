@@ -1,7 +1,21 @@
 # Caddy 反向代理（项目方案第 11 节）。网站只监听 127.0.0.1:3000，外面只开 80/443。
-# 10-31 第一版只开 HTTP：Ubuntu 软件源里的 Caddy 是 2.6.2，签不了 IP 地址的证书（要 2.10 以上）。
-# 登录 Cookie 带 Secure，只有 HTTPS 下浏览器才会保存，所以 HTTPS 配好之前只能看不用登录的页面（首页、示例合同）。
-:80 {
+# 证书用 Let's Encrypt 的 IP 地址证书，要 Caddy 2.10 以上（Ubuntu 源里是 2.6.2，所以装 Caddy 官方 apt 源的版本）。
+# 换服务器或换成域名时，改下面两处 服务器地址；用域名时 default_sni 和 profile 都可以删掉。
+{
+	# 浏览器按 IP 访问时不发 SNI（RFC 6066 规定 SNI 只能写域名）。Caddy 这时按本机网卡地址找证书，
+	# 但华为云做了 NAT，网卡上是内网地址，找不到，所以指定没有 SNI 时按公网 IP 选证书。
+	default_sni 服务器地址
+}
+
+服务器地址 {
+	# 站点地址是 IP 时 Caddy 默认用自签证书，这里明确指定向 Let's Encrypt 申请。
+	# Let's Encrypt 的 IP 证书只按 shortlived 档发（有效期约 6 天），续期由 Caddy 自动做。
+	tls {
+		issuer acme {
+			profile shortlived
+		}
+	}
+
 	encode zstd gzip
 
 	# 识别组件（Tesseract 的 wasm 和语言包，约 3.9MB）文件名不变，长缓存

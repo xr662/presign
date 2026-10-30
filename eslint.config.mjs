@@ -8,7 +8,16 @@ const eslintConfig = defineConfig([
   ...nextTs,
   // 格式交给 Prettier，关掉和它冲突的 ESLint 规则
   prettier,
-  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "data/build/**", "public/vendor/**"]),
+  // deploy/build 是 deploy/pack.sh 打出来的产物（压缩过的 Next 构建和单文件 MCP 服务），不是源码
+  globalIgnores([
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    "data/build/**",
+    "deploy/build/**",
+    "public/vendor/**",
+  ]),
 ]);
 
 export default eslintConfig;

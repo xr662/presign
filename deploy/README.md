@@ -23,12 +23,34 @@
    rm -rf /opt/presign/web /opt/presign/mcp && tar -xzf /tmp/presign.tar.gz -C /opt/presign && chmod -R a+rX /opt/presign
    cp presign-web.service presign-mcp.service /etc/systemd/system/ && systemctl daemon-reload
    systemctl enable --now presign-mcp presign-web
-   apt-get install -y caddy && cp Caddyfile /etc/caddy/Caddyfile && systemctl reload caddy
    ```
-4. `/etc/presign/env` 按 `.env.example` 填，至少要有 `LLM_MAIN_*`、`LLM_ALT_*`、`SESSION_SECRET`（`openssl rand -hex 32`）、`JUDGE_ACCOUNTS`（本机 `npm run account:hash -- 用户名` 生成）。改完 `systemctl restart presign-web`。
-5. 检查：`systemctl is-active presign-mcp presign-web caddy`；`curl http://127.0.0.1:3000/` 返回 200；不带登录 `POST /api/review` 返回 401。
+4. Caddy 要 2.10 以上才能签 IP 地址证书，Ubuntu 源里是 2.6.2，所以加 Caddy 官方 apt 源（第一次）。先看公钥指纹，应为 `6576 0C51 EDEA 2017 CEA2 CA15 155B 6D79 CA56 EA34`（Caddy Web Server）：
+   ```bash
+   curl -1sSf -o /tmp/caddy.key https://dl.cloudsmith.io/public/caddy/stable/gpg.key
+   gpg --show-keys --with-fingerprint /tmp/caddy.key
+   gpg --dearmor < /tmp/caddy.key > /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+   echo "deb [signed-by=/usr/share/keyrings/caddy-stable-archive-keyring.gpg] https://dl.cloudsmith.io/public/caddy/stable/deb/debian any-version main" > /etc/apt/sources.list.d/caddy-stable.list
+   apt-get update && apt-get install -y -o Dpkg::Options::=--force-confold caddy && caddy version
+   caddy validate --adapter caddyfile --config Caddyfile && cp Caddyfile /etc/caddy/Caddyfile && systemctl reload caddy
+   ```
+   重载后 Caddy 自己向 Let's Encrypt 申请证书（10-31 用了 6 秒），`journalctl -u caddy | grep "certificate obtained"` 能看到。证书有效期约 6 天，Caddy 到期前自动续，续期要 80 和 443 端口都开着。换服务器或换域名时改 `Caddyfile` 里的地址。
+5. `/etc/presign/env` 按 `.env.example` 填，至少要有 `LLM_MAIN_*`、`LLM_ALT_*`、`SESSION_SECRET`（`openssl rand -hex 32`）、`JUDGE_ACCOUNTS`（本机 `npm run account:hash -- 用户名` 生成）。改完 `systemctl restart presign-web`。
+6. 检查：`systemctl is-active presign-mcp presign-web caddy`；`curl -I https://<服务器地址>/` 返回 200；`http://` 返回 308 跳到 https；不带登录 `POST /api/review` 返回 401；`echo | openssl s_client -connect <服务器地址>:443 -noservername | openssl x509 -noout -issuer -dates` 看证书签发方和有效期。
+
+## 在服务器上测模型接口速度
+
+服务器上没有 npm 依赖，本机用打包脚本里的同一版 esbuild 把探测脚本打成单文件再传：
+
+```bash
+npx -y esbuild@0.25.11 scripts/probe-speed.ts --bundle --platform=node --format=esm --target=node24 \
+  --banner:js="import { createRequire } from 'node:module'; const require = createRequire(import.meta.url);" \
+  --outfile=deploy/build/probe-speed.mjs
+# 传到服务器 /tmp/ 后：
+cd /tmp && node --env-file=/etc/presign/env probe-speed.mjs
+```
+
+`--env-file` 直接读服务器上的密钥文件，不用复制。脚本只打印接口域名和模型名。
 
 ## 还没做
 
-- HTTPS：Ubuntu 软件源里的 Caddy 是 2.6.2，签不了 IP 地址证书。登录 Cookie 带 Secure，HTTPS 之前登录用不了，只能看示例合同。
 - `/api/health` 和部署后自动检查脚本（项目方案第 11 节）。
