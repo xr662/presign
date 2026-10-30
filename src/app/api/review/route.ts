@@ -2,7 +2,7 @@
 // 服务端不保存合同：全文只在这次请求的内存里，日志里只有次数、token 和耗时。
 // 浏览器断开（关页面、点取消）时 req.signal 中止，审查流程停在当前步骤。
 import { z } from "zod";
-import { ai } from "@/lib/ai";
+import { ai, takeReview } from "@/lib/ai";
 import { checkModelRequest } from "@/lib/auth/guard";
 import type { ReviewEvent } from "@/lib/review/events";
 import { runReview } from "@/lib/review/run";
@@ -15,8 +15,8 @@ const fail = (status: number, error: string, message: string) =>
   Response.json({ error, message }, { status, headers: { "Cache-Control": "no-store" } });
 
 export async function POST(req: Request) {
-  const denied = checkModelRequest(req);
-  if (denied) return fail(denied.status, denied.error, denied.message);
+  const guard = checkModelRequest(req);
+  if (!guard.ok) return fail(guard.status, guard.error, guard.message);
 
   let text: string;
   try {
@@ -27,6 +27,15 @@ export async function POST(req: Request) {
   } catch {
     return fail(400, "bad_request", "没有收到合同文字");
   }
+
+  // 每个评审账号每天检查份数有上限（DAILY_REVIEWS_PER_ACCOUNT）。放在校验之后：格式不对的请求不占次数
+  const quota = takeReview(guard.user);
+  if (!quota.ok)
+    return fail(
+      429,
+      "daily_limit",
+      `这个账号今天的 ${quota.limit} 次检查已经用完，北京时间明天 0 点恢复。可以先看示例合同。`,
+    );
 
   const enc = new TextEncoder();
   const stream = new ReadableStream<Uint8Array>({

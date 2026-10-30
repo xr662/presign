@@ -40,7 +40,24 @@ export class UsageStore {
         requests INTEGER, input_tokens INTEGER, output_tokens INTEGER, latency_ms INTEGER, error TEXT
       );
       CREATE INDEX IF NOT EXISTS calls_ts ON calls(ts);
+      -- 每次检查记一行（时间、账号），给每个账号每天的检查份数限额用；不记合同内容
+      CREATE TABLE IF NOT EXISTS reviews (ts INTEGER NOT NULL, user TEXT NOT NULL);
+      CREATE INDEX IF NOT EXISTS reviews_user_ts ON reviews(user, ts);
     `);
+    // 用量数据保留 30 天（项目方案第 8 节"存储"），启动时清一次
+    const old = Date.now() - 30 * DAY;
+    this.db.prepare("DELETE FROM calls WHERE ts < ?").run(old);
+    this.db.prepare("DELETE FROM reviews WHERE ts < ?").run(old);
+  }
+
+  /** 这个账号今天（北京时间）还没到上限就记一次并返回 true */
+  takeReview(user: string, limit: number, now = Date.now()): boolean {
+    const row = this.db
+      .prepare("SELECT COUNT(*) AS n FROM reviews WHERE user = ? AND ts >= ?")
+      .get(user, dayStartCN(now)) as { n: number };
+    if (row.n >= limit) return false;
+    this.db.prepare("INSERT INTO reviews VALUES (?, ?)").run(now, user);
+    return true;
   }
 
   record(c: CallRecord) {

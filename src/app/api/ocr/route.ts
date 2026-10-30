@@ -29,8 +29,8 @@ const clock = (ms: number) =>
   });
 
 export async function POST(req: Request) {
-  const denied = checkModelRequest(req);
-  if (denied) return fail(denied.status, denied.error, denied.message);
+  const guard = checkModelRequest(req);
+  if (!guard.ok) return fail(guard.status, guard.error, guard.message);
 
   let form: FormData;
   try {
