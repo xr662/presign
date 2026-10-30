@@ -49,6 +49,7 @@ npm run corpus:build   # 用 data/clean/ 里的条文建库，生成 data/build/
 | `npm run lint:copy` | 按写作规范检查界面文字和文档                                             |
 | `npm run scan`      | 扫描密钥、本机路径等不能公开的内容                                       |
 | `npm run test:e2e`  | 端到端测试                                                               |
+| `npm run eval:retrieval` | 法条检索评测：30 条查询在六种配置下的前 5 命中率和各步耗时，每轮约 90 次模型请求；加 `-- --no-model` 只跑不调模型的三种。结果见 `docs/评测报告.md` |
 
 ## 环境变量
 

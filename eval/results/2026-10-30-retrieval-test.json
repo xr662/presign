@@ -1,0 +1,6704 @@
+{
+ "set": "test",
+ "date": "2026-10-30",
+ "rounds": 2,
+ "model": "Deepseek-v4-flash",
+ "prompts": [
+  "rewrite-v2",
+  "rerank-v2"
+ ],
+ "cpu": "Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz",
+ "summary": {
+  "text": {
+   "all": {
+    "n": 60,
+    "any": 28,
+    "primary": 26,
+    "mrr": 0.336
+   },
+   "clause": {
+    "n": 30,
+    "any": 18,
+    "primary": 16,
+    "mrr": 0.456
+   },
+   "question": {
+    "n": 30,
+    "any": 10,
+    "primary": 10,
+    "mrr": 0.217
+   },
+   "clean": {
+    "n": 56,
+    "any": 27,
+    "primary": 25,
+    "mrr": 0.356
+   }
+  },
+  "vector": {
+   "all": {
+    "n": 60,
+    "any": 40,
+    "primary": 28,
+    "mrr": 0.473
+   },
+   "clause": {
+    "n": 30,
+    "any": 22,
+    "primary": 16,
+    "mrr": 0.606
+   },
+   "question": {
+    "n": 30,
+    "any": 18,
+    "primary": 12,
+    "mrr": 0.341
+   },
+   "clean": {
+    "n": 56,
+    "any": 38,
+    "primary": 28,
+    "mrr": 0.497
+   }
+  },
+  "hybrid": {
+   "all": {
+    "n": 60,
+    "any": 38,
+    "primary": 30,
+    "mrr": 0.436
+   },
+   "clause": {
+    "n": 30,
+    "any": 24,
+    "primary": 20,
+    "mrr": 0.586
+   },
+   "question": {
+    "n": 30,
+    "any": 14,
+    "primary": 10,
+    "mrr": 0.286
+   },
+   "clean": {
+    "n": 56,
+    "any": 37,
+    "primary": 29,
+    "mrr": 0.458
+   }
+  },
+  "hybrid+rr": {
+   "all": {
+    "n": 60,
+    "any": 53,
+    "primary": 42,
+    "mrr": 0.829
+   },
+   "clause": {
+    "n": 30,
+    "any": 28,
+    "primary": 22,
+    "mrr": 0.872
+   },
+   "question": {
+    "n": 30,
+    "any": 25,
+    "primary": 20,
+    "mrr": 0.786
+   },
+   "clean": {
+    "n": 56,
+    "any": 51,
+    "primary": 41,
+    "mrr": 0.862
+   }
+  },
+  "rewrite": {
+   "all": {
+    "n": 60,
+    "any": 55,
+    "primary": 44,
+    "mrr": 0.658
+   },
+   "clause": {
+    "n": 30,
+    "any": 26,
+    "primary": 22,
+    "mrr": 0.725
+   },
+   "question": {
+    "n": 30,
+    "any": 29,
+    "primary": 22,
+    "mrr": 0.591
+   },
+   "clean": {
+    "n": 56,
+    "any": 52,
+    "primary": 42,
+    "mrr": 0.669
+   }
+  },
+  "full": {
+   "all": {
+    "n": 60,
+    "any": 58,
+    "primary": 52,
+    "mrr": 0.939
+   },
+   "clause": {
+    "n": 30,
+    "any": 28,
+    "primary": 25,
+    "mrr": 0.911
+   },
+   "question": {
+    "n": 30,
+    "any": 30,
+    "primary": 27,
+    "mrr": 0.967
+   },
+   "clean": {
+    "n": 56,
+    "any": 55,
+    "primary": 49,
+    "mrr": 0.952
+   }
+  }
+ },
+ "poolRecall": {
+  "raw": 54,
+  "rewrite": 60,
+  "n": 60
+ },
+ "latency": {
+  "rewrite": {
+   "p50": 3964,
+   "p90": 10173,
+   "max": 18219
+  },
+  "search": {
+   "p50": 201,
+   "p90": 1090,
+   "max": 1700
+  },
+  "rerank": {
+   "p50": 3920,
+   "p90": 11669,
+   "max": 28015
+  },
+  "total": {
+   "p50": 9385,
+   "p90": 21844,
+   "max": 31734
+  }
+ },
+ "usage": [
+  {
+   "role": "main",
+   "purpose": "rerank",
+   "calls": 120,
+   "ok": 103,
+   "requests": 120,
+   "input": 211963,
+   "output": 5673,
+   "avg_ms": 5490
+  },
+  {
+   "role": "main",
+   "purpose": "rewrite",
+   "calls": 60,
+   "ok": 46,
+   "requests": 60,
+   "input": 12913,
+   "output": 2962,
+   "avg_ms": 5182
+  },
+  {
+   "role": "alt",
+   "purpose": "rerank",
+   "calls": 22,
+   "ok": 13,
+   "requests": 22,
+   "input": 26691,
+   "output": 700,
+   "avg_ms": 7861
+  },
+  {
+   "role": "alt",
+   "purpose": "rewrite",
+   "calls": 19,
+   "ok": 14,
+   "requests": 19,
+   "input": 3907,
+   "output": 881,
+   "avg_ms": 5088
+  }
+ ],
+ "failures": [
+  {
+   "purpose": "rerank",
+   "role": "main",
+   "error": "HedgeCancelled",
+   "calls": 12,
+   "avg_ms": 13522
+  },
+  {
+   "purpose": "rewrite",
+   "role": "main",
+   "error": "HedgeCancelled",
+   "calls": 12,
+   "avg_ms": 10174
+  },
+  {
+   "purpose": "rerank",
+   "role": "alt",
+   "error": "HedgeCancelled",
+   "calls": 5,
+   "avg_ms": 2896
+  },
+  {
+   "purpose": "rewrite",
+   "role": "alt",
+   "error": "HedgeCancelled",
+   "calls": 5,
+   "avg_ms": 2782
+  },
+  {
+   "purpose": "rerank",
+   "role": "alt",
+   "error": "TimeoutError",
+   "calls": 4,
+   "avg_ms": 20007
+  },
+  {
+   "purpose": "rerank",
+   "role": "main",
+   "error": "TimeoutError",
+   "calls": 3,
+   "avg_ms": 20013
+  },
+  {
+   "purpose": "rerank",
+   "role": "main",
+   "error": "RetryError(APICallError)",
+   "calls": 2,
+   "avg_ms": 14826
+  },
+  {
+   "purpose": "rewrite",
+   "role": "main",
+   "error": "TimeoutError",
+   "calls": 2,
+   "avg_ms": 15006
+  }
+ ],
+ "runs": [
+  {
+   "id": "t01",
+   "round": 1,
+   "top": {
+    "text": [
+     "gzzf-13",
+     "ldf-36",
+     "ldhtf-31",
+     "ldhtf-62",
+     "ldhtf-85"
+    ],
+    "vector": [
+     "ldhtf-31",
+     "gzzf-13",
+     "gzzf-7",
+     "ldf-36",
+     "ldf-41"
+    ],
+    "hybrid": [
+     "gzzf-13",
+     "ldhtf-31",
+     "ldf-36",
+     "ldf-41",
+     "ldhtf-85"
+    ],
+    "hybrid+rr": [
+     "ldhtf-31",
+     "ldf-44",
+     "gzzf-13",
+     "ldf-36",
+     "ldf-41"
+    ],
+    "rewrite": [
+     "ldf-44",
+     "ldhtf-85",
+     "ldhtf-31",
+     "gzzf-13",
+     "ldf-41"
+    ],
+    "full": [
+     "ldf-44",
+     "gzzf-13",
+     "ldhtf-31",
+     "ldhtf-85",
+     "ldf-91"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "gzzf-13",
+     "ldhtf-31",
+     "ldf-36",
+     "ldf-41",
+     "ldhtf-85",
+     "ldf-44",
+     "ldhtf-68",
+     "ldf-37",
+     "ldzy-js1-42",
+     "zdgz-12",
+     "gzzf-7",
+     "ldhtf-62",
+     "gzzf-8",
+     "ldhtf-72",
+     "gzzf-11",
+     "nxj-5",
+     "zdgz-3",
+     "gzzf-4",
+     "gzzf-12",
+     "gzzf-18"
+    ],
+    "rewrite": [
+     "ldf-44",
+     "ldhtf-85",
+     "ldhtf-31",
+     "gzzf-13",
+     "ldf-41",
+     "ldzy-js1-42",
+     "ldf-91",
+     "ldhtf-62",
+     "gzzf-18",
+     "gzzf-10",
+     "ldf-36",
+     "gzzf-8",
+     "zdgz-12",
+     "ldf-37",
+     "gzzf-11",
+     "ldf-90",
+     "gzzf-7",
+     "ldf-51",
+     "ldf-61",
+     "gzzf-1"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位安排劳动者延长工作时间应当支付加班工资，不得以调休或奖金替代",
+    "用人单位未足额支付加班工资的，劳动者可以主张什么权利和救济",
+    "标准工时制下延长工作时间的加班工资支付属于工资支付制度"
+   ],
+   "ms": {
+    "rewrite": 8885,
+    "search": 209,
+    "rerankRaw": 8944,
+    "rerank": 3485,
+    "total": 12579
+   },
+   "promptChars": 3162
+  },
+  {
+   "id": "t02",
+   "round": 1,
+   "top": {
+    "text": [
+     "gzzf-16",
+     "ldf-99",
+     "ldf-102",
+     "sbf-92",
+     "mfd-584"
+    ],
+    "vector": [
+     "gzzf-16",
+     "ldzy-js1-53",
+     "ldf-91",
+     "js2-cases-3-facts",
+     "ldhtf-90"
+    ],
+    "hybrid": [
+     "gzzf-16",
+     "ldf-102",
+     "ldhtf-90",
+     "mfd-584",
+     "ldzy-js1-41"
+    ],
+    "hybrid+rr": [
+     "gzzf-16",
+     "gzzf-15"
+    ],
+    "rewrite": [
+     "gzzf-16",
+     "ldf-102",
+     "ldzy-js1-41",
+     "ldf-99",
+     "ldf-91"
+    ],
+    "full": [
+     "gzzf-16",
+     "ldf-91",
+     "gzzf-18",
+     "ldf-48",
+     "zdgz-12"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "gzzf-16",
+     "ldf-102",
+     "ldhtf-90",
+     "mfd-584",
+     "ldzy-js1-41",
+     "ldhtf-47",
+     "ldf-99",
+     "ldzy-js1-53",
+     "ldf-91",
+     "sbf-92",
+     "js2-cases-3-facts",
+     "ldhtf-93",
+     "gzzf-15",
+     "ldzy-js1-49",
+     "ldhtf-91",
+     "js2-cases-1-facts",
+     "mfd-585",
+     "gzzf-14",
+     "sbf-37",
+     "ldf-30"
+    ],
+    "rewrite": [
+     "gzzf-16",
+     "ldf-102",
+     "ldzy-js1-41",
+     "ldf-99",
+     "ldf-91",
+     "gzzf-12",
+     "mfd-584",
+     "ldhtf-tl-27",
+     "ldhtf-47",
+     "ldhtf-90",
+     "ldhtf-91",
+     "gzzf-18",
+     "ldzy-js1-53",
+     "ldf-48",
+     "ldhtf-93",
+     "zdgz-12",
+     "zdgz-6",
+     "ldzy-js1-46",
+     "ldzy-js1-36",
+     "ldhtf-tl-15"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位因劳动者本人原因造成经济损失的，可以从劳动者工资中扣除赔偿费用",
+    "因劳动者过错造成用人单位经济损失，每月扣除工资不得超过当月工资的百分之二十",
+    "扣除工资后剩余部分低于当地月最低工资标准的，用人单位应当按照最低工资标准支付"
+   ],
+   "ms": {
+    "rewrite": 6742,
+    "search": 201,
+    "rerankRaw": 19419,
+    "rerank": 11669,
+    "total": 18612
+   },
+   "promptChars": 3538
+  },
+  {
+   "id": "t03",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldhtf-tl-7",
+     "ldhtf-47",
+     "ldhtf-82",
+     "js2-cases-4-facts",
+     "js2-cases-3-facts"
+    ],
+    "vector": [
+     "gzzf-11",
+     "nxj-3",
+     "nxj-4",
+     "ldhtf-tl-7",
+     "nxj-5"
+    ],
+    "hybrid": [
+     "ldhtf-tl-7",
+     "ldhtf-82",
+     "nxj-4",
+     "ldhtf-47",
+     "nxj-5"
+    ],
+    "hybrid+rr": [
+     "nxj-5",
+     "nxj-3",
+     "nxj-2",
+     "nxj-7",
+     "gzzf-11"
+    ],
+    "rewrite": [
+     "nxj-5",
+     "ldf-45",
+     "nxj-7",
+     "nxj-2",
+     "nxj-3"
+    ],
+    "full": [
+     "nxj-5",
+     "nxj-2",
+     "ldf-45",
+     "nxj-4",
+     "nxj-3"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-tl-7",
+     "ldhtf-82",
+     "nxj-4",
+     "ldhtf-47",
+     "nxj-5",
+     "gzzf-11",
+     "nxj-3",
+     "js2-cases-4-facts",
+     "js2-cases-3-facts",
+     "js2-cases-2-facts",
+     "ldhtf-tl-6",
+     "nxj-2",
+     "js2-cases-6-facts",
+     "nxj-7",
+     "js2-cases-3-meaning",
+     "ldhtf-tl-10",
+     "nxj-1",
+     "js2-cases-4-result",
+     "ldhtf-tl-9",
+     "nxj-10"
+    ],
+    "rewrite": [
+     "nxj-5",
+     "ldf-45",
+     "nxj-7",
+     "nxj-2",
+     "nxj-3",
+     "nxj-4",
+     "gzzf-11",
+     "nxj-1",
+     "nxj-6",
+     "ldf-44",
+     "ldf-40",
+     "nxj-9",
+     "ldhtf-tl-7",
+     "nxj-8",
+     "nxj-10",
+     "ldf-51",
+     "gzzf-13",
+     "ldf-38",
+     "ldhtf-tl-9",
+     "ldhtf-82"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳动者连续工作满一年以上享受带薪年休假，用人单位应当安排年休假",
+    "用人单位未安排劳动者休年休假，应当按照日工资收入百分之三百支付未休年休假工资报酬",
+    "年休假属于劳动者休息休假制度，用人单位不得以规章制度排除劳动者年休假权利"
+   ],
+   "ms": {
+    "rewrite": 2064,
+    "search": 173,
+    "rerankRaw": 3571,
+    "rerank": 7997,
+    "total": 10235
+   },
+   "promptChars": 2764
+  },
+  {
+   "id": "t04",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldhtf-tl-5",
+     "ldzy-js1-34",
+     "ldhtf-71",
+     "gzzf-9",
+     "js2-cases-3-result"
+    ],
+    "vector": [
+     "ldzy-js1-48",
+     "ldzy-js1-34",
+     "ldhtf-45",
+     "ldzy-js2-8",
+     "ldhtf-tl-22"
+    ],
+    "hybrid": [
+     "ldzy-js1-34",
+     "ldhtf-tl-5",
+     "ldhtf-71",
+     "ldf-23",
+     "ldhtf-45"
+    ],
+    "hybrid+rr": [
+     "ldhtf-44",
+     "ldf-23",
+     "ldzy-js2-11",
+     "ldhtf-45",
+     "ldzy-js2-8"
+    ],
+    "rewrite": [
+     "ldzy-js1-34",
+     "ldhtf-71",
+     "ldf-23",
+     "ldhtf-tl-22",
+     "ldhtf-tl-5"
+    ],
+    "full": [
+     "ldzy-js1-34",
+     "ldhtf-71",
+     "ldf-23",
+     "ldhtf-tl-22",
+     "ldhtf-tl-5"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldzy-js1-34",
+     "ldhtf-tl-5",
+     "ldhtf-71",
+     "ldf-23",
+     "ldhtf-45",
+     "ldhtf-tl-17",
+     "ldhtf-tl-25",
+     "js2-cases-3-facts",
+     "ldzy-js1-48",
+     "gzzf-9",
+     "ldzy-js2-8",
+     "js2-cases-3-result",
+     "ldhtf-tl-22",
+     "ldhtf-10",
+     "ldhtf-tl-11",
+     "js2-cases-6-result",
+     "ldhtf-48",
+     "ldzy-js2-11",
+     "js2-cases-5-result",
+     "ldhtf-44"
+    ],
+    "rewrite": [
+     "ldzy-js1-34",
+     "ldhtf-71",
+     "ldf-23",
+     "ldhtf-tl-22",
+     "ldhtf-tl-5",
+     "ldhtf-46",
+     "ldhtf-tl-25",
+     "ldzy-js1-36",
+     "ldhtf-45",
+     "ldzy-js2-18",
+     "ldzy-js1-38",
+     "ldzy-js2-8",
+     "ldhtf-tl-24",
+     "ldhtf-44",
+     "ldzy-js1-48",
+     "ldhtf-13",
+     "ldhtf-tl-11",
+     "gzzf-9",
+     "ldhtf-tl-31",
+     "ldhtf-tl-17"
+    ]
+   },
+   "degraded": [
+    "rerank:模型接口调用失败"
+   ],
+   "rewrites": [
+    "劳动合同期满终止，用人单位是否应当向劳动者支付经济补偿",
+    "用人单位终止固定期限劳动合同，劳动者可以主张哪些经济补偿或者赔偿",
+    "劳动合同期满终止属于劳动合同解除和终止制度的哪一种情形"
+   ],
+   "ms": {
+    "rewrite": 3554,
+    "search": 166,
+    "rerankRaw": 11666,
+    "rerank": 28015,
+    "total": 31734
+   },
+   "promptChars": 2947
+  },
+  {
+   "id": "t05",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldhtf-50",
+     "sbf-83",
+     "sbf-58",
+     "sbf-50",
+     "ldzy-js1-49"
+    ],
+    "vector": [
+     "ldhtf-50",
+     "ldhtf-49",
+     "ldhtf-45",
+     "ldhtf-tl-24",
+     "ldhtf-34"
+    ],
+    "hybrid": [
+     "ldhtf-50",
+     "ldhtf-49",
+     "sbf-50",
+     "sbf-57",
+     "sbf-32"
+    ],
+    "hybrid+rr": [
+     "ldhtf-50",
+     "ldhtf-tl-24",
+     "sbf-50"
+    ],
+    "rewrite": [
+     "ldhtf-50",
+     "ldhtf-tl-24",
+     "sbf-50",
+     "ldzy-js1-1",
+     "sbf-85"
+    ],
+    "full": [
+     "ldhtf-50",
+     "ldzy-js1-1",
+     "ldhtf-89",
+     "sbf-85",
+     "ldhtf-tl-24"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-50",
+     "ldhtf-49",
+     "sbf-50",
+     "sbf-57",
+     "sbf-32",
+     "sbf-52",
+     "sbf-83",
+     "sbf-58",
+     "ldhtf-45",
+     "ldhtf-tl-24",
+     "ldzy-js1-49",
+     "ldhtf-34",
+     "ldhtf-19",
+     "ldhtf-40",
+     "sbf-84",
+     "sbf-13",
+     "js2-cases-2-facts",
+     "ldhtf-44",
+     "sbf-60",
+     "js2-cases-4-result"
+    ],
+    "rewrite": [
+     "ldhtf-50",
+     "ldhtf-tl-24",
+     "sbf-50",
+     "ldzy-js1-1",
+     "sbf-85",
+     "sbf-57",
+     "ldhtf-49",
+     "ldhtf-38",
+     "ldhtf-89",
+     "sbf-83",
+     "ldhtf-84",
+     "sbf-58",
+     "ldhtf-91",
+     "sbf-32",
+     "sbf-52",
+     "ldhtf-36",
+     "ldhtf-48",
+     "ldf-98",
+     "ldhtf-81",
+     "ldhtf-45"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位在解除或者终止劳动合同时应当出具解除或者终止劳动合同的证明，并在十五日内为劳动者办理档案和社会保险关系转移手续",
+    "用人单位未向劳动者出具解除或者终止劳动合同的书面证明，由劳动行政部门责令改正，给劳动者造成损害的应当承担赔偿责任",
+    "用人单位扣押劳动者档案或者其他物品，或者未依法办理社会保险转移手续，劳动者可以主张赔偿"
+   ],
+   "ms": {
+    "rewrite": 9004,
+    "search": 216,
+    "rerankRaw": 3280,
+    "rerank": 1751,
+    "total": 10972
+   },
+   "promptChars": 3297
+  },
+  {
+   "id": "t06",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldf-26",
+     "ldhtf-40",
+     "ldhtf-21",
+     "ldhtf-tl-19",
+     "ldf-32"
+    ],
+    "vector": [
+     "ldhtf-21",
+     "ldhtf-70",
+     "ldhtf-39",
+     "ldf-25",
+     "ldf-32"
+    ],
+    "hybrid": [
+     "ldhtf-21",
+     "ldf-32",
+     "ldhtf-tl-19",
+     "ldf-26",
+     "ldhtf-37"
+    ],
+    "hybrid+rr": [
+     "ldhtf-21",
+     "ldhtf-39",
+     "ldhtf-40",
+     "ldf-25",
+     "ldhtf-tl-19"
+    ],
+    "rewrite": [
+     "ldhtf-21",
+     "ldf-32",
+     "ldhtf-37",
+     "ldf-25",
+     "ldhtf-83"
+    ],
+    "full": [
+     "ldhtf-21",
+     "ldhtf-39",
+     "ldhtf-40",
+     "ldf-25",
+     "ldf-26"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-21",
+     "ldf-32",
+     "ldhtf-tl-19",
+     "ldf-26",
+     "ldhtf-37",
+     "ldhtf-40",
+     "ldhtf-70",
+     "ldf-25",
+     "ldhtf-19",
+     "ldhtf-83",
+     "ldhtf-39",
+     "ldf-21",
+     "ldf-30",
+     "tjzcf-29",
+     "ldhtf-36",
+     "js2-cases-2-result",
+     "js2-cases-3-result",
+     "js2-cases-5-result",
+     "js2-cases-6-facts",
+     "ldhtf-tl-24"
+    ],
+    "rewrite": [
+     "ldhtf-21",
+     "ldf-32",
+     "ldhtf-37",
+     "ldf-25",
+     "ldhtf-83",
+     "ldhtf-39",
+     "ldhtf-70",
+     "ldf-21",
+     "ldhtf-19",
+     "ldhtf-tl-18",
+     "ldhtf-tl-19",
+     "ldzy-js2-11",
+     "ldf-26",
+     "ldf-30",
+     "js2-cases-6-result",
+     "ldhtf-tl-24",
+     "ldzy-js2-18",
+     "ldhtf-36",
+     "ldhtf-40",
+     "ldzy-js1-47"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位在试用期内以劳动者不能胜任工作为由解除劳动合同的法定条件",
+    "用人单位试用期解除劳动合同未说明理由属于违法解除的法律后果",
+    "试用期解除劳动合同属于劳动合同解除制度的法定情形"
+   ],
+   "ms": {
+    "rewrite": 3964,
+    "search": 161,
+    "rerankRaw": 4068,
+    "rerank": 3994,
+    "total": 8118
+   },
+   "promptChars": 3551
+  },
+  {
+   "id": "t07",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldhtf-22",
+     "ldhtf-tl-16",
+     "js2-cases-4-facts",
+     "mfd-585",
+     "ldhtf-tl-26"
+    ],
+    "vector": [
+     "ldhtf-22",
+     "ldhtf-tl-16",
+     "js2-cases-3-facts",
+     "ldhtf-tl-35",
+     "ldhtf-92"
+    ],
+    "hybrid": [
+     "ldhtf-22",
+     "ldhtf-tl-16",
+     "js2-cases-4-facts",
+     "ldhtf-40",
+     "ldhtf-tl-33"
+    ],
+    "hybrid+rr": [
+     "ldhtf-22",
+     "ldhtf-tl-16",
+     "ldhtf-tl-26",
+     "ldzy-js2-12",
+     "mfd-585"
+    ],
+    "rewrite": [
+     "ldhtf-22",
+     "ldhtf-tl-26",
+     "ldzy-js1-40",
+     "ldzy-js2-15",
+     "ldhtf-25"
+    ],
+    "full": [
+     "ldhtf-22",
+     "ldhtf-tl-16",
+     "ldhtf-25",
+     "ldhtf-tl-26",
+     "ldhtf-tl-17"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-22",
+     "ldhtf-tl-16",
+     "js2-cases-4-facts",
+     "ldhtf-40",
+     "ldhtf-tl-33",
+     "js2-cases-5-facts",
+     "ldf-68",
+     "js2-cases-3-facts",
+     "mfd-585",
+     "ldhtf-tl-35",
+     "ldhtf-tl-26",
+     "ldhtf-92",
+     "ldzy-js2-15",
+     "js2-cases-3-result",
+     "ldzy-js1-40",
+     "ldhtf-57",
+     "sbf-42",
+     "sbf-30",
+     "ldf-26",
+     "ldzy-js2-12"
+    ],
+    "rewrite": [
+     "ldhtf-22",
+     "ldhtf-tl-26",
+     "ldzy-js1-40",
+     "ldzy-js2-15",
+     "ldhtf-25",
+     "ldhtf-tl-16",
+     "ldzy-js2-12",
+     "js2-cases-5-facts",
+     "mfd-585",
+     "ldhtf-23",
+     "js2-cases-5-meaning",
+     "ldf-68",
+     "ldzy-js1-36",
+     "js2-cases-4-facts",
+     "js2-cases-5-result",
+     "ldhtf-tl-17",
+     "ldhtf-83",
+     "ldhtf-40",
+     "ldzy-js1-53",
+     "ldzy-js1-35"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位为劳动者提供专项培训费用进行专业技术培训，约定服务期和违约金",
+    "劳动者违反服务期约定提前离职，用人单位要求支付违约金",
+    "用人单位要求劳动者返还培训费用并支付违约金的劳动合同约定"
+   ],
+   "ms": {
+    "rewrite": 4308,
+    "search": 175,
+    "rerankRaw": 4502,
+    "rerank": 4419,
+    "total": 8902
+   },
+   "promptChars": 4281
+  },
+  {
+   "id": "t08",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldzy-js1-50",
+     "ldf-34",
+     "zdgz-15",
+     "ldhtf-tl-38",
+     "ldhtf-4"
+    ],
+    "vector": [
+     "ldhtf-1",
+     "ldhtf-52",
+     "js2-cases-4-result",
+     "ldhtf-16",
+     "js2-cases-4-meaning"
+    ],
+    "hybrid": [
+     "js2-cases-4-result",
+     "ldf-34",
+     "ldhtf-tl-38",
+     "ldhtf-4",
+     "ldf-4"
+    ],
+    "hybrid+rr": [
+     "ldhtf-4",
+     "ldzy-js1-50",
+     "ldf-4",
+     "ldf-89",
+     "ldhtf-74"
+    ],
+    "rewrite": [
+     "ldhtf-80",
+     "ldhtf-4",
+     "ldf-89",
+     "ldzy-js1-50",
+     "ldf-4"
+    ],
+    "full": [
+     "ldhtf-4",
+     "ldzy-js1-50",
+     "ldf-4",
+     "ldhtf-80",
+     "ldf-89"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-4-result",
+     "ldf-34",
+     "ldhtf-tl-38",
+     "ldhtf-4",
+     "ldf-4",
+     "js2-cases-5-result",
+     "ldzy-js1-50",
+     "ldhtf-1",
+     "ldhtf-52",
+     "zdgz-15",
+     "ldhtf-16",
+     "js2-cases-4-meaning",
+     "ldhtf-34",
+     "ldf-41",
+     "ldhtf-54",
+     "js2-cases-5-facts",
+     "ldf-33",
+     "ldf-89",
+     "ldhtf-74",
+     "js2-cases-4-facts"
+    ],
+    "rewrite": [
+     "ldhtf-80",
+     "ldhtf-4",
+     "ldf-89",
+     "ldzy-js1-50",
+     "ldf-4",
+     "ldhtf-38",
+     "ldhtf-74",
+     "ldf-33",
+     "ldf-98",
+     "ldhtf-89",
+     "ldf-35",
+     "ldf-25",
+     "ldhtf-1",
+     "ldhtf-52",
+     "js2-cases-4-result",
+     "ldf-90",
+     "ldf-34",
+     "ldhtf-51",
+     "ldhtf-tl-38",
+     "ldf-91"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位制定的规章制度应当依法建立和完善，直接涉及劳动者切身利益的规章制度应当经职工代表大会或者全体职工讨论",
+    "用人单位直接涉及劳动者切身利益的规章制度违反法律、法规规定的，由劳动行政部门责令改正，给予警告",
+    "劳动者以用人单位规章制度违反法律、法规的规定损害劳动者权益为由解除劳动合同的，用人单位应当支付经济补偿"
+   ],
+   "ms": {
+    "rewrite": 5291,
+    "search": 1700,
+    "rerankRaw": 4946,
+    "rerank": 4553,
+    "total": 11544
+   },
+   "promptChars": 3204
+  },
+  {
+   "id": "t09",
+   "round": 1,
+   "top": {
+    "text": [
+     "nxj-5",
+     "gzzf-13",
+     "js2-cases-2-result",
+     "js2-cases-2-facts",
+     "ldf-44"
+    ],
+    "vector": [
+     "js2-cases-4-result",
+     "ldf-30",
+     "js2-cases-4-facts",
+     "js2-cases-5-result",
+     "js2-cases-5-facts"
+    ],
+    "hybrid": [
+     "js2-cases-2-result",
+     "js2-cases-4-facts",
+     "js2-cases-4-result",
+     "js2-cases-5-facts",
+     "js2-cases-5-result"
+    ],
+    "hybrid+rr": [],
+    "rewrite": [
+     "ldf-26",
+     "ldf-30",
+     "ldzy-js1-46",
+     "ldhtf-43",
+     "ldzy-js2-11"
+    ],
+    "full": []
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-2-result",
+     "js2-cases-4-facts",
+     "js2-cases-4-result",
+     "js2-cases-5-facts",
+     "js2-cases-5-result",
+     "ldf-26",
+     "js2-cases-1-facts",
+     "nxj-5",
+     "gzzf-13",
+     "ldf-30",
+     "js2-cases-2-facts",
+     "ldf-44",
+     "ldhtf-66",
+     "ldzy-js1-30",
+     "ldf-37",
+     "js2-cases-3-facts",
+     "js2-cases-2-meaning",
+     "ldhtf-57",
+     "js2-cases-4-meaning",
+     "ldhtf-40"
+    ],
+    "rewrite": [
+     "ldf-26",
+     "ldf-30",
+     "ldzy-js1-46",
+     "ldhtf-43",
+     "ldzy-js2-11",
+     "js2-cases-2-facts",
+     "ldzy-js1-43",
+     "ldhtf-32",
+     "ldhtf-40",
+     "gzzf-13",
+     "ldhtf-17",
+     "ldhtf-8",
+     "ldf-44",
+     "ldhtf-39",
+     "js2-cases-2-result",
+     "js2-cases-4-facts",
+     "ldhtf-tl-19",
+     "js2-cases-4-result",
+     "ldf-25",
+     "js2-cases-5-facts"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位单方变更工作地点，劳动者拒不服从的，用人单位能否按旷工处理",
+    "劳动合同约定劳动者服从异地工作调动，该条款对工作地点的约定是否有效",
+    "用人单位安排劳动者到外地工作，劳动者拒绝的，用人单位解除劳动合同是否合法"
+   ],
+   "ms": {
+    "rewrite": 10970,
+    "search": 193,
+    "rerankRaw": 5213,
+    "rerank": 3371,
+    "total": 14534
+   },
+   "promptChars": 5210
+  },
+  {
+   "id": "t10",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldzy-js1-36",
+     "ldf-62",
+     "sbf-17",
+     "ldzy-js2-10",
+     "ldhtf-14"
+    ],
+    "vector": [
+     "ldf-31",
+     "gzzf-11",
+     "ldhtf-tl-22",
+     "ldf-23",
+     "ldhtf-70"
+    ],
+    "hybrid": [
+     "ldf-23",
+     "ldf-41",
+     "ldzy-js1-36",
+     "ldf-31",
+     "ldf-62"
+    ],
+    "hybrid+rr": [
+     "ldf-23",
+     "ldhtf-45",
+     "ldhtf-40",
+     "ldf-26",
+     "ldhtf-14"
+    ],
+    "rewrite": [
+     "ldf-26",
+     "ldhtf-40",
+     "ldf-29",
+     "ldf-23",
+     "ldhtf-tl-22"
+    ],
+    "full": [
+     "ldf-23",
+     "ldf-29",
+     "ldhtf-42",
+     "ldhtf-45",
+     "ldf-26"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldf-23",
+     "ldf-41",
+     "ldzy-js1-36",
+     "ldf-31",
+     "ldf-62",
+     "gzzf-11",
+     "sbf-17",
+     "ldhtf-tl-22",
+     "ldzy-js2-10",
+     "ldhtf-14",
+     "ldhtf-70",
+     "js2-cases-3-facts",
+     "ldhtf-45",
+     "ldzy-js2-8",
+     "ldhtf-40",
+     "ldhtf-tl-9",
+     "ldhtf-13",
+     "ldf-45",
+     "ldf-26",
+     "ldhtf-68"
+    ],
+    "rewrite": [
+     "ldf-26",
+     "ldhtf-40",
+     "ldf-29",
+     "ldf-23",
+     "ldhtf-tl-22",
+     "ldf-32",
+     "ldhtf-38",
+     "ldhtf-42",
+     "ldhtf-tl-19",
+     "ldf-30",
+     "ldzy-js2-8",
+     "ldzy-js1-47",
+     "ldhtf-13",
+     "ldhtf-37",
+     "ldf-41",
+     "ldhtf-45",
+     "ldzy-js2-12",
+     "ldhtf-tl-24",
+     "ldhtf-36",
+     "ldhtf-48"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳动者患病或者非因工负伤在规定的医疗期内用人单位不得解除劳动合同",
+    "用人单位违反规定解除劳动合同劳动者可以要求继续履行或者主张赔偿金",
+    "劳动合同终止的法定情形不包括劳动者患病请假超过三十天"
+   ],
+   "ms": {
+    "rewrite": 9723,
+    "search": 857,
+    "rerankRaw": 6726,
+    "rerank": 5418,
+    "total": 15998
+   },
+   "promptChars": 3361
+  },
+  {
+   "id": "t11",
+   "round": 1,
+   "top": {
+    "text": [
+     "js2-cases-5-meaning",
+     "js2-cases-5-result",
+     "js2-cases-5-facts",
+     "js2-cases-4-facts",
+     "ldzy-js2-14"
+    ],
+    "vector": [
+     "ldzy-js1-36",
+     "ldhtf-tl-10",
+     "ldzy-js1-39",
+     "ldhtf-82",
+     "ldzy-js1-38"
+    ],
+    "hybrid": [
+     "js2-cases-4-facts",
+     "ldzy-js1-39",
+     "ldzy-js1-36",
+     "ldhtf-24",
+     "ldzy-js1-38"
+    ],
+    "hybrid+rr": [
+     "ldzy-js1-36",
+     "ldhtf-24",
+     "ldzy-js1-37",
+     "ldzy-js1-38",
+     "ldzy-js1-39"
+    ],
+    "rewrite": [
+     "ldzy-js1-36",
+     "ldhtf-24",
+     "ldzy-js1-39",
+     "ldzy-js1-37",
+     "js2-cases-4-facts"
+    ],
+    "full": [
+     "ldhtf-23",
+     "ldzy-js1-36",
+     "ldhtf-24",
+     "ldzy-js1-37",
+     "ldzy-js1-38"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-4-facts",
+     "ldzy-js1-39",
+     "ldzy-js1-36",
+     "ldhtf-24",
+     "ldzy-js1-38",
+     "js2-cases-4-meaning",
+     "js2-cases-3-facts",
+     "ldzy-js1-37",
+     "js2-cases-5-meaning",
+     "js2-cases-5-result",
+     "ldhtf-tl-10",
+     "js2-cases-5-facts",
+     "ldhtf-82",
+     "ldzy-js2-14",
+     "js2-cases-4-result",
+     "ldhtf-tl-6",
+     "ldhtf-tl-5",
+     "ldhtf-tl-25",
+     "gzzf-16",
+     "ldhtf-tl-7"
+    ],
+    "rewrite": [
+     "ldzy-js1-36",
+     "ldhtf-24",
+     "ldzy-js1-39",
+     "ldzy-js1-37",
+     "js2-cases-4-facts",
+     "js2-cases-4-meaning",
+     "ldzy-js1-38",
+     "ldzy-js2-14",
+     "js2-cases-5-meaning",
+     "ldzy-js1-40",
+     "ldhtf-23",
+     "ldzy-js2-15",
+     "js2-cases-5-facts",
+     "ldzy-js2-13",
+     "js2-cases-5-result",
+     "js2-cases-4-result",
+     "ldzy-js1-48",
+     "ldhtf-19",
+     "js2-cases-3-facts",
+     "ldzy-js2-11"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位与劳动者约定竞业限制条款，在劳动合同存续期间随工资发放的补偿是否有效",
+    "劳动者离职后履行竞业限制义务，用人单位未按月支付经济补偿，劳动者可以主张什么",
+    "竞业限制属于劳动合同的哪一类制度，适用于哪些人员，期限不得超过多久"
+   ],
+   "ms": {
+    "rewrite": 3770,
+    "search": 293,
+    "rerankRaw": 10547,
+    "rerank": 4824,
+    "total": 8887
+   },
+   "promptChars": 4873
+  },
+  {
+   "id": "t12",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldf-50",
+     "gzzf-7",
+     "js2-cases-3-facts",
+     "ldhtf-82",
+     "ldf-36"
+    ],
+    "vector": [
+     "gzzf-7",
+     "gzzf-13",
+     "gzzf-12",
+     "gzzf-20",
+     "ldhtf-72"
+    ],
+    "hybrid": [
+     "gzzf-7",
+     "ldhtf-82",
+     "ldhtf-47",
+     "ldhtf-tl-6",
+     "gzzf-8"
+    ],
+    "hybrid+rr": [
+     "gzzf-7",
+     "ldf-50"
+    ],
+    "rewrite": [
+     "ldhtf-30",
+     "gzzf-12",
+     "gzzf-7",
+     "ldhtf-85",
+     "gzzf-11"
+    ],
+    "full": [
+     "gzzf-7",
+     "ldhtf-30",
+     "ldhtf-85",
+     "ldhtf-38",
+     "ldzy-js1-45"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "gzzf-7",
+     "ldhtf-82",
+     "ldhtf-47",
+     "ldhtf-tl-6",
+     "gzzf-8",
+     "ldf-50",
+     "gzzf-13",
+     "js2-cases-3-facts",
+     "gzzf-12",
+     "gzzf-20",
+     "ldf-36",
+     "ldhtf-72",
+     "ldhtf-58",
+     "js2-cases-3-meaning",
+     "ldhtf-68",
+     "gzzf-16",
+     "ldzy-js1-36",
+     "ldf-41",
+     "js2-cases-2-facts",
+     "gzzf-17"
+    ],
+    "rewrite": [
+     "ldhtf-30",
+     "gzzf-12",
+     "gzzf-7",
+     "ldhtf-85",
+     "gzzf-11",
+     "gzzf-1",
+     "gzzf-13",
+     "gzzf-8",
+     "ldhtf-tl-20",
+     "ldhtf-tl-34",
+     "ldhtf-38",
+     "ldzy-js1-45",
+     "gzzf-17",
+     "ldhtf-72",
+     "gzzf-16",
+     "ldhtf-82",
+     "ldhtf-47",
+     "ldzy-js1-36",
+     "ldf-44",
+     "gzzf-18"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位应当按照劳动合同约定和国家规定及时足额支付劳动者工资",
+    "用人单位未及时足额支付劳动报酬的劳动者可以解除劳动合同并要求支付经济补偿",
+    "工资支付周期和日期由用人单位与劳动者约定并遵守工资支付规定"
+   ],
+   "ms": {
+    "rewrite": 4268,
+    "search": 1522,
+    "rerankRaw": 5655,
+    "rerank": 4798,
+    "total": 10588
+   },
+   "promptChars": 3494
+  },
+  {
+   "id": "t13",
+   "round": 1,
+   "top": {
+    "text": [
+     "tjzcf-20",
+     "ldzy-js1-20",
+     "tjzcf-43",
+     "js2-cases-4-facts",
+     "js2-cases-2-facts"
+    ],
+    "vector": [
+     "ldhtf-52",
+     "ldhtf-51",
+     "ldhtf-16",
+     "js2-cases-2-result",
+     "ldhtf-1"
+    ],
+    "hybrid": [
+     "js2-cases-2-facts",
+     "ldhtf-16",
+     "js2-cases-2-result",
+     "ldhtf-35",
+     "tjzcf-20"
+    ],
+    "hybrid+rr": [
+     "ldhtf-16",
+     "ldhtf-81",
+     "ldhtf-35"
+    ],
+    "rewrite": [
+     "ldhtf-16",
+     "ldhtf-81",
+     "ldhtf-35",
+     "ldhtf-54",
+     "ldhtf-1"
+    ],
+    "full": [
+     "ldhtf-16",
+     "ldhtf-81",
+     "ldhtf-35"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-2-facts",
+     "ldhtf-16",
+     "js2-cases-2-result",
+     "ldhtf-35",
+     "tjzcf-20",
+     "ldhtf-52",
+     "ldzy-js1-20",
+     "ldhtf-51",
+     "tjzcf-43",
+     "js2-cases-4-facts",
+     "ldhtf-1",
+     "ldzy-js1-25",
+     "js2-cases-3-facts",
+     "ldhtf-81",
+     "js2-cases-6-facts",
+     "ldhtf-34",
+     "js2-cases-5-facts",
+     "ldhtf-75",
+     "ldf-79",
+     "js2-cases-2-meaning"
+    ],
+    "rewrite": [
+     "ldhtf-16",
+     "ldhtf-81",
+     "ldhtf-35",
+     "ldhtf-54",
+     "ldhtf-1",
+     "ldhtf-51",
+     "ldhtf-34",
+     "ldhtf-52",
+     "ldhtf-15",
+     "ldf-35",
+     "ldhtf-11",
+     "ldhtf-3",
+     "ldhtf-80",
+     "ldhtf-89",
+     "ldf-98",
+     "js2-cases-2-facts",
+     "ldf-89",
+     "ldf-34",
+     "ldhtf-2",
+     "ldf-97"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位与劳动者签订的劳动合同文本由用人单位和劳动者各执一份",
+    "用人单位未将劳动合同文本交付劳动者的，由劳动行政部门责令改正，给劳动者造成损害的应当承担赔偿责任",
+    "劳动合同的订立和劳动合同文本的持有属于劳动合同制度"
+   ],
+   "ms": {
+    "rewrite": 9842,
+    "search": 1633,
+    "rerankRaw": 12157,
+    "rerank": 5507,
+    "total": 16982
+   },
+   "promptChars": 2587
+  },
+  {
+   "id": "t14",
+   "round": 1,
+   "top": {
+    "text": [
+     "nxj-3",
+     "sbf-55",
+     "js2-cases-2-facts",
+     "sbf-56",
+     "ldf-62"
+    ],
+    "vector": [
+     "ldf-62",
+     "gzzf-12",
+     "sbf-56",
+     "ldzy-js1-32",
+     "gzzf-11"
+    ],
+    "hybrid": [
+     "ldf-62",
+     "sbf-56",
+     "nxj-3",
+     "gzzf-11",
+     "gzzf-12"
+    ],
+    "hybrid+rr": [
+     "ldf-62",
+     "sbf-56",
+     "zdgz-3",
+     "ldf-29"
+    ],
+    "rewrite": [
+     "ldf-62",
+     "sbf-56",
+     "gzzf-11",
+     "ldf-61",
+     "ldf-51"
+    ],
+    "full": [
+     "ldf-62",
+     "sbf-56",
+     "sbf-54",
+     "gzzf-11",
+     "ldf-51"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldf-62",
+     "sbf-56",
+     "nxj-3",
+     "gzzf-11",
+     "gzzf-12",
+     "ldf-51",
+     "sbf-55",
+     "js2-cases-2-facts",
+     "ldzy-js1-32",
+     "nxj-8",
+     "ldf-29",
+     "zdgz-3",
+     "ldf-21",
+     "js2-cases-2-result",
+     "nxj-5",
+     "js2-cases-5-facts",
+     "nxj-2",
+     "ldhtf-70",
+     "js2-cases-5-result",
+     "ldf-41"
+    ],
+    "rewrite": [
+     "ldf-62",
+     "sbf-56",
+     "gzzf-11",
+     "ldf-61",
+     "ldf-51",
+     "nxj-5",
+     "nxj-2",
+     "sbf-54",
+     "nxj-8",
+     "nxj-3",
+     "ldzy-js1-32",
+     "nxj-6",
+     "ldf-29",
+     "ldf-63",
+     "sbf-53",
+     "gzzf-12",
+     "sbf-55",
+     "nxj-9",
+     "ldf-41",
+     "nxj-1"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位对生育的女职工应当给予多少天的产假",
+    "用人单位在女职工产假期间停发工资的，劳动者可以主张什么",
+    "女职工生育产假期间工资待遇属于工资还是生育保险待遇"
+   ],
+   "ms": {
+    "rewrite": 3320,
+    "search": 875,
+    "rerankRaw": 13311,
+    "rerank": 4934,
+    "total": 9130
+   },
+   "promptChars": 2327
+  },
+  {
+   "id": "t15",
+   "round": 1,
+   "top": {
+    "text": [
+     "js2-cases-6-result",
+     "ldhtf-37",
+     "ldhtf-47",
+     "ldhtf-41",
+     "ldhtf-85"
+    ],
+    "vector": [
+     "ldhtf-40",
+     "ldf-28",
+     "ldf-31",
+     "ldhtf-46",
+     "ldf-24"
+    ],
+    "hybrid": [
+     "ldhtf-37",
+     "ldhtf-41",
+     "ldhtf-tl-25",
+     "ldhtf-tl-5",
+     "ldzy-js1-36"
+    ],
+    "hybrid+rr": [
+     "ldhtf-37",
+     "ldhtf-41",
+     "ldhtf-tl-25",
+     "ldhtf-tl-5",
+     "ldzy-js1-36"
+    ],
+    "rewrite": [
+     "ldhtf-tl-25",
+     "ldhtf-46",
+     "ldhtf-41",
+     "ldhtf-37",
+     "ldf-27"
+    ],
+    "full": [
+     "ldhtf-41",
+     "ldhtf-46",
+     "ldf-27",
+     "ldf-28",
+     "ldhtf-85"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-37",
+     "ldhtf-41",
+     "ldhtf-tl-25",
+     "ldhtf-tl-5",
+     "ldzy-js1-36",
+     "ldhtf-71",
+     "ldzy-js1-38",
+     "ldzy-js1-48",
+     "ldf-27",
+     "js2-cases-6-result",
+     "ldhtf-40",
+     "ldf-28",
+     "ldhtf-47",
+     "ldf-31",
+     "ldhtf-46",
+     "ldhtf-85",
+     "ldf-24",
+     "ldf-26",
+     "js2-cases-6-facts",
+     "ldhtf-50"
+    ],
+    "rewrite": [
+     "ldhtf-tl-25",
+     "ldhtf-46",
+     "ldhtf-41",
+     "ldhtf-37",
+     "ldf-27",
+     "ldhtf-tl-19",
+     "ldzy-js1-36",
+     "ldf-28",
+     "ldzy-js1-47",
+     "ldf-31",
+     "ldhtf-87",
+     "ldf-30",
+     "ldhtf-85",
+     "ldf-26",
+     "ldhtf-40",
+     "ldzy-js1-38",
+     "ldzy-js2-18",
+     "ldhtf-50",
+     "ldf-32",
+     "ldhtf-36"
+    ]
+   },
+   "degraded": [
+    "rerank:模型接口调用失败"
+   ],
+   "rewrites": [
+    "用人单位因生产经营发生严重困难裁减人员应当提前三十日向工会或者全体职工说明情况并听取意见",
+    "用人单位违法解除劳动合同的应当向劳动者支付赔偿金",
+    "经济性裁员属于劳动合同解除的法定情形用人单位应当支付经济补偿"
+   ],
+   "ms": {
+    "rewrite": 3843,
+    "search": 391,
+    "rerankRaw": 28024,
+    "rerank": 5658,
+    "total": 9892
+   },
+   "promptChars": 3622
+  },
+  {
+   "id": "t16",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldhtf-19",
+     "ldzy-js1-38",
+     "ldzy-js1-39",
+     "js2-cases-4-facts",
+     "ldzy-js1-43"
+    ],
+    "vector": [
+     "js2-cases-3-facts",
+     "ldhtf-tl-5",
+     "ldhtf-30",
+     "ldhtf-tl-6",
+     "ldhtf-40"
+    ],
+    "hybrid": [
+     "js2-cases-3-facts",
+     "ldhtf-tl-7",
+     "ldzy-js1-38",
+     "ldzy-js1-49",
+     "js2-cases-3-result"
+    ],
+    "hybrid+rr": [
+     "ldhtf-82",
+     "ldhtf-tl-6",
+     "ldhtf-tl-7",
+     "ldhtf-tl-34",
+     "ldhtf-tl-5"
+    ],
+    "rewrite": [
+     "js2-cases-3-meaning",
+     "js2-cases-3-result",
+     "js2-cases-3-facts",
+     "ldzy-js2-6",
+     "ldhtf-tl-7"
+    ],
+    "full": [
+     "ldhtf-82",
+     "ldhtf-tl-6",
+     "ldzy-js2-7",
+     "ldhtf-tl-7",
+     "ldhtf-10"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-3-facts",
+     "ldhtf-tl-7",
+     "ldzy-js1-38",
+     "ldzy-js1-49",
+     "js2-cases-3-result",
+     "ldhtf-19",
+     "ldhtf-tl-5",
+     "ldzy-js1-39",
+     "ldhtf-30",
+     "js2-cases-4-facts",
+     "ldhtf-tl-6",
+     "ldzy-js1-43",
+     "ldhtf-40",
+     "ldf-34",
+     "js2-cases-1-facts",
+     "ldhtf-82",
+     "js2-cases-2-result",
+     "ldhtf-tl-34",
+     "js2-cases-2-facts",
+     "ldzy-js2-9"
+    ],
+    "rewrite": [
+     "js2-cases-3-meaning",
+     "js2-cases-3-result",
+     "js2-cases-3-facts",
+     "ldzy-js2-6",
+     "ldhtf-tl-7",
+     "ldhtf-10",
+     "ldhtf-11",
+     "ldzy-js2-7",
+     "ldhtf-tl-5",
+     "ldzy-js2-9",
+     "ldhtf-tl-6",
+     "ldhtf-82",
+     "ldhtf-14",
+     "ldzy-js1-43",
+     "ldhtf-47",
+     "ldzy-js2-3",
+     "js2-cases-2-meaning",
+     "ldhtf-19",
+     "ldf-19",
+     "ldzy-js1-38"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位自用工之日起超过一个月不满一年未与劳动者订立书面劳动合同应当支付二倍工资",
+    "用人单位未与劳动者订立书面劳动合同的法律后果及劳动者可以主张的权利",
+    "订立书面劳动合同属于劳动合同制度中用人单位的法定义务"
+   ],
+   "ms": {
+    "rewrite": 8110,
+    "search": 1226,
+    "rerankRaw": 4608,
+    "rerank": 4576,
+    "total": 13912
+   },
+   "promptChars": 4454
+  },
+  {
+   "id": "t17",
+   "round": 1,
+   "top": {
+    "text": [
+     "js2-cases-3-result",
+     "js2-cases-4-facts",
+     "gzzf-18",
+     "ldzy-js1-44",
+     "ldf-91"
+    ],
+    "vector": [
+     "ldzy-js1-53",
+     "ldhtf-87",
+     "ldhtf-90",
+     "js2-cases-6-result",
+     "ldhtf-91"
+    ],
+    "hybrid": [
+     "ldzy-js1-53",
+     "js2-cases-6-result",
+     "js2-cases-6-facts",
+     "ldhtf-tl-25",
+     "js2-cases-3-result"
+    ],
+    "hybrid+rr": [
+     "ldhtf-87",
+     "ldhtf-tl-25",
+     "ldzy-js1-53",
+     "ldzy-js1-44",
+     "ldf-91"
+    ],
+    "rewrite": [
+     "ldhtf-tl-25",
+     "ldzy-js2-18",
+     "ldhtf-87",
+     "ldzy-js1-47",
+     "ldf-30"
+    ],
+    "full": [
+     "ldhtf-87",
+     "ldhtf-48",
+     "ldhtf-tl-25",
+     "ldzy-js1-53",
+     "ldzy-js2-18"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldzy-js1-53",
+     "js2-cases-6-result",
+     "js2-cases-6-facts",
+     "ldhtf-tl-25",
+     "js2-cases-3-result",
+     "js2-cases-4-facts",
+     "ldhtf-87",
+     "gzzf-18",
+     "ldhtf-90",
+     "ldzy-js1-44",
+     "ldf-91",
+     "ldhtf-91",
+     "ldf-50",
+     "ldf-97",
+     "ldf-100",
+     "ldzy-js1-19",
+     "js2-cases-2-result",
+     "ldhtf-86",
+     "js2-cases-2-facts",
+     "ldf-102"
+    ],
+    "rewrite": [
+     "ldhtf-tl-25",
+     "ldzy-js2-18",
+     "ldhtf-87",
+     "ldzy-js1-47",
+     "ldf-30",
+     "ldhtf-48",
+     "ldhtf-46",
+     "ldhtf-38",
+     "ldhtf-tl-24",
+     "ldzy-js1-53",
+     "ldhtf-36",
+     "ldf-28",
+     "ldhtf-89",
+     "ldhtf-43",
+     "ldf-25",
+     "ldzy-js2-12",
+     "js2-cases-6-result",
+     "ldhtf-90",
+     "ldzy-js2-16",
+     "ldhtf-91"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位违反本法规定解除或者终止劳动合同，应当向劳动者支付赔偿金",
+    "用人单位违法解除劳动合同，劳动者可以要求继续履行或者主张赔偿金",
+    "劳动合同的解除和终止属于劳动合同制度，用人单位单方解除需符合法定情形"
+   ],
+   "ms": {
+    "rewrite": 18219,
+    "search": 790,
+    "rerankRaw": 4485,
+    "rerank": 5810,
+    "total": 24819
+   },
+   "promptChars": 3236
+  },
+  {
+   "id": "t18",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldf-79",
+     "ldhtf-47",
+     "ldhtf-tl-27",
+     "sbf-60",
+     "ldzy-js1-36"
+    ],
+    "vector": [
+     "ldhtf-30",
+     "zdgz-13",
+     "ldf-91",
+     "gzzf-18",
+     "gzzf-6"
+    ],
+    "hybrid": [
+     "ldf-91",
+     "ldhtf-tl-6",
+     "gzzf-18",
+     "ldf-79",
+     "ldhtf-30"
+    ],
+    "hybrid+rr": [
+     "ldhtf-30",
+     "ldf-91",
+     "gzzf-18",
+     "ldhtf-47",
+     "ldhtf-tl-27"
+    ],
+    "rewrite": [
+     "ldf-91",
+     "ldhtf-30",
+     "ldzy-js1-45",
+     "gzzf-18",
+     "ldhtf-tl-20"
+    ],
+    "full": [
+     "ldhtf-38",
+     "ldzy-js1-45",
+     "ldhtf-46",
+     "ldhtf-30",
+     "ldhtf-85"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldf-91",
+     "ldhtf-tl-6",
+     "gzzf-18",
+     "ldf-79",
+     "ldhtf-30",
+     "ldhtf-47",
+     "zdgz-13",
+     "ldhtf-tl-27",
+     "sbf-60",
+     "ldzy-js1-36",
+     "gzzf-6",
+     "ldhtf-tl-20",
+     "gzzf-16",
+     "js2-cases-3-facts",
+     "gzzf-19",
+     "ldzy-js1-19",
+     "ldhtf-tl-5",
+     "tjzcf-47",
+     "ldzy-js1-38",
+     "ldhtf-40"
+    ],
+    "rewrite": [
+     "ldf-91",
+     "ldhtf-30",
+     "ldzy-js1-45",
+     "gzzf-18",
+     "ldhtf-tl-20",
+     "ldhtf-38",
+     "gzzf-9",
+     "tjzcf-9",
+     "ldhtf-85",
+     "ldf-32",
+     "gzzf-16",
+     "ldhtf-tl-18",
+     "ldhtf-36",
+     "ldhtf-46",
+     "gzzf-12",
+     "ldhtf-tl-34",
+     "ldhtf-40",
+     "gzzf-11",
+     "ldzy-js2-6",
+     "gzzf-17"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位未及时足额支付劳动者工资，劳动者可以解除劳动合同",
+    "用人单位拖欠劳动者工资，劳动者解除劳动合同的经济补偿",
+    "工资支付制度中用人单位应当按照劳动合同约定及时足额支付劳动报酬"
+   ],
+   "ms": {
+    "rewrite": 8654,
+    "search": 154,
+    "rerankRaw": 4164,
+    "rerank": 5022,
+    "total": 13830
+   },
+   "promptChars": 3518
+  },
+  {
+   "id": "t19",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldhtf-31",
+     "ldzy-js1-42",
+     "ldhtf-85",
+     "ldf-82",
+     "ldzy-js1-35"
+    ],
+    "vector": [
+     "ldhtf-31",
+     "tjzcf-44",
+     "tjzcf-47",
+     "ldzy-js1-19",
+     "tjzcf-16"
+    ],
+    "hybrid": [
+     "ldhtf-31",
+     "ldzy-js1-42",
+     "tjzcf-27",
+     "ldzy-js1-35",
+     "js2-cases-3-facts"
+    ],
+    "hybrid+rr": [
+     "tjzcf-27",
+     "ldzy-js1-42",
+     "ldhtf-31",
+     "tjzcf-2"
+    ],
+    "rewrite": [
+     "ldhtf-31",
+     "tjzcf-27",
+     "ldzy-js1-42",
+     "ldhtf-85",
+     "tjzcf-44"
+    ],
+    "full": [
+     "tjzcf-27",
+     "ldzy-js2-20",
+     "tjzcf-2"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-31",
+     "ldzy-js1-42",
+     "tjzcf-27",
+     "ldzy-js1-35",
+     "js2-cases-3-facts",
+     "ldf-82",
+     "tjzcf-44",
+     "ldhtf-85",
+     "tjzcf-47",
+     "ldzy-js1-19",
+     "tjzcf-16",
+     "ldhtf-62",
+     "ldzy-js1-49",
+     "ldhtf-tl-9",
+     "tjzcf-43",
+     "tjzcf-2",
+     "ldhtf-tl-7",
+     "tjzcf-35",
+     "ldhtf-47",
+     "tjzcf-9"
+    ],
+    "rewrite": [
+     "ldhtf-31",
+     "tjzcf-27",
+     "ldzy-js1-42",
+     "ldhtf-85",
+     "tjzcf-44",
+     "ldhtf-30",
+     "tjzcf-47",
+     "ldzy-js1-19",
+     "tjzcf-9",
+     "ldzy-js1-35",
+     "ldhtf-62",
+     "ldf-77",
+     "ldzy-js2-20",
+     "tjzcf-16",
+     "gzzf-13",
+     "ldf-44",
+     "ldf-79",
+     "tjzcf-2",
+     "tjzcf-35",
+     "js2-cases-3-facts"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位拖欠加班费，劳动者申请仲裁的时效期间如何计算",
+    "劳动关系终止后，劳动者追索劳动报酬的仲裁时效",
+    "加班费属于工资，用人单位应当及时足额支付"
+   ],
+   "ms": {
+    "rewrite": 10173,
+    "search": 736,
+    "rerankRaw": 5589,
+    "rerank": 19214,
+    "total": 30123
+   },
+   "promptChars": 3830
+  },
+  {
+   "id": "t20",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldf-40",
+     "gzzf-5",
+     "ldf-50",
+     "ldhtf-tl-20",
+     "ldf-44"
+    ],
+    "vector": [
+     "ldf-40",
+     "ldf-44",
+     "gzzf-13",
+     "gzzf-11",
+     "nxj-5"
+    ],
+    "hybrid": [
+     "ldf-40",
+     "ldf-44",
+     "ldf-50",
+     "nxj-5",
+     "gzzf-13"
+    ],
+    "hybrid+rr": [
+     "ldf-44",
+     "gzzf-13",
+     "ldf-40",
+     "ldhtf-31",
+     "ldf-51"
+    ],
+    "rewrite": [
+     "ldf-44",
+     "gzzf-13",
+     "ldf-51",
+     "ldf-40",
+     "gzzf-7"
+    ],
+    "full": [
+     "ldf-44",
+     "gzzf-13",
+     "ldhtf-31",
+     "ldf-40",
+     "ldf-51"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldf-40",
+     "ldf-44",
+     "ldf-50",
+     "nxj-5",
+     "gzzf-13",
+     "nxj-7",
+     "ldhtf-31",
+     "gzzf-5",
+     "ldhtf-tl-20",
+     "gzzf-11",
+     "ldf-45",
+     "ldhtf-tl-10",
+     "gzzf-7",
+     "ldzy-js1-46",
+     "ldf-51",
+     "ldf-61",
+     "nxj-2",
+     "ldf-63",
+     "nxj-9",
+     "ldhtf-85"
+    ],
+    "rewrite": [
+     "ldf-44",
+     "gzzf-13",
+     "ldf-51",
+     "ldf-40",
+     "gzzf-7",
+     "ldf-91",
+     "nxj-7",
+     "gzzf-11",
+     "nxj-5",
+     "ldhtf-31",
+     "ldhtf-85",
+     "nxj-3",
+     "gzzf-10",
+     "ldf-45",
+     "ldf-41",
+     "ldf-50",
+     "zdgz-3",
+     "zdgz-12",
+     "ldf-36",
+     "ldhtf-tl-15"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "法定休假日安排劳动者工作的，用人单位应当支付不低于工资的百分之三百的工资报酬",
+    "用人单位安排劳动者在法定休假日工作未支付法定节假日加班工资的，劳动者可以主张什么",
+    "法定休假日加班工资属于工资支付中延长工作时间的工资报酬制度"
+   ],
+   "ms": {
+    "rewrite": 2255,
+    "search": 160,
+    "rerankRaw": 3935,
+    "rerank": 3826,
+    "total": 6241
+   },
+   "promptChars": 3328
+  },
+  {
+   "id": "t21",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldzy-js1-42",
+     "ldhtf-85",
+     "ldhtf-31",
+     "js2-cases-1-result",
+     "ldzy-js2-19"
+    ],
+    "vector": [
+     "ldhtf-31",
+     "ldzy-js1-42",
+     "js2-cases-3-facts",
+     "ldzy-js2-19",
+     "ldf-34"
+    ],
+    "hybrid": [
+     "ldzy-js1-42",
+     "ldhtf-31",
+     "ldzy-js2-19",
+     "ldhtf-85",
+     "js2-cases-3-facts"
+    ],
+    "hybrid+rr": [
+     "ldhtf-31",
+     "ldhtf-85",
+     "ldzy-js1-42",
+     "ldzy-js1-35"
+    ],
+    "rewrite": [
+     "ldhtf-31",
+     "ldzy-js1-42",
+     "ldhtf-85",
+     "ldzy-js2-19",
+     "ldzy-js1-35"
+    ],
+    "full": [
+     "ldhtf-31",
+     "ldzy-js1-35",
+     "ldhtf-85",
+     "gzzf-13",
+     "ldf-44"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldzy-js1-42",
+     "ldhtf-31",
+     "ldzy-js2-19",
+     "ldhtf-85",
+     "js2-cases-3-facts",
+     "js2-cases-1-result",
+     "ldf-34",
+     "ldzy-js1-35",
+     "js2-cases-3-result",
+     "js2-cases-6-facts",
+     "ldhtf-tl-5",
+     "js2-cases-6-result",
+     "ldhtf-25",
+     "ldhtf-62",
+     "ldhtf-40",
+     "js2-cases-6-meaning",
+     "ldf-26",
+     "js2-cases-2-result",
+     "ldf-17",
+     "ldhtf-35"
+    ],
+    "rewrite": [
+     "ldhtf-31",
+     "ldzy-js1-42",
+     "ldhtf-85",
+     "ldzy-js2-19",
+     "ldzy-js1-35",
+     "ldhtf-62",
+     "js2-cases-3-facts",
+     "ldhtf-25",
+     "js2-cases-6-meaning",
+     "ldzy-js1-40",
+     "ldhtf-18",
+     "gzzf-13",
+     "ldf-44",
+     "ldf-41",
+     "ldzy-js1-45",
+     "js2-cases-3-result",
+     "ldf-91",
+     "ldhtf-tl-5",
+     "js2-cases-6-result",
+     "ldzy-js2-15"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位与劳动者约定劳动者自愿放弃加班费的承诺书是否有效",
+    "用人单位安排劳动者延长工作时间应当支付高于正常工作时间工资的加班费",
+    "劳动者主张用人单位支付加班费的劳动争议处理"
+   ],
+   "ms": {
+    "rewrite": 4668,
+    "search": 824,
+    "rerankRaw": 5939,
+    "rerank": 3893,
+    "total": 9385
+   },
+   "promptChars": 4075
+  },
+  {
+   "id": "t22",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldhtf-19",
+     "ldhtf-37",
+     "ldf-21",
+     "ldhtf-83",
+     "ldhtf-21"
+    ],
+    "vector": [
+     "ldhtf-37",
+     "ldf-21",
+     "ldhtf-70",
+     "ldhtf-21",
+     "ldhtf-19"
+    ],
+    "hybrid": [
+     "ldhtf-37",
+     "ldf-21",
+     "ldhtf-19",
+     "ldhtf-70",
+     "ldhtf-21"
+    ],
+    "hybrid+rr": [
+     "ldhtf-37",
+     "ldhtf-tl-18",
+     "ldf-32"
+    ],
+    "rewrite": [
+     "ldhtf-37",
+     "ldhtf-21",
+     "ldf-32",
+     "ldf-25",
+     "ldhtf-83"
+    ],
+    "full": [
+     "ldhtf-37",
+     "ldhtf-tl-18",
+     "ldf-32",
+     "ldf-31"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-37",
+     "ldf-21",
+     "ldhtf-19",
+     "ldhtf-70",
+     "ldhtf-21",
+     "ldhtf-83",
+     "ldf-32",
+     "ldf-25",
+     "ldhtf-20",
+     "ldhtf-39",
+     "ldf-31",
+     "ldhtf-tl-15",
+     "ldhtf-40",
+     "ldf-41",
+     "ldhtf-tl-18",
+     "js2-cases-2-result",
+     "js2-cases-2-facts",
+     "ldhtf-tl-5",
+     "ldf-30",
+     "js2-cases-4-facts"
+    ],
+    "rewrite": [
+     "ldhtf-37",
+     "ldhtf-21",
+     "ldf-32",
+     "ldf-25",
+     "ldhtf-83",
+     "ldhtf-39",
+     "ldhtf-19",
+     "ldhtf-70",
+     "ldhtf-tl-18",
+     "ldf-21",
+     "ldf-31",
+     "ldf-26",
+     "ldhtf-40",
+     "ldhtf-20",
+     "ldzy-js2-12",
+     "ldhtf-tl-24",
+     "ldf-30",
+     "ldhtf-38",
+     "ldhtf-tl-15",
+     "ldhtf-43"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳动者在试用期内提前三日通知用人单位，可以解除劳动合同",
+    "劳动者试用期解除劳动合同应当提前通知用人单位的期限",
+    "试用期解除劳动合同属于劳动合同解除制度中劳动者单方解除的情形"
+   ],
+   "ms": {
+    "rewrite": 2448,
+    "search": 144,
+    "rerankRaw": 2678,
+    "rerank": 1698,
+    "total": 4291
+   },
+   "promptChars": 3216
+  },
+  {
+   "id": "t23",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldhtf-47",
+     "ldhtf-19",
+     "sbf-46",
+     "ldhtf-tl-6",
+     "ldhtf-tl-7"
+    ],
+    "vector": [
+     "ldhtf-89",
+     "ldhtf-82",
+     "ldhtf-tl-7",
+     "ldzy-js1-48",
+     "ldhtf-47"
+    ],
+    "hybrid": [
+     "ldhtf-47",
+     "ldhtf-82",
+     "ldhtf-tl-7",
+     "ldhtf-tl-6",
+     "ldzy-js1-38"
+    ],
+    "hybrid+rr": [
+     "ldhtf-47",
+     "ldf-28",
+     "ldzy-js1-53",
+     "ldhtf-tl-27"
+    ],
+    "rewrite": [
+     "ldhtf-tl-25",
+     "ldhtf-47",
+     "ldf-28",
+     "ldhtf-tl-6",
+     "ldhtf-87"
+    ],
+    "full": [
+     "ldhtf-47",
+     "ldhtf-46",
+     "ldf-28",
+     "ldhtf-87",
+     "ldf-91"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-47",
+     "ldhtf-82",
+     "ldhtf-tl-7",
+     "ldhtf-tl-6",
+     "ldzy-js1-38",
+     "ldzy-js1-53",
+     "ldhtf-89",
+     "ldhtf-19",
+     "sbf-46",
+     "ldzy-js1-48",
+     "ldf-28",
+     "ldzy-js2-6",
+     "js2-cases-3-meaning",
+     "nxj-4",
+     "ldf-98",
+     "ldhtf-tl-27",
+     "sbf-85",
+     "js2-cases-4-facts",
+     "ldzy-js2-8",
+     "sbf-45"
+    ],
+    "rewrite": [
+     "ldhtf-tl-25",
+     "ldhtf-47",
+     "ldf-28",
+     "ldhtf-tl-6",
+     "ldhtf-87",
+     "ldf-91",
+     "ldhtf-tl-10",
+     "ldzy-js1-46",
+     "ldhtf-tl-27",
+     "ldhtf-46",
+     "ldzy-js2-18",
+     "ldzy-js1-38",
+     "ldzy-js1-36",
+     "ldhtf-tl-7",
+     "js2-cases-6-result",
+     "ldzy-js1-47",
+     "ldzy-js1-48",
+     "ldhtf-97",
+     "ldzy-js2-6",
+     "ldhtf-tl-22"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位解除劳动合同，劳动者工作不满一年，是否应当支付经济补偿",
+    "用人单位违法解除劳动合同，劳动者可以主张继续履行或者赔偿金",
+    "解除劳动合同的经济补偿按劳动者在本单位工作的年限计算"
+   ],
+   "ms": {
+    "rewrite": 7359,
+    "search": 149,
+    "rerankRaw": 21322,
+    "rerank": 16763,
+    "total": 24271
+   },
+   "promptChars": 3756
+  },
+  {
+   "id": "t24",
+   "round": 1,
+   "top": {
+    "text": [
+     "js2-cases-2-result",
+     "js2-cases-2-facts",
+     "js2-cases-3-facts",
+     "js2-cases-3-result",
+     "js2-cases-4-facts"
+    ],
+    "vector": [
+     "js2-cases-2-facts",
+     "ldzy-js1-43",
+     "ldhtf-18",
+     "ldhtf-35",
+     "js2-cases-2-result"
+    ],
+    "hybrid": [
+     "js2-cases-2-facts",
+     "js2-cases-2-result",
+     "js2-cases-3-facts",
+     "js2-cases-5-facts",
+     "js2-cases-4-facts"
+    ],
+    "hybrid+rr": [],
+    "rewrite": [
+     "ldzy-js1-43",
+     "ldhtf-35",
+     "ldhtf-33",
+     "ldf-17",
+     "ldhtf-tl-19"
+    ],
+    "full": [
+     "ldhtf-33",
+     "ldhtf-34",
+     "ldf-17",
+     "ldhtf-2",
+     "ldzy-js1-26"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-2-facts",
+     "js2-cases-2-result",
+     "js2-cases-3-facts",
+     "js2-cases-5-facts",
+     "js2-cases-4-facts",
+     "js2-cases-4-result",
+     "ldzy-js1-43",
+     "ldhtf-18",
+     "js2-cases-3-result",
+     "ldhtf-35",
+     "js2-cases-2-meaning",
+     "ldhtf-tl-10",
+     "js2-cases-5-result",
+     "ldzy-js1-46",
+     "js2-cases-6-facts",
+     "ldzy-js1-36",
+     "ldhtf-tl-33",
+     "ldhtf-tl-29",
+     "ldhtf-64",
+     "ldzy-js2-6"
+    ],
+    "rewrite": [
+     "ldzy-js1-43",
+     "ldhtf-35",
+     "ldhtf-33",
+     "ldf-17",
+     "ldhtf-tl-19",
+     "ldhtf-2",
+     "ldzy-js1-46",
+     "js2-cases-2-facts",
+     "ldhtf-34",
+     "js2-cases-2-result",
+     "ldhtf-16",
+     "ldhtf-36",
+     "ldzy-js1-48",
+     "ldf-26",
+     "ldzy-js2-6",
+     "ldzy-js2-7",
+     "ldhtf-48",
+     "ldzy-js1-26",
+     "ldzy-js2-16",
+     "ldzy-js1-34"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位变更法定代表人或者投资人等事项不影响劳动合同的履行",
+    "用人单位发生合并或者分立等情况原劳动合同继续有效由承继单位继续履行",
+    "劳动合同的变更应当由用人单位与劳动者协商一致并采用书面形式"
+   ],
+   "ms": {
+    "rewrite": 9870,
+    "search": 152,
+    "rerankRaw": 3871,
+    "rerank": 3964,
+    "total": 13986
+   },
+   "promptChars": 3729
+  },
+  {
+   "id": "t25",
+   "round": 1,
+   "top": {
+    "text": [
+     "tjzcf-41",
+     "ldf-82",
+     "tjzcf-12",
+     "tjzcf-30",
+     "tjzcf-28"
+    ],
+    "vector": [
+     "gzzf-19",
+     "tjzcf-44",
+     "tjzcf-28",
+     "ldzy-js1-49",
+     "ldzy-js1-19"
+    ],
+    "hybrid": [
+     "tjzcf-28",
+     "tjzcf-12",
+     "tjzcf-44",
+     "tjzcf-30",
+     "ldf-79"
+    ],
+    "hybrid+rr": [
+     "tjzcf-28",
+     "tjzcf-12",
+     "tjzcf-44",
+     "tjzcf-30",
+     "ldf-79"
+    ],
+    "rewrite": [
+     "tjzcf-21",
+     "ldzy-js1-13",
+     "ldzy-js1-5",
+     "tjzcf-30",
+     "tjzcf-23"
+    ],
+    "full": [
+     "tjzcf-53",
+     "tjzcf-21"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "tjzcf-28",
+     "tjzcf-12",
+     "tjzcf-44",
+     "tjzcf-30",
+     "ldf-79",
+     "tjzcf-36",
+     "tjzcf-23",
+     "ldzy-js1-13",
+     "tjzcf-29",
+     "tjzcf-41",
+     "gzzf-19",
+     "ldf-82",
+     "ldzy-js1-49",
+     "ldzy-js1-19",
+     "tjzcf-24",
+     "ldzy-js1-22",
+     "ldzy-js1-25",
+     "tjzcf-16",
+     "tjzcf-40",
+     "ldzy-js1-21"
+    ],
+    "rewrite": [
+     "tjzcf-21",
+     "ldzy-js1-13",
+     "ldzy-js1-5",
+     "tjzcf-30",
+     "tjzcf-23",
+     "tjzcf-53",
+     "ldf-79",
+     "tjzcf-44",
+     "ldzy-js1-19",
+     "tjzcf-47",
+     "tjzcf-29",
+     "tjzcf-19",
+     "tjzcf-34",
+     "tjzcf-18",
+     "tjzcf-12",
+     "ldzy-js1-6",
+     "tjzcf-28",
+     "tjzcf-24",
+     "ldzy-js1-22",
+     "tjzcf-6"
+    ]
+   },
+   "degraded": [
+    "rerank:模型接口调用失败"
+   ],
+   "rewrites": [
+    "劳动争议仲裁是否收费及仲裁委员会的管辖",
+    "劳动者申请劳动争议仲裁的管辖地和费用负担",
+    "劳动争议仲裁制度属于劳动争议处理程序"
+   ],
+   "ms": {
+    "rewrite": 4328,
+    "search": 768,
+    "rerankRaw": 28023,
+    "rerank": 3891,
+    "total": 8987
+   },
+   "promptChars": 3157
+  },
+  {
+   "id": "t26",
+   "round": 1,
+   "top": {
+    "text": [
+     "tjzcf-12",
+     "ldhtf-69",
+     "tjzcf-33",
+     "ldzy-js1-43",
+     "js2-cases-3-facts"
+    ],
+    "vector": [
+     "ldhtf-11",
+     "js2-cases-3-facts",
+     "ldhtf-18",
+     "ldhtf-tl-15",
+     "js2-cases-2-facts"
+    ],
+    "hybrid": [
+     "js2-cases-3-facts",
+     "ldhtf-tl-15",
+     "ldhtf-tl-27",
+     "ldhtf-20",
+     "gzzf-16"
+    ],
+    "hybrid+rr": [
+     "ldzy-js1-43",
+     "ldhtf-18",
+     "ldhtf-11",
+     "gzzf-3"
+    ],
+    "rewrite": [
+     "ldzy-js1-43",
+     "ldhtf-11",
+     "ldhtf-18",
+     "ldhtf-35",
+     "ldhtf-63"
+    ],
+    "full": [
+     "ldzy-js1-43",
+     "ldhtf-35",
+     "ldf-17",
+     "ldhtf-30",
+     "ldhtf-18"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-3-facts",
+     "ldhtf-tl-15",
+     "ldhtf-tl-27",
+     "ldhtf-20",
+     "gzzf-16",
+     "gzzf-12",
+     "tjzcf-12",
+     "ldhtf-11",
+     "ldhtf-69",
+     "tjzcf-33",
+     "ldhtf-18",
+     "ldzy-js1-43",
+     "js2-cases-2-facts",
+     "tjzcf-28",
+     "ldzy-js2-6",
+     "ldhtf-82",
+     "js2-cases-3-meaning",
+     "gzzf-3",
+     "gzzf-17",
+     "gzzf-4"
+    ],
+    "rewrite": [
+     "ldzy-js1-43",
+     "ldhtf-11",
+     "ldhtf-18",
+     "ldhtf-35",
+     "ldhtf-63",
+     "ldhtf-tl-19",
+     "ldhtf-tl-18",
+     "ldf-19",
+     "ldzy-js2-6",
+     "ldzy-js1-50",
+     "ldhtf-33",
+     "js2-cases-3-meaning",
+     "ldhtf-30",
+     "ldhtf-4",
+     "ldzy-js2-7",
+     "ldf-32",
+     "js2-cases-3-facts",
+     "ldf-17",
+     "ldzy-js1-45",
+     "ldhtf-tl-15"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位与劳动者变更劳动合同约定的劳动报酬应当采用书面形式",
+    "用人单位未按照劳动合同约定支付劳动报酬劳动者可以主张什么权利",
+    "劳动合同的变更属于劳动合同制度中哪一类内容"
+   ],
+   "ms": {
+    "rewrite": 9434,
+    "search": 144,
+    "rerankRaw": 4405,
+    "rerank": 12265,
+    "total": 21844
+   },
+   "promptChars": 3990
+  },
+  {
+   "id": "t27",
+   "round": 1,
+   "top": {
+    "text": [
+     "gzzf-16",
+     "zdgz-1",
+     "zdgz-5",
+     "ldf-91",
+     "gzzf-18"
+    ],
+    "vector": [
+     "ldf-48",
+     "zdgz-1",
+     "sbf-12",
+     "sbf-35",
+     "sbf-13"
+    ],
+    "hybrid": [
+     "zdgz-1",
+     "ldf-48",
+     "ldhtf-tl-15",
+     "ldhtf-20",
+     "gzzf-16"
+    ],
+    "hybrid+rr": [
+     "sbf-12",
+     "sbf-35",
+     "sbf-61",
+     "sbf-10",
+     "sbf-13"
+    ],
+    "rewrite": [
+     "sbf-60",
+     "sbf-35",
+     "sbf-62",
+     "sbf-12",
+     "js2-cases-6-meaning"
+    ],
+    "full": [
+     "sbf-60",
+     "sbf-12",
+     "sbf-35",
+     "sbf-63",
+     "sbf-86"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "zdgz-1",
+     "ldf-48",
+     "ldhtf-tl-15",
+     "ldhtf-20",
+     "gzzf-16",
+     "zdgz-5",
+     "sbf-12",
+     "ldf-91",
+     "sbf-35",
+     "gzzf-18",
+     "sbf-13",
+     "js2-cases-3-facts",
+     "zdgz-2",
+     "zdgz-10",
+     "sbf-26",
+     "js2-cases-3-result",
+     "sbf-61",
+     "zdgz-6",
+     "sbf-10",
+     "zdgz-7"
+    ],
+    "rewrite": [
+     "sbf-60",
+     "sbf-35",
+     "sbf-62",
+     "sbf-12",
+     "js2-cases-6-meaning",
+     "ldf-72",
+     "sbf-90",
+     "sbf-61",
+     "sbf-63",
+     "sbf-13",
+     "sbf-86",
+     "js2-cases-6-result",
+     "ldzy-js2-19",
+     "ldf-100",
+     "sbf-27",
+     "sbf-4",
+     "ldf-48",
+     "ldhtf-tl-15",
+     "js2-cases-6-facts",
+     "sbf-23"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位应当按照劳动者工资总额申报并缴纳社会保险费，不得以最低基数代替实际工资",
+    "用人单位未足额缴纳社会保险费，劳动者可以要求补缴或者主张赔偿损失",
+    "社会保险费的缴费基数申报与工资总额挂钩，属于社会保险征缴制度"
+   ],
+   "ms": {
+    "rewrite": 15308,
+    "search": 824,
+    "rerankRaw": 3485,
+    "rerank": 7449,
+    "total": 23582
+   },
+   "promptChars": 3370
+  },
+  {
+   "id": "t28",
+   "round": 1,
+   "top": {
+    "text": [
+     "js2-cases-2-facts",
+     "js2-cases-3-result",
+     "js2-cases-4-facts",
+     "sbf-38",
+     "js2-cases-5-facts"
+    ],
+    "vector": [
+     "ldf-29",
+     "ldf-26",
+     "ldhtf-42",
+     "js2-cases-4-result",
+     "ldzy-js2-17"
+    ],
+    "hybrid": [
+     "js2-cases-4-facts",
+     "ldf-26",
+     "js2-cases-4-result",
+     "ldhtf-40",
+     "ldzy-js1-53"
+    ],
+    "hybrid+rr": [
+     "ldhtf-42",
+     "ldf-29",
+     "ldhtf-40",
+     "ldf-26",
+     "ldzy-js1-44"
+    ],
+    "rewrite": [
+     "ldf-26",
+     "ldf-29",
+     "ldhtf-40",
+     "ldhtf-42",
+     "ldhtf-38"
+    ],
+    "full": [
+     "ldhtf-42",
+     "ldf-29",
+     "ldhtf-40",
+     "ldf-26"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-4-facts",
+     "ldf-26",
+     "js2-cases-4-result",
+     "ldhtf-40",
+     "ldzy-js1-53",
+     "js2-cases-3-facts",
+     "ldf-39",
+     "js2-cases-2-facts",
+     "ldf-29",
+     "js2-cases-3-result",
+     "ldhtf-42",
+     "sbf-38",
+     "js2-cases-5-facts",
+     "ldzy-js2-17",
+     "tjzcf-27",
+     "ldzy-js1-44",
+     "js2-cases-2-result",
+     "sbf-17",
+     "ldf-27",
+     "ldzy-js1-49"
+    ],
+    "rewrite": [
+     "ldf-26",
+     "ldf-29",
+     "ldhtf-40",
+     "ldhtf-42",
+     "ldhtf-38",
+     "ldhtf-21",
+     "ldf-32",
+     "ldhtf-tl-18",
+     "ldhtf-tl-19",
+     "ldf-30",
+     "ldf-25",
+     "ldzy-js2-18",
+     "ldzy-js2-8",
+     "ldhtf-tl-26",
+     "ldzy-js1-47",
+     "ldhtf-36",
+     "ldzy-js2-12",
+     "ldhtf-37",
+     "ldzy-js2-17",
+     "ldhtf-39"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳动者患病或者非因工负伤，在规定的医疗期内，用人单位不得解除劳动合同",
+    "用人单位在医疗期内违法解除劳动合同，劳动者可以要求继续履行或者主张赔偿金",
+    "医疗期属于劳动合同解除制度中用人单位不得解除劳动合同的法定情形"
+   ],
+   "ms": {
+    "rewrite": 13398,
+    "search": 150,
+    "rerankRaw": 4901,
+    "rerank": 4695,
+    "total": 18243
+   },
+   "promptChars": 4181
+  },
+  {
+   "id": "t29",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldhtf-60",
+     "ldhtf-59",
+     "ldhtf-58",
+     "ldhtf-92",
+     "ldhtf-65"
+    ],
+    "vector": [
+     "ldhtf-61",
+     "ldhtf-58",
+     "ldhtf-66",
+     "ldf-44",
+     "ldhtf-tl-30"
+    ],
+    "hybrid": [
+     "ldhtf-58",
+     "ldhtf-60",
+     "ldhtf-61",
+     "ldhtf-tl-30",
+     "ldhtf-92"
+    ],
+    "hybrid+rr": [
+     "ldhtf-63",
+     "ldhtf-62",
+     "ldhtf-61",
+     "ldhtf-58",
+     "ldhtf-60"
+    ],
+    "rewrite": [
+     "ldhtf-60",
+     "ldhtf-63",
+     "ldhtf-61",
+     "ldhtf-58",
+     "ldhtf-59"
+    ],
+    "full": [
+     "ldhtf-63",
+     "ldf-46",
+     "ldhtf-62",
+     "ldhtf-60",
+     "ldhtf-58"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-58",
+     "ldhtf-60",
+     "ldhtf-61",
+     "ldhtf-tl-30",
+     "ldhtf-92",
+     "ldhtf-59",
+     "ldhtf-tl-35",
+     "ldhtf-66",
+     "ldhtf-63",
+     "ldhtf-64",
+     "ldhtf-62",
+     "ldf-44",
+     "ldhtf-65",
+     "ldhtf-57",
+     "ldhtf-tl-28",
+     "ldhtf-20",
+     "tjzcf-22",
+     "ldhtf-tl-15",
+     "ldhtf-67",
+     "zdgz-12"
+    ],
+    "rewrite": [
+     "ldhtf-60",
+     "ldhtf-63",
+     "ldhtf-61",
+     "ldhtf-58",
+     "ldhtf-59",
+     "ldhtf-tl-35",
+     "ldhtf-tl-30",
+     "ldhtf-62",
+     "ldhtf-92",
+     "ldhtf-64",
+     "ldhtf-tl-28",
+     "ldhtf-65",
+     "ldhtf-tl-32",
+     "ldhtf-11",
+     "ldhtf-18",
+     "ldf-46",
+     "tjzcf-22",
+     "ldhtf-tl-31",
+     "ldzy-js2-3",
+     "ldf-44"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "被派遣劳动者与用工单位的劳动者同工同酬，劳动报酬分配办法",
+    "劳务派遣单位克扣被派遣劳动者工资，同工不同酬的法律后果",
+    "劳务派遣中劳动报酬属于工资制度，同工同酬的规定"
+   ],
+   "ms": {
+    "rewrite": 3337,
+    "search": 141,
+    "rerankRaw": 3270,
+    "rerank": 1798,
+    "total": 5276
+   },
+   "promptChars": 3130
+  },
+  {
+   "id": "t30",
+   "round": 1,
+   "top": {
+    "text": [
+     "ldf-20",
+     "ldhtf-14",
+     "ldhtf-12",
+     "ldhtf-82",
+     "ldzy-js1-34"
+    ],
+    "vector": [
+     "ldf-20",
+     "ldhtf-14",
+     "ldhtf-tl-11",
+     "ldhtf-13",
+     "ldhtf-82"
+    ],
+    "hybrid": [
+     "ldf-20",
+     "ldhtf-14",
+     "ldhtf-12",
+     "ldhtf-82",
+     "ldhtf-tl-11"
+    ],
+    "hybrid+rr": [
+     "ldhtf-14",
+     "ldhtf-tl-11",
+     "ldhtf-tl-9",
+     "ldhtf-82",
+     "ldzy-js1-34"
+    ],
+    "rewrite": [
+     "ldhtf-14",
+     "ldhtf-tl-11",
+     "ldf-20",
+     "ldhtf-82",
+     "ldzy-js2-11"
+    ],
+    "full": [
+     "ldhtf-14",
+     "ldhtf-tl-11",
+     "ldf-20",
+     "ldzy-js1-34",
+     "ldzy-js2-11"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldf-20",
+     "ldhtf-14",
+     "ldhtf-12",
+     "ldhtf-82",
+     "ldhtf-tl-11",
+     "ldhtf-13",
+     "ldzy-js1-34",
+     "ldhtf-19",
+     "ldzy-js2-11",
+     "ldhtf-tl-7",
+     "tjzcf-39",
+     "ldzy-js2-9",
+     "ldf-21",
+     "ldzy-js2-10",
+     "sbf-46",
+     "ldzy-js2-8",
+     "js2-cases-3-meaning",
+     "ldhtf-tl-9",
+     "ldhtf-tl-12",
+     "ldhtf-70"
+    ],
+    "rewrite": [
+     "ldhtf-14",
+     "ldhtf-tl-11",
+     "ldf-20",
+     "ldhtf-82",
+     "ldzy-js2-11",
+     "ldhtf-13",
+     "ldhtf-tl-7",
+     "ldhtf-12",
+     "ldzy-js1-34",
+     "ldzy-js2-9",
+     "ldzy-js2-10",
+     "ldhtf-97",
+     "js2-cases-3-meaning",
+     "ldhtf-19",
+     "ldhtf-tl-18",
+     "ldhtf-41",
+     "ldhtf-tl-6",
+     "ldzy-js2-8",
+     "ldhtf-15",
+     "ldhtf-10"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳动者在用人单位连续工作满十年，劳动者提出或者同意续订、订立劳动合同的，除劳动者提出订立固定期限劳动合同外，应当订立无固定期限劳动合同",
+    "用人单位违反规定不与劳动者订立无固定期限劳动合同的，自应当订立无固定期限劳动合同之日起向劳动者每月支付二倍的工资",
+    "劳动合同的订立与续订属于劳动合同制度中关于无固定期限劳动合同适用情形的规定"
+   ],
+   "ms": {
+    "rewrite": 2103,
+    "search": 205,
+    "rerankRaw": 1814,
+    "rerank": 1969,
+    "total": 4277
+   },
+   "promptChars": 4339
+  },
+  {
+   "id": "t01",
+   "round": 2,
+   "top": {
+    "text": [
+     "gzzf-13",
+     "ldf-36",
+     "ldhtf-31",
+     "ldhtf-62",
+     "ldhtf-85"
+    ],
+    "vector": [
+     "ldhtf-31",
+     "gzzf-13",
+     "gzzf-7",
+     "ldf-36",
+     "ldf-41"
+    ],
+    "hybrid": [
+     "gzzf-13",
+     "ldhtf-31",
+     "ldf-36",
+     "ldf-41",
+     "ldhtf-85"
+    ],
+    "hybrid+rr": [
+     "ldhtf-31",
+     "ldf-44",
+     "gzzf-13",
+     "ldhtf-85",
+     "gzzf-18"
+    ],
+    "rewrite": [
+     "ldhtf-85",
+     "gzzf-13",
+     "ldf-44",
+     "ldhtf-31",
+     "ldzy-js1-42"
+    ],
+    "full": [
+     "ldhtf-31",
+     "ldf-44",
+     "gzzf-13",
+     "ldhtf-85",
+     "ldf-91"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "gzzf-13",
+     "ldhtf-31",
+     "ldf-36",
+     "ldf-41",
+     "ldhtf-85",
+     "ldf-44",
+     "ldhtf-68",
+     "ldf-37",
+     "ldzy-js1-42",
+     "zdgz-12",
+     "gzzf-7",
+     "ldhtf-62",
+     "gzzf-8",
+     "ldhtf-72",
+     "gzzf-11",
+     "nxj-5",
+     "zdgz-3",
+     "gzzf-4",
+     "gzzf-12",
+     "gzzf-18"
+    ],
+    "rewrite": [
+     "ldhtf-85",
+     "gzzf-13",
+     "ldf-44",
+     "ldhtf-31",
+     "ldzy-js1-42",
+     "gzzf-11",
+     "ldhtf-62",
+     "gzzf-18",
+     "ldf-37",
+     "zdgz-12",
+     "ldf-41",
+     "ldf-36",
+     "gzzf-7",
+     "ldf-91",
+     "ldf-51",
+     "gzzf-12",
+     "gzzf-1",
+     "ldhtf-72",
+     "gzzf-8",
+     "nxj-7"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位安排劳动者延长工作时间应当支付不低于工资百分之一百五十的工资报酬",
+    "用人单位以调休或者绩效奖金替代加班费，劳动者可以主张加班工资",
+    "标准工时制下加班工资属于工资支付制度，用人单位不得以调休代替法定标准支付"
+   ],
+   "ms": {
+    "rewrite": 2244,
+    "search": 198,
+    "rerankRaw": 3543,
+    "rerank": 1884,
+    "total": 4326
+   },
+   "promptChars": 3285
+  },
+  {
+   "id": "t02",
+   "round": 2,
+   "top": {
+    "text": [
+     "gzzf-16",
+     "ldf-99",
+     "ldf-102",
+     "sbf-92",
+     "mfd-584"
+    ],
+    "vector": [
+     "gzzf-16",
+     "ldzy-js1-53",
+     "ldf-91",
+     "js2-cases-3-facts",
+     "ldhtf-90"
+    ],
+    "hybrid": [
+     "gzzf-16",
+     "ldf-102",
+     "ldhtf-90",
+     "mfd-584",
+     "ldzy-js1-41"
+    ],
+    "hybrid+rr": [
+     "gzzf-16",
+     "gzzf-15"
+    ],
+    "rewrite": [
+     "gzzf-16",
+     "ldf-99",
+     "ldf-102",
+     "ldzy-js1-41",
+     "ldf-91"
+    ],
+    "full": [
+     "gzzf-16",
+     "gzzf-15"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "gzzf-16",
+     "ldf-102",
+     "ldhtf-90",
+     "mfd-584",
+     "ldzy-js1-41",
+     "ldhtf-47",
+     "ldf-99",
+     "ldzy-js1-53",
+     "ldf-91",
+     "sbf-92",
+     "js2-cases-3-facts",
+     "ldhtf-93",
+     "gzzf-15",
+     "ldzy-js1-49",
+     "ldhtf-91",
+     "js2-cases-1-facts",
+     "mfd-585",
+     "gzzf-14",
+     "sbf-37",
+     "ldf-30"
+    ],
+    "rewrite": [
+     "gzzf-16",
+     "ldf-99",
+     "ldf-102",
+     "ldzy-js1-41",
+     "ldf-91",
+     "gzzf-15",
+     "ldhtf-90",
+     "gzzf-18",
+     "mfd-584",
+     "gzzf-12",
+     "ldhtf-47",
+     "ldhtf-91",
+     "ldzy-js2-18",
+     "ldzy-js1-53",
+     "ldf-44",
+     "ldzy-js1-46",
+     "ldhtf-93",
+     "gzzf-1",
+     "mfd-585",
+     "ldhtf-46"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位因劳动者本人原因给用人单位造成经济损失的，可以从劳动者工资中扣除赔偿费用",
+    "用人单位扣除劳动者工资用于赔偿经济损失的，每月扣除部分不得超过当月工资的百分之二十",
+    "因劳动者过错造成用人单位经济损失的工资扣除属于工资支付制度"
+   ],
+   "ms": {
+    "rewrite": 4107,
+    "search": 171,
+    "rerankRaw": 8152,
+    "rerank": 3487,
+    "total": 7765
+   },
+   "promptChars": 3560
+  },
+  {
+   "id": "t03",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldhtf-tl-7",
+     "ldhtf-47",
+     "ldhtf-82",
+     "js2-cases-4-facts",
+     "js2-cases-3-facts"
+    ],
+    "vector": [
+     "gzzf-11",
+     "nxj-3",
+     "nxj-4",
+     "ldhtf-tl-7",
+     "nxj-5"
+    ],
+    "hybrid": [
+     "ldhtf-tl-7",
+     "ldhtf-82",
+     "nxj-4",
+     "ldhtf-47",
+     "nxj-5"
+    ],
+    "hybrid+rr": [
+     "nxj-5",
+     "nxj-2",
+     "nxj-3",
+     "nxj-7",
+     "nxj-4"
+    ],
+    "rewrite": [
+     "nxj-5",
+     "nxj-7",
+     "gzzf-11",
+     "nxj-4",
+     "ldf-45"
+    ],
+    "full": [
+     "nxj-5",
+     "ldf-45",
+     "nxj-2",
+     "nxj-3",
+     "nxj-7"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-tl-7",
+     "ldhtf-82",
+     "nxj-4",
+     "ldhtf-47",
+     "nxj-5",
+     "gzzf-11",
+     "nxj-3",
+     "js2-cases-4-facts",
+     "js2-cases-3-facts",
+     "js2-cases-2-facts",
+     "ldhtf-tl-6",
+     "nxj-2",
+     "js2-cases-6-facts",
+     "nxj-7",
+     "js2-cases-3-meaning",
+     "ldhtf-tl-10",
+     "nxj-1",
+     "js2-cases-4-result",
+     "ldhtf-tl-9",
+     "nxj-10"
+    ],
+    "rewrite": [
+     "nxj-5",
+     "nxj-7",
+     "gzzf-11",
+     "nxj-4",
+     "ldf-45",
+     "nxj-6",
+     "nxj-2",
+     "nxj-3",
+     "nxj-8",
+     "ldf-44",
+     "nxj-1",
+     "gzzf-13",
+     "ldf-51",
+     "nxj-9",
+     "nxj-10",
+     "ldhtf-tl-7",
+     "ldhtf-82",
+     "ldf-91",
+     "ldhtf-tl-9",
+     "tjzcf-27"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳动者连续工作满一年以上享受带薪年休假的条件和用人单位安排义务",
+    "用人单位因生产特点不能安排年休假时应当支付未休年休假工资报酬",
+    "劳动者主张未休年休假工资报酬的仲裁时效和计算标准"
+   ],
+   "ms": {
+    "rewrite": 3520,
+    "search": 152,
+    "rerankRaw": 6677,
+    "rerank": 1855,
+    "total": 5528
+   },
+   "promptChars": 3107
+  },
+  {
+   "id": "t04",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldhtf-tl-5",
+     "ldzy-js1-34",
+     "ldhtf-71",
+     "gzzf-9",
+     "js2-cases-3-result"
+    ],
+    "vector": [
+     "ldzy-js1-48",
+     "ldzy-js1-34",
+     "ldhtf-45",
+     "ldzy-js2-8",
+     "ldhtf-tl-22"
+    ],
+    "hybrid": [
+     "ldzy-js1-34",
+     "ldhtf-tl-5",
+     "ldhtf-71",
+     "ldf-23",
+     "ldhtf-45"
+    ],
+    "hybrid+rr": [
+     "ldhtf-44",
+     "ldf-23",
+     "ldhtf-45",
+     "ldzy-js2-8",
+     "ldhtf-tl-17"
+    ],
+    "rewrite": [
+     "ldhtf-tl-25",
+     "ldhtf-tl-22",
+     "ldhtf-71",
+     "ldzy-js1-38",
+     "ldzy-js1-36"
+    ],
+    "full": [
+     "ldhtf-46",
+     "ldhtf-47",
+     "ldhtf-85",
+     "ldf-23",
+     "ldhtf-tl-22"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldzy-js1-34",
+     "ldhtf-tl-5",
+     "ldhtf-71",
+     "ldf-23",
+     "ldhtf-45",
+     "ldhtf-tl-17",
+     "ldhtf-tl-25",
+     "js2-cases-3-facts",
+     "ldzy-js1-48",
+     "gzzf-9",
+     "ldzy-js2-8",
+     "js2-cases-3-result",
+     "ldhtf-tl-22",
+     "ldhtf-10",
+     "ldhtf-tl-11",
+     "js2-cases-6-result",
+     "ldhtf-48",
+     "ldzy-js2-11",
+     "js2-cases-5-result",
+     "ldhtf-44"
+    ],
+    "rewrite": [
+     "ldhtf-tl-25",
+     "ldhtf-tl-22",
+     "ldhtf-71",
+     "ldzy-js1-38",
+     "ldzy-js1-36",
+     "ldhtf-tl-5",
+     "ldhtf-46",
+     "ldhtf-tl-10",
+     "ldf-23",
+     "ldzy-js1-48",
+     "ldhtf-47",
+     "ldzy-js1-34",
+     "ldhtf-87",
+     "js2-cases-6-result",
+     "ldhtf-50",
+     "ldhtf-tl-31",
+     "ldzy-js2-11",
+     "ldhtf-85",
+     "gzzf-9",
+     "ldhtf-97"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳动合同期满终止，用人单位是否应当向劳动者支付经济补偿",
+    "劳动合同期满不再续签，用人单位不支付经济补偿的法律后果",
+    "劳动合同终止的经济补偿属于工资、解除还是终止制度范畴"
+   ],
+   "ms": {
+    "rewrite": 6494,
+    "search": 154,
+    "rerankRaw": 2015,
+    "rerank": 3864,
+    "total": 10512
+   },
+   "promptChars": 3451
+  },
+  {
+   "id": "t05",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldhtf-50",
+     "sbf-83",
+     "sbf-58",
+     "sbf-50",
+     "ldzy-js1-49"
+    ],
+    "vector": [
+     "ldhtf-50",
+     "ldhtf-49",
+     "ldhtf-45",
+     "ldhtf-tl-24",
+     "ldhtf-34"
+    ],
+    "hybrid": [
+     "ldhtf-50",
+     "ldhtf-49",
+     "sbf-50",
+     "sbf-57",
+     "sbf-32"
+    ],
+    "hybrid+rr": [
+     "ldhtf-50",
+     "ldhtf-tl-24",
+     "sbf-50",
+     "sbf-83",
+     "ldhtf-49"
+    ],
+    "rewrite": [
+     "ldhtf-50",
+     "ldhtf-tl-24",
+     "sbf-85",
+     "gzzf-9",
+     "ldhtf-89"
+    ],
+    "full": [
+     "ldhtf-50",
+     "sbf-50",
+     "ldhtf-89",
+     "sbf-85",
+     "ldzy-js1-1"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-50",
+     "ldhtf-49",
+     "sbf-50",
+     "sbf-57",
+     "sbf-32",
+     "sbf-52",
+     "sbf-83",
+     "sbf-58",
+     "ldhtf-45",
+     "ldhtf-tl-24",
+     "ldzy-js1-49",
+     "ldhtf-34",
+     "ldhtf-19",
+     "ldhtf-40",
+     "sbf-84",
+     "sbf-13",
+     "js2-cases-2-facts",
+     "ldhtf-44",
+     "sbf-60",
+     "js2-cases-4-result"
+    ],
+    "rewrite": [
+     "ldhtf-50",
+     "ldhtf-tl-24",
+     "sbf-85",
+     "gzzf-9",
+     "ldhtf-89",
+     "sbf-50",
+     "ldhtf-36",
+     "ldhtf-49",
+     "ldhtf-tl-37",
+     "ldhtf-96",
+     "ldhtf-tl-32",
+     "ldzy-js2-18",
+     "ldhtf-2",
+     "ldhtf-38",
+     "ldzy-js1-1",
+     "ldf-25",
+     "ldhtf-48",
+     "sbf-32",
+     "ldf-30",
+     "sbf-52"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位在解除或者终止劳动合同时应当出具解除或者终止劳动合同的证明",
+    "用人单位应当在解除或者终止劳动合同时为劳动者办理档案和社会保险关系转移手续",
+    "用人单位未向劳动者出具解除或者终止劳动合同的书面证明由劳动行政部门责令改正"
+   ],
+   "ms": {
+    "rewrite": 3308,
+    "search": 208,
+    "rerankRaw": 4145,
+    "rerank": 1934,
+    "total": 5450
+   },
+   "promptChars": 2846
+  },
+  {
+   "id": "t06",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldf-26",
+     "ldhtf-40",
+     "ldhtf-21",
+     "ldhtf-tl-19",
+     "ldf-32"
+    ],
+    "vector": [
+     "ldhtf-21",
+     "ldhtf-70",
+     "ldhtf-39",
+     "ldf-25",
+     "ldf-32"
+    ],
+    "hybrid": [
+     "ldhtf-21",
+     "ldf-32",
+     "ldhtf-tl-19",
+     "ldf-26",
+     "ldhtf-37"
+    ],
+    "hybrid+rr": [
+     "ldhtf-21",
+     "ldhtf-39",
+     "ldhtf-40",
+     "ldhtf-tl-19",
+     "ldf-25"
+    ],
+    "rewrite": [
+     "ldf-32",
+     "ldf-25",
+     "ldhtf-83",
+     "ldhtf-21",
+     "ldhtf-37"
+    ],
+    "full": [
+     "ldhtf-21",
+     "ldf-25",
+     "ldhtf-39",
+     "ldhtf-40",
+     "ldf-26"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-21",
+     "ldf-32",
+     "ldhtf-tl-19",
+     "ldf-26",
+     "ldhtf-37",
+     "ldhtf-40",
+     "ldhtf-70",
+     "ldf-25",
+     "ldhtf-19",
+     "ldhtf-83",
+     "ldhtf-39",
+     "ldf-21",
+     "ldf-30",
+     "tjzcf-29",
+     "ldhtf-36",
+     "js2-cases-2-result",
+     "js2-cases-3-result",
+     "js2-cases-5-result",
+     "js2-cases-6-facts",
+     "ldhtf-tl-24"
+    ],
+    "rewrite": [
+     "ldf-32",
+     "ldf-25",
+     "ldhtf-83",
+     "ldhtf-21",
+     "ldhtf-37",
+     "ldhtf-39",
+     "ldhtf-19",
+     "ldhtf-tl-19",
+     "ldhtf-70",
+     "ldhtf-tl-18",
+     "ldf-21",
+     "ldzy-js2-18",
+     "ldf-30",
+     "ldhtf-tl-15",
+     "ldf-26",
+     "ldhtf-40",
+     "ldhtf-48",
+     "ldzy-js1-47",
+     "ldhtf-36",
+     "ldhtf-46"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位在试用期内以劳动者不能胜任工作为由解除劳动合同的法定条件与限制",
+    "用人单位违法解除劳动合同劳动者可以主张继续履行或者赔偿金",
+    "试用期解除劳动合同属于劳动合同解除制度中用人单位单方解除的情形"
+   ],
+   "ms": {
+    "rewrite": 2323,
+    "search": 158,
+    "rerankRaw": 2091,
+    "rerank": 1852,
+    "total": 4333
+   },
+   "promptChars": 3542
+  },
+  {
+   "id": "t07",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldhtf-22",
+     "ldhtf-tl-16",
+     "js2-cases-4-facts",
+     "mfd-585",
+     "ldhtf-tl-26"
+    ],
+    "vector": [
+     "ldhtf-22",
+     "ldhtf-tl-16",
+     "js2-cases-3-facts",
+     "ldhtf-tl-35",
+     "ldhtf-92"
+    ],
+    "hybrid": [
+     "ldhtf-22",
+     "ldhtf-tl-16",
+     "js2-cases-4-facts",
+     "ldhtf-40",
+     "ldhtf-tl-33"
+    ],
+    "hybrid+rr": [
+     "ldhtf-22",
+     "ldhtf-tl-16",
+     "ldhtf-tl-26",
+     "ldzy-js2-12",
+     "mfd-585"
+    ],
+    "rewrite": [
+     "ldhtf-22",
+     "ldhtf-tl-26",
+     "ldhtf-25",
+     "ldhtf-tl-16",
+     "ldzy-js1-40"
+    ],
+    "full": [
+     "ldhtf-22",
+     "ldhtf-25",
+     "ldhtf-tl-16",
+     "ldhtf-tl-26",
+     "mfd-585"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-22",
+     "ldhtf-tl-16",
+     "js2-cases-4-facts",
+     "ldhtf-40",
+     "ldhtf-tl-33",
+     "js2-cases-5-facts",
+     "ldf-68",
+     "js2-cases-3-facts",
+     "mfd-585",
+     "ldhtf-tl-35",
+     "ldhtf-tl-26",
+     "ldhtf-92",
+     "ldzy-js2-15",
+     "js2-cases-3-result",
+     "ldzy-js1-40",
+     "ldhtf-57",
+     "sbf-42",
+     "sbf-30",
+     "ldf-26",
+     "ldzy-js2-12"
+    ],
+    "rewrite": [
+     "ldhtf-22",
+     "ldhtf-tl-26",
+     "ldhtf-25",
+     "ldhtf-tl-16",
+     "ldzy-js1-40",
+     "ldzy-js2-15",
+     "js2-cases-5-facts",
+     "mfd-585",
+     "ldzy-js2-12",
+     "ldhtf-tl-17",
+     "js2-cases-5-meaning",
+     "ldf-68",
+     "js2-cases-5-result",
+     "ldhtf-23",
+     "js2-cases-4-facts",
+     "ldzy-js1-53",
+     "ldhtf-83",
+     "ldhtf-40",
+     "ldhtf-tl-33",
+     "ldzy-js1-36"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位为劳动者提供专项培训费用进行专业技术培训，约定服务期和违约金",
+    "劳动者违反服务期约定提前离职，用人单位要求支付违约金",
+    "服务期违约金的数额不得超过用人单位提供的培训费用"
+   ],
+   "ms": {
+    "rewrite": 1717,
+    "search": 171,
+    "rerankRaw": 1944,
+    "rerank": 2028,
+    "total": 3916
+   },
+   "promptChars": 4215
+  },
+  {
+   "id": "t08",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldzy-js1-50",
+     "ldf-34",
+     "zdgz-15",
+     "ldhtf-tl-38",
+     "ldhtf-4"
+    ],
+    "vector": [
+     "ldhtf-1",
+     "ldhtf-52",
+     "js2-cases-4-result",
+     "ldhtf-16",
+     "js2-cases-4-meaning"
+    ],
+    "hybrid": [
+     "js2-cases-4-result",
+     "ldf-34",
+     "ldhtf-tl-38",
+     "ldhtf-4",
+     "ldf-4"
+    ],
+    "hybrid+rr": [
+     "ldhtf-4",
+     "ldzy-js1-50",
+     "ldf-4",
+     "ldf-89",
+     "ldhtf-74"
+    ],
+    "rewrite": [
+     "ldhtf-4",
+     "ldzy-js1-50",
+     "ldhtf-80",
+     "ldf-4",
+     "ldf-25"
+    ],
+    "full": [
+     "ldhtf-4",
+     "ldzy-js1-50",
+     "ldhtf-80",
+     "ldf-4",
+     "ldhtf-38"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-4-result",
+     "ldf-34",
+     "ldhtf-tl-38",
+     "ldhtf-4",
+     "ldf-4",
+     "js2-cases-5-result",
+     "ldzy-js1-50",
+     "ldhtf-1",
+     "ldhtf-52",
+     "zdgz-15",
+     "ldhtf-16",
+     "js2-cases-4-meaning",
+     "ldhtf-34",
+     "ldf-41",
+     "ldhtf-54",
+     "js2-cases-5-facts",
+     "ldf-33",
+     "ldf-89",
+     "ldhtf-74",
+     "js2-cases-4-facts"
+    ],
+    "rewrite": [
+     "ldhtf-4",
+     "ldzy-js1-50",
+     "ldhtf-80",
+     "ldf-4",
+     "ldf-25",
+     "ldhtf-38",
+     "ldf-34",
+     "gzzf-17",
+     "ldf-33",
+     "ldf-89",
+     "ldhtf-74",
+     "ldf-35",
+     "ldhtf-56",
+     "ldf-91",
+     "zdgz-15",
+     "js2-cases-4-result",
+     "ldhtf-52",
+     "ldhtf-54",
+     "ldhtf-34",
+     "ldhtf-51"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位制定的直接涉及劳动者切身利益的规章制度，应当经职工代表大会或者全体职工讨论，并公示或者告知劳动者",
+    "用人单位以内部发布即生效为由，未经民主程序和公示告知，对劳动者适用修订后的规章制度是否有效",
+    "劳动者主张用人单位违法制定规章制度侵害其权益的，可以要求确认相关条款无效或者解除劳动合同并主张经济补偿"
+   ],
+   "ms": {
+    "rewrite": 2291,
+    "search": 1090,
+    "rerankRaw": 2712,
+    "rerank": 1768,
+    "total": 5148
+   },
+   "promptChars": 3325
+  },
+  {
+   "id": "t09",
+   "round": 2,
+   "top": {
+    "text": [
+     "nxj-5",
+     "gzzf-13",
+     "js2-cases-2-result",
+     "js2-cases-2-facts",
+     "ldf-44"
+    ],
+    "vector": [
+     "js2-cases-4-result",
+     "ldf-30",
+     "js2-cases-4-facts",
+     "js2-cases-5-result",
+     "js2-cases-5-facts"
+    ],
+    "hybrid": [
+     "js2-cases-2-result",
+     "js2-cases-4-facts",
+     "js2-cases-4-result",
+     "js2-cases-5-facts",
+     "js2-cases-5-result"
+    ],
+    "hybrid+rr": [],
+    "rewrite": [
+     "ldf-26",
+     "ldf-30",
+     "ldhtf-tl-19",
+     "ldzy-js1-46",
+     "ldhtf-tl-37"
+    ],
+    "full": [
+     "ldhtf-17",
+     "ldzy-js1-43",
+     "ldhtf-40",
+     "ldf-26",
+     "ldhtf-tl-19"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-2-result",
+     "js2-cases-4-facts",
+     "js2-cases-4-result",
+     "js2-cases-5-facts",
+     "js2-cases-5-result",
+     "ldf-26",
+     "js2-cases-1-facts",
+     "nxj-5",
+     "gzzf-13",
+     "ldf-30",
+     "js2-cases-2-facts",
+     "ldf-44",
+     "ldhtf-66",
+     "ldzy-js1-30",
+     "ldf-37",
+     "js2-cases-3-facts",
+     "js2-cases-2-meaning",
+     "ldhtf-57",
+     "js2-cases-4-meaning",
+     "ldhtf-40"
+    ],
+    "rewrite": [
+     "ldf-26",
+     "ldf-30",
+     "ldhtf-tl-19",
+     "ldzy-js1-46",
+     "ldhtf-tl-37",
+     "js2-cases-2-facts",
+     "ldhtf-43",
+     "ldhtf-8",
+     "ldzy-js1-43",
+     "ldf-77",
+     "ldhtf-40",
+     "ldhtf-17",
+     "nxj-5",
+     "gzzf-13",
+     "js2-cases-2-result",
+     "js2-cases-4-facts",
+     "js2-cases-4-result",
+     "ldzy-js1-36",
+     "js2-cases-5-facts",
+     "ldhtf-96"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位根据生产经营需要调整劳动者工作地点，劳动者应当服从，属于劳动合同变更还是用工自主权",
+    "劳动者拒不服从用人单位合理工作地点调整，用人单位按旷工处理是否合法，能否解除劳动合同",
+    "工作地点调整和旷工认定属于劳动合同履行、变更、解除哪一类制度"
+   ],
+   "ms": {
+    "rewrite": 1905,
+    "search": 1059,
+    "rerankRaw": 3801,
+    "rerank": 2534,
+    "total": 5499
+   },
+   "promptChars": 5055
+  },
+  {
+   "id": "t10",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldzy-js1-36",
+     "ldf-62",
+     "sbf-17",
+     "ldzy-js2-10",
+     "ldhtf-14"
+    ],
+    "vector": [
+     "ldf-31",
+     "gzzf-11",
+     "ldhtf-tl-22",
+     "ldf-23",
+     "ldhtf-70"
+    ],
+    "hybrid": [
+     "ldf-23",
+     "ldf-41",
+     "ldzy-js1-36",
+     "ldf-31",
+     "ldf-62"
+    ],
+    "hybrid+rr": [
+     "ldf-23",
+     "ldhtf-45",
+     "ldhtf-40",
+     "ldf-26"
+    ],
+    "rewrite": [
+     "ldf-29",
+     "ldf-32",
+     "ldhtf-40",
+     "ldf-26",
+     "ldhtf-42"
+    ],
+    "full": [
+     "ldhtf-42",
+     "ldf-29",
+     "ldhtf-45",
+     "ldf-23",
+     "ldhtf-44"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldf-23",
+     "ldf-41",
+     "ldzy-js1-36",
+     "ldf-31",
+     "ldf-62",
+     "gzzf-11",
+     "sbf-17",
+     "ldhtf-tl-22",
+     "ldzy-js2-10",
+     "ldhtf-14",
+     "ldhtf-70",
+     "js2-cases-3-facts",
+     "ldhtf-45",
+     "ldzy-js2-8",
+     "ldhtf-40",
+     "ldhtf-tl-9",
+     "ldhtf-13",
+     "ldf-45",
+     "ldf-26",
+     "ldhtf-68"
+    ],
+    "rewrite": [
+     "ldf-29",
+     "ldf-32",
+     "ldhtf-40",
+     "ldf-26",
+     "ldhtf-42",
+     "ldf-23",
+     "ldzy-js2-8",
+     "ldhtf-38",
+     "ldhtf-tl-18",
+     "ldhtf-21",
+     "ldzy-js2-16",
+     "ldzy-js2-18",
+     "sbf-17",
+     "ldhtf-tl-19",
+     "ldhtf-45",
+     "ldhtf-tl-24",
+     "ldhtf-36",
+     "ldzy-js1-47",
+     "ldhtf-48",
+     "ldhtf-44"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳动者患病或者非因工负伤，在规定的医疗期内，用人单位不得解除劳动合同",
+    "用人单位在劳动者医疗期内解除劳动合同的，应当支付赔偿金，劳动者可以要求继续履行劳动合同",
+    "劳动合同终止的法定情形包括劳动合同期满、劳动者开始依法享受基本养老保险待遇等，用人单位不得约定合同自动终止"
+   ],
+   "ms": {
+    "rewrite": 1648,
+    "search": 173,
+    "rerankRaw": 1669,
+    "rerank": 1779,
+    "total": 3600
+   },
+   "promptChars": 3883
+  },
+  {
+   "id": "t11",
+   "round": 2,
+   "top": {
+    "text": [
+     "js2-cases-5-meaning",
+     "js2-cases-5-result",
+     "js2-cases-5-facts",
+     "js2-cases-4-facts",
+     "ldzy-js2-14"
+    ],
+    "vector": [
+     "ldzy-js1-36",
+     "ldhtf-tl-10",
+     "ldzy-js1-39",
+     "ldhtf-82",
+     "ldzy-js1-38"
+    ],
+    "hybrid": [
+     "js2-cases-4-facts",
+     "ldzy-js1-39",
+     "ldzy-js1-36",
+     "ldhtf-24",
+     "ldzy-js1-38"
+    ],
+    "hybrid+rr": [
+     "ldhtf-24",
+     "ldzy-js1-36",
+     "ldzy-js1-37",
+     "ldzy-js1-38",
+     "ldzy-js1-39"
+    ],
+    "rewrite": [
+     "ldzy-js1-39",
+     "ldzy-js1-38",
+     "ldzy-js1-36",
+     "ldhtf-24",
+     "js2-cases-4-facts"
+    ],
+    "full": [
+     "ldhtf-23",
+     "ldzy-js1-36",
+     "ldzy-js1-37",
+     "ldzy-js1-38",
+     "ldzy-js1-39"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-4-facts",
+     "ldzy-js1-39",
+     "ldzy-js1-36",
+     "ldhtf-24",
+     "ldzy-js1-38",
+     "js2-cases-4-meaning",
+     "js2-cases-3-facts",
+     "ldzy-js1-37",
+     "js2-cases-5-meaning",
+     "js2-cases-5-result",
+     "ldhtf-tl-10",
+     "js2-cases-5-facts",
+     "ldhtf-82",
+     "ldzy-js2-14",
+     "js2-cases-4-result",
+     "ldhtf-tl-6",
+     "ldhtf-tl-5",
+     "ldhtf-tl-25",
+     "gzzf-16",
+     "ldhtf-tl-7"
+    ],
+    "rewrite": [
+     "ldzy-js1-39",
+     "ldzy-js1-38",
+     "ldzy-js1-36",
+     "ldhtf-24",
+     "js2-cases-4-facts",
+     "ldzy-js1-37",
+     "ldzy-js2-14",
+     "js2-cases-5-meaning",
+     "ldhtf-23",
+     "js2-cases-5-facts",
+     "js2-cases-4-meaning",
+     "ldzy-js2-15",
+     "ldzy-js1-40",
+     "ldhtf-tl-10",
+     "ldzy-js2-13",
+     "ldhtf-tl-25",
+     "ldzy-js1-48",
+     "js2-cases-5-result",
+     "ldf-28",
+     "ldhtf-19"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位与劳动者约定离职后竞业限制期限不得超过二年",
+    "用人单位在劳动者在职期间按月支付工资中已包含竞业限制经济补偿，离职后不再另行支付，是否符合解除或者终止劳动合同后给予经济补偿的规定",
+    "劳动者履行竞业限制义务，用人单位未按月给予经济补偿的，劳动者可以请求解除竞业限制约定"
+   ],
+   "ms": {
+    "rewrite": 1974,
+    "search": 200,
+    "rerankRaw": 1983,
+    "rerank": 2325,
+    "total": 4499
+   },
+   "promptChars": 4230
+  },
+  {
+   "id": "t12",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldf-50",
+     "gzzf-7",
+     "js2-cases-3-facts",
+     "ldhtf-82",
+     "ldf-36"
+    ],
+    "vector": [
+     "gzzf-7",
+     "gzzf-13",
+     "gzzf-12",
+     "gzzf-20",
+     "ldhtf-72"
+    ],
+    "hybrid": [
+     "gzzf-7",
+     "ldhtf-82",
+     "ldhtf-47",
+     "ldhtf-tl-6",
+     "gzzf-8"
+    ],
+    "hybrid+rr": [
+     "gzzf-7",
+     "ldf-50"
+    ],
+    "rewrite": [
+     "ldhtf-30",
+     "gzzf-1",
+     "ldf-44",
+     "gzzf-18",
+     "gzzf-7"
+    ],
+    "full": [
+     "gzzf-7",
+     "ldf-50",
+     "ldhtf-30",
+     "ldhtf-85",
+     "gzzf-18"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "gzzf-7",
+     "ldhtf-82",
+     "ldhtf-47",
+     "ldhtf-tl-6",
+     "gzzf-8",
+     "ldf-50",
+     "gzzf-13",
+     "js2-cases-3-facts",
+     "gzzf-12",
+     "gzzf-20",
+     "ldf-36",
+     "ldhtf-72",
+     "ldhtf-58",
+     "js2-cases-3-meaning",
+     "ldhtf-68",
+     "gzzf-16",
+     "ldzy-js1-36",
+     "ldf-41",
+     "js2-cases-2-facts",
+     "gzzf-17"
+    ],
+    "rewrite": [
+     "ldhtf-30",
+     "gzzf-1",
+     "ldf-44",
+     "gzzf-18",
+     "gzzf-7",
+     "gzzf-17",
+     "ldhtf-85",
+     "ldhtf-tl-34",
+     "ldhtf-72",
+     "gzzf-11",
+     "gzzf-8",
+     "gzzf-12",
+     "gzzf-13",
+     "gzzf-20",
+     "gzzf-16",
+     "ldhtf-tl-20",
+     "ldf-51",
+     "ldhtf-93",
+     "gzzf-2",
+     "ldf-50"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位应当按照劳动合同约定和国家规定及时足额向劳动者支付工资",
+    "用人单位未及时足额支付劳动报酬的法律责任",
+    "工资支付周期和支付日期的法律规定属于工资制度"
+   ],
+   "ms": {
+    "rewrite": 1339,
+    "search": 151,
+    "rerankRaw": 1726,
+    "rerank": 1824,
+    "total": 3314
+   },
+   "promptChars": 2823
+  },
+  {
+   "id": "t13",
+   "round": 2,
+   "top": {
+    "text": [
+     "tjzcf-20",
+     "ldzy-js1-20",
+     "tjzcf-43",
+     "js2-cases-4-facts",
+     "js2-cases-2-facts"
+    ],
+    "vector": [
+     "ldhtf-52",
+     "ldhtf-51",
+     "ldhtf-16",
+     "js2-cases-2-result",
+     "ldhtf-1"
+    ],
+    "hybrid": [
+     "js2-cases-2-facts",
+     "ldhtf-16",
+     "js2-cases-2-result",
+     "ldhtf-35",
+     "tjzcf-20"
+    ],
+    "hybrid+rr": [
+     "ldhtf-16",
+     "ldhtf-81"
+    ],
+    "rewrite": [
+     "ldhtf-81",
+     "ldhtf-16",
+     "ldhtf-35",
+     "ldhtf-89",
+     "ldf-98"
+    ],
+    "full": [
+     "ldhtf-16",
+     "ldhtf-81",
+     "ldhtf-35"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-2-facts",
+     "ldhtf-16",
+     "js2-cases-2-result",
+     "ldhtf-35",
+     "tjzcf-20",
+     "ldhtf-52",
+     "ldzy-js1-20",
+     "ldhtf-51",
+     "tjzcf-43",
+     "js2-cases-4-facts",
+     "ldhtf-1",
+     "ldzy-js1-25",
+     "js2-cases-3-facts",
+     "ldhtf-81",
+     "js2-cases-6-facts",
+     "ldhtf-34",
+     "js2-cases-5-facts",
+     "ldhtf-75",
+     "ldf-79",
+     "js2-cases-2-meaning"
+    ],
+    "rewrite": [
+     "ldhtf-81",
+     "ldhtf-16",
+     "ldhtf-35",
+     "ldhtf-89",
+     "ldf-98",
+     "ldhtf-80",
+     "ldhtf-93",
+     "ldhtf-11",
+     "ldf-97",
+     "js2-cases-2-facts",
+     "ldf-34",
+     "ldzy-js2-7",
+     "ldhtf-25",
+     "ldhtf-51",
+     "ldhtf-52",
+     "js2-cases-2-meaning",
+     "ldhtf-tl-34",
+     "ldhtf-28",
+     "ldhtf-92",
+     "ldhtf-34"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位未将劳动合同文本交付劳动者，由劳动行政部门责令改正并承担赔偿责任",
+    "劳动合同文本由用人单位和劳动者各持一份，用人单位不得单方保管",
+    "劳动者有权持有劳动合同文本，用人单位未交付的违法后果与赔偿责任"
+   ],
+   "ms": {
+    "rewrite": 2158,
+    "search": 179,
+    "rerankRaw": 1743,
+    "rerank": 1559,
+    "total": 3896
+   },
+   "promptChars": 2956
+  },
+  {
+   "id": "t14",
+   "round": 2,
+   "top": {
+    "text": [
+     "nxj-3",
+     "sbf-55",
+     "js2-cases-2-facts",
+     "sbf-56",
+     "ldf-62"
+    ],
+    "vector": [
+     "ldf-62",
+     "gzzf-12",
+     "sbf-56",
+     "ldzy-js1-32",
+     "gzzf-11"
+    ],
+    "hybrid": [
+     "ldf-62",
+     "sbf-56",
+     "nxj-3",
+     "gzzf-11",
+     "gzzf-12"
+    ],
+    "hybrid+rr": [
+     "ldf-62",
+     "sbf-56",
+     "zdgz-3"
+    ],
+    "rewrite": [
+     "ldf-62",
+     "sbf-56",
+     "gzzf-11",
+     "ldf-51",
+     "sbf-54"
+    ],
+    "full": [
+     "ldf-62",
+     "sbf-56",
+     "sbf-54",
+     "sbf-53",
+     "zdgz-3"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldf-62",
+     "sbf-56",
+     "nxj-3",
+     "gzzf-11",
+     "gzzf-12",
+     "ldf-51",
+     "sbf-55",
+     "js2-cases-2-facts",
+     "ldzy-js1-32",
+     "nxj-8",
+     "ldf-29",
+     "zdgz-3",
+     "ldf-21",
+     "js2-cases-2-result",
+     "nxj-5",
+     "js2-cases-5-facts",
+     "nxj-2",
+     "ldhtf-70",
+     "js2-cases-5-result",
+     "ldf-41"
+    ],
+    "rewrite": [
+     "ldf-62",
+     "sbf-56",
+     "gzzf-11",
+     "ldf-51",
+     "sbf-54",
+     "nxj-5",
+     "nxj-8",
+     "ldzy-js1-32",
+     "nxj-2",
+     "nxj-3",
+     "ldf-61",
+     "nxj-6",
+     "nxj-1",
+     "ldf-63",
+     "nxj-9",
+     "gzzf-12",
+     "nxj-4",
+     "sbf-53",
+     "zdgz-3",
+     "ldf-29"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "女职工生育享受产假天数及产假期间工资待遇的规定",
+    "用人单位在女职工产假期间停发工资劳动者可以主张什么权利",
+    "产假属于工资支付还是生育保险待遇的制度分类"
+   ],
+   "ms": {
+    "rewrite": 1842,
+    "search": 894,
+    "rerankRaw": 1742,
+    "rerank": 2612,
+    "total": 5348
+   },
+   "promptChars": 2539
+  },
+  {
+   "id": "t15",
+   "round": 2,
+   "top": {
+    "text": [
+     "js2-cases-6-result",
+     "ldhtf-37",
+     "ldhtf-47",
+     "ldhtf-41",
+     "ldhtf-85"
+    ],
+    "vector": [
+     "ldhtf-40",
+     "ldf-28",
+     "ldf-31",
+     "ldhtf-46",
+     "ldf-24"
+    ],
+    "hybrid": [
+     "ldhtf-37",
+     "ldhtf-41",
+     "ldhtf-tl-25",
+     "ldhtf-tl-5",
+     "ldzy-js1-36"
+    ],
+    "hybrid+rr": [
+     "ldhtf-41",
+     "ldhtf-46",
+     "ldf-27",
+     "ldf-28",
+     "ldhtf-47"
+    ],
+    "rewrite": [
+     "ldf-30",
+     "ldhtf-tl-18",
+     "ldhtf-41",
+     "ldhtf-46",
+     "ldhtf-37"
+    ],
+    "full": [
+     "ldhtf-41",
+     "ldf-27",
+     "ldhtf-46",
+     "ldf-28",
+     "ldhtf-40"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-37",
+     "ldhtf-41",
+     "ldhtf-tl-25",
+     "ldhtf-tl-5",
+     "ldzy-js1-36",
+     "ldhtf-71",
+     "ldzy-js1-38",
+     "ldzy-js1-48",
+     "ldf-27",
+     "js2-cases-6-result",
+     "ldhtf-40",
+     "ldf-28",
+     "ldhtf-47",
+     "ldf-31",
+     "ldhtf-46",
+     "ldhtf-85",
+     "ldf-24",
+     "ldf-26",
+     "js2-cases-6-facts",
+     "ldhtf-50"
+    ],
+    "rewrite": [
+     "ldf-30",
+     "ldhtf-tl-18",
+     "ldhtf-41",
+     "ldhtf-46",
+     "ldhtf-37",
+     "ldf-28",
+     "ldf-27",
+     "ldf-32",
+     "ldzy-js1-47",
+     "ldhtf-38",
+     "ldhtf-tl-25",
+     "ldzy-js1-36",
+     "ldzy-js1-38",
+     "ldf-31",
+     "ldzy-js2-18",
+     "ldhtf-tl-19",
+     "ldzy-js2-16",
+     "ldhtf-40",
+     "ldf-26",
+     "ldhtf-71"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位经济性裁员应当提前三十日向工会或者全体职工说明情况并听取意见",
+    "用人单位违法解除劳动合同的，劳动者可以要求继续履行或者主张赔偿金",
+    "经济性裁员属于劳动合同解除制度中用人单位单方解除劳动合同的法定情形"
+   ],
+   "ms": {
+    "rewrite": 1712,
+    "search": 933,
+    "rerankRaw": 1817,
+    "rerank": 2207,
+    "total": 4852
+   },
+   "promptChars": 4070
+  },
+  {
+   "id": "t16",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldhtf-19",
+     "ldzy-js1-38",
+     "ldzy-js1-39",
+     "js2-cases-4-facts",
+     "ldzy-js1-43"
+    ],
+    "vector": [
+     "js2-cases-3-facts",
+     "ldhtf-tl-5",
+     "ldhtf-30",
+     "ldhtf-tl-6",
+     "ldhtf-40"
+    ],
+    "hybrid": [
+     "js2-cases-3-facts",
+     "ldhtf-tl-7",
+     "ldzy-js1-38",
+     "ldzy-js1-49",
+     "js2-cases-3-result"
+    ],
+    "hybrid+rr": [
+     "ldhtf-82",
+     "ldhtf-tl-6",
+     "ldhtf-tl-34",
+     "ldhtf-tl-7",
+     "ldhtf-tl-5"
+    ],
+    "rewrite": [
+     "js2-cases-3-facts",
+     "js2-cases-3-meaning",
+     "ldhtf-tl-7",
+     "js2-cases-3-result",
+     "ldhtf-tl-6"
+    ],
+    "full": [
+     "ldhtf-82",
+     "ldhtf-tl-6",
+     "ldzy-js2-6",
+     "ldzy-js2-7",
+     "ldhtf-10"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-3-facts",
+     "ldhtf-tl-7",
+     "ldzy-js1-38",
+     "ldzy-js1-49",
+     "js2-cases-3-result",
+     "ldhtf-19",
+     "ldhtf-tl-5",
+     "ldzy-js1-39",
+     "ldhtf-30",
+     "js2-cases-4-facts",
+     "ldhtf-tl-6",
+     "ldzy-js1-43",
+     "ldhtf-40",
+     "ldf-34",
+     "js2-cases-1-facts",
+     "ldhtf-82",
+     "js2-cases-2-result",
+     "ldhtf-tl-34",
+     "js2-cases-2-facts",
+     "ldzy-js2-9"
+    ],
+    "rewrite": [
+     "js2-cases-3-facts",
+     "js2-cases-3-meaning",
+     "ldhtf-tl-7",
+     "js2-cases-3-result",
+     "ldhtf-tl-6",
+     "ldzy-js2-6",
+     "ldhtf-82",
+     "ldhtf-10",
+     "ldhtf-tl-5",
+     "ldzy-js2-7",
+     "ldzy-js2-9",
+     "ldhtf-11",
+     "ldhtf-14",
+     "ldhtf-tl-34",
+     "ldzy-js1-43",
+     "ldhtf-47",
+     "js2-cases-2-meaning",
+     "ldzy-js2-3",
+     "ldhtf-19",
+     "ldzy-js1-38"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位自用工之日起超过一个月不满一年未与劳动者订立书面劳动合同的，应当向劳动者每月支付二倍工资",
+    "用人单位未与劳动者订立书面劳动合同，劳动者可以主张双倍工资差额",
+    "订立书面劳动合同属于劳动合同制度中用人单位的法定义务"
+   ],
+   "ms": {
+    "rewrite": 1654,
+    "search": 163,
+    "rerankRaw": 2325,
+    "rerank": 1990,
+    "total": 3807
+   },
+   "promptChars": 4398
+  },
+  {
+   "id": "t17",
+   "round": 2,
+   "top": {
+    "text": [
+     "js2-cases-3-result",
+     "js2-cases-4-facts",
+     "gzzf-18",
+     "ldzy-js1-44",
+     "ldf-91"
+    ],
+    "vector": [
+     "ldzy-js1-53",
+     "ldhtf-87",
+     "ldhtf-90",
+     "js2-cases-6-result",
+     "ldhtf-91"
+    ],
+    "hybrid": [
+     "ldzy-js1-53",
+     "js2-cases-6-result",
+     "js2-cases-6-facts",
+     "ldhtf-tl-25",
+     "js2-cases-3-result"
+    ],
+    "hybrid+rr": [
+     "ldhtf-87",
+     "ldhtf-tl-25",
+     "ldf-91",
+     "ldzy-js1-53",
+     "ldzy-js1-44"
+    ],
+    "rewrite": [
+     "ldhtf-tl-25",
+     "ldzy-js1-47",
+     "ldzy-js2-18",
+     "ldhtf-87",
+     "ldzy-js1-53"
+    ],
+    "full": [
+     "ldhtf-87",
+     "ldhtf-48",
+     "ldhtf-tl-25",
+     "ldzy-js1-47",
+     "ldzy-js1-53"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldzy-js1-53",
+     "js2-cases-6-result",
+     "js2-cases-6-facts",
+     "ldhtf-tl-25",
+     "js2-cases-3-result",
+     "js2-cases-4-facts",
+     "ldhtf-87",
+     "gzzf-18",
+     "ldhtf-90",
+     "ldzy-js1-44",
+     "ldf-91",
+     "ldhtf-91",
+     "ldf-50",
+     "ldf-97",
+     "ldf-100",
+     "ldzy-js1-19",
+     "js2-cases-2-result",
+     "ldhtf-86",
+     "js2-cases-2-facts",
+     "ldf-102"
+    ],
+    "rewrite": [
+     "ldhtf-tl-25",
+     "ldzy-js1-47",
+     "ldzy-js2-18",
+     "ldhtf-87",
+     "ldzy-js1-53",
+     "ldf-28",
+     "js2-cases-6-result",
+     "ldhtf-46",
+     "ldhtf-36",
+     "ldzy-js2-12",
+     "ldf-30",
+     "ldhtf-38",
+     "ldf-91",
+     "ldhtf-43",
+     "ldhtf-89",
+     "ldhtf-tl-32",
+     "ldhtf-tl-24",
+     "ldhtf-tl-31",
+     "ldhtf-48",
+     "ldhtf-90"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位违反本法规定解除或者终止劳动合同，劳动者要求继续履行或者主张赔偿金",
+    "用人单位违法解除劳动合同，劳动者可以主张经济补偿标准二倍的赔偿金",
+    "解除劳动合同属于劳动合同解除制度，用人单位单方解除的法定情形和程序"
+   ],
+   "ms": {
+    "rewrite": 13264,
+    "search": 931,
+    "rerankRaw": 2204,
+    "rerank": 3920,
+    "total": 18115
+   },
+   "promptChars": 3067
+  },
+  {
+   "id": "t18",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldf-79",
+     "ldhtf-47",
+     "ldhtf-tl-27",
+     "sbf-60",
+     "ldzy-js1-36"
+    ],
+    "vector": [
+     "ldhtf-30",
+     "zdgz-13",
+     "ldf-91",
+     "gzzf-18",
+     "gzzf-6"
+    ],
+    "hybrid": [
+     "ldf-91",
+     "ldhtf-tl-6",
+     "gzzf-18",
+     "ldf-79",
+     "ldhtf-30"
+    ],
+    "hybrid+rr": [
+     "ldhtf-30",
+     "ldf-91",
+     "gzzf-18",
+     "ldhtf-47",
+     "ldhtf-tl-27"
+    ],
+    "rewrite": [
+     "ldf-91",
+     "ldzy-js1-45",
+     "ldhtf-30",
+     "gzzf-18",
+     "tjzcf-9"
+    ],
+    "full": [
+     "ldzy-js1-45",
+     "ldf-32",
+     "ldhtf-46",
+     "ldhtf-30",
+     "ldf-91"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldf-91",
+     "ldhtf-tl-6",
+     "gzzf-18",
+     "ldf-79",
+     "ldhtf-30",
+     "ldhtf-47",
+     "zdgz-13",
+     "ldhtf-tl-27",
+     "sbf-60",
+     "ldzy-js1-36",
+     "gzzf-6",
+     "ldhtf-tl-20",
+     "gzzf-16",
+     "js2-cases-3-facts",
+     "gzzf-19",
+     "ldzy-js1-19",
+     "ldhtf-tl-5",
+     "tjzcf-47",
+     "ldzy-js1-38",
+     "ldhtf-40"
+    ],
+    "rewrite": [
+     "ldf-91",
+     "ldzy-js1-45",
+     "ldhtf-30",
+     "gzzf-18",
+     "tjzcf-9",
+     "ldzy-js1-36",
+     "gzzf-15",
+     "gzzf-16",
+     "ldhtf-tl-6",
+     "ldhtf-28",
+     "ldhtf-tl-27",
+     "ldhtf-85",
+     "ldf-32",
+     "ldhtf-46",
+     "ldzy-js1-15",
+     "ldhtf-36",
+     "gzzf-9",
+     "tjzcf-16",
+     "ldzy-js1-49",
+     "ldf-50"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位未及时足额支付劳动报酬的，劳动者可以解除劳动合同",
+    "用人单位拖欠工资，劳动者解除劳动合同后能否主张经济补偿",
+    "用人单位克扣或者无故拖欠劳动者工资的法律后果"
+   ],
+   "ms": {
+    "rewrite": 3703,
+    "search": 788,
+    "rerankRaw": 2165,
+    "rerank": 3595,
+    "total": 8086
+   },
+   "promptChars": 3397
+  },
+  {
+   "id": "t19",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldhtf-31",
+     "ldzy-js1-42",
+     "ldhtf-85",
+     "ldf-82",
+     "ldzy-js1-35"
+    ],
+    "vector": [
+     "ldhtf-31",
+     "tjzcf-44",
+     "tjzcf-47",
+     "ldzy-js1-19",
+     "tjzcf-16"
+    ],
+    "hybrid": [
+     "ldhtf-31",
+     "ldzy-js1-42",
+     "tjzcf-27",
+     "ldzy-js1-35",
+     "js2-cases-3-facts"
+    ],
+    "hybrid+rr": [
+     "tjzcf-27",
+     "ldhtf-31"
+    ],
+    "rewrite": [
+     "tjzcf-27",
+     "ldf-82",
+     "tjzcf-43",
+     "ldhtf-31",
+     "tjzcf-47"
+    ],
+    "full": [
+     "tjzcf-27",
+     "ldzy-js2-20",
+     "ldzy-js1-42"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-31",
+     "ldzy-js1-42",
+     "tjzcf-27",
+     "ldzy-js1-35",
+     "js2-cases-3-facts",
+     "ldf-82",
+     "tjzcf-44",
+     "ldhtf-85",
+     "tjzcf-47",
+     "ldzy-js1-19",
+     "tjzcf-16",
+     "ldhtf-62",
+     "ldzy-js1-49",
+     "ldhtf-tl-9",
+     "tjzcf-43",
+     "tjzcf-2",
+     "ldhtf-tl-7",
+     "tjzcf-35",
+     "ldhtf-47",
+     "tjzcf-9"
+    ],
+    "rewrite": [
+     "tjzcf-27",
+     "ldf-82",
+     "tjzcf-43",
+     "ldhtf-31",
+     "tjzcf-47",
+     "tjzcf-44",
+     "ldzy-js1-19",
+     "ldzy-js2-20",
+     "tjzcf-16",
+     "ldzy-js1-49",
+     "ldzy-js1-42",
+     "ldhtf-85",
+     "tjzcf-29",
+     "gzzf-13",
+     "ldf-44",
+     "ldf-41",
+     "ldf-51",
+     "tjzcf-14",
+     "tjzcf-35",
+     "ldf-84"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳动争议申请仲裁的时效期间为一年，从当事人知道或者应当知道其权利被侵害之日起计算",
+    "劳动关系存续期间因拖欠劳动报酬发生争议，劳动者申请仲裁不受一年时效期间的限制；劳动关系终止的，应当自劳动关系终止之日起一年内提出",
+    "用人单位安排劳动者延长工作时间、休息日工作或者法定休假日工作，应当支付加班工资"
+   ],
+   "ms": {
+    "rewrite": 2989,
+    "search": 1174,
+    "rerankRaw": 3863,
+    "rerank": 4180,
+    "total": 8344
+   },
+   "promptChars": 3589
+  },
+  {
+   "id": "t20",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldf-40",
+     "gzzf-5",
+     "ldf-50",
+     "ldhtf-tl-20",
+     "ldf-44"
+    ],
+    "vector": [
+     "ldf-40",
+     "ldf-44",
+     "gzzf-13",
+     "gzzf-11",
+     "nxj-5"
+    ],
+    "hybrid": [
+     "ldf-40",
+     "ldf-44",
+     "ldf-50",
+     "nxj-5",
+     "gzzf-13"
+    ],
+    "hybrid+rr": [
+     "ldf-44",
+     "gzzf-13",
+     "ldhtf-31",
+     "ldf-40",
+     "ldf-51"
+    ],
+    "rewrite": [
+     "ldf-44",
+     "gzzf-13",
+     "ldf-51",
+     "ldf-40",
+     "ldhtf-31"
+    ],
+    "full": [
+     "ldf-44",
+     "gzzf-13",
+     "ldf-40",
+     "ldhtf-31",
+     "ldhtf-85"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldf-40",
+     "ldf-44",
+     "ldf-50",
+     "nxj-5",
+     "gzzf-13",
+     "nxj-7",
+     "ldhtf-31",
+     "gzzf-5",
+     "ldhtf-tl-20",
+     "gzzf-11",
+     "ldf-45",
+     "ldhtf-tl-10",
+     "gzzf-7",
+     "ldzy-js1-46",
+     "ldf-51",
+     "ldf-61",
+     "nxj-2",
+     "ldf-63",
+     "nxj-9",
+     "ldhtf-85"
+    ],
+    "rewrite": [
+     "ldf-44",
+     "gzzf-13",
+     "ldf-51",
+     "ldf-40",
+     "ldhtf-31",
+     "nxj-7",
+     "gzzf-11",
+     "ldhtf-85",
+     "gzzf-7",
+     "nxj-5",
+     "nxj-3",
+     "gzzf-10",
+     "ldf-45",
+     "ldf-91",
+     "ldf-36",
+     "gzzf-18",
+     "ldhtf-tl-27",
+     "gzzf-12",
+     "ldhtf-62",
+     "gzzf-5"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "法定休假日安排劳动者工作的，用人单位应当按照不低于工资的百分之三百支付工资报酬",
+    "用人单位安排劳动者在法定休假日工作不支付加班工资的，劳动者可以主张什么",
+    "法定休假日加班工资属于工资支付还是工时休假制度"
+   ],
+   "ms": {
+    "rewrite": 1412,
+    "search": 149,
+    "rerankRaw": 3582,
+    "rerank": 2204,
+    "total": 3766
+   },
+   "promptChars": 3316
+  },
+  {
+   "id": "t21",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldzy-js1-42",
+     "ldhtf-85",
+     "ldhtf-31",
+     "js2-cases-1-result",
+     "ldzy-js2-19"
+    ],
+    "vector": [
+     "ldhtf-31",
+     "ldzy-js1-42",
+     "js2-cases-3-facts",
+     "ldzy-js2-19",
+     "ldf-34"
+    ],
+    "hybrid": [
+     "ldzy-js1-42",
+     "ldhtf-31",
+     "ldzy-js2-19",
+     "ldhtf-85",
+     "js2-cases-3-facts"
+    ],
+    "hybrid+rr": [
+     "ldhtf-31",
+     "ldhtf-85",
+     "ldzy-js1-35",
+     "ldhtf-25",
+     "ldf-17"
+    ],
+    "rewrite": [
+     "ldzy-js1-42",
+     "ldhtf-31",
+     "ldhtf-85",
+     "js2-cases-6-meaning",
+     "ldzy-js2-19"
+    ],
+    "full": [
+     "ldzy-js1-35",
+     "ldhtf-31",
+     "ldhtf-85",
+     "ldf-91",
+     "ldzy-js1-45"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldzy-js1-42",
+     "ldhtf-31",
+     "ldzy-js2-19",
+     "ldhtf-85",
+     "js2-cases-3-facts",
+     "js2-cases-1-result",
+     "ldf-34",
+     "ldzy-js1-35",
+     "js2-cases-3-result",
+     "js2-cases-6-facts",
+     "ldhtf-tl-5",
+     "js2-cases-6-result",
+     "ldhtf-25",
+     "ldhtf-62",
+     "ldhtf-40",
+     "js2-cases-6-meaning",
+     "ldf-26",
+     "js2-cases-2-result",
+     "ldf-17",
+     "ldhtf-35"
+    ],
+    "rewrite": [
+     "ldzy-js1-42",
+     "ldhtf-31",
+     "ldhtf-85",
+     "js2-cases-6-meaning",
+     "ldzy-js2-19",
+     "ldhtf-62",
+     "ldhtf-25",
+     "ldzy-js1-35",
+     "ldzy-js2-7",
+     "js2-cases-3-facts",
+     "gzzf-1",
+     "js2-cases-3-result",
+     "js2-cases-6-result",
+     "js2-cases-6-facts",
+     "ldf-32",
+     "ldhtf-18",
+     "ldhtf-tl-5",
+     "ldf-91",
+     "ldzy-js1-45",
+     "ldzy-js2-15"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位与劳动者约定劳动者自愿放弃加班费的承诺书是否有效",
+    "劳动者主张用人单位支付加班费 用人单位以劳动者自愿放弃为由抗辩",
+    "加班费属于工资组成部分 用人单位不得以约定方式排除劳动者获得加班费的权利"
+   ],
+   "ms": {
+    "rewrite": 4364,
+    "search": 550,
+    "rerankRaw": 12428,
+    "rerank": 5752,
+    "total": 10666
+   },
+   "promptChars": 4051
+  },
+  {
+   "id": "t22",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldhtf-19",
+     "ldhtf-37",
+     "ldf-21",
+     "ldhtf-83",
+     "ldhtf-21"
+    ],
+    "vector": [
+     "ldhtf-37",
+     "ldf-21",
+     "ldhtf-70",
+     "ldhtf-21",
+     "ldhtf-19"
+    ],
+    "hybrid": [
+     "ldhtf-37",
+     "ldf-21",
+     "ldhtf-19",
+     "ldhtf-70",
+     "ldhtf-21"
+    ],
+    "hybrid+rr": [
+     "ldhtf-37",
+     "ldhtf-tl-18",
+     "ldf-32",
+     "ldf-31",
+     "ldhtf-19"
+    ],
+    "rewrite": [
+     "ldhtf-37",
+     "ldhtf-21",
+     "ldf-32",
+     "ldf-25",
+     "ldhtf-83"
+    ],
+    "full": [
+     "ldhtf-37",
+     "ldhtf-tl-18",
+     "ldf-32",
+     "ldhtf-36",
+     "ldf-31"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-37",
+     "ldf-21",
+     "ldhtf-19",
+     "ldhtf-70",
+     "ldhtf-21",
+     "ldhtf-83",
+     "ldf-32",
+     "ldf-25",
+     "ldhtf-20",
+     "ldhtf-39",
+     "ldf-31",
+     "ldhtf-tl-15",
+     "ldhtf-40",
+     "ldf-41",
+     "ldhtf-tl-18",
+     "js2-cases-2-result",
+     "js2-cases-2-facts",
+     "ldhtf-tl-5",
+     "ldf-30",
+     "js2-cases-4-facts"
+    ],
+    "rewrite": [
+     "ldhtf-37",
+     "ldhtf-21",
+     "ldf-32",
+     "ldf-25",
+     "ldhtf-83",
+     "ldhtf-39",
+     "ldhtf-70",
+     "ldf-21",
+     "ldhtf-tl-18",
+     "ldhtf-19",
+     "ldf-31",
+     "ldzy-js2-12",
+     "ldf-26",
+     "ldhtf-40",
+     "ldhtf-tl-15",
+     "ldhtf-43",
+     "ldhtf-20",
+     "ldhtf-tl-5",
+     "ldhtf-36",
+     "ldhtf-tl-24"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳动者在试用期内提前三日通知用人单位，可以解除劳动合同。",
+    "劳动者试用期解除劳动合同需要提前几日通知用人单位。",
+    "试用期解除劳动合同属于劳动合同解除制度中劳动者单方解除的情形。"
+   ],
+   "ms": {
+    "rewrite": 3680,
+    "search": 140,
+    "rerankRaw": 4283,
+    "rerank": 11420,
+    "total": 15240
+   },
+   "promptChars": 2991
+  },
+  {
+   "id": "t23",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldhtf-47",
+     "ldhtf-19",
+     "sbf-46",
+     "ldhtf-tl-6",
+     "ldhtf-tl-7"
+    ],
+    "vector": [
+     "ldhtf-89",
+     "ldhtf-82",
+     "ldhtf-tl-7",
+     "ldzy-js1-48",
+     "ldhtf-47"
+    ],
+    "hybrid": [
+     "ldhtf-47",
+     "ldhtf-82",
+     "ldhtf-tl-7",
+     "ldhtf-tl-6",
+     "ldzy-js1-38"
+    ],
+    "hybrid+rr": [
+     "ldhtf-47",
+     "ldhtf-tl-27",
+     "ldzy-js1-53",
+     "ldf-28",
+     "ldhtf-82"
+    ],
+    "rewrite": [
+     "ldhtf-tl-25",
+     "ldhtf-47",
+     "ldhtf-tl-6",
+     "ldf-28",
+     "ldhtf-tl-7"
+    ],
+    "full": [
+     "ldhtf-47",
+     "ldhtf-46",
+     "ldhtf-tl-25",
+     "ldf-28",
+     "ldf-91"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-47",
+     "ldhtf-82",
+     "ldhtf-tl-7",
+     "ldhtf-tl-6",
+     "ldzy-js1-38",
+     "ldzy-js1-53",
+     "ldhtf-89",
+     "ldhtf-19",
+     "sbf-46",
+     "ldzy-js1-48",
+     "ldf-28",
+     "ldzy-js2-6",
+     "js2-cases-3-meaning",
+     "nxj-4",
+     "ldf-98",
+     "ldhtf-tl-27",
+     "sbf-85",
+     "js2-cases-4-facts",
+     "ldzy-js2-8",
+     "sbf-45"
+    ],
+    "rewrite": [
+     "ldhtf-tl-25",
+     "ldhtf-47",
+     "ldhtf-tl-6",
+     "ldf-28",
+     "ldhtf-tl-7",
+     "ldhtf-82",
+     "ldzy-js2-18",
+     "ldzy-js1-38",
+     "ldhtf-tl-27",
+     "ldzy-js2-6",
+     "ldhtf-tl-10",
+     "ldzy-js2-12",
+     "ldf-91",
+     "ldzy-js1-46",
+     "ldzy-js1-47",
+     "ldhtf-46",
+     "ldzy-js1-48",
+     "js2-cases-6-result",
+     "ldzy-js2-11",
+     "ldzy-js1-53"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位违法解除劳动合同，劳动者工作不满一年，是否应当支付经济补偿",
+    "用人单位解除劳动合同，劳动者工作不满六个月和满六个月不满一年的，经济补偿如何计算",
+    "用人单位单方解除劳动合同，劳动者可以主张继续履行或者赔偿金"
+   ],
+   "ms": {
+    "rewrite": 3653,
+    "search": 162,
+    "rerankRaw": 11678,
+    "rerank": 1947,
+    "total": 5762
+   },
+   "promptChars": 3798
+  },
+  {
+   "id": "t24",
+   "round": 2,
+   "top": {
+    "text": [
+     "js2-cases-2-result",
+     "js2-cases-2-facts",
+     "js2-cases-3-facts",
+     "js2-cases-3-result",
+     "js2-cases-4-facts"
+    ],
+    "vector": [
+     "js2-cases-2-facts",
+     "ldzy-js1-43",
+     "ldhtf-18",
+     "ldhtf-35",
+     "js2-cases-2-result"
+    ],
+    "hybrid": [
+     "js2-cases-2-facts",
+     "js2-cases-2-result",
+     "js2-cases-3-facts",
+     "js2-cases-5-facts",
+     "js2-cases-4-facts"
+    ],
+    "hybrid+rr": [],
+    "rewrite": [
+     "ldhtf-33",
+     "ldzy-js1-43",
+     "ldhtf-35",
+     "ldf-17",
+     "ldhtf-2"
+    ],
+    "full": [
+     "ldhtf-33",
+     "ldhtf-34",
+     "ldf-17",
+     "ldhtf-35",
+     "ldzy-js1-46"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-2-facts",
+     "js2-cases-2-result",
+     "js2-cases-3-facts",
+     "js2-cases-5-facts",
+     "js2-cases-4-facts",
+     "js2-cases-4-result",
+     "ldzy-js1-43",
+     "ldhtf-18",
+     "js2-cases-3-result",
+     "ldhtf-35",
+     "js2-cases-2-meaning",
+     "ldhtf-tl-10",
+     "js2-cases-5-result",
+     "ldzy-js1-46",
+     "js2-cases-6-facts",
+     "ldzy-js1-36",
+     "ldhtf-tl-33",
+     "ldhtf-tl-29",
+     "ldhtf-64",
+     "ldzy-js2-6"
+    ],
+    "rewrite": [
+     "ldhtf-33",
+     "ldzy-js1-43",
+     "ldhtf-35",
+     "ldf-17",
+     "ldhtf-2",
+     "ldhtf-34",
+     "js2-cases-2-facts",
+     "js2-cases-2-result",
+     "ldzy-js1-46",
+     "ldhtf-tl-37",
+     "ldzy-js1-34",
+     "ldf-26",
+     "ldzy-js1-48",
+     "ldhtf-96",
+     "ldhtf-tl-19",
+     "ldhtf-48",
+     "ldzy-js2-18",
+     "ldhtf-tl-10",
+     "js2-cases-3-result",
+     "ldhtf-17"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位变更法定代表人或者投资人等事项不影响劳动合同的履行",
+    "用人单位合并分立变更名称法定代表人后原劳动合同继续有效",
+    "用人单位主体变更后劳动者主张继续履行原劳动合同"
+   ],
+   "ms": {
+    "rewrite": 1435,
+    "search": 700,
+    "rerankRaw": 2237,
+    "rerank": 1929,
+    "total": 4064
+   },
+   "promptChars": 3955
+  },
+  {
+   "id": "t25",
+   "round": 2,
+   "top": {
+    "text": [
+     "tjzcf-41",
+     "ldf-82",
+     "tjzcf-12",
+     "tjzcf-30",
+     "tjzcf-28"
+    ],
+    "vector": [
+     "gzzf-19",
+     "tjzcf-44",
+     "tjzcf-28",
+     "ldzy-js1-49",
+     "ldzy-js1-19"
+    ],
+    "hybrid": [
+     "tjzcf-28",
+     "tjzcf-12",
+     "tjzcf-44",
+     "tjzcf-30",
+     "ldf-79"
+    ],
+    "hybrid+rr": [
+     "ldf-79",
+     "gzzf-19",
+     "ldf-82"
+    ],
+    "rewrite": [
+     "ldf-79",
+     "tjzcf-29",
+     "tjzcf-21",
+     "ldzy-js1-5",
+     "tjzcf-30"
+    ],
+    "full": [
+     "tjzcf-53",
+     "tjzcf-21",
+     "ldf-79",
+     "tjzcf-5"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "tjzcf-28",
+     "tjzcf-12",
+     "tjzcf-44",
+     "tjzcf-30",
+     "ldf-79",
+     "tjzcf-36",
+     "tjzcf-23",
+     "ldzy-js1-13",
+     "tjzcf-29",
+     "tjzcf-41",
+     "gzzf-19",
+     "ldf-82",
+     "ldzy-js1-49",
+     "ldzy-js1-19",
+     "tjzcf-24",
+     "ldzy-js1-22",
+     "ldzy-js1-25",
+     "tjzcf-16",
+     "tjzcf-40",
+     "ldzy-js1-21"
+    ],
+    "rewrite": [
+     "ldf-79",
+     "tjzcf-29",
+     "tjzcf-21",
+     "ldzy-js1-5",
+     "tjzcf-30",
+     "tjzcf-28",
+     "gzzf-19",
+     "tjzcf-44",
+     "ldzy-js1-6",
+     "ldzy-js1-13",
+     "ldzy-js1-21",
+     "tjzcf-23",
+     "ldzy-js1-14",
+     "tjzcf-19",
+     "tjzcf-53",
+     "tjzcf-5",
+     "tjzcf-41",
+     "tjzcf-36",
+     "ldzy-js1-9",
+     "tjzcf-27"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳动争议仲裁不收费，劳动者申请仲裁无需缴纳费用",
+    "劳动争议仲裁委员会负责受理劳动争议，劳动者可以向劳动合同履行地或者用人单位所在地的劳动争议仲裁委员会申请仲裁",
+    "劳动争议仲裁的管辖和申请地点属于劳动争议处理制度"
+   ],
+   "ms": {
+    "rewrite": 1577,
+    "search": 834,
+    "rerankRaw": 2295,
+    "rerank": 1591,
+    "total": 4002
+   },
+   "promptChars": 3396
+  },
+  {
+   "id": "t26",
+   "round": 2,
+   "top": {
+    "text": [
+     "tjzcf-12",
+     "ldhtf-69",
+     "tjzcf-33",
+     "ldzy-js1-43",
+     "js2-cases-3-facts"
+    ],
+    "vector": [
+     "ldhtf-11",
+     "js2-cases-3-facts",
+     "ldhtf-18",
+     "ldhtf-tl-15",
+     "js2-cases-2-facts"
+    ],
+    "hybrid": [
+     "js2-cases-3-facts",
+     "ldhtf-tl-15",
+     "ldhtf-tl-27",
+     "ldhtf-20",
+     "gzzf-16"
+    ],
+    "hybrid+rr": [
+     "ldzy-js1-43",
+     "ldhtf-18",
+     "ldhtf-11",
+     "gzzf-3",
+     "gzzf-4"
+    ],
+    "rewrite": [
+     "ldhtf-18",
+     "ldhtf-11",
+     "ldzy-js1-43",
+     "ldhtf-35",
+     "ldf-19"
+    ],
+    "full": [
+     "ldzy-js1-43",
+     "ldhtf-35",
+     "ldf-17",
+     "ldhtf-30"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-3-facts",
+     "ldhtf-tl-15",
+     "ldhtf-tl-27",
+     "ldhtf-20",
+     "gzzf-16",
+     "gzzf-12",
+     "tjzcf-12",
+     "ldhtf-11",
+     "ldhtf-69",
+     "tjzcf-33",
+     "ldhtf-18",
+     "ldzy-js1-43",
+     "js2-cases-2-facts",
+     "tjzcf-28",
+     "ldzy-js2-6",
+     "ldhtf-82",
+     "js2-cases-3-meaning",
+     "gzzf-3",
+     "gzzf-17",
+     "gzzf-4"
+    ],
+    "rewrite": [
+     "ldhtf-18",
+     "ldhtf-11",
+     "ldzy-js1-43",
+     "ldhtf-35",
+     "ldf-19",
+     "ldzy-js2-6",
+     "ldzy-js1-36",
+     "js2-cases-3-meaning",
+     "ldhtf-30",
+     "js2-cases-3-facts",
+     "ldhtf-tl-19",
+     "ldhtf-tl-18",
+     "ldhtf-33",
+     "ldf-91",
+     "ldhtf-tl-6",
+     "ldhtf-63",
+     "gzzf-16",
+     "ldzy-js2-7",
+     "ldf-17",
+     "ldhtf-tl-15"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "用人单位与劳动者变更劳动合同约定的劳动报酬应当采用书面形式",
+    "用人单位未按照劳动合同约定支付劳动报酬劳动者可以主张补足工资差额",
+    "劳动合同的变更和劳动报酬属于劳动合同必备条款的制度"
+   ],
+   "ms": {
+    "rewrite": 9278,
+    "search": 144,
+    "rerankRaw": 1897,
+    "rerank": 10034,
+    "total": 19456
+   },
+   "promptChars": 3954
+  },
+  {
+   "id": "t27",
+   "round": 2,
+   "top": {
+    "text": [
+     "gzzf-16",
+     "zdgz-1",
+     "zdgz-5",
+     "ldf-91",
+     "gzzf-18"
+    ],
+    "vector": [
+     "ldf-48",
+     "zdgz-1",
+     "sbf-12",
+     "sbf-35",
+     "sbf-13"
+    ],
+    "hybrid": [
+     "zdgz-1",
+     "ldf-48",
+     "ldhtf-tl-15",
+     "ldhtf-20",
+     "gzzf-16"
+    ],
+    "hybrid+rr": [
+     "zdgz-1",
+     "ldf-48",
+     "ldhtf-tl-15",
+     "ldhtf-20",
+     "gzzf-16"
+    ],
+    "rewrite": [
+     "sbf-35",
+     "sbf-60",
+     "ldf-72",
+     "sbf-12",
+     "sbf-62"
+    ],
+    "full": [
+     "sbf-12",
+     "sbf-60",
+     "sbf-63",
+     "sbf-86",
+     "ldf-100"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "zdgz-1",
+     "ldf-48",
+     "ldhtf-tl-15",
+     "ldhtf-20",
+     "gzzf-16",
+     "zdgz-5",
+     "sbf-12",
+     "ldf-91",
+     "sbf-35",
+     "gzzf-18",
+     "sbf-13",
+     "js2-cases-3-facts",
+     "zdgz-2",
+     "zdgz-10",
+     "sbf-26",
+     "js2-cases-3-result",
+     "sbf-61",
+     "zdgz-6",
+     "sbf-10",
+     "zdgz-7"
+    ],
+    "rewrite": [
+     "sbf-35",
+     "sbf-60",
+     "ldf-72",
+     "sbf-12",
+     "sbf-62",
+     "js2-cases-6-meaning",
+     "sbf-61",
+     "sbf-90",
+     "sbf-63",
+     "sbf-13",
+     "ldzy-js2-19",
+     "js2-cases-6-result",
+     "js2-cases-6-facts",
+     "sbf-86",
+     "gzzf-16",
+     "ldf-100",
+     "sbf-4",
+     "sbf-23",
+     "sbf-10",
+     "sbf-27"
+    ]
+   },
+   "degraded": [
+    "rerank:模型接口调用失败"
+   ],
+   "rewrites": [
+    "用人单位未按劳动者实际工资总额申报缴纳社会保险费，应当依法足额缴纳",
+    "用人单位低于劳动者工资基数缴纳社会保险费，劳动者可以要求补缴并主张相应赔偿",
+    "社会保险费的缴费基数应当按照劳动者本人工资确定，属于社会保险征缴制度"
+   ],
+   "ms": {
+    "rewrite": 4093,
+    "search": 938,
+    "rerankRaw": 28011,
+    "rerank": 5975,
+    "total": 11006
+   },
+   "promptChars": 3482
+  },
+  {
+   "id": "t28",
+   "round": 2,
+   "top": {
+    "text": [
+     "js2-cases-2-facts",
+     "js2-cases-3-result",
+     "js2-cases-4-facts",
+     "sbf-38",
+     "js2-cases-5-facts"
+    ],
+    "vector": [
+     "ldf-29",
+     "ldf-26",
+     "ldhtf-42",
+     "js2-cases-4-result",
+     "ldzy-js2-17"
+    ],
+    "hybrid": [
+     "js2-cases-4-facts",
+     "ldf-26",
+     "js2-cases-4-result",
+     "ldhtf-40",
+     "ldzy-js1-53"
+    ],
+    "hybrid+rr": [
+     "ldhtf-42",
+     "ldf-29",
+     "ldf-26",
+     "ldhtf-40",
+     "ldzy-js1-44"
+    ],
+    "rewrite": [
+     "ldf-26",
+     "ldf-29",
+     "ldhtf-40",
+     "ldhtf-42",
+     "ldf-32"
+    ],
+    "full": [
+     "ldhtf-42",
+     "ldf-29",
+     "ldhtf-40",
+     "ldf-26",
+     "ldhtf-21"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "js2-cases-4-facts",
+     "ldf-26",
+     "js2-cases-4-result",
+     "ldhtf-40",
+     "ldzy-js1-53",
+     "js2-cases-3-facts",
+     "ldf-39",
+     "js2-cases-2-facts",
+     "ldf-29",
+     "js2-cases-3-result",
+     "ldhtf-42",
+     "sbf-38",
+     "js2-cases-5-facts",
+     "ldzy-js2-17",
+     "tjzcf-27",
+     "ldzy-js1-44",
+     "js2-cases-2-result",
+     "sbf-17",
+     "ldf-27",
+     "ldzy-js1-49"
+    ],
+    "rewrite": [
+     "ldf-26",
+     "ldf-29",
+     "ldhtf-40",
+     "ldhtf-42",
+     "ldf-32",
+     "ldhtf-tl-19",
+     "ldhtf-21",
+     "ldf-30",
+     "ldhtf-38",
+     "ldhtf-tl-18",
+     "ldzy-js2-18",
+     "sbf-17",
+     "js2-cases-4-facts",
+     "sbf-38",
+     "ldzy-js2-12",
+     "ldf-25",
+     "ldzy-js1-47",
+     "js2-cases-4-result",
+     "ldhtf-36",
+     "ldzy-js2-17"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳动者患病或者非因工负伤，在规定的医疗期内，用人单位不得解除劳动合同",
+    "用人单位在医疗期内违法解除劳动合同，劳动者可以要求继续履行或者主张赔偿金",
+    "患病或非因工负伤劳动者的医疗期属于劳动合同解除限制制度"
+   ],
+   "ms": {
+    "rewrite": 4052,
+    "search": 893,
+    "rerankRaw": 5332,
+    "rerank": 13455,
+    "total": 18400
+   },
+   "promptChars": 4549
+  },
+  {
+   "id": "t29",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldhtf-60",
+     "ldhtf-59",
+     "ldhtf-58",
+     "ldhtf-92",
+     "ldhtf-65"
+    ],
+    "vector": [
+     "ldhtf-61",
+     "ldhtf-58",
+     "ldhtf-66",
+     "ldf-44",
+     "ldhtf-tl-30"
+    ],
+    "hybrid": [
+     "ldhtf-58",
+     "ldhtf-60",
+     "ldhtf-61",
+     "ldhtf-tl-30",
+     "ldhtf-92"
+    ],
+    "hybrid+rr": [
+     "ldhtf-63",
+     "ldhtf-62",
+     "ldhtf-61",
+     "ldhtf-60",
+     "ldhtf-58"
+    ],
+    "rewrite": [
+     "ldhtf-63",
+     "ldhtf-60",
+     "ldhtf-61",
+     "ldhtf-58",
+     "ldhtf-59"
+    ],
+    "full": [
+     "ldhtf-63",
+     "ldhtf-62",
+     "ldhtf-61",
+     "ldhtf-59",
+     "ldhtf-58"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldhtf-58",
+     "ldhtf-60",
+     "ldhtf-61",
+     "ldhtf-tl-30",
+     "ldhtf-92",
+     "ldhtf-59",
+     "ldhtf-tl-35",
+     "ldhtf-66",
+     "ldhtf-63",
+     "ldhtf-64",
+     "ldhtf-62",
+     "ldf-44",
+     "ldhtf-65",
+     "ldhtf-57",
+     "ldhtf-tl-28",
+     "ldhtf-20",
+     "tjzcf-22",
+     "ldhtf-tl-15",
+     "ldhtf-67",
+     "zdgz-12"
+    ],
+    "rewrite": [
+     "ldhtf-63",
+     "ldhtf-60",
+     "ldhtf-61",
+     "ldhtf-58",
+     "ldhtf-59",
+     "ldhtf-tl-35",
+     "ldhtf-tl-30",
+     "ldhtf-64",
+     "ldhtf-62",
+     "ldhtf-92",
+     "ldhtf-tl-28",
+     "ldhtf-65",
+     "ldhtf-66",
+     "ldhtf-tl-29",
+     "tjzcf-22",
+     "ldhtf-67",
+     "ldhtf-tl-32",
+     "ldhtf-tl-31",
+     "gzzf-1",
+     "js2-cases-2-meaning"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳务派遣劳动者与用工单位劳动者同工同酬的规定",
+    "被派遣劳动者享有与用工单位劳动者相同劳动报酬的权利",
+    "劳务派遣中同工不同酬的用人单位应承担什么法律责任"
+   ],
+   "ms": {
+    "rewrite": 4258,
+    "search": 137,
+    "rerankRaw": 7106,
+    "rerank": 5297,
+    "total": 9692
+   },
+   "promptChars": 3137
+  },
+  {
+   "id": "t30",
+   "round": 2,
+   "top": {
+    "text": [
+     "ldf-20",
+     "ldhtf-14",
+     "ldhtf-12",
+     "ldhtf-82",
+     "ldzy-js1-34"
+    ],
+    "vector": [
+     "ldf-20",
+     "ldhtf-14",
+     "ldhtf-tl-11",
+     "ldhtf-13",
+     "ldhtf-82"
+    ],
+    "hybrid": [
+     "ldf-20",
+     "ldhtf-14",
+     "ldhtf-12",
+     "ldhtf-82",
+     "ldhtf-tl-11"
+    ],
+    "hybrid+rr": [
+     "ldhtf-14",
+     "ldf-20",
+     "ldhtf-tl-11",
+     "ldhtf-tl-9",
+     "ldhtf-82"
+    ],
+    "rewrite": [
+     "ldf-20",
+     "ldhtf-14",
+     "ldhtf-tl-11",
+     "ldhtf-82",
+     "ldzy-js2-11"
+    ],
+    "full": [
+     "ldhtf-14",
+     "ldf-20",
+     "ldhtf-tl-11",
+     "ldhtf-82",
+     "ldzy-js1-34"
+    ]
+   },
+   "pool": {
+    "raw": [
+     "ldf-20",
+     "ldhtf-14",
+     "ldhtf-12",
+     "ldhtf-82",
+     "ldhtf-tl-11",
+     "ldhtf-13",
+     "ldzy-js1-34",
+     "ldhtf-19",
+     "ldzy-js2-11",
+     "ldhtf-tl-7",
+     "tjzcf-39",
+     "ldzy-js2-9",
+     "ldf-21",
+     "ldzy-js2-10",
+     "sbf-46",
+     "ldzy-js2-8",
+     "js2-cases-3-meaning",
+     "ldhtf-tl-9",
+     "ldhtf-tl-12",
+     "ldhtf-70"
+    ],
+    "rewrite": [
+     "ldf-20",
+     "ldhtf-14",
+     "ldhtf-tl-11",
+     "ldhtf-82",
+     "ldzy-js2-11",
+     "ldhtf-tl-7",
+     "ldhtf-13",
+     "ldhtf-12",
+     "ldzy-js1-34",
+     "ldzy-js2-9",
+     "ldzy-js2-10",
+     "js2-cases-3-meaning",
+     "ldhtf-19",
+     "ldhtf-97",
+     "ldhtf-tl-18",
+     "ldhtf-15",
+     "ldhtf-tl-19",
+     "ldhtf-41",
+     "ldhtf-tl-6",
+     "ldzy-js2-8"
+    ]
+   },
+   "degraded": [],
+   "rewrites": [
+    "劳动者在用人单位连续工作满十年，劳动者提出或者同意续订、订立劳动合同的，应当订立无固定期限劳动合同",
+    "用人单位违反规定不与劳动者订立无固定期限劳动合同的，自应当订立之日起向劳动者每月支付二倍的工资",
+    "劳动合同的期限分为固定期限、无固定期限和以完成一定工作任务为期限，无固定期限劳动合同的订立情形"
+   ],
+   "ms": {
+    "rewrite": 4576,
+    "search": 184,
+    "rerankRaw": 12580,
+    "rerank": 5362,
+    "total": 10122
+   },
+   "promptChars": 4553
+  }
+ ]
+}
