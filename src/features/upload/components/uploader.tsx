@@ -41,7 +41,8 @@ const stageText = (s?: Stage) => {
 let seq = 0;
 const newId = () => `p${++seq}`;
 
-export function Uploader() {
+/** onStart：识别完或粘贴好文字后点"开始检查"，交出按页面顺序排好的全部文字行 */
+export function Uploader({ onStart }: { onStart?: (lines: string[]) => void }) {
   const [items, setItems] = useState<Item[]>([]);
   const [notice, setNotice] = useState<string | null>(null);
   const [running, setRunning] = useState(false);
@@ -246,9 +247,26 @@ export function Uploader() {
 
       {done.length > 0 && (
         <div className="space-y-6">
-          <h2 className="text-lg font-semibold">
-            识别结果：{done.length} 页，{totalLines} 行
-          </h2>
+          <div className="flex flex-wrap items-center gap-3">
+            <h2 className="text-lg font-semibold">
+              识别结果：{done.length} 页，{totalLines} 行
+            </h2>
+            {onStart && (
+              <Button
+                disabled={running}
+                onClick={() =>
+                  onStart(items.flatMap((x) => x.result?.lines.map((l) => l.text) ?? []))
+                }
+              >
+                开始检查
+              </Button>
+            )}
+          </div>
+          {items.some((x) => x.status !== "done") && (
+            <p className="text-sm text-orange">
+              还有页没有识别出来，现在开始检查只会查已识别的页。
+            </p>
+          )}
           {items.map((it, i) =>
             it.result ? <PageView key={it.id} page={it.result} index={i} /> : null,
           )}
@@ -282,7 +300,12 @@ export function Uploader() {
         >
           使用这段文字
         </Button>
-        {pasteLines && <p className="mt-2 text-sm text-ink-2">收到 {pasteLines.length} 行文字。</p>}
+        {pasteLines && (
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            <p className="text-sm text-ink-2">收到 {pasteLines.length} 行文字。</p>
+            {onStart && <Button onClick={() => onStart(pasteLines)}>开始检查</Button>}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -6,7 +6,8 @@
 //
 // 注意：四份示例合同在写提示词时看过，这里的数字是开发集上的；独立的评测集是 T17 的合成合同。
 //
-// 用法：node scripts/eval/review.ts [--only labor,offer] [--rounds 1] [--no-save] [--quiet] [--debug]
+// 用法：node scripts/eval/review.ts [--only labor,offer] [--rounds 1] [--no-save] [--quiet] [--debug] [--record]
+// --record：把第 1 轮每份合同的全文和完整事件存到 public/recordings/，示例合同页回放和端到端测试用
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
@@ -32,6 +33,7 @@ const rounds = Number(arg("--rounds", "1"));
 const quiet = argv.includes("--quiet");
 // --debug：打印每次模型调用的输出（只在本机排查用，结果文件里不存）
 const debug = argv.includes("--debug");
+const record = argv.includes("--record");
 
 process.loadEnvFile(".env.local");
 const roles = rolesFromEnv();
@@ -85,6 +87,13 @@ for (let round = 1; round <= rounds; round++)
         console.log(`${t}   完成：${e.summary}（模型调用 ${e.modelCalls} 次）`);
     });
     await tools.close();
+    if (record && round === 1) {
+      mkdirSync("public/recordings", { recursive: true });
+      writeFileSync(
+        `public/recordings/${s.id}.json`,
+        `${JSON.stringify({ sample: s.id, kind: s.kind, recordedAt: new Date().toISOString().slice(0, 10), text, events })}\n`,
+      );
+    }
 
     // 和标准答案比
     const nonOk = (f: ReviewFinding) => f.verdict !== "ok";

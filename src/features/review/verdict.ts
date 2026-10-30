@@ -58,3 +58,13 @@ export const VERDICT_STYLE: Record<Verdict, VerdictStyle> = {
     borderL: "border-l-pencil",
   },
 };
+
+// 严重程度，批注排序用；和规则引擎的 SEVERITY（mcp/labor-law/rules/types.ts）一致
+export const SEVERITY_ORDER: Record<Verdict, number> = {
+  violation: 5,
+  likely_violation: 4,
+  needs_review: 3,
+  advice: 2,
+  unknown: 1,
+  ok: 0,
+};

@@ -20,7 +20,7 @@ import {
 import type { Ai } from "../ai/core.ts";
 import { aiErrorCode } from "../ai/errors.ts";
 import { programCheck, revisionOk, strayNumber, summarize, tidy } from "./checks.ts";
-import type { LawRef, ReviewEvent, ReviewFinding, StepName, Verdict } from "./events.ts";
+import type { LawRef, ReviewEvent, ReviewFinding, Revision, StepName, Verdict } from "./events.ts";
 import {
   dropUnsourced,
   FactsSchema,
@@ -71,6 +71,14 @@ const CALL = {
 
 const MAX_OTHERS = 5;
 const MAX_TEXT = 20_000;
+
+/** 等两件事都结束；有失败的，抛第一个失败的原因 */
+async function settleAll<A, B>(ps: [Promise<A>, Promise<B>]): Promise<[A, B]> {
+  const r = await Promise.allSettled(ps);
+  const failed = r.find((x) => x.status === "rejected") as PromiseRejectedResult | undefined;
+  if (failed) throw failed.reason;
+  return [(r[0] as PromiseFulfilledResult<A>).value, (r[1] as PromiseFulfilledResult<B>).value];
+}
 
 class StopError extends Error {
   readonly code: string;
@@ -154,6 +162,29 @@ export async function runReview(
     return finding;
   };
 
+  // 推一条说明。数字必须出自前面的步骤（对不上的不推，界面只显示规则给的结论）；
+  // 修改稿的 before 必须摘自合同原文，摘不到的不显示修改稿。返回是否推出
+  const emitReport = (
+    f: ReviewFinding,
+    x: { conclusion: string; revision: Revision | null; talkingPoint: string | null },
+  ): boolean => {
+    const conclusion = tidy(x.conclusion);
+    const talkingPoint = x.talkingPoint ? tidy(x.talkingPoint) : null;
+    if (strayNumber(`${conclusion}\n${talkingPoint ?? ""}\n${x.revision?.after ?? ""}`, f))
+      return false;
+    emit({
+      type: "report",
+      at: at(),
+      findingId: f.id,
+      conclusion,
+      revision: revisionOk(x.revision, text)
+        ? { before: x.revision!.before, after: tidy(x.revision!.after) }
+        : null,
+      talkingPoint,
+    });
+    return true;
+  };
+
   const finish = (stopped: string | null): ReviewResult => {
     const counts = Object.fromEntries([...VERDICT_SET].map((v) => [v, 0])) as Record<
       Verdict,
@@ -191,32 +222,24 @@ export async function runReview(
       }));
     facts = normalizeClauses(facts);
     const cleaned = dropUnsourced(facts, text);
-    facts = cleaned.facts;
-    if (cleaned.dropped.length)
-      emit({
-        type: "step",
-        at: at(),
-        step: "extract",
-        state: "done",
-        text: `抽取条款：${cleaned.dropped.length} 项引用的原文在合同里找不到，没有拿去检查（${[...new Set(cleaned.dropped.map((d) => FIELD_LABEL[d.field] ?? d.field))].join("、")}）`,
-      });
-    const reconciled = reconcile(facts);
+    const reconciled = reconcile(cleaned.facts);
     facts = reconciled.facts;
-    if (reconciled.merged.length)
-      emit({
-        type: "step",
-        at: at(),
-        step: "extract",
-        state: "done",
-        text: `抽取条款：${reconciled.merged.length} 处被归进了两类，按规则检查的那一类算`,
-      });
     const checks = planChecks(facts);
     const others = facts.others.slice(0, MAX_OTHERS).map((o, i) => ({ ...o, id: `o${i + 1}` }));
+    // 先推这一步的完成，再推补充说明：界面按"同一步的进行中在完成时改写"处理，顺序反了会盖掉主句
     step(
       "extract",
       "done",
       `抽取条款：文书类型为${facts.docKind}，${checks.length} 项交给规则检查，${others.length} 条要查法条`,
     );
+    const note = (text: string) =>
+      emit({ type: "step", at: at(), step: "extract", state: "done", text });
+    if (cleaned.dropped.length)
+      note(
+        `抽取条款：${cleaned.dropped.length} 项引用的原文在合同里找不到，没有拿去检查（${[...new Set(cleaned.dropped.map((d) => FIELD_LABEL[d.field] ?? d.field))].join("、")}）`,
+      );
+    if (reconciled.merged.length)
+      note(`抽取条款：${reconciled.merged.length} 处被归进了两类，按规则检查的那一类算`);
 
     // ── 3. 计划 ──────────────────────────────────────────
     emit({
@@ -235,10 +258,9 @@ export async function runReview(
 
     // ── 4. 执行（三路并行）+ 5. 自检的模型部分 ───────────
     step("execute", "running", "逐项检查");
-    // 规则结论 → 它来自哪次工具调用（自检按调用核对字段）；检索结论 → 这一条自己的候选条文
+    // 规则结论 → 它来自哪次工具调用（自检按调用核对字段）；规则覆盖不到的条款 → 它自己的候选条文
     const checkOf = new Map<string, string>();
     const candidatesOf = new Map<string, Set<string>>();
-    const ownCandidates = new Map<string, Set<string>>();
 
     const runRules = async () => {
       for (const c of checks) {
@@ -396,6 +418,10 @@ export async function runReview(
                 basis: z.array(z.object({ id: z.enum(allIds), why: z.string() })),
                 steps: z.array(z.string()),
                 factsNeeded: z.array(z.string()),
+                // 说明和修改建议在判断时一起写，不再等报告步骤（省掉关键路径上的一次调用）
+                conclusion: z.string(),
+                revision: z.object({ before: z.string(), after: z.string() }).nullable(),
+                talkingPoint: z.string().nullable(),
               }),
             ),
           }),
@@ -432,7 +458,18 @@ export async function runReview(
             factsNeeded: x.factsNeeded.map(tidy),
             note: null,
           });
-          ownCandidates.set(f.id, own);
+          // 判断结论的自检只有程序部分：出处、依据是不是这一条自己的候选
+          const problem = programCheck(f, { text, candidates: own });
+          if (problem) f.verdict = "needs_review";
+          emit({
+            type: "verify",
+            at: at(),
+            findingId: f.id,
+            ok: !problem,
+            reason: problem,
+            verdict: f.verdict,
+          });
+          if (f.verdict !== "ok") emitReport(f, x);
         }
       } catch (e) {
         if (signal.aborted || e instanceof StopError) throw e;
@@ -446,37 +483,47 @@ export async function runReview(
       }
     };
 
-    // 等三路都结束再往下走：一路先出错（比如模型调用到上限）时，Promise.all 会立刻返回，
-    // 另外两路还在跑，会在 done 之后继续推事件。规则那一路几毫秒就完，等它把结论出完
-    const settled = await Promise.allSettled([runRules(), runVerify(), runOthers()]);
-    const failed = settled.find((x) => x.status === "rejected");
-    if (failed) throw failed.reason;
-    const verified = (settled[1] as PromiseFulfilledResult<Map<string, string | null> | null>)
-      .value;
-    step("execute", "done", `逐项检查：${findings.length} 条结论`);
+    // 抽取之后两条线并行，都结束再收尾：
+    //   规则线：规则工具 + 模型核对字段 → 合并自检 → 写规则结论的说明
+    //   判断线：检索 → 判断（同一次调用写好说明）→ 程序检查
+    // 10-30 实测平台首字要 2.4~4.4 秒、生成每秒约 200 tokens（scripts/probe-speed.ts），
+    // 一次检查的耗时主要看串行调了几次模型。原来是"抽取 → 改写 → 判断 → 报告"四次串行，
+    // 现在规则结论的说明和判断线同时写，关键路径少一次调用。
+    // 一条线出错（比如模型调用到上限）时等另一条也结束再停，不然它会在 done 之后继续推事件。
+    const ruleLine = async () => {
+      const [, verified] = await settleAll([runRules(), runVerify()]);
+      const ruleFindings = findings.filter((f) => f.source === "rule");
+      step("execute", "done", `规则检查：${ruleFindings.length} 条结论`);
 
-    // ── 5. 自检：合并模型核对结果 + 程序检查 ──────────────
-    step("verify", "running", "自检：出处、依据、抽取字段");
-    let passed = 0;
-    for (const f of findings) {
-      const checkId = checkOf.get(f.id);
-      const fieldProblem = checkId && verified ? (verified.get(checkId) ?? null) : null;
-      const programProblem = programCheck(f, { text, candidates: ownCandidates.get(f.id) });
-      const reason =
-        programProblem ?? (fieldProblem ? `抽取的字段可能和原文不一致：${fieldProblem}` : null);
-      if (reason && f.verdict !== "needs_review") f.verdict = "needs_review";
-      if (!reason) passed++;
-      emit({ type: "verify", at: at(), findingId: f.id, ok: !reason, reason, verdict: f.verdict });
-    }
-    step(
-      "verify",
-      "done",
-      `自检：${passed} 条通过，${findings.length - passed} 条改为需要确认${verified === null ? "（抽取字段没有核对完）" : ""}`,
-    );
+      // ── 5. 自检：合并模型核对结果 + 程序检查 ──────────
+      step("verify", "running", "自检：出处、依据、抽取字段");
+      let passed = 0;
+      for (const f of ruleFindings) {
+        const checkId = checkOf.get(f.id);
+        const fieldProblem = checkId && verified ? (verified.get(checkId) ?? null) : null;
+        const programProblem = programCheck(f, { text });
+        const reason =
+          programProblem ?? (fieldProblem ? `抽取的字段可能和原文不一致：${fieldProblem}` : null);
+        if (reason) f.verdict = "needs_review";
+        else passed++;
+        emit({
+          type: "verify",
+          at: at(),
+          findingId: f.id,
+          ok: !reason,
+          reason,
+          verdict: f.verdict,
+        });
+      }
+      step(
+        "verify",
+        "done",
+        `自检：${passed} 条通过，${ruleFindings.length - passed} 条改为需要确认${verified === null ? "（抽取字段没有核对完）" : ""}`,
+      );
 
-    // ── 6. 报告 ──────────────────────────────────────────
-    const toReport = findings.filter((f) => f.verdict !== "ok");
-    if (toReport.length > 0) {
+      // ── 6. 报告（规则结论；判断线的说明在判断时已经写好）──
+      const toReport = ruleFindings.filter((f) => f.verdict !== "ok");
+      if (toReport.length === 0) return;
       step("report", "running", `写说明和修改建议：${toReport.length} 条`);
       try {
         const ids = toReport.map((f) => f.id) as [string, ...string[]];
@@ -493,35 +540,19 @@ export async function runReview(
             ),
           }),
           {
-            prompt: `${REPORT_PROMPT.text}\n\n文书类型：${facts.docKind}\n\n${reportMaterial(toReport)}`,
+            prompt: `${REPORT_PROMPT.text}\n\n文书类型：${facts!.docKind}\n\n${reportMaterial(toReport)}`,
             ...CALL.report,
           },
         );
         let dropped = 0;
-        for (const x of r.items) {
-          const f = toReport.find((y) => y.id === x.id)!;
-          const conclusion = tidy(x.conclusion);
-          const talkingPoint = x.talkingPoint ? tidy(x.talkingPoint) : null;
-          // 报告里的数字必须出自前面的步骤；对不上的这条只显示规则给的结论
-          const stray = strayNumber(
-            `${conclusion}\n${talkingPoint ?? ""}\n${x.revision?.after ?? ""}`,
-            f,
-          );
-          if (stray) {
+        for (const x of r.items)
+          if (
+            !emitReport(
+              toReport.find((y) => y.id === x.id)!,
+              x,
+            )
+          )
             dropped++;
-            continue;
-          }
-          emit({
-            type: "report",
-            at: at(),
-            findingId: f.id,
-            conclusion,
-            revision: revisionOk(x.revision, text)
-              ? { before: x.revision!.before, after: tidy(x.revision!.after) }
-              : null,
-            talkingPoint,
-          });
-        }
         step(
           "report",
           "done",
@@ -531,7 +562,9 @@ export async function runReview(
         if (signal.aborted || e instanceof StopError) throw e;
         step("report", "failed", `说明没有写完：${aiReason(e)}。批注只显示规则给的结论`);
       }
-    }
+    };
+
+    await settleAll([ruleLine(), runOthers()]);
     return finish(null);
   } catch (e) {
     return stop(e);

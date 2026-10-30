@@ -199,6 +199,11 @@ describe("审查流程", () => {
     const execute = (p: string) => {
       // 从提示词里取 o1 的第一个候选，o2 给一个检索结果里没有的 ID
       pools = [...p.matchAll(/\n {2}\[([a-z0-9-]+)\]/g)].map((m) => m[1]);
+      const explain = {
+        conclusion: "可以和单位确认代扣的项目。",
+        revision: null,
+        talkingPoint: null,
+      };
       return {
         items: [
           {
@@ -208,12 +213,21 @@ describe("审查流程", () => {
             basis: [{ id: pools[0], why: "x" }],
             steps: ["a"],
             factsNeeded: [],
+            ...explain,
           },
-          { id: "o2", verdict: "advice", title: "x", basis: [], steps: [], factsNeeded: [] },
+          {
+            id: "o2",
+            verdict: "advice",
+            title: "x",
+            basis: [],
+            steps: [],
+            factsNeeded: [],
+            ...explain,
+          },
         ],
       };
     };
-    const { events, result } = await run(facts, {
+    const { events, result, calls } = await run(facts, {
       rewrite: { queries: ["用人单位代扣代缴社会保险费"] },
       execute,
     });
@@ -224,6 +238,12 @@ describe("审查流程", () => {
     expect(
       events.some((e) => e.type === "step" && /第十二条：没有找到能作为依据的条文/.test(e.text)),
     ).toBe(true);
+    // 判断结论的说明在判断时一起写好，有自检事件和报告事件，报告步骤只写规则结论
+    expect(events.some((e) => e.type === "verify" && e.findingId === model[0].id)).toBe(true);
+    expect(events.find((e) => e.type === "report" && e.findingId === model[0].id)).toMatchObject({
+      conclusion: "可以和单位确认代扣的项目。",
+    });
+    expect(calls.filter((c) => c === "report")).toHaveLength(1);
   });
 
   it("报告里出现材料里没有的数字，这条不推报告；修改稿的 before 不在合同里就不显示修改稿", async () => {

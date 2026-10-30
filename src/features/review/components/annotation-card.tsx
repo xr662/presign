@@ -13,35 +13,71 @@ export type LawQuote = {
 
 export type Annotation = {
   clauseNo: string;
+  /** 显示用的条款名（"第三条""第 五 条""全文"）；不给就按 clauseNo 写成"第 X 条" */
+  clauseLabel?: string;
   verdict: Verdict;
   conclusion: string;
   basis: LawQuote[];
   steps: string[];
   revision?: { before: string; after: string };
   factsNeeded?: string[];
+  /** 和 HR 提这件事时怎么说 */
+  talkingPoint?: string;
+  /** 自检没通过、等级改成"需要确认"的原因 */
+  verifyNote?: string;
+  /** 规则覆盖不到、模型依据检索到的条文判断的 */
+  byModel?: boolean;
 };
 
-export function AnnotationCard({ a, className }: { a: Annotation; className?: string }) {
+export function AnnotationCard({
+  a,
+  className,
+  active,
+  onLocate,
+}: {
+  a: Annotation;
+  className?: string;
+  active?: boolean;
+  /** 点条款名时在合同里定位；不给就用页内锚点 #clause-编号 */
+  onLocate?: () => void;
+}) {
   const style = VERDICT_STYLE[a.verdict];
+  const label = a.clauseLabel ?? `第 ${a.clauseNo} 条`;
   return (
     <section
       className={cn(
         "rounded-md border border-line border-l-4 bg-card p-4",
         style.borderL,
+        active && "ring-1 ring-ink/25",
         className,
       )}
-      aria-label={`第 ${a.clauseNo} 条：${style.label}`}
+      aria-label={`${label}：${style.label}`}
     >
       <header className="flex items-baseline gap-2">
         <span className={cn("rounded-sm px-1.5 py-0.5 text-xs font-medium", style.bg, style.text)}>
           {style.label}
         </span>
-        <a href={`#clause-${a.clauseNo}`} className="text-xs text-ink-2 hover:underline">
-          第 {a.clauseNo} 条
-        </a>
+        {onLocate ? (
+          <button type="button" onClick={onLocate} className="text-xs text-ink-2 hover:underline">
+            {label}
+          </button>
+        ) : (
+          <a href={`#clause-${a.clauseNo}`} className="text-xs text-ink-2 hover:underline">
+            {label}
+          </a>
+        )}
+        {a.byModel && (
+          <span className="ml-auto text-xs text-pencil">规则未覆盖，按检索到的条文判断</span>
+        )}
       </header>
 
       <p className="mt-2 font-medium leading-6">{a.conclusion}</p>
+
+      {a.verifyNote && (
+        <p className="mt-2 rounded-sm bg-orange-bg px-2 py-1 text-xs leading-5 text-orange">
+          自检没通过，等级改为需要确认：{a.verifyNote}
+        </p>
+      )}
 
       {a.basis.length > 0 && (
         <details className="mt-3 group">
@@ -85,6 +121,13 @@ export function AnnotationCard({ a, className }: { a: Annotation; className?: st
 
       {a.factsNeeded && a.factsNeeded.length > 0 && (
         <p className="mt-3 text-sm text-orange">还要确认：{a.factsNeeded.join("；")}</p>
+      )}
+
+      {a.talkingPoint && (
+        <p className="mt-3 text-sm leading-6 text-ink-2">
+          <span className="mr-1 text-xs text-pencil">可以这样和 HR 说</span>
+          {a.talkingPoint}
+        </p>
       )}
     </section>
   );
