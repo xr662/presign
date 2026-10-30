@@ -78,14 +78,15 @@ export function limitsFromEnv(env: Env = process.env): Limits {
   };
 }
 
-// 每一步的思考强度。10-30 实测：抽取一份劳动合同，思考开 high 后输出从 129 涨到 4148 tokens，
-// 耗时从 4.3 秒到 42.5 秒，抽取结果一样。token 是赛事送的、够用，主要代价是等待时间，
-// 所以只在判断最多的自检（high）和报告（medium）上开；识别、抽取、谈判练习要快，不开。
-// 环境变量 REASONING_<用途>（如 REASONING_VERIFY=low、REASONING_EXTRACT=high、REASONING_REPORT=off）可以单独改。
-const PURPOSE_EFFORT: Partial<Record<Purpose, ReasoningEffort>> = {
-  verify: "high",
-  report: "medium",
-};
+// 每一步的思考强度，默认都不开。
+// 10-30 T05 实测：抽取一份劳动合同，思考开 high 后输出从 129 涨到 4148 tokens，耗时从 4.3 秒到 42.5 秒，
+// 结果一样。当时定的是自检开 high、报告开 medium。T09 把整套审查流程跑起来后改成都不开：
+//   自检开 high：一次核对两份请求 80 秒都没返回，整次检查撞上 120 秒时限；
+//   报告开 medium：3 条批注写了 48 秒、输出 6089 tokens；
+//   抽取开 low：四份示例合同全部 60 秒没返回。
+// 都不开时一份合同 27~75 秒走完（T09 评测）。质量靠程序检查兜底（出处核对、依据限定、报告数字核对）。
+// 环境变量 REASONING_<用途>（如 REASONING_VERIFY=low、REASONING_EXTRACT=high）可以单独打开。
+const PURPOSE_EFFORT: Partial<Record<Purpose, ReasoningEffort>> = {};
 
 export function effortFor(
   purpose: Purpose,

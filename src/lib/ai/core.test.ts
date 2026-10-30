@@ -338,15 +338,17 @@ describe("流式", () => {
 });
 
 describe("思考强度按步骤", () => {
-  it("默认只有自检和报告开思考，环境变量可以单独改", async () => {
+  it("默认都不开思考，环境变量可以单独打开；角色自己配了强度时用角色的", async () => {
     const { effortFor } = await import("./config");
     const r = role("main");
-    expect(effortFor("verify", r, {})).toBe("high");
-    expect(effortFor("report", r, {})).toBe("medium");
-    expect(effortFor("extract", r, {})).toBeUndefined();
-    expect(effortFor("ocr", r, {})).toBeUndefined();
+    for (const p of ["verify", "report", "extract", "ocr"] as const)
+      expect(effortFor(p, r, {})).toBeUndefined();
     expect(effortFor("extract", r, { REASONING_EXTRACT: "high" })).toBe("high");
-    expect(effortFor("verify", r, { REASONING_VERIFY: "off" })).toBeUndefined();
+    expect(effortFor("verify", r, { REASONING_VERIFY: "low" })).toBe("low");
+    expect(effortFor("verify", { ...r, reasoningEffort: "medium" }, {})).toBe("medium");
+    expect(
+      effortFor("verify", { ...r, reasoningEffort: "medium" }, { REASONING_VERIFY: "off" }),
+    ).toBeUndefined();
   });
 });
 
