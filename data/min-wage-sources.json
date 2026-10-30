@@ -1,11 +1,12 @@
 {
-  "$comment": "最低工资标准的来源。人社部截至 2026-10-01 的原表页面有反爬验证，程序取不到；这里用人社部截至 2026-01-01 的表（四川省人社厅转载，HTML 表格）作底，叠加 1 月到 10 月间各省的调整文件，生成截至 10 月 1 日的表。生成结果与媒体转载的人社部 10 月表截图逐格对过一致（只用来定位哪些省份变了，不作为依据）。还要人工打开人社部原表核对一次，核对后把 verifiedAgainstOriginal 改成 true。",
+  "$comment": "最低工资标准的来源。人社部截至 2026-10-01 的原表页面有反爬验证，程序取不到；这里用人社部截至 2026-01-01 的表（四川省人社厅转载，HTML 表格）作底，叠加 1 月到 10 月间各省的调整文件，生成截至 10 月 1 日的表。生成结果与媒体转载的人社部 10 月表截图逐格对过一致（只用来定位哪些省份变了，不作为依据）。10-30 已与人社部原表逐行核对一致（见 original.verifiedNote）。原表另存为 data/raw/min-wage/original.html 时，corpus:wage 会重新比较。",
   "asOf": "2026-10-01",
   "original": {
     "title": "全国各省、自治区、直辖市最低工资标准情况（截至2026年10月1日）",
     "url": "https://www.mohrss.gov.cn/SYrlzyhshbzb/laodongguanxi_/fwyd/202610/t20261008_585187.html",
     "publisher": "人力资源和社会保障部",
-    "verifiedAgainstOriginal": false
+    "verifiedAgainstOriginal": true,
+    "verifiedNote": "10-30 Rui 在浏览器打开人社部原表另存为 HTML，corpus:wage 逐行比较，31 个省级行政区和深圳全部一致"
   },
   "base": {
     "title": "全国各省、自治区、直辖市最低工资标准情况（截至2026年1月1日）",
@@ -83,8 +84,7 @@
         }
       ],
       "url": "https://rsj.qj.gov.cn/view/gsgg/146119.html",
-      "publisher": "曲靖市人社局转载（二、三档）；一档月标准见昆明市住房公积金管理中心通知",
-      "note": "一档小时标准 22 元只见于人社部表截图，省厅原文待核对"
+      "publisher": "曲靖市人社局转载（二、三档）；一档月标准见昆明市住房公积金管理中心通知"
     },
     {
       "province": "新疆",

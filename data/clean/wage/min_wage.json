@@ -5,7 +5,8 @@
     "title": "全国各省、自治区、直辖市最低工资标准情况（截至2026年10月1日）",
     "url": "https://www.mohrss.gov.cn/SYrlzyhshbzb/laodongguanxi_/fwyd/202610/t20261008_585187.html",
     "publisher": "人力资源和社会保障部",
-    "verifiedAgainstOriginal": false
+    "verifiedAgainstOriginal": true,
+    "verifiedNote": "10-30 Rui 在浏览器打开人社部原表另存为 HTML，corpus:wage 逐行比较，31 个省级行政区和深圳全部一致"
   },
   "base": {
     "title": "全国各省、自治区、直辖市最低工资标准情况（截至2026年1月1日）",
