@@ -1,0 +1,42 @@
+{
+  "description": "T08 调提示词用的开发集：T03 抽查用过的 10 个查询（前 8 个与 scripts/corpus/bench-embed.ts 相同，后 2 个按进度记录复原）。提示词只在这里调，结果不进评测报告的主表。",
+  "created": "2026-10-30",
+  "queries": [
+    { "id": "d01", "kind": "question", "text": "合同两年试用期三个月合法吗", "gold": ["ldhtf-19"] },
+    {
+      "id": "d02",
+      "kind": "question",
+      "text": "公司要求提前离职赔偿违约金",
+      "gold": ["ldhtf-25", "ldhtf-22", "ldhtf-23", "ldhtf-90"]
+    },
+    { "id": "d03", "kind": "question", "text": "入职交押金", "gold": ["ldhtf-9", "ldhtf-84"] },
+    {
+      "id": "d04",
+      "kind": "question",
+      "text": "约定不交社保",
+      "gold": [
+        "ldzy-js2-19",
+        "js2-cases-6-meaning",
+        "js2-cases-6-result",
+        "js2-cases-6-facts",
+        "sbf-60"
+      ]
+    },
+    {
+      "id": "d05",
+      "kind": "question",
+      "text": "离职后竞业限制没有补偿",
+      "gold": ["ldzy-js1-36", "ldhtf-23", "ldzy-js1-38"]
+    },
+    { "id": "d06", "kind": "question", "text": "试用期工资打八折", "gold": ["ldhtf-20", "ldhtf-tl-15"] },
+    { "id": "d07", "kind": "question", "text": "单方调岗降薪", "gold": ["ldhtf-35", "ldzy-js1-43"] },
+    {
+      "id": "d08",
+      "kind": "question",
+      "text": "三方协议违约金",
+      "gold": ["mfd-585", "mfd-496", "mfd-497"]
+    },
+    { "id": "d09", "kind": "question", "text": "公司扣押身份证", "gold": ["ldhtf-9", "ldhtf-84"] },
+    { "id": "d10", "kind": "question", "text": "辞职要公司批准", "gold": ["ldhtf-37", "ldf-31"] }
+  ]
+}
