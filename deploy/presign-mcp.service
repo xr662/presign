@@ -1,0 +1,27 @@
+# 劳动法规 MCP 服务（项目方案第 11 节）。只监听 127.0.0.1:3101，网站进程通过它查法条、跑规则。
+# --liftoff-only：向量模型峰值内存从 545MB 降到 250MB（T03 在这台服务器上实测）。
+[Unit]
+Description=presign labor-law MCP service
+After=network.target
+
+[Service]
+User=presign
+Group=presign
+WorkingDirectory=/opt/presign/mcp
+Environment=NODE_ENV=production
+Environment=LAW_DB_PATH=/opt/presign/mcp/data/build/law.db
+Environment=MCP_PORT=3101
+ExecStart=/usr/local/bin/node --liftoff-only server.mjs
+Restart=always
+RestartSec=3
+MemoryMax=400M
+# 日志只走 stdout/stderr，交给 journald（上限在 /etc/systemd/journald.conf.d/ 里设了 200M）
+StandardOutput=journal
+StandardError=journal
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

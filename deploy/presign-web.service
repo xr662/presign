@@ -1,0 +1,32 @@
+# 网站（Next.js standalone）。只监听 127.0.0.1:3000，外面由 Caddy 反向代理并加 HTTPS。
+# 密钥和账号在 /etc/presign/env（属主 presign，权限 600），不进仓库。
+[Unit]
+Description=presign web
+After=network.target presign-mcp.service
+Wants=presign-mcp.service
+
+[Service]
+User=presign
+Group=presign
+WorkingDirectory=/opt/presign/web
+EnvironmentFile=/etc/presign/env
+Environment=NODE_ENV=production
+Environment=HOSTNAME=127.0.0.1
+Environment=PORT=3000
+Environment=MCP_URL=http://127.0.0.1:3101/mcp
+# 用量库（只有次数、token、耗时）放可写目录
+Environment=USAGE_DB_PATH=/var/lib/presign/usage.db
+ExecStart=/usr/local/bin/node server.js
+Restart=always
+RestartSec=3
+MemoryMax=700M
+StandardOutput=journal
+StandardError=journal
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/presign
+
+[Install]
+WantedBy=multi-user.target

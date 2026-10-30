@@ -68,3 +68,6 @@ AGENTS.md
 
 # 浏览器端识别用的文件，由 scripts/copy-vendor.mjs 从 node_modules 拷来
 /public/vendor/
+
+# 部署打包产物（deploy/pack.sh 生成）
+/deploy/build/

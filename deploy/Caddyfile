@@ -1,0 +1,19 @@
+# Caddy 反向代理（项目方案第 11 节）。网站只监听 127.0.0.1:3000，外面只开 80/443。
+# 10-31 第一版只开 HTTP：Ubuntu 软件源里的 Caddy 是 2.6.2，签不了 IP 地址的证书（要 2.10 以上）。
+# 登录 Cookie 带 Secure，只有 HTTPS 下浏览器才会保存，所以 HTTPS 配好之前只能看不用登录的页面（首页、示例合同）。
+:80 {
+	encode zstd gzip
+
+	# 识别组件（Tesseract 的 wasm 和语言包，约 3.9MB）文件名不变，长缓存
+	header /vendor/* Cache-Control "public, max-age=2592000"
+
+	reverse_proxy 127.0.0.1:3000 {
+		# 检查页的事件流（SSE）收到一条就转一条，不攒着
+		flush_interval -1
+	}
+
+	# 只记错误，不记每个请求（日志交给 journald，上限 200M）
+	log {
+		level ERROR
+	}
+}
