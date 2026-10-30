@@ -62,3 +62,6 @@ AGENTS.md
 
 # 向量模型文件，用 npm run corpus:model 下载，哈希在 data/model-lock.json
 /models/
+
+# 用量记录数据库（运行时生成）
+/data/runtime/

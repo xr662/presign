@@ -1,0 +1,76 @@
+// 模型配置全部来自环境变量，换供应商不改代码（项目方案第 9 节）。
+// 三个角色：main 主模型，alt 复核模型，fallback 备用（11 月中旬换成 DeepSeek 官方 key 时用）。
+// 某个角色的 key、地址、模型名缺一项，就当它不存在，调用时自动用下一个。
+
+export type Role = "main" | "alt" | "fallback";
+export type ReasoningEffort = "low" | "medium" | "high";
+
+export type RoleConfig = {
+  role: Role;
+  baseURL: string;
+  apiKey: string;
+  model: string;
+  // 微信 API 平台上只有 reasoning_effort 能打开思考模式，thinking 参数没有效果（10-30 实测）
+  reasoningEffort?: ReasoningEffort;
+};
+
+export type Limits = {
+  dailyTokens: number;
+  // 平台限额是 5 小时 1200 次、7 天 9000 次、30 天 18000 次，这里各留一点余量
+  requests5h: number;
+  requests7d: number;
+  requests30d: number;
+};
+
+// 每一步用哪个角色优先。自检和谈判练习用复核角色，其余用主模型；都失败再往后排
+export type Purpose =
+  "ocr" | "extract" | "plan" | "execute" | "verify" | "report" | "practice" | "rerank" | "probe";
+
+const ORDER: Record<Purpose, Role[]> = {
+  ocr: ["main", "alt", "fallback"],
+  extract: ["main", "alt", "fallback"],
+  plan: ["main", "alt", "fallback"],
+  execute: ["main", "alt", "fallback"],
+  report: ["main", "alt", "fallback"],
+  rerank: ["main", "alt", "fallback"],
+  probe: ["main", "alt", "fallback"],
+  verify: ["alt", "main", "fallback"],
+  practice: ["alt", "main", "fallback"],
+};
+
+type Env = Record<string, string | undefined>;
+
+export function rolesFromEnv(env: Env = process.env): RoleConfig[] {
+  return (["main", "alt", "fallback"] as const).flatMap((role) => {
+    const p = `LLM_${role.toUpperCase()}_`;
+    const apiKey = env[`${p}API_KEY`]?.trim();
+    const baseURL = env[`${p}BASE_URL`]?.trim();
+    const model = env[`${p}MODEL`]?.trim();
+    if (!apiKey || !baseURL || !model) return [];
+    const effort = env[`${p}REASONING_EFFORT`]?.trim();
+    const reasoningEffort =
+      effort === "low" || effort === "medium" || effort === "high" ? effort : undefined;
+    return [{ role, apiKey, baseURL, model, reasoningEffort }];
+  });
+}
+
+const num = (v: string | undefined, d: number) => {
+  const n = Number(v);
+  return Number.isFinite(n) && n > 0 ? n : d;
+};
+
+export function limitsFromEnv(env: Env = process.env): Limits {
+  return {
+    dailyTokens: num(env.DAILY_TOKEN_BUDGET, 3_000_000),
+    requests5h: num(env.PLATFORM_REQUESTS_5H, 1100),
+    requests7d: num(env.PLATFORM_REQUESTS_7D, 8500),
+    requests30d: num(env.PLATFORM_REQUESTS_30D, 17000),
+  };
+}
+
+export function chainFor(purpose: Purpose, roles: RoleConfig[]): RoleConfig[] {
+  return ORDER[purpose].flatMap((r) => roles.filter((x) => x.role === r));
+}
+
+// 用接口地址的主机名区分供应商：同一平台上的几个角色共用一份请求次数
+export const providerKey = (r: RoleConfig) => new URL(r.baseURL).host;
