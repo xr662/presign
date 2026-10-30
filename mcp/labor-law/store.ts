@@ -106,6 +106,12 @@ export class LawStore {
     }));
   }
 
+  /** 检索单元的全文（法条一条，或案例的一段），search_law 返回结果时用 */
+  getDoc(id: string): { id: string; kind: string; title: string; text: string } | undefined {
+    return this.db.prepare("SELECT id, kind, title, text FROM docs WHERE id = ?").get(id) as
+      { id: string; kind: string; title: string; text: string } | undefined;
+  }
+
   get hasVectors(): boolean {
     return (this.db.prepare("SELECT count(*) AS n FROM vectors").get() as { n: number }).n > 0;
   }
