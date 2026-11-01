@@ -29,10 +29,9 @@ export function checkModelRequest(req: Request, env = process.env): GuardResult 
   const secret = env.SESSION_SECRET;
   if (!secret) {
     if (env.NODE_ENV !== "production") return { ok: true, user: "dev" };
-    return { ok: false, status: 401, error: "login_required", message: "请先登录评审账号" };
+    return { ok: false, status: 401, error: "login_required", message: "请先登录" };
   }
   const user = readSession(cookieValue(req), secret);
-  if (!user)
-    return { ok: false, status: 401, error: "login_required", message: "请先登录评审账号" };
+  if (!user) return { ok: false, status: 401, error: "login_required", message: "请先登录" };
   return { ok: true, user };
 }

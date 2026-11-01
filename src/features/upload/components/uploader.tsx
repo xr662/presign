@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import type { MergedLine } from "../lib/align";
 import { MAX_PAGES, readPdf } from "../lib/pdf";
 import {
   recognizePage,
@@ -15,6 +16,7 @@ import { PageView } from "./page-view";
 
 // 上传和识别。照片、PDF 可以混着加，最多 6 页，可以调顺序、删掉；也可以直接粘贴文字。
 // 识别一页一页做，每页显示当前在做哪一步；出错时显示原因，其他页不受影响。
+// 识别结果可以逐行改（page-view.tsx），"开始检查"交出去的是改后的文字。
 
 type Item = {
   id: string;
@@ -53,6 +55,11 @@ export function Uploader({ onStart }: { onStart?: (lines: string[]) => void }) {
 
   const update = (id: string, patch: Partial<Item>) =>
     setItems((xs) => xs.map((x) => (x.id === id ? { ...x, ...patch } : x)));
+  // 用户在识别结果里改了字：只换这一页的文字行，图片和打码结果不动
+  const setLines = (id: string, lines: MergedLine[]) =>
+    setItems((xs) =>
+      xs.map((x) => (x.id === id && x.result ? { ...x, result: { ...x.result, lines } } : x)),
+    );
 
   async function addFiles(files: FileList | null) {
     if (!files?.length) return;
@@ -255,7 +262,11 @@ export function Uploader({ onStart }: { onStart?: (lines: string[]) => void }) {
               <Button
                 disabled={running}
                 onClick={() =>
-                  onStart(items.flatMap((x) => x.result?.lines.map((l) => l.text) ?? []))
+                  onStart(
+                    items.flatMap(
+                      (x) => x.result?.lines.map((l) => l.text.trim()).filter(Boolean) ?? [],
+                    ),
+                  )
                 }
               >
                 开始检查
@@ -268,7 +279,14 @@ export function Uploader({ onStart }: { onStart?: (lines: string[]) => void }) {
             </p>
           )}
           {items.map((it, i) =>
-            it.result ? <PageView key={it.id} page={it.result} index={i} /> : null,
+            it.result ? (
+              <PageView
+                key={it.id}
+                page={it.result}
+                index={i}
+                onLinesChange={(lines) => setLines(it.id, lines)}
+              />
+            ) : null,
           )}
         </div>
       )}

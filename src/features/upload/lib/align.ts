@@ -161,8 +161,9 @@ export function alignLines(model: string[], local: LocalLine[]): AlignedLine[] {
 export type MergedLine = {
   text: string;
   box: Box | null;
-  // model：模型识别的文字；local：模型漏了这一行，先用本地识别的文字，界面提示核对
-  source: "model" | "local";
+  // model：模型识别的文字；local：模型漏了这一行，先用本地识别的文字，界面提示核对；
+  // user：用户在识别结果里改过或新加的行（edit-lines.ts）
+  source: "model" | "local" | "user";
 };
 
 /**

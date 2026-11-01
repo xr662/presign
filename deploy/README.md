@@ -37,6 +37,18 @@
 5. `/etc/presign/env` 按 `.env.example` 填，至少要有 `LLM_MAIN_*`、`LLM_ALT_*`、`SESSION_SECRET`（`openssl rand -hex 32`）、`JUDGE_ACCOUNTS`（本机 `npm run account:hash -- 用户名` 生成）。改完 `systemctl restart presign-web`。
 6. 检查：`systemctl is-active presign-mcp presign-web caddy`；`curl -I https://<服务器地址>/` 返回 200；`http://` 返回 308 跳到 https；不带登录 `POST /api/review` 返回 401；`echo | openssl s_client -connect <服务器地址>:443 -noservername | openssl x509 -noout -issuer -dates` 看证书签发方和有效期。
 
+## 只更新网站
+
+法规服务没改时只换 `web/`，包小一半（11-01 是 11.6MB），法规服务也不用重启：
+
+```bash
+bash deploy/pack.sh && tar -czf deploy/build/web.tar.gz -C deploy/build web   # 本机
+# 传到服务器 /tmp/ 并比对 sha256 后：
+cd /opt/presign && rm -rf web.prev && mv web web.prev && tar -xzf /tmp/web.tar.gz -C /opt/presign web && chmod -R a+rX web && systemctl restart presign-web
+```
+
+上一版留在 `/opt/presign/web.prev`，新版有问题时 `rm -rf web && mv web.prev web && systemctl restart presign-web` 换回去。
+
 ## 在服务器上测模型接口速度
 
 服务器上没有 npm 依赖，本机用打包脚本里的同一版 esbuild 把探测脚本打成单文件再传：

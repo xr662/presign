@@ -9,14 +9,15 @@ import { ReviewView } from "./review-view";
 
 // /check 页：上传识别 → 开始检查 → 检查过程和报告。上传区在检查时只是藏起来，
 // 点"回到上传"还能看到刚才的页和识别结果，不用重新拍。
-// 识别和检查都要调模型，要评审账号登录；没登录时先提示，免得拍完照片才发现用不了。
+// 识别和检查都要调模型，要先登录；没登录时先提示，免得拍完照片才发现用不了。
+// 账号只有 JUDGE_ACCOUNTS 里的几个，界面上按普通登录写，不写"仅限评审"（Rui 11-01 定）。
 
 type Session = { user: string | null; required: boolean };
 
 function LoginNotice() {
   return (
     <div className="rounded-md border border-line bg-card p-4 text-sm leading-6">
-      <p>识别和检查要用评审账号登录（本站只给评审使用，控制模型接口的费用）。</p>
+      <p>识别和检查要先登录。</p>
       <p className="mt-2 flex flex-wrap gap-3">
         <Link href="/login?next=/check" className="font-medium underline">
           登录

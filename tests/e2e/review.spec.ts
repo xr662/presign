@@ -66,7 +66,7 @@ test("/check 接口返回错误时显示原因", async ({ page }) => {
     route.fulfill({
       status: 401,
       contentType: "application/json",
-      body: JSON.stringify({ error: "login_required", message: "请先登录评审账号" }),
+      body: JSON.stringify({ error: "login_required", message: "请先登录" }),
     }),
   );
   await page.goto("/check");
@@ -74,5 +74,5 @@ test("/check 接口返回错误时显示原因", async ({ page }) => {
   await page.getByRole("button", { name: "使用这段文字" }).click();
   await page.getByRole("button", { name: "开始检查" }).click();
   // Next 自带一个空的 role=alert（路由播报），按文字找我们的提示
-  await expect(page.getByRole("alert").filter({ hasText: "请先登录评审账号" })).toBeVisible();
+  await expect(page.getByRole("alert").filter({ hasText: "请先登录" })).toBeVisible();
 });
