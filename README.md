@@ -49,30 +49,29 @@
 ## 技术架构
 
 ```mermaid
-flowchart LR
+flowchart TB
   subgraph browser["浏览器"]
     A["拍照 / PDF / 粘贴"] --> B["Tesseract.js 本地定位文字<br/>涂黑身份证号、手机号等"]
     B --> C["识别结果逐行核对、改字"]
     E["检查报告"] --> F["谈判练习"]
   end
-  subgraph web["网站（Next.js，Node 24）"]
-    G["登录、来源校验、每日限额"]
-    O["/api/ocr 看图识别"]
-    R["/api/review 审查工作流，SSE 推送"]
-    P["/api/practice HR、教练、复盘"]
+  subgraph web["网站（Next.js，Node 24）：登录、来源校验、每日限额"]
+    R["/api/review<br/>审查工作流，SSE 推送"]
+    O["/api/ocr<br/>看图识别"]
+    P["/api/practice<br/>HR、教练、复盘"]
   end
   subgraph mcpsvc["劳动法规 MCP 服务（只监听本机）"]
-    T["12 个工具<br/>9 个规则计算、search_law、get_article、lookup_min_wage"]
+    T["12 个工具<br/>9 个规则计算<br/>search_law、get_article<br/>lookup_min_wage"]
     DB[("node:sqlite 法规库<br/>FTS5 全文 + 向量")]
   end
   LLM["DeepSeek-v4-flash<br/>OpenAI 兼容接口"]
-  B -- 涂黑后的图片 --> O
   C -- 识别好的全文 --> R
-  O --> LLM
-  R -- 抽取、判断、自检、报告 --> LLM
+  B -- 涂黑后的图片 --> O
+  F --> P
   R -- MCP 工具调用 --> T
   T --> DB
-  F --> P
+  R -- 抽取、判断、自检、报告 --> LLM
+  O --> LLM
   P --> LLM
 ```
 

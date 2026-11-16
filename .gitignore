@@ -71,3 +71,6 @@ AGENTS.md
 
 # 部署打包产物（deploy/pack.sh 生成）
 /deploy/build/
+
+# 技术文档草稿（node scripts/doc-pdf.mjs --draft），定稿 PDF 才提交
+/docs/*-草稿.pdf

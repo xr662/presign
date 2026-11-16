@@ -30,6 +30,7 @@
     "test:live": "vitest run --config vitest.live.config.ts",
     "probe:ai": "node scripts/probe-ai.ts",
     "probe:speed": "node scripts/probe-speed.ts",
+    "doc:pdf": "node scripts/doc-pdf.mjs",
     "eval:retrieval": "node scripts/eval/retrieval.ts",
     "account:hash": "node scripts/account-hash.ts",
     "predev": "node scripts/copy-vendor.mjs",
