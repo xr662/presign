@@ -8,7 +8,8 @@ import { UsageStore } from "./usage.ts";
 let store: UsageStore | null = null;
 let instance: Ai | null = null;
 
-const usage = () => (store ??= new UsageStore(process.env.USAGE_DB_PATH || "data/runtime/usage.db"));
+const usage = () =>
+  (store ??= new UsageStore(process.env.USAGE_DB_PATH || "data/runtime/usage.db"));
 
 export function ai(): Ai {
   instance ??= createAi({ roles: rolesFromEnv(), limits: limitsFromEnv(), usage: usage() });
@@ -20,6 +21,16 @@ export function takeReview(user: string): { ok: boolean; limit: number } {
   const n = Number(process.env.DAILY_REVIEWS_PER_ACCOUNT);
   const limit = Number.isFinite(n) && n > 0 ? n : 20;
   return { ok: usage().takeReview(user, limit), limit };
+}
+
+/**
+ * 谈判练习每个账号每天能对话几轮（DAILY_PRACTICE_TURNS，默认 60，一次练习最多 8 轮）。
+ * 和检查份数记在同一张表，用户名后加 #practice 区分，不用为它加表。
+ */
+export function takePracticeTurn(user: string): { ok: boolean; limit: number } {
+  const n = Number(process.env.DAILY_PRACTICE_TURNS);
+  const limit = Number.isFinite(n) && n > 0 ? n : 60;
+  return { ok: usage().takeReview(`${user}#practice`, limit), limit };
 }
 
 export type { Purpose, Role } from "./config.ts";

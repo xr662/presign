@@ -1,9 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { saveScenario, scenarioFromFindings } from "@/features/practice/scenario";
 import { Uploader } from "@/features/upload/components/uploader";
+import { visibleFindings } from "../state";
 import { useReview } from "../use-review";
 import { ReviewView } from "./review-view";
 
@@ -32,6 +35,7 @@ function LoginNotice() {
 
 export function CheckFlow() {
   const { state, start, cancel } = useReview();
+  const router = useRouter();
   const [lines, setLines] = useState<string[] | null>(null);
   const [session, setSession] = useState<Session | null>(null);
 
@@ -73,7 +77,14 @@ export function CheckFlow() {
               </Button>
             )}
           </div>
-          <ReviewView lines={lines} state={state} />
+          <ReviewView
+            lines={lines}
+            state={state}
+            onPractice={() => {
+              saveScenario(scenarioFromFindings(state.docKind, visibleFindings(state)));
+              router.push("/practice");
+            }}
+          />
         </div>
       )}
     </div>

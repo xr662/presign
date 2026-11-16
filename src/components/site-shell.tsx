@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-// 全站页眉页脚。导航只放用户真正要去的三处；免责声明放页脚，每页都在。
+// 全站页眉页脚。导航只放用户真正要去的几处；免责声明放页脚，每页都在。
 
 export function SiteHeader() {
   return (
@@ -9,9 +9,12 @@ export function SiteHeader() {
         <Link href="/" className="font-law text-xl font-semibold tracking-wider">
           签前
         </Link>
-        <nav className="flex items-center gap-5 text-sm text-ink-2">
+        <nav className="flex items-center gap-4 text-sm text-ink-2 sm:gap-5">
           <Link href="/samples" className="hover:text-ink">
             示例合同
+          </Link>
+          <Link href="/practice" className="hover:text-ink">
+            谈判练习
           </Link>
           <Link href="/about" className="hover:text-ink">
             说明

@@ -1,6 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { findInjections } from "@/lib/review/injection";
 import { cn } from "@/lib/utils";
 import { locateLines } from "../locate";
 import { visibleFindings, type FindingView, type ReviewState } from "../state";
@@ -83,14 +85,20 @@ export function ReviewView({
   lines,
   state,
   title,
+  onPractice,
 }: {
   lines: string[];
   state: ReviewState;
   title?: string;
+  /** 检查完、有问题条款时显示"练习怎么跟 HR 谈"，由调用方存好场景再跳到练习页 */
+  onPractice?: () => void;
 }) {
   const [active, setActive] = useState<string | null>(null);
   const [tab, setTab] = useState<"contract" | "notes">("notes");
   const cards = visibleFindings(state);
+  // 疑似写给 AI 的段落（项目方案第 8 节）：按行标出，检查本身照常做
+  const injections = useMemo(() => findInjections(lines), [lines]);
+  const injected = useMemo(() => new Set(injections.map((h) => h.index)), [injections]);
 
   // 每一行挂哪些批注、取最重的等级上色
   const { marks, firstLine } = useMemo(() => {
@@ -140,6 +148,21 @@ export function ReviewView({
   return (
     <div className="space-y-4">
       <StatusLine state={state} />
+      {injections.length > 0 && (
+        <p role="note" className="rounded-sm bg-orange-bg px-3 py-2 text-sm leading-6 text-orange">
+          合同里有 {injections.length} 段像是写给 AI 的话（
+          {[...new Set(injections.map((h) => h.reason))].join("、")}
+          ），已在合同里用虚线框标出。检查时按普通合同文字处理，交给模型时写明这些话不是指令。正常合同里不该有这样的内容，签之前问清楚是谁加的。
+        </p>
+      )}
+      {onPractice && state.status === "done" && cards.length > 0 && (
+        <div className="flex flex-wrap items-center gap-3 rounded-md border border-line bg-card px-4 py-3 text-sm">
+          <span>拿这份报告练习怎么跟 HR 提修改，AI 扮演 HR，教练在旁边提示。</span>
+          <Button size="sm" onClick={onPractice}>
+            练习怎么跟 HR 谈
+          </Button>
+        </div>
+      )}
 
       <div role="tablist" aria-label="切换合同和批注" className="flex gap-2 lg:hidden">
         {(
@@ -179,8 +202,14 @@ export function ReviewView({
                     "-mx-2 rounded-sm border-l-2 border-transparent px-2",
                     style && [style.bg, style.border, "cursor-pointer"],
                     m && active && m.ids.includes(active) && "ring-1 ring-ink/25",
+                    injected.has(i) && "outline-1 outline-orange outline-dashed",
                   )}
                 >
+                  {injected.has(i) && (
+                    <span className="mr-1 rounded-sm bg-orange-bg px-1 text-xs text-orange">
+                      像是写给 AI 的话
+                    </span>
+                  )}
                   {l}
                 </p>
               );

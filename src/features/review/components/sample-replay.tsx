@@ -1,8 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { saveScenario, scenarioFromFindings } from "@/features/practice/scenario";
 import type { ReviewEvent } from "@/lib/review/events";
+import { visibleFindings } from "../state";
 import { useReview } from "../use-review";
 import { ReviewView } from "./review-view";
 
@@ -13,6 +16,7 @@ type Recording = { recordedAt: string; text: string; events: ReviewEvent[] };
 
 export function SampleReplay({ id, title }: { id: string; title: string }) {
   const { state, replay } = useReview();
+  const router = useRouter();
   const [rec, setRec] = useState<Recording | null>(null);
   const [failed, setFailed] = useState(false);
 
@@ -56,7 +60,15 @@ export function SampleReplay({ id, title }: { id: string; title: string }) {
           重新播放
         </Button>
       </div>
-      <ReviewView lines={lines} state={state} title={title} />
+      <ReviewView
+        lines={lines}
+        state={state}
+        title={title}
+        onPractice={() => {
+          saveScenario(scenarioFromFindings(state.docKind, visibleFindings(state)));
+          router.push("/practice");
+        }}
+      />
     </div>
   );
 }
