@@ -469,8 +469,10 @@ export function PracticeRoom() {
         )}
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]">
-        <div className="min-w-0 space-y-3">
+      {/* DOM 顺序按手机排：对话、教练提示、输入框、要谈的条款，手机上提示就在输入框正上方。
+          宽屏按行列放成左右两栏：左边对话和输入，右边提示和条款 */}
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-x-6">
+        <div className="min-w-0 lg:col-start-1 lg:row-start-1">
           <ol
             ref={logRef}
             role="log"
@@ -492,7 +494,36 @@ export function PracticeRoom() {
               </li>
             ))}
           </ol>
-
+        </div>
+        <div className="lg:col-start-2 lg:row-start-1 lg:self-start">
+          <section
+            aria-label="教练提示"
+            className="rounded-md border border-line border-l-4 border-l-ink bg-card p-4 text-sm leading-6"
+          >
+            <h2 className="font-medium">教练提示</h2>
+            {busy === "coach" ? (
+              <p role="status" className="mt-2 text-ink-2">
+                教练在看你们刚才的对话
+              </p>
+            ) : (
+              coach && (
+                <>
+                  {coach.tone && (
+                    <p className={cn("mt-2", TONE[coach.tone].cls)}>{TONE[coach.tone].text}</p>
+                  )}
+                  <p className="mt-2">{coach.hint}</p>
+                  {coachFinding && (
+                    <p className="mt-2 text-xs text-ink-2">
+                      针对：{clauseLabel(coachFinding)}　依据：
+                      {coachFinding.basis.map((b) => b.label).join("、") || "见报告"}
+                    </p>
+                  )}
+                </>
+              )
+            )}
+          </section>
+        </div>
+        <div className="min-w-0 space-y-3 lg:col-start-1 lg:row-start-2">
           {errorBox}
           {notice && (
             <p role="status" className="rounded-sm bg-orange-bg px-3 py-2 text-sm text-orange">
@@ -548,35 +579,7 @@ export function PracticeRoom() {
             </Button>
           </div>
         </div>
-
-        <aside className="space-y-4">
-          <section
-            aria-label="教练提示"
-            className="rounded-md border border-line border-l-4 border-l-ink bg-card p-4 text-sm leading-6"
-          >
-            <h2 className="font-medium">教练提示</h2>
-            {busy === "coach" ? (
-              <p role="status" className="mt-2 text-ink-2">
-                教练在看你们刚才的对话
-              </p>
-            ) : (
-              coach && (
-                <>
-                  {coach.tone && (
-                    <p className={cn("mt-2", TONE[coach.tone].cls)}>{TONE[coach.tone].text}</p>
-                  )}
-                  <p className="mt-2">{coach.hint}</p>
-                  {coachFinding && (
-                    <p className="mt-2 text-xs text-ink-2">
-                      针对：{clauseLabel(coachFinding)}　依据：
-                      {coachFinding.basis.map((b) => b.label).join("、") || "见报告"}
-                    </p>
-                  )}
-                </>
-              )
-            )}
-          </section>
-
+        <div className="lg:col-start-2 lg:row-start-2 lg:self-start">
           <details open className="rounded-md border border-line bg-card p-4 text-sm leading-6">
             <summary className="cursor-pointer font-medium">要谈的条款</summary>
             <ul className="mt-2 space-y-3">
@@ -591,7 +594,7 @@ export function PracticeRoom() {
               ))}
             </ul>
           </details>
-        </aside>
+        </div>
       </div>
     </div>
   );
