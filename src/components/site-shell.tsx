@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-line">
+    <header className="border-b border-line print:hidden">
       <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-4">
         <Link href="/" className="font-law text-xl font-semibold tracking-wider">
           签前

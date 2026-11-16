@@ -61,7 +61,7 @@ export function CheckFlow() {
       </div>
       {lines && (
         <div className="space-y-4">
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 print:hidden">
             <Button
               variant="outline"
               onClick={() => {

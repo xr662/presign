@@ -301,6 +301,39 @@ export function dropUnsourced(f: Facts, text: string): { facts: Facts; dropped: 
   };
 }
 
+/**
+ * 金额必须出自这一项自己的原文片段。不开思考的抽取会拿合同别处的数字填金额：10-31 评测里
+ * "未经批准擅自离开的，扣发当月实习补贴"被填成 3000 元违约金，3000 是另一条里的月补贴，
+ * dropUnsourced 只核对片段在合同里，拦不住。对不上的把金额置空，这一项照常检查（规则按"没写金额"处理）。
+ * 认三种写法：20000、20,000、2 万（含 1.5 万）。
+ */
+export function amountInQuote(amount: number, quote: string): boolean {
+  // 全角数字换成半角，去掉空格和千分位逗号
+  const q = quote
+    .replace(/[０-９]/g, (d) => String.fromCharCode(d.charCodeAt(0) - 0xfee0))
+    .replace(/[\s,，]/g, "");
+  if (q.includes(String(amount))) return true;
+  const wan = amount / 10_000;
+  return Number.isFinite(wan) && wan > 0 && q.includes(`${wan}万`);
+}
+
+export function dropUnquotedAmounts(f: Facts): { facts: Facts; cleared: Dropped[] } {
+  const cleared: Dropped[] = [];
+  const fix = <T extends { amount: number | null; src: Src }>(field: string, x: T): T => {
+    if (x.amount === null || amountInQuote(x.amount, x.src.quote)) return x;
+    cleared.push({ field, quote: x.src.quote });
+    return { ...x, amount: null };
+  };
+  return {
+    facts: {
+      ...f,
+      penalties: f.penalties.map((x) => fix("penalties", x)),
+      deposits: f.deposits.map((x) => fix("deposits", x)),
+    },
+    cleared,
+  };
+}
+
 // ── 给自检看的字段说明 ──────────────────────────────────
 
 type JsonNode = {

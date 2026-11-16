@@ -46,7 +46,7 @@ export function SampleReplay({ id, title }: { id: string; title: string }) {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap items-center gap-3 text-sm text-ink-2">
+      <div className="flex flex-wrap items-center gap-3 text-sm text-ink-2 print:hidden">
         <span>
           这是 {rec.recordedAt} 用 Deepseek-v4-flash
           实际检查这份合同时录下的过程，两倍速回放，不调用模型。

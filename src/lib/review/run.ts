@@ -23,6 +23,7 @@ import { programCheck, revisionOk, strayNumber, summarize, tidy } from "./checks
 import type { LawRef, ReviewEvent, ReviewFinding, Revision, StepName, Verdict } from "./events.ts";
 import { findInjections } from "./injection.ts";
 import {
+  dropUnquotedAmounts,
   dropUnsourced,
   FactsSchema,
   FIELD_LABEL,
@@ -234,7 +235,8 @@ export async function runReview(
       }));
     facts = normalizeClauses(facts);
     const cleaned = dropUnsourced(facts, text);
-    const reconciled = reconcile(cleaned.facts);
+    const amounts = dropUnquotedAmounts(cleaned.facts);
+    const reconciled = reconcile(amounts.facts);
     facts = reconciled.facts;
     const checks = planChecks(facts);
     const others = facts.others.slice(0, MAX_OTHERS).map((o, i) => ({ ...o, id: `o${i + 1}` }));
@@ -249,6 +251,10 @@ export async function runReview(
     if (cleaned.dropped.length)
       note(
         `抽取条款：${cleaned.dropped.length} 项引用的原文在合同里找不到，没有拿去检查（${[...new Set(cleaned.dropped.map((d) => FIELD_LABEL[d.field] ?? d.field))].join("、")}）`,
+      );
+    if (amounts.cleared.length)
+      note(
+        `抽取条款：${amounts.cleared.length} 处金额在那一条原文里找不到，按没写金额检查（${[...new Set(amounts.cleared.map((d) => FIELD_LABEL[d.field] ?? d.field))].join("、")}）`,
       );
     if (reconciled.merged.length)
       note(`抽取条款：${reconciled.merged.length} 处被归进了两类，按规则检查的那一类算`);

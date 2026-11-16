@@ -122,3 +122,20 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* 检查报告打印或存为 PDF（review-view.tsx 的"打印或存为 PDF"）。
+   批注等级和合同上色都是背景色，浏览器打印默认不印背景，报告区域按原色打印 */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 12mm;
+  }
+  body {
+    background: #fff;
+  }
+  .print-exact,
+  .print-exact * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { findInjections } from "@/lib/review/injection";
 import { cn } from "@/lib/utils";
 import { locateLines } from "../locate";
+import { plainVerifyNote } from "../note";
 import { visibleFindings, type FindingView, type ReviewState } from "../state";
 import { SEVERITY_ORDER, VERDICT_STYLE, type Verdict } from "../verdict";
 import { AnnotationCard, type Annotation } from "./annotation-card";
@@ -30,7 +31,7 @@ export function toAnnotation(f: FindingView): Annotation {
     revision: f.report?.revision ?? undefined,
     factsNeeded: f.factsNeeded,
     talkingPoint: f.report?.talkingPoint ?? undefined,
-    verifyNote: f.verifyNote ?? undefined,
+    verifyNote: f.verifyNote ? plainVerifyNote(f.verifyNote) : undefined,
     byModel: f.source === "model",
   };
 }
@@ -119,6 +120,21 @@ export function ReviewView({
     return { marks, firstLine };
   }, [cards, lines]);
 
+  // 打印前把批注卡里折叠的依据原文展开，打印完恢复；检查记录不打印（工具输入输出太长）
+  const [printedAt, setPrintedAt] = useState("");
+  const printReport = () => {
+    setPrintedAt(new Date().toLocaleString("zh-CN", { hour12: false }));
+    const opened = [
+      ...document.querySelectorAll<HTMLDetailsElement>("#review-cards details:not([open])"),
+    ];
+    opened.forEach((d) => (d.open = true));
+    window.addEventListener("afterprint", () => opened.forEach((d) => (d.open = false)), {
+      once: true,
+    });
+    // 等时间戳渲染出来再打开打印对话框
+    requestAnimationFrame(() => window.print());
+  };
+
   const reduceMotion =
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -155,16 +171,27 @@ export function ReviewView({
           ），已在合同里用虚线框标出。检查时按普通合同文字处理，交给模型时写明这些话不是指令。正常合同里不该有这样的内容，签之前问清楚是谁加的。
         </p>
       )}
-      {onPractice && state.status === "done" && cards.length > 0 && (
-        <div className="flex flex-wrap items-center gap-3 rounded-md border border-line bg-card px-4 py-3 text-sm">
-          <span>拿这份报告练习怎么跟 HR 提修改，AI 扮演 HR，教练在旁边提示。</span>
-          <Button size="sm" onClick={onPractice}>
-            练习怎么跟 HR 谈
+      {state.status === "done" && (
+        <div className="flex flex-wrap items-center gap-3 rounded-md border border-line bg-card px-4 py-3 text-sm print:hidden">
+          {onPractice && cards.length > 0 && (
+            <>
+              <span>拿这份报告练习怎么跟 HR 提修改，AI 扮演 HR，教练在旁边提示。</span>
+              <Button size="sm" onClick={onPractice}>
+                练习怎么跟 HR 谈
+              </Button>
+            </>
+          )}
+          <Button size="sm" variant="outline" onClick={printReport}>
+            打印或存为 PDF
           </Button>
         </div>
       )}
+      <div className="hidden text-xs leading-5 text-ink-2 print:block">
+        签前检查报告，打印于 {printedAt}。检查结果是风险提示，不构成法律意见；拿不准的问题可以拨打
+        12348 公共法律服务热线。
+      </div>
 
-      <div role="tablist" aria-label="切换合同和批注" className="flex gap-2 lg:hidden">
+      <div role="tablist" aria-label="切换合同和批注" className="flex gap-2 lg:hidden print:hidden">
         {(
           [
             ["notes", `批注 ${cards.length}`],
@@ -187,8 +214,8 @@ export function ReviewView({
         ))}
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)]">
-        <div className={cn(tab === "contract" ? "block" : "hidden", "lg:block")}>
+      <div className="print-exact grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] print:block">
+        <div className={cn(tab === "contract" ? "block" : "hidden", "lg:block print:block")}>
           <PaperSheet title={title ?? state.docKind ?? undefined}>
             {lines.map((l, i) => {
               const m = marks.get(i);
@@ -217,8 +244,14 @@ export function ReviewView({
           </PaperSheet>
         </div>
 
-        <div className={cn(tab === "notes" ? "block" : "hidden", "space-y-4 lg:block")}>
-          <details open className="group">
+        <div
+          id="review-cards"
+          className={cn(
+            tab === "notes" ? "block" : "hidden",
+            "space-y-4 lg:block print:mt-6 print:block",
+          )}
+        >
+          <details open className="group print:hidden">
             <summary className="cursor-pointer text-sm font-medium select-none">
               检查记录（{state.log.length} 条）
             </summary>

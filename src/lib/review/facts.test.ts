@@ -1,7 +1,14 @@
 // 抽取结果的程序检查：出处过滤、重复归类合并、给自检看的字段说明。
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { dropUnsourced, fieldGuide, reconcile, type Facts } from "./facts.ts";
+import {
+  amountInQuote,
+  dropUnquotedAmounts,
+  dropUnsourced,
+  fieldGuide,
+  reconcile,
+  type Facts,
+} from "./facts.ts";
 import { SAMPLE_FACTS } from "./sample-facts.ts";
 
 const LABOR = readFileSync("data/samples/labor.md", "utf8");
@@ -75,5 +82,44 @@ describe("字段说明", () => {
     expect(fieldGuide("probationOnly")).toContain("先签试用期合同");
     expect(fieldGuide("penalty")).toContain("early_resign 提前离职");
     expect(fieldGuide("没有这个字段")).toBe("");
+  });
+});
+
+describe("金额必须出自这一项的原文", () => {
+  it("认 20000、20,000、2 万、全角数字几种写法", () => {
+    expect(amountInQuote(20000, "应向甲方支付违约金人民币 20000 元")).toBe(true);
+    expect(amountInQuote(20000, "违约金 20,000 元")).toBe(true);
+    expect(amountInQuote(20000, "违约金 2 万元")).toBe(true);
+    expect(amountInQuote(15000, "违约金1.5万元")).toBe(true);
+    expect(amountInQuote(500, "工服押金５００元")).toBe(true);
+    expect(amountInQuote(3000, "未经批准擅自离开的，扣发当月实习补贴")).toBe(false);
+  });
+
+  it("金额对不上的置空并记下来，这一项本身保留；对得上的不动", () => {
+    // 10-31 评测里实习协议的情形：3000 是另一条的月补贴
+    const f: Facts = {
+      ...labor,
+      penalties: [
+        ...labor.penalties,
+        {
+          party: "worker",
+          trigger: "breach_tripartite",
+          amount: 3000,
+          src: { clause: "五", quote: "未经批准擅自离开的，扣发当月实习补贴" },
+        },
+      ],
+    };
+    const r = dropUnquotedAmounts(f);
+    expect(r.facts.penalties.at(-1)!.amount).toBeNull();
+    expect(r.facts.penalties.at(-1)!.src.quote).toBe("未经批准擅自离开的，扣发当月实习补贴");
+    expect(r.facts.penalties.slice(0, -1)).toEqual(labor.penalties);
+    expect(r.cleared).toEqual([
+      { field: "penalties", quote: "未经批准擅自离开的，扣发当月实习补贴" },
+    ]);
+  });
+
+  it("四份示例合同的人工字段全部通过，不误清", () => {
+    for (const [id, facts] of Object.entries(SAMPLE_FACTS))
+      expect(dropUnquotedAmounts(facts).cleared, id).toEqual([]);
   });
 });
