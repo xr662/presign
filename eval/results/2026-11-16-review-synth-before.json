@@ -1,0 +1,8221 @@
+{
+ "date": "2026-11-16",
+ "set": "synth",
+ "config": "D",
+ "model": "Deepseek-v4-flash",
+ "prompts": [
+  "extract-v2",
+  "judge-v3",
+  "verify-v3",
+  "report-v2"
+ ],
+ "hits": 154,
+ "total": 192,
+ "warned": {
+  "yes": 90,
+  "of": 93
+ },
+ "falseAlarm": {
+  "yes": 2,
+  "of": 99
+ },
+ "usage": [
+  {
+   "role": "alt",
+   "purpose": "verify",
+   "calls": 30,
+   "ok": 27,
+   "requests": 30,
+   "input": 28311,
+   "output": 7127,
+   "avg_ms": 3899
+  },
+  {
+   "role": "main",
+   "purpose": "extract",
+   "calls": 30,
+   "ok": 27,
+   "requests": 30,
+   "input": 18045,
+   "output": 26812,
+   "avg_ms": 10667
+  },
+  {
+   "role": "main",
+   "purpose": "report",
+   "calls": 26,
+   "ok": 20,
+   "requests": 26,
+   "input": 23482,
+   "output": 13330,
+   "avg_ms": 7096
+  },
+  {
+   "role": "main",
+   "purpose": "rewrite",
+   "calls": 22,
+   "ok": 18,
+   "requests": 22,
+   "input": 5048,
+   "output": 945,
+   "avg_ms": 2122
+  },
+  {
+   "role": "main",
+   "purpose": "execute",
+   "calls": 21,
+   "ok": 18,
+   "requests": 21,
+   "input": 22207,
+   "output": 7028,
+   "avg_ms": 6675
+  },
+  {
+   "role": "alt",
+   "purpose": "report",
+   "calls": 6,
+   "ok": 6,
+   "requests": 6,
+   "input": 8278,
+   "output": 5162,
+   "avg_ms": 12435
+  },
+  {
+   "role": "alt",
+   "purpose": "extract",
+   "calls": 5,
+   "ok": 3,
+   "requests": 5,
+   "input": 1995,
+   "output": 3127,
+   "avg_ms": 6926
+  },
+  {
+   "role": "alt",
+   "purpose": "rewrite",
+   "calls": 4,
+   "ok": 3,
+   "requests": 4,
+   "input": 837,
+   "output": 173,
+   "avg_ms": 1988
+  },
+  {
+   "role": "alt",
+   "purpose": "execute",
+   "calls": 3,
+   "ok": 3,
+   "requests": 3,
+   "input": 3619,
+   "output": 973,
+   "avg_ms": 4477
+  },
+  {
+   "role": "main",
+   "purpose": "verify",
+   "calls": 3,
+   "ok": 2,
+   "requests": 3,
+   "input": 2148,
+   "output": 496,
+   "avg_ms": 2334
+  }
+ ],
+ "failures": [
+  {
+   "purpose": "report",
+   "role": "main",
+   "error": "RetryError(APICallError 429)",
+   "calls": 5,
+   "avg_ms": 2261
+  },
+  {
+   "purpose": "execute",
+   "role": "main",
+   "error": "HedgeCancelled",
+   "calls": 3,
+   "avg_ms": 22488
+  },
+  {
+   "purpose": "extract",
+   "role": "main",
+   "error": "HedgeCancelled",
+   "calls": 3,
+   "avg_ms": 29520
+  },
+  {
+   "purpose": "rewrite",
+   "role": "main",
+   "error": "HedgeCancelled",
+   "calls": 3,
+   "avg_ms": 6953
+  },
+  {
+   "purpose": "extract",
+   "role": "alt",
+   "error": "HedgeCancelled",
+   "calls": 2,
+   "avg_ms": 6057
+  },
+  {
+   "purpose": "verify",
+   "role": "alt",
+   "error": "HedgeCancelled",
+   "calls": 2,
+   "avg_ms": 22316
+  },
+  {
+   "purpose": "report",
+   "role": "main",
+   "error": "HedgeCancelled",
+   "calls": 1,
+   "avg_ms": 26865
+  },
+  {
+   "purpose": "rewrite",
+   "role": "alt",
+   "error": "RetryError(APICallError 429)",
+   "calls": 1,
+   "avg_ms": 2259
+  },
+  {
+   "purpose": "rewrite",
+   "role": "main",
+   "error": "RetryError(APICallError 429)",
+   "calls": 1,
+   "avg_ms": 2355
+  },
+  {
+   "purpose": "verify",
+   "role": "alt",
+   "error": "RetryError(APICallError 429)",
+   "calls": 1,
+   "avg_ms": 2377
+  },
+  {
+   "purpose": "verify",
+   "role": "main",
+   "error": "RetryError(APICallError 429)",
+   "calls": 1,
+   "avg_ms": 2384
+  }
+ ],
+ "runs": [
+  {
+   "sample": "s01",
+   "round": 1,
+   "ms": 19194,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 8864,
+    "plan": 8864,
+    "execute": 14585,
+    "verify": 11266,
+    "report": 19193
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 6 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 12000 元，试用期满后月工资为 12000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 5000 元",
+     "result": "miss",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R09",
+     "verdict": "advice",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 1000 元，合同期满后无息退还",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 1 年不满 3 年，试用期最长 2 个月，这里写了 6 个月",
+     "clause": "第二条",
+     "quote": "其中试用期 6 个月",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 12000 元，试用期满后月工资为 12000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R07",
+     "verdict": "ok",
+     "title": "服务期违约金按未履行部分分摊，符合第二十二条",
+     "clause": "第十条",
+     "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f4",
+     "rule": "R09",
+     "verdict": "advice",
+     "title": "没有约定离职后的经济补偿",
+     "clause": "第九条",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职。",
+     "basis": [
+      "ldhtf-23-2",
+      "ldzy-js1-36"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R10",
+     "verdict": "violation",
+     "title": "要求交押金、保证金，违反第九条",
+     "clause": "第七条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 1000 元，合同期满后无息退还。",
+     "basis": [
+      "ldhtf-9-1",
+      "ldhtf-84"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f6",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f7",
+     "rule": "R15",
+     "verdict": "needs_review",
+     "title": "\"乙方在合同期内提前离职的，应向甲方支付违约金人民币 5000 元。\"不在法定可以解除的情形里",
+     "clause": "第八条",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 5000 元。",
+     "basis": [
+      "ldhtf-39",
+      "ldhtf-40",
+      "ldhtf-41",
+      "ldhtf-87"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f8",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第十一条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": null,
+     "city": "北京市",
+     "src": {
+      "clause": "第一条",
+      "quote": "工作地点为北京市"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2029-06-30",
+     "months": 24,
+     "src": {
+      "clause": "第二条",
+      "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+     }
+    },
+    "probation": {
+     "months": 6,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "其中试用期 6 个月"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 12000,
+     "regular": 12000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 12000 元，试用期满后月工资为 12000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": {
+     "trainingKind": "special",
+     "trainingCost": 12000,
+     "serviceMonths": 12,
+     "penalty": {
+      "kind": "prorated",
+      "amount": null
+     },
+     "src": {
+      "clause": "第十条",
+      "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": {
+     "durationMonths": 24,
+     "compensation": "none",
+     "role": "labor",
+     "roleLevel": "unknown",
+     "duringEmploymentOnly": false,
+     "src": {
+      "clause": "第九条",
+      "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职。"
+     }
+    },
+    "deposits": [
+     {
+      "kind": "deposit",
+      "amount": 1000,
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方入职时须向甲方缴纳工作保证金 1000 元，合同期满后无息退还。"
+      }
+     }
+    ],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [
+     {
+      "kind": "other",
+      "src": {
+       "clause": "第八条",
+       "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 5000 元。"
+      }
+     }
+    ],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第十一条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "文书末尾注明由程序生成，仅用于评测。",
+      "src": {
+       "clause": "文末",
+       "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s02",
+   "round": 1,
+   "ms": 29611,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 5688,
+    "plan": 5688,
+    "execute": 7286,
+    "verify": 7287,
+    "report": 10661
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 7 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管",
+     "result": "miss",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "miss",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 500 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 3 年，试用期最长 6 个月，这里写了 7 个月",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 7 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R13",
+     "verdict": "violation",
+     "title": "约定不缴社保无效",
+     "clause": "第五条",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 500 元。",
+     "basis": [
+      "ldzy-js2-19-1",
+      "ldzy-js2-19-2"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第八条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f5",
+     "rule": null,
+     "verdict": "likely_violation",
+     "title": "约定由公司保管毕业证书原件，涉嫌违反禁止扣押证件的规定",
+     "clause": "第七条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还。",
+     "basis": [
+      "ldhtf-9",
+      "ldhtf-84"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": null,
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2030-06-30",
+     "months": 36,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 7 个月。"
+     }
+    },
+    "probation": {
+     "months": 7,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 7 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 4800,
+     "regular": 6000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": null,
+    "socialInsurance": {
+     "waived": true,
+     "subsidy": 500,
+     "src": {
+      "clause": "第五条",
+      "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 500 元。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第八条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第四条",
+       "quote": "甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "要求乙方将毕业证书原件交甲方保管",
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还。"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s03",
+   "round": 1,
+   "ms": 36634,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 25825,
+    "plan": 25825,
+    "execute": 36634,
+    "verify": 27676,
+    "report": 31077
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 6 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 30000 元",
+     "result": "miss",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [
+    {
+     "rule": "R15",
+     "verdict": "needs_review",
+     "title": "\"甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。\"不在法定可以解除的情形里",
+     "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "source": "rule"
+    }
+   ],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 6 个月的上限",
+     "clause": "第二条",
+     "quote": "其中试用期 6 个月",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R07",
+     "verdict": "needs_review",
+     "title": "服务期违约金要以单位出钱做专业技术培训为前提，这一条看不出是",
+     "clause": "第七条",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 30000 元。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f5",
+     "rule": "R15",
+     "verdict": "needs_review",
+     "title": "\"甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。\"不在法定可以解除的情形里",
+     "clause": "第八条",
+     "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "basis": [
+      "ldhtf-39",
+      "ldhtf-40",
+      "ldhtf-41",
+      "ldhtf-87"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f6",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第八条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "四川省",
+     "city": "成都市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为行政专员，工作地点为四川省成都市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2030-06-30",
+     "months": 36,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 6 个月。"
+     }
+    },
+    "probation": {
+     "months": 6,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "其中试用期 6 个月"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 8000,
+     "regular": 10000,
+     "src": {
+      "clause": "第四条",
+      "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": {
+     "trainingKind": "unknown",
+     "trainingCost": null,
+     "serviceMonths": null,
+     "penalty": {
+      "kind": "amount",
+      "amount": 30000
+     },
+     "src": {
+      "clause": "第七条",
+      "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 30000 元。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [
+     {
+      "kind": "other",
+      "src": {
+       "clause": "第八条",
+       "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+      }
+     }
+    ],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第八条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [],
+    "others": [
+     {
+      "concern": "other",
+      "src": {
+       "clause": null,
+       "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s04",
+   "round": 1,
+   "ms": 11306,
+   "modelCalls": 4,
+   "stopped": null,
+   "steps": {
+    "extract": 6727,
+    "plan": 6727,
+    "execute": 11305,
+    "verify": 8367
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 6000 元，转正后月工资 6000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 2 个月的上限",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 1 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "乙方试用期月工资 6000 元，转正后月工资 6000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f4",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第七条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "湖北省",
+     "city": "武汉市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为销售代表，工作地点为湖北省武汉市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2029-06-30",
+     "months": 24,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probation": {
+     "months": 1,
+     "days": 30,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 6000,
+     "regular": 6000,
+     "src": {
+      "clause": "第四条",
+      "quote": "乙方试用期月工资 6000 元，转正后月工资 6000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": 3,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第七条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第四条",
+       "quote": "甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第八条",
+       "quote": "本合同未尽事宜，按国家有关规定执行。本合同一式两份，甲乙双方各执一份。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "文书自带免责声明，声明由程序生成、用于评测、单位和人员均不存在，可能影响文书真实性与可执行性。",
+      "src": {
+       "clause": "第八条",
+       "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s05",
+   "round": 1,
+   "ms": 15980,
+   "modelCalls": 3,
+   "stopped": null,
+   "steps": {
+    "extract": 6059,
+    "plan": 6059,
+    "execute": 8209,
+    "verify": 8209,
+    "report": 15980
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "试用期内乙方月工资为 7000 元，试用期满后月工资为 10000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "miss",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R14",
+     "verdict": "likely_violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [
+    {
+     "rule": "R15",
+     "verdict": "likely_violation",
+     "title": "\"甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。\"不在法定可以解除的情形里",
+     "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "source": "rule"
+    }
+   ],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 2 个月的上限",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 1 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "title": "试用期工资只有约定工资的 70%，低于 80%",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 7000 元，试用期满后月工资为 10000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f3",
+     "rule": "R14",
+     "verdict": "likely_violation",
+     "title": "单位可以单方调整岗位、工作地点",
+     "clause": "第七条",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从。",
+     "basis": [
+      "ldhtf-35",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R15",
+     "verdict": "likely_violation",
+     "title": "\"甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。\"不在法定可以解除的情形里",
+     "clause": "第八条",
+     "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "basis": [
+      "ldhtf-39",
+      "ldhtf-40",
+      "ldhtf-41",
+      "ldhtf-87"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第八条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "广东省",
+     "city": "广州市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为销售代表，工作地点为广东省广州市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2029-06-30",
+     "months": 24,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probation": {
+     "months": 1,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 7000,
+     "regular": 10000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 7000 元，试用期满后月工资为 10000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": null,
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": {
+     "changes": [
+      "position",
+      "location"
+     ],
+     "wageCut": false,
+     "refuseMeansResign": false,
+     "src": {
+      "clause": "第七条",
+      "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从。"
+     }
+    },
+    "termination": [
+     {
+      "kind": "other",
+      "src": {
+       "clause": "第八条",
+       "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+      }
+     }
+    ],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第八条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     }
+    ],
+    "others": []
+   }
+  },
+  {
+   "sample": "s06",
+   "round": 1,
+   "ms": 73297,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 30308,
+    "plan": 30308,
+    "verify": 35070,
+    "execute": 40488,
+    "report": 73297
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 7 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 6400 元，转正后月工资 8000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 10000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R09",
+     "verdict": "violation",
+     "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "verdict:violation",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 500 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R14",
+     "verdict": "violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 3 年，试用期最长 6 个月，这里写了 7 个月",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 7 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "乙方试用期月工资 6400 元，转正后月工资 8000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R06",
+     "verdict": "violation",
+     "title": "试用期内离职要你付10000 元，这条约定无效",
+     "clause": "第七条",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 10000 元。",
+     "basis": [
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R07",
+     "verdict": "ok",
+     "title": "服务期违约金按未履行部分分摊，符合第二十二条",
+     "clause": "第九条",
+     "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f5",
+     "rule": "R09",
+     "verdict": "violation",
+     "title": "竞业限制最长 2 年，这里写了 3 年，超出的部分无效",
+     "clause": "第十条",
+     "quote": "乙方应保守甲方商业秘密。乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%。",
+     "basis": [
+      "ldhtf-24"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f6",
+     "rule": "R11",
+     "verdict": "violation",
+     "title": "缺少 8 项必备条款：用人单位的名称、住所和法定代表人、劳动者的姓名、住址和身份证号、劳动合同期限、工作内容和工作地点、工作时间和休息休假、劳动报酬、社会保险、劳动保护、劳动条件和职业危害防护",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f7",
+     "rule": "R13",
+     "verdict": "violation",
+     "title": "约定不缴社保无效",
+     "clause": "第五条",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 500 元。",
+     "basis": [
+      "ldzy-js2-19-1",
+      "ldzy-js2-19-2"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f8",
+     "rule": "R14",
+     "verdict": "violation",
+     "title": "单位可以单方调整岗位、工作地点，不服从就算自动离职",
+     "clause": "第八条",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职。",
+     "basis": [
+      "ldhtf-35",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f9",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第十一条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "上海市",
+     "city": "上海市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为行政专员，工作地点为上海市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2030-06-30",
+     "months": 36,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 7 个月。"
+     }
+    },
+    "probation": {
+     "months": 7,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 7 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 6400,
+     "regular": 8000,
+     "src": {
+      "clause": "第四条",
+      "quote": "乙方试用期月工资 6400 元，转正后月工资 8000 元。"
+     }
+    },
+    "penalties": [
+     {
+      "party": "worker",
+      "trigger": "probation_resign",
+      "amount": 10000,
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 10000 元。"
+      }
+     }
+    ],
+    "servicePeriod": {
+     "trainingKind": "special",
+     "trainingCost": 12000,
+     "serviceMonths": 36,
+     "penalty": {
+      "kind": "prorated",
+      "amount": null
+     },
+     "src": {
+      "clause": "第九条",
+      "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": {
+     "durationMonths": 36,
+     "compensation": "unknown",
+     "role": "worker",
+     "roleLevel": "unknown",
+     "duringEmploymentOnly": false,
+     "src": {
+      "clause": "第十条",
+      "quote": "乙方应保守甲方商业秘密。乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%。"
+     }
+    },
+    "deposits": [],
+    "requiredClauses": {
+     "employer": false,
+     "employee": false,
+     "term": false,
+     "job": false,
+     "hours": false,
+     "pay": false,
+     "social_insurance": false,
+     "protection": false
+    },
+    "socialInsurance": {
+     "waived": true,
+     "subsidy": 500,
+     "src": {
+      "clause": "第五条",
+      "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 500 元。"
+     }
+    },
+    "unilateralChange": {
+     "changes": [
+      "position",
+      "location"
+     ],
+     "wageCut": false,
+     "refuseMeansResign": true,
+     "src": {
+      "clause": "第八条",
+      "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职。"
+     }
+    },
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第十一条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第十一条",
+       "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "程序生成，用于评测，单位和人员均不存在",
+      "src": {
+       "clause": null,
+       "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s07",
+   "round": 1,
+   "ms": 15779,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 8694,
+    "plan": 8694,
+    "execute": 10836,
+    "verify": 10836,
+    "report": 15779
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "试用期内乙方月工资为 5600 元，试用期满后月工资为 8000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金2 万元",
+     "result": "miss",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R07",
+     "verdict": "violation",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元",
+     "result": "verdict:needs_review",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R09",
+     "verdict": "violation",
+     "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%",
+     "result": "verdict:needs_review",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 6 个月的上限",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 1 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "title": "试用期工资只有约定工资的 70%，低于 80%",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 5600 元，试用期满后月工资为 8000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f3",
+     "rule": "R07",
+     "verdict": "needs_review",
+     "title": "服务期违约金要以单位出钱做专业技术培训为前提，这一条看不出是",
+     "clause": "第八条",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R09",
+     "verdict": "needs_review",
+     "title": "竞业限制最长 2 年，这里写了 3 年，超出的部分无效",
+     "clause": "第九条",
+     "quote": "乙方应保守甲方商业秘密。乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%。",
+     "basis": [
+      "ldhtf-24"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f6",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第十条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f7",
+     "rule": null,
+     "verdict": "likely_violation",
+     "title": "这条约定可能违法，劳动者提前离职一般不需要支付违约金",
+     "clause": "第七条",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金2 万元。",
+     "basis": [
+      "ldhtf-25"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "湖北省",
+     "city": "武汉市",
+     "src": {
+      "clause": null,
+      "quote": "乙方的工作岗位为行政专员，工作地点为湖北省武汉市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2030-06-30",
+     "months": 36,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probation": {
+     "months": 1,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 5600,
+     "regular": 8000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 5600 元，试用期满后月工资为 8000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": {
+     "trainingKind": "onboarding",
+     "trainingCost": 20000,
+     "serviceMonths": 12,
+     "penalty": {
+      "kind": "full_cost",
+      "amount": 20000
+     },
+     "src": {
+      "clause": "第八条",
+      "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": {
+     "durationMonths": 36,
+     "compensation": "unknown",
+     "role": "general",
+     "roleLevel": "unknown",
+     "duringEmploymentOnly": false,
+     "src": {
+      "clause": "第九条",
+      "quote": "乙方应保守甲方商业秘密。乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%。"
+     }
+    },
+    "deposits": [],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第十条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第十一条",
+       "quote": "本合同未尽事宜，按国家有关规定执行。本合同一式两份，甲乙双方各执一份。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "用人单位在合同中载明违约金条款，约定劳动者提前离职须支付违约金。",
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方在合同期内提前离职的，应向甲方支付违约金2 万元。"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s08",
+   "round": 1,
+   "ms": 31263,
+   "modelCalls": 3,
+   "stopped": null,
+   "steps": {
+    "extract": 4596,
+    "plan": 4596,
+    "execute": 26317,
+    "verify": 26317,
+    "report": 31263
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 2 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "乙方试用期月工资 5600 元，转正后月工资 8000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "miss",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "miss",
+     "warned": null,
+     "falseAlarm": true
+    }
+   ],
+   "extra": [
+    {
+     "rule": "R15",
+     "verdict": "needs_review",
+     "title": "试用期内不能随时、不说理由地解除合同",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "source": "rule"
+    },
+    {
+     "rule": "R15",
+     "verdict": "needs_review",
+     "title": "\"甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。\"不在法定可以解除的情形里",
+     "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "source": "rule"
+    }
+   ],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 2 个月的上限",
+     "clause": "第二条",
+     "quote": "其中试用期 2 个月",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "title": "试用期工资只有约定工资的 70%，低于 80%",
+     "clause": "第四条",
+     "quote": "乙方试用期月工资 5600 元，转正后月工资 8000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f3",
+     "rule": "R15",
+     "verdict": "needs_review",
+     "title": "试用期内不能随时、不说理由地解除合同",
+     "clause": null,
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-21",
+      "ldhtf-39",
+      "ldhtf-87"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R15",
+     "verdict": "needs_review",
+     "title": "\"甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。\"不在法定可以解除的情形里",
+     "clause": null,
+     "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "basis": [
+      "ldhtf-39",
+      "ldhtf-40",
+      "ldhtf-41",
+      "ldhtf-87"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": null,
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2029-06-30",
+     "months": 24,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 2 个月。"
+     }
+    },
+    "probation": {
+     "months": 2,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "其中试用期 2 个月"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 5600,
+     "regular": 8000,
+     "src": {
+      "clause": "第四条",
+      "quote": "乙方试用期月工资 5600 元，转正后月工资 8000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": null,
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [
+     {
+      "kind": "probation_at_will",
+      "src": {
+       "clause": null,
+       "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+      }
+     },
+     {
+      "kind": "other",
+      "src": {
+       "clause": null,
+       "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+      }
+     }
+    ],
+    "resignation": null,
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     }
+    ],
+    "others": []
+   }
+  },
+  {
+   "sample": "s09",
+   "round": 1,
+   "ms": 16566,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 9354,
+    "plan": 9354,
+    "execute": 14595,
+    "verify": 11545,
+    "report": 16566
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 5000 元",
+     "result": "verdict:needs_review",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R07",
+     "verdict": "violation",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元",
+     "result": "verdict:needs_review",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "verdict:violation",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 6 个月的上限",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 1 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R06",
+     "verdict": "needs_review",
+     "title": "试用期内离职要你付5000 元，这条约定无效",
+     "clause": "第七条",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 5000 元。",
+     "basis": [
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R07",
+     "verdict": "needs_review",
+     "title": "服务期违约金按未履行部分分摊，符合第二十二条",
+     "clause": "第八条",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R11",
+     "verdict": "violation",
+     "title": "缺少 8 项必备条款：用人单位的名称、住所和法定代表人、劳动者的姓名、住址和身份证号、劳动合同期限、工作内容和工作地点、工作时间和休息休假、劳动报酬、社会保险、劳动保护、劳动条件和职业危害防护",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f6",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第九条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "上海市",
+     "city": "上海市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为财务助理，工作地点为上海市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2030-06-30",
+     "months": 36,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probation": {
+     "months": 1,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 4800,
+     "regular": 6000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+     }
+    },
+    "penalties": [
+     {
+      "party": "worker",
+      "trigger": "probation_resign",
+      "amount": 5000,
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 5000 元。"
+      }
+     }
+    ],
+    "servicePeriod": {
+     "trainingKind": "special",
+     "trainingCost": 20000,
+     "serviceMonths": 12,
+     "penalty": {
+      "kind": "prorated",
+      "amount": 20000
+     },
+     "src": {
+      "clause": "第八条",
+      "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": {
+     "employer": false,
+     "employee": false,
+     "term": false,
+     "job": false,
+     "hours": false,
+     "pay": false,
+     "social_insurance": false,
+     "protection": false
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第九条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第十条",
+       "quote": "本合同未尽事宜，按国家有关规定执行。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "文末注明“本合同由程序生成，用于评测，单位和人员均不存在”，仅为生成说明，不构成劳动权利义务约定，可能提示文本非真实合同。",
+      "src": {
+       "clause": "文末",
+       "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s10",
+   "round": 1,
+   "ms": 16441,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 7283,
+    "plan": 7283,
+    "execute": 16441,
+    "verify": 9391,
+    "report": 16057
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 3 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 8000 元，试用期满后月工资为 10000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "miss",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 1 年不满 3 年，试用期最长 2 个月，这里写了 3 个月",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 3 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 8000 元，试用期满后月工资为 10000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R06",
+     "verdict": "needs_review",
+     "title": "其他情形要你付500 元，这条约定无效",
+     "clause": "第七条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还。",
+     "basis": [
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R10",
+     "verdict": "violation",
+     "title": "要求交押金、保证金，违反第九条",
+     "clause": "第七条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还。",
+     "basis": [
+      "ldhtf-9-1",
+      "ldhtf-84"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f5",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第八条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": null,
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2029-06-30",
+     "months": 24,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 3 个月。"
+     }
+    },
+    "probation": {
+     "months": 3,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 3 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 8000,
+     "regular": 10000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 8000 元，试用期满后月工资为 10000 元。"
+     }
+    },
+    "penalties": [
+     {
+      "party": "worker",
+      "trigger": "other",
+      "amount": 500,
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还。"
+      }
+     }
+    ],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [
+     {
+      "kind": "deposit",
+      "amount": 500,
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还。"
+      }
+     }
+    ],
+    "requiredClauses": null,
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第八条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第一条",
+       "quote": "乙方的工作岗位为销售代表，工作地点为上海市。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第四条",
+       "quote": "甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第八条",
+       "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第九条",
+       "quote": "本合同未尽事宜，按国家有关规定执行。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "文书为程序生成，单位和人员均不存在",
+      "src": {
+       "clause": null,
+       "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s11",
+   "round": 1,
+   "ms": 30813,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 7253,
+    "plan": 7253,
+    "execute": 30813,
+    "verify": 9274,
+    "report": 17769
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 7 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "试用期内乙方月工资为 5600 元，试用期满后月工资为 8000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金1 万元",
+     "result": "miss",
+     "warned": false,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 3 年，试用期最长 6 个月，这里写了 7 个月",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 7 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "title": "试用期工资只有约定工资的 70%，低于 80%",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 5600 元，试用期满后月工资为 8000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f3",
+     "rule": "R07",
+     "verdict": "ok",
+     "title": "服务期违约金按未履行部分分摊，符合第二十二条",
+     "clause": "第八条",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f4",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f5",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第九条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "浙江省",
+     "city": "杭州市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为财务助理，工作地点为浙江省杭州市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2030-06-30",
+     "months": 36,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 7 个月。"
+     }
+    },
+    "probation": {
+     "months": 7,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 7 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 5600,
+     "regular": 8000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 5600 元，试用期满后月工资为 8000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": {
+     "trainingKind": "special",
+     "trainingCost": 20000,
+     "serviceMonths": 12,
+     "penalty": {
+      "kind": "prorated",
+      "amount": null
+     },
+     "src": {
+      "clause": "第八条",
+      "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第九条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+     }
+    },
+    "standardTerms": [],
+    "others": [
+     {
+      "concern": "合同尾注声明本合同由程序生成、单位和人员均不存在，可能影响文书的真实性与可执行性",
+      "src": {
+       "clause": "其他",
+       "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s12",
+   "round": 1,
+   "ms": 6721,
+   "modelCalls": 2,
+   "stopped": null,
+   "steps": {
+    "extract": 5374,
+    "plan": 5374,
+    "execute": 6721,
+    "verify": 6721
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 10000 元，试用期满后月工资为 10000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "miss",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 2 个月的上限",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 1 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 10000 元，试用期满后月工资为 10000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第七条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "浙江省",
+     "city": "杭州市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为销售代表，工作地点为浙江省杭州市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2028-06-30",
+     "months": 12,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probation": {
+     "months": 1,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 10000,
+     "regular": 10000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 10000 元，试用期满后月工资为 10000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": null,
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第七条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     }
+    ],
+    "others": []
+   }
+  },
+  {
+   "sample": "s13",
+   "round": 1,
+   "ms": 16945,
+   "modelCalls": 3,
+   "stopped": null,
+   "steps": {
+    "extract": 6702,
+    "plan": 6702,
+    "execute": 9034,
+    "verify": 9034,
+    "report": 16945
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 6 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 12000 元，试用期满后月工资为 12000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R14",
+     "verdict": "violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 1 年不满 3 年，试用期最长 2 个月，这里写了 6 个月",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 6 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 12000 元，试用期满后月工资为 12000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f4",
+     "rule": "R13",
+     "verdict": "violation",
+     "title": "约定不缴社保无效",
+     "clause": "第五条",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元。",
+     "basis": [
+      "ldzy-js2-19-1",
+      "ldzy-js2-19-2"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R14",
+     "verdict": "violation",
+     "title": "单位可以单方调整岗位、工作地点，不服从就算自动离职",
+     "clause": "第七条",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职。",
+     "basis": [
+      "ldhtf-35",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f6",
+     "rule": "R16",
+     "verdict": "violation",
+     "title": "辞职不需要单位批准",
+     "clause": "第八条",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f7",
+     "rule": "R16",
+     "verdict": "violation",
+     "title": "因为辞职扣工资或要求赔钱，这一条无效",
+     "clause": "第八条",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1",
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "广东省",
+     "city": "广州市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为产品运营专员，工作地点为广东省广州市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2029-06-30",
+     "months": 24,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 6 个月。"
+     }
+    },
+    "probation": {
+     "months": 6,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 6 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 12000,
+     "regular": 12000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 12000 元，试用期满后月工资为 12000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": true,
+     "subsidy": 800,
+     "src": {
+      "clause": "第五条",
+      "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元。"
+     }
+    },
+    "unilateralChange": {
+     "changes": [
+      "position",
+      "location"
+     ],
+     "wageCut": false,
+     "refuseMeansResign": true,
+     "src": {
+      "clause": "第七条",
+      "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职。"
+     }
+    },
+    "termination": [],
+    "resignation": {
+     "noticeDays": null,
+     "probationNoticeDays": null,
+     "needsApproval": true,
+     "penaltyOrDeduction": true,
+     "src": {
+      "clause": "第八条",
+      "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。"
+     }
+    },
+    "standardTerms": [],
+    "others": []
+   }
+  },
+  {
+   "sample": "s14",
+   "round": 1,
+   "ms": 22136,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 6982,
+    "plan": 6982,
+    "execute": 9418,
+    "verify": 9418,
+    "report": 22136
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 6 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "试用期内乙方月工资为 8400 元，试用期满后月工资为 12000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R09",
+     "verdict": "advice",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管",
+     "result": "miss",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R14",
+     "verdict": "violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 1 年不满 3 年，试用期最长 2 个月，这里写了 6 个月",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 6 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "title": "试用期工资只有约定工资的 70%，低于 80%",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 8400 元，试用期满后月工资为 12000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f3",
+     "rule": "R09",
+     "verdict": "advice",
+     "title": "没有约定离职后的经济补偿",
+     "clause": "第七条",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职。",
+     "basis": [
+      "ldhtf-23-2",
+      "ldzy-js1-36"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R09",
+     "verdict": "needs_review",
+     "title": "这个岗位不一定在竞业限制的适用范围内",
+     "clause": "第七条",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职。",
+     "basis": [
+      "ldhtf-24",
+      "ldzy-js2-13"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f6",
+     "rule": "R13",
+     "verdict": "violation",
+     "title": "约定不缴社保无效",
+     "clause": "第五条",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元。",
+     "basis": [
+      "ldzy-js2-19-1",
+      "ldzy-js2-19-2"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f7",
+     "rule": "R14",
+     "verdict": "violation",
+     "title": "单位可以单方调整岗位、工作地点，不服从就算自动离职",
+     "clause": "第八条",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职。",
+     "basis": [
+      "ldhtf-35",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f8",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第十条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f9",
+     "rule": null,
+     "verdict": "likely_violation",
+     "title": "约定扣押毕业证书原件，可能违法",
+     "clause": "第九条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还。",
+     "basis": [
+      "ldhtf-9",
+      "ldhtf-84"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "北京市",
+     "city": "北京市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为产品运营专员，工作地点为北京市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2028-06-30",
+     "months": 12,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 6 个月。"
+     }
+    },
+    "probation": {
+     "months": 6,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 6 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 8400,
+     "regular": 12000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 8400 元，试用期满后月工资为 12000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": {
+     "durationMonths": 24,
+     "compensation": "none",
+     "role": null,
+     "roleLevel": "ordinary",
+     "duringEmploymentOnly": false,
+     "src": {
+      "clause": "第七条",
+      "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职。"
+     }
+    },
+    "deposits": [],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": true,
+     "subsidy": 800,
+     "src": {
+      "clause": "第五条",
+      "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元。"
+     }
+    },
+    "unilateralChange": {
+     "changes": [
+      "position",
+      "location"
+     ],
+     "wageCut": false,
+     "refuseMeansResign": true,
+     "src": {
+      "clause": "第八条",
+      "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职。"
+     }
+    },
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第十条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+     }
+    },
+    "standardTerms": [],
+    "others": [
+     {
+      "concern": "扣留劳动者证件",
+      "src": {
+       "clause": "第九条",
+       "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还。"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s15",
+   "round": 1,
+   "ms": 38687,
+   "modelCalls": 4,
+   "stopped": null,
+   "steps": {
+    "extract": 29253,
+    "plan": 29253,
+    "execute": 38687,
+    "verify": 31346
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 2 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 10000 元，试用期满后月工资为 10000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 10000 元",
+     "result": "miss",
+     "warned": false,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 2 个月的上限",
+     "clause": "第二条",
+     "quote": "其中试用期 2 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 10000 元，试用期满后月工资为 10000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R07",
+     "verdict": "ok",
+     "title": "服务期违约金按未履行部分分摊，符合第二十二条",
+     "clause": "第八条",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f4",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f5",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第九条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "浙江省",
+     "city": "杭州市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为产品运营专员，工作地点为浙江省杭州市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2028-06-30",
+     "months": 12,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 2 个月。"
+     }
+    },
+    "probation": {
+     "months": 2,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "其中试用期 2 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 10000,
+     "regular": 10000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 10000 元，试用期满后月工资为 10000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": {
+     "trainingKind": "special",
+     "trainingCost": 6000,
+     "serviceMonths": 12,
+     "penalty": {
+      "kind": "prorated",
+      "amount": null
+     },
+     "src": {
+      "clause": "第八条",
+      "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第九条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "other",
+      "src": {
+       "clause": "第十条",
+       "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s16",
+   "round": 1,
+   "ms": 21519,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 7965,
+    "plan": 7965,
+    "execute": 9872,
+    "verify": 9872,
+    "report": 21519
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 3 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "乙方试用期月工资 4200 元，转正后月工资 6000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 20000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管",
+     "result": "miss",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R14",
+     "verdict": "violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职",
+     "result": "verdict:needs_review",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 1 年不满 3 年，试用期最长 2 个月，这里写了 3 个月",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 3 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "title": "试用期工资只有约定工资的 70%，低于 80%",
+     "clause": "第四条",
+     "quote": "乙方试用期月工资 4200 元，转正后月工资 6000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f3",
+     "rule": "R06",
+     "verdict": "violation",
+     "title": "提前离职要你付20000 元，这条约定无效",
+     "clause": "第八条",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 20000 元。",
+     "basis": [
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R07",
+     "verdict": "ok",
+     "title": "服务期违约金按未履行部分分摊，符合第二十二条",
+     "clause": "第十条",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f5",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f6",
+     "rule": "R14",
+     "verdict": "needs_review",
+     "title": "单位可以单方调整岗位、工资、工作地点，不服从就算自动离职",
+     "clause": "第九条",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职。",
+     "basis": [
+      "ldhtf-35",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f7",
+     "rule": "R16",
+     "verdict": "violation",
+     "title": "辞职不需要单位批准",
+     "clause": "第十一条",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f8",
+     "rule": "R16",
+     "verdict": "violation",
+     "title": "因为辞职扣工资或要求赔钱，这一条无效",
+     "clause": "第十一条",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1",
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f9",
+     "rule": null,
+     "verdict": "likely_violation",
+     "title": "要求入职时交毕业证书原件保管，可能违法。",
+     "clause": "第七条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还。",
+     "basis": [
+      "ldhtf-9",
+      "ldhtf-84"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "四川省",
+     "city": "成都市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为数据分析师，工作地点为四川省成都市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2028-06-30",
+     "months": 12,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 3 个月。"
+     }
+    },
+    "probation": {
+     "months": 3,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 3 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 4200,
+     "regular": 6000,
+     "src": {
+      "clause": "第四条",
+      "quote": "乙方试用期月工资 4200 元，转正后月工资 6000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+     }
+    },
+    "penalties": [
+     {
+      "party": "worker",
+      "trigger": "early_resign",
+      "amount": 20000,
+      "src": {
+       "clause": "第八条",
+       "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 20000 元。"
+      }
+     }
+    ],
+    "servicePeriod": {
+     "trainingKind": "special",
+     "trainingCost": 6000,
+     "serviceMonths": 12,
+     "penalty": {
+      "kind": "prorated",
+      "amount": null
+     },
+     "src": {
+      "clause": "第十条",
+      "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": {
+     "changes": [
+      "position",
+      "wage",
+      "location"
+     ],
+     "wageCut": true,
+     "refuseMeansResign": true,
+     "src": {
+      "clause": "第九条",
+      "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职。"
+     }
+    },
+    "termination": [],
+    "resignation": {
+     "noticeDays": null,
+     "probationNoticeDays": null,
+     "needsApproval": true,
+     "penaltyOrDeduction": true,
+     "src": {
+      "clause": "第十一条",
+      "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "毕业证书原件交甲方人事部门保管",
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还。"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s17",
+   "round": 1,
+   "ms": 42037,
+   "modelCalls": 6,
+   "stopped": null,
+   "steps": {
+    "extract": 29653,
+    "plan": 29653,
+    "execute": 32061,
+    "verify": 32061,
+    "report": 42037
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 10000 元",
+     "result": "verdict:needs_review",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R07",
+     "verdict": "violation",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，须全额返还培训费用 6000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "miss",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 300 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    }
+   ],
+   "extra": [
+    {
+     "rule": null,
+     "verdict": "advice",
+     "title": "评测声明不影响你的权益，但正式签署前应删除或替换",
+     "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）",
+     "source": "model"
+    }
+   ],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 2 个月的上限",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 1 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R06",
+     "verdict": "needs_review",
+     "title": "其他情形要你付10000 元，这条约定无效",
+     "clause": "第七条",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 10000 元。",
+     "basis": [
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R07",
+     "verdict": "violation",
+     "title": "离职要付全部培训费，超过了按未履行服务期分摊的数额",
+     "clause": "第八条",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，须全额返还培训费用 6000 元。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R13",
+     "verdict": "violation",
+     "title": "约定不缴社保无效",
+     "clause": "第五条",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 300 元。",
+     "basis": [
+      "ldzy-js2-19-1",
+      "ldzy-js2-19-2"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f6",
+     "rule": "R16",
+     "verdict": "violation",
+     "title": "辞职不需要单位批准",
+     "clause": "第九条",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f7",
+     "rule": "R16",
+     "verdict": "violation",
+     "title": "因为辞职扣工资或要求赔钱，这一条无效",
+     "clause": "第九条",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1",
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f8",
+     "rule": null,
+     "verdict": "ok",
+     "title": "合同一式两份、双方各执一份，符合法律规定",
+     "clause": "第十条",
+     "quote": "本合同一式两份，甲乙双方各执一份。",
+     "basis": [
+      "ldhtf-16"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f9",
+     "rule": null,
+     "verdict": "advice",
+     "title": "评测声明不影响你的权益，但正式签署前应删除或替换",
+     "clause": null,
+     "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）",
+     "basis": [
+      "ldhtf-3",
+      "ldf-17"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "湖北省",
+     "city": "武汉市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为财务助理，工作地点为湖北省武汉市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2028-06-30",
+     "months": 12,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probation": {
+     "months": 1,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 8000,
+     "regular": 10000,
+     "src": {
+      "clause": "第四条",
+      "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+     }
+    },
+    "penalties": [
+     {
+      "party": "worker",
+      "trigger": "breach_tripartite",
+      "amount": 10000,
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 10000 元。"
+      }
+     }
+    ],
+    "servicePeriod": {
+     "trainingKind": "special",
+     "trainingCost": 6000,
+     "serviceMonths": 24,
+     "penalty": {
+      "kind": "full_cost",
+      "amount": 6000
+     },
+     "src": {
+      "clause": "第八条",
+      "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，须全额返还培训费用 6000 元。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": null,
+    "socialInsurance": {
+     "waived": true,
+     "subsidy": 300,
+     "src": {
+      "clause": "第五条",
+      "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 300 元。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": null,
+     "probationNoticeDays": null,
+     "needsApproval": true,
+     "penaltyOrDeduction": true,
+     "src": {
+      "clause": "第九条",
+      "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第四条",
+       "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "劳动合同文本份数",
+      "src": {
+       "clause": "第十条",
+       "quote": "本合同一式两份，甲乙双方各执一份。"
+      }
+     },
+     {
+      "concern": "评测声明",
+      "src": {
+       "clause": null,
+       "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s18",
+   "round": 1,
+   "ms": 40245,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 29646,
+    "plan": 29646,
+    "execute": 31788,
+    "verify": 31789,
+    "report": 40245
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 3 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 9600 元，试用期满后月工资为 12000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R14",
+     "verdict": "likely_violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    }
+   ],
+   "extra": [
+    {
+     "rule": null,
+     "verdict": "needs_review",
+     "title": "该文本是否为真实有效的劳动合同需要先确认",
+     "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）",
+     "source": "model"
+    }
+   ],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 1 年不满 3 年，试用期最长 2 个月，这里写了 3 个月",
+     "clause": "第二条",
+     "quote": "其中试用期 3 个月",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 9600 元，试用期满后月工资为 12000 元",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R06",
+     "verdict": "needs_review",
+     "title": "其他情形要你付违约金，这条约定无效",
+     "clause": "第九条",
+     "quote": "未经批准擅自离职的，扣发当月工资",
+     "basis": [
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R10",
+     "verdict": "violation",
+     "title": "要求交押金、保证金，违反第九条",
+     "clause": "第八条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还",
+     "basis": [
+      "ldhtf-9-1",
+      "ldhtf-84"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f6",
+     "rule": "R14",
+     "verdict": "likely_violation",
+     "title": "单位可以单方调整岗位、工作地点",
+     "clause": "第七条",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从",
+     "basis": [
+      "ldhtf-35",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f7",
+     "rule": "R16",
+     "verdict": "violation",
+     "title": "辞职不需要单位批准",
+     "clause": "第九条",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f8",
+     "rule": "R16",
+     "verdict": "violation",
+     "title": "因为辞职扣工资或要求赔钱，这一条无效",
+     "clause": "第九条",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1",
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f9",
+     "rule": null,
+     "verdict": "needs_review",
+     "title": "该文本是否为真实有效的劳动合同需要先确认",
+     "clause": "末段",
+     "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）",
+     "basis": [
+      "ldhtf-16",
+      "ldhtf-3"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "四川省",
+     "city": "成都市",
+     "src": {
+      "clause": "第一条",
+      "quote": "工作地点为四川省成都市"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2029-06-30",
+     "months": 24,
+     "src": {
+      "clause": "第二条",
+      "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+     }
+    },
+    "probation": {
+     "months": 3,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "其中试用期 3 个月"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 9600,
+     "regular": 12000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 9600 元，试用期满后月工资为 12000 元"
+     }
+    },
+    "penalties": [
+     {
+      "party": "worker",
+      "trigger": "breach_tripartite",
+      "amount": null,
+      "src": {
+       "clause": "第九条",
+       "quote": "未经批准擅自离职的，扣发当月工资"
+      }
+     }
+    ],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [
+     {
+      "kind": "deposit",
+      "amount": null,
+      "src": {
+       "clause": "第八条",
+       "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还"
+      }
+     }
+    ],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金"
+     }
+    },
+    "unilateralChange": {
+     "changes": [
+      "position",
+      "location"
+     ],
+     "wageCut": false,
+     "refuseMeansResign": false,
+     "src": {
+      "clause": "第七条",
+      "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从"
+     }
+    },
+    "termination": [],
+    "resignation": {
+     "noticeDays": null,
+     "probationNoticeDays": null,
+     "needsApproval": true,
+     "penaltyOrDeduction": true,
+     "src": {
+      "clause": "第九条",
+      "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "本劳动合同由程序生成，用于评测，单位和人员均不存在，不应作为真实合同使用",
+      "src": {
+       "clause": "末段",
+       "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s19",
+   "round": 1,
+   "ms": 29435,
+   "modelCalls": 3,
+   "stopped": null,
+   "steps": {
+    "extract": 5563,
+    "plan": 5563,
+    "execute": 7508,
+    "verify": 7508,
+    "report": 29435
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 7 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 8000 元，试用期满后月工资为 8000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "miss",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [
+    {
+     "rule": "R15",
+     "verdict": "needs_review",
+     "title": "\"甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。\"不在法定可以解除的情形里",
+     "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "source": "rule"
+    }
+   ],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 3 年，试用期最长 6 个月，这里写了 7 个月",
+     "clause": "第二条",
+     "quote": "其中试用期 7 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 8000 元，试用期满后月工资为 8000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R15",
+     "verdict": "needs_review",
+     "title": "\"甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。\"不在法定可以解除的情形里",
+     "clause": "第七条",
+     "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "basis": [
+      "ldhtf-39",
+      "ldhtf-40",
+      "ldhtf-41",
+      "ldhtf-87"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第七条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "浙江省",
+     "city": "杭州市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为财务助理，工作地点为浙江省杭州市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2030-06-30",
+     "months": 36,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 7 个月。"
+     }
+    },
+    "probation": {
+     "months": 7,
+     "days": 0,
+     "src": {
+      "clause": "第二条",
+      "quote": "其中试用期 7 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 8000,
+     "regular": 8000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 8000 元，试用期满后月工资为 8000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": null,
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [
+     {
+      "kind": "other",
+      "src": {
+       "clause": "第七条",
+       "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+      }
+     }
+    ],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第七条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     }
+    ],
+    "others": []
+   }
+  },
+  {
+   "sample": "s20",
+   "round": 1,
+   "ms": 16472,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 6807,
+    "plan": 6807,
+    "execute": 11458,
+    "verify": 9258,
+    "report": 16472
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 3 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 6400 元，试用期满后月工资为 8000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R09",
+     "verdict": "violation",
+     "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%",
+     "result": "verdict:needs_review",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "miss",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 1 年不满 3 年，试用期最长 2 个月，这里写了 3 个月",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 3 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 6400 元，试用期满后月工资为 8000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R09",
+     "verdict": "needs_review",
+     "title": "竞业限制最长 2 年，这里写了 3 年，超出的部分无效",
+     "clause": "第七条",
+     "quote": "乙方应保守甲方商业秘密。乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%。",
+     "basis": [
+      "ldhtf-24"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f4",
+     "rule": "R10",
+     "verdict": "violation",
+     "title": "要求交押金、保证金，违反第九条",
+     "clause": "第八条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还。",
+     "basis": [
+      "ldhtf-9-1",
+      "ldhtf-84"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R13",
+     "verdict": "violation",
+     "title": "约定不缴社保无效",
+     "clause": "第五条",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元。",
+     "basis": [
+      "ldzy-js2-19-1",
+      "ldzy-js2-19-2"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f6",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第九条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "北京市",
+     "city": "北京市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为销售代表，工作地点为北京市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2029-06-30",
+     "months": 24,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 3 个月。"
+     }
+    },
+    "probation": {
+     "months": 3,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 3 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 6400,
+     "regular": 8000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 6400 元，试用期满后月工资为 8000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": {
+     "durationMonths": 36,
+     "compensation": "unknown",
+     "role": "员工",
+     "roleLevel": "unknown",
+     "duringEmploymentOnly": false,
+     "src": {
+      "clause": "第七条",
+      "quote": "乙方应保守甲方商业秘密。乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%。"
+     }
+    },
+    "deposits": [
+     {
+      "kind": "deposit",
+      "amount": 500,
+      "src": {
+       "clause": "第八条",
+       "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还。"
+      }
+     }
+    ],
+    "requiredClauses": null,
+    "socialInsurance": {
+     "waived": true,
+     "subsidy": 800,
+     "src": {
+      "clause": "第五条",
+      "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第九条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "文书末尾声明本合同由程序生成、用于评测，可能影响文书真实性",
+      "src": {
+       "clause": "末尾声明",
+       "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s21",
+   "round": 1,
+   "ms": 15734,
+   "modelCalls": 3,
+   "stopped": null,
+   "steps": {
+    "extract": 7102,
+    "plan": 7102,
+    "execute": 9334,
+    "verify": 9334,
+    "report": 15734
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 7 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "乙方试用期月工资 4200 元，转正后月工资 6000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金3 万元",
+     "result": "miss",
+     "warned": false,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R07",
+     "verdict": "violation",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，须全额返还培训费用 6000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 2000 元，合同期满后无息退还",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [
+    {
+     "rule": "R09",
+     "verdict": "needs_review",
+     "title": "employee不一定在竞业限制的适用范围内",
+     "quote": "乙方离职后 1 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%。",
+     "source": "rule"
+    }
+   ],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 3 年，试用期最长 6 个月，这里写了 7 个月",
+     "clause": "第二条",
+     "quote": "其中试用期 7 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "title": "试用期工资只有约定工资的 70%，低于 80%",
+     "clause": "第四条",
+     "quote": "乙方试用期月工资 4200 元，转正后月工资 6000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f3",
+     "rule": "R07",
+     "verdict": "violation",
+     "title": "离职要付全部培训费，超过了按未履行服务期分摊的数额",
+     "clause": "第九条",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，须全额返还培训费用 6000 元。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R09",
+     "verdict": "needs_review",
+     "title": "employee不一定在竞业限制的适用范围内",
+     "clause": "第十条",
+     "quote": "乙方离职后 1 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%。",
+     "basis": [
+      "ldhtf-24",
+      "ldzy-js2-13"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R10",
+     "verdict": "violation",
+     "title": "要求交押金、保证金，违反第九条",
+     "clause": "第七条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 2000 元，合同期满后无息退还。",
+     "basis": [
+      "ldhtf-9-1",
+      "ldhtf-84"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f6",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f7",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第十一条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "广东省",
+     "city": "广州市",
+     "src": {
+      "clause": "第一条",
+      "quote": "工作地点为广东省广州市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2030-06-30",
+     "months": 36,
+     "src": {
+      "clause": "第二条",
+      "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止"
+     }
+    },
+    "probation": {
+     "months": 7,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "其中试用期 7 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 4200,
+     "regular": 6000,
+     "src": {
+      "clause": "第四条",
+      "quote": "乙方试用期月工资 4200 元，转正后月工资 6000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": {
+     "trainingKind": "special",
+     "trainingCost": 6000,
+     "serviceMonths": 36,
+     "penalty": {
+      "kind": "full_cost",
+      "amount": 6000
+     },
+     "src": {
+      "clause": "第九条",
+      "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，须全额返还培训费用 6000 元。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": {
+     "durationMonths": 12,
+     "compensation": "unknown",
+     "role": "employee",
+     "roleLevel": "ordinary",
+     "duringEmploymentOnly": false,
+     "src": {
+      "clause": "第十条",
+      "quote": "乙方离职后 1 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%。"
+     }
+    },
+    "deposits": [
+     {
+      "kind": "deposit",
+      "amount": 2000,
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方入职时须向甲方缴纳工作保证金 2000 元，合同期满后无息退还。"
+      }
+     }
+    ],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第十一条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第十一条",
+       "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+      }
+     }
+    ],
+    "others": []
+   }
+  },
+  {
+   "sample": "s22",
+   "round": 1,
+   "ms": 57261,
+   "modelCalls": 3,
+   "stopped": null,
+   "steps": {
+    "extract": 7489,
+    "plan": 7489,
+    "execute": 30399,
+    "verify": 30399,
+    "report": 57261
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R09",
+     "verdict": "advice",
+     "quote": "乙方离职后 1 年内不得到与甲方有竞争关系的单位任职",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 1000 元，合同期满后无息退还",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 2 个月的上限",
+     "clause": "第二条",
+     "quote": "其中试用期 1 个月",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R06",
+     "verdict": "needs_review",
+     "title": "其他情形要你付违约金，这条约定无效",
+     "clause": "第八条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 1000 元，合同期满后无息退还。",
+     "basis": [
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R07",
+     "verdict": "ok",
+     "title": "服务期违约金按未履行部分分摊，符合第二十二条",
+     "clause": "第九条",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f5",
+     "rule": "R09",
+     "verdict": "advice",
+     "title": "没有约定离职后的经济补偿",
+     "clause": "第七条",
+     "quote": "乙方应保守甲方商业秘密。乙方离职后 1 年内不得到与甲方有竞争关系的单位任职。",
+     "basis": [
+      "ldhtf-23-2",
+      "ldzy-js1-36"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f6",
+     "rule": "R09",
+     "verdict": "needs_review",
+     "title": "这个岗位不一定在竞业限制的适用范围内",
+     "clause": "第七条",
+     "quote": "乙方应保守甲方商业秘密。乙方离职后 1 年内不得到与甲方有竞争关系的单位任职。",
+     "basis": [
+      "ldhtf-24",
+      "ldzy-js2-13"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f7",
+     "rule": "R10",
+     "verdict": "violation",
+     "title": "要求交押金、保证金，违反第九条",
+     "clause": "第八条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 1000 元，合同期满后无息退还。",
+     "basis": [
+      "ldhtf-9-1",
+      "ldhtf-84"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f8",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f9",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第十条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "湖北省",
+     "city": "武汉市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为财务助理，工作地点为湖北省武汉市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2028-06-30",
+     "months": 12,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probation": {
+     "months": 1,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "其中试用期 1 个月"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 8000,
+     "regular": 10000,
+     "src": {
+      "clause": "第四条",
+      "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元。"
+     }
+    },
+    "penalties": [
+     {
+      "party": "worker",
+      "trigger": "breach_tripartite",
+      "amount": null,
+      "src": {
+       "clause": "第八条",
+       "quote": "乙方入职时须向甲方缴纳工作保证金 1000 元，合同期满后无息退还。"
+      }
+     }
+    ],
+    "servicePeriod": {
+     "trainingKind": "special",
+     "trainingCost": 20000,
+     "serviceMonths": 24,
+     "penalty": {
+      "kind": "prorated",
+      "amount": null
+     },
+     "src": {
+      "clause": "第九条",
+      "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": {
+     "durationMonths": 12,
+     "compensation": "none",
+     "role": null,
+     "roleLevel": "ordinary",
+     "duringEmploymentOnly": false,
+     "src": {
+      "clause": "第七条",
+      "quote": "乙方应保守甲方商业秘密。乙方离职后 1 年内不得到与甲方有竞争关系的单位任职。"
+     }
+    },
+    "deposits": [
+     {
+      "kind": "deposit",
+      "amount": 1000,
+      "src": {
+       "clause": "第八条",
+       "quote": "乙方入职时须向甲方缴纳工作保证金 1000 元，合同期满后无息退还。"
+      }
+     }
+    ],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第十条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [],
+    "others": []
+   }
+  },
+  {
+   "sample": "s23",
+   "round": 1,
+   "ms": 31170,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 8495,
+    "plan": 8495,
+    "execute": 23623,
+    "verify": 23623,
+    "report": 31170
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 3 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 6000 元，试用期满后月工资为 6000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R09",
+     "verdict": "violation",
+     "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%",
+     "result": "verdict:needs_review",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管",
+     "result": "miss",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "miss",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R14",
+     "verdict": "violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 1 年不满 3 年，试用期最长 2 个月，这里写了 3 个月",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 3 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 6000 元，试用期满后月工资为 6000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R07",
+     "verdict": "ok",
+     "title": "服务期违约金按未履行部分分摊，符合第二十二条",
+     "clause": "第八条",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f4",
+     "rule": "R09",
+     "verdict": "needs_review",
+     "title": "竞业限制最长 2 年，这里写了 3 年，超出的部分无效",
+     "clause": "第七条",
+     "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%。",
+     "basis": [
+      "ldhtf-24"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f5",
+     "rule": "R09",
+     "verdict": "needs_review",
+     "title": "没有约定离职后的经济补偿",
+     "clause": "第七条",
+     "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%。",
+     "basis": [
+      "ldhtf-23-2",
+      "ldzy-js1-36"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f6",
+     "rule": "R13",
+     "verdict": "violation",
+     "title": "约定不缴社保无效",
+     "clause": "第五条",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元。",
+     "basis": [
+      "ldzy-js2-19-1",
+      "ldzy-js2-19-2"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f7",
+     "rule": "R14",
+     "verdict": "violation",
+     "title": "单位可以单方调整岗位、工作地点，不服从就算自动离职",
+     "clause": "第九条",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职。",
+     "basis": [
+      "ldhtf-35",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f8",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第十一条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f9",
+     "rule": null,
+     "verdict": "likely_violation",
+     "title": "约定入职交毕业证原件由公司保管，可能违法",
+     "clause": "第十条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还。",
+     "basis": [
+      "ldhtf-9",
+      "ldhtf-84"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "北京市",
+     "city": "北京市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为销售代表，工作地点为北京市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2029-06-30",
+     "months": 24,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 3 个月。"
+     }
+    },
+    "probation": {
+     "months": 3,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 3 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 6000,
+     "regular": 6000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 6000 元，试用期满后月工资为 6000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": {
+     "trainingKind": "special",
+     "trainingCost": 6000,
+     "serviceMonths": 36,
+     "penalty": {
+      "kind": "prorated",
+      "amount": null
+     },
+     "src": {
+      "clause": "第八条",
+      "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": {
+     "durationMonths": 36,
+     "compensation": "none",
+     "role": null,
+     "roleLevel": "unknown",
+     "duringEmploymentOnly": false,
+     "src": {
+      "clause": "第七条",
+      "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%。"
+     }
+    },
+    "deposits": [],
+    "requiredClauses": null,
+    "socialInsurance": {
+     "waived": true,
+     "subsidy": 800,
+     "src": {
+      "clause": "第五条",
+      "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元。"
+     }
+    },
+    "unilateralChange": {
+     "changes": [
+      "position",
+      "location"
+     ],
+     "wageCut": false,
+     "refuseMeansResign": true,
+     "src": {
+      "clause": "第九条",
+      "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职。"
+     }
+    },
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第十一条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第十一条",
+       "quote": "甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第十二条",
+       "quote": "本合同未尽事宜，按国家有关规定执行。本合同一式两份，甲乙双方各执一份。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "扣押毕业证书原件",
+      "src": {
+       "clause": "第十条",
+       "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还。"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s24",
+   "round": 1,
+   "ms": 25727,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 6587,
+    "plan": 6587,
+    "execute": 8552,
+    "verify": 8552,
+    "report": 25727
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 6 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 6000 元，转正后月工资 6000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管",
+     "result": "miss",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R14",
+     "verdict": "violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职",
+     "result": "verdict:needs_review",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "verdict:violation",
+     "warned": null,
+     "falseAlarm": true
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 6 个月的上限",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 6 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "乙方试用期月工资 6000 元，转正后月工资 6000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f4",
+     "rule": "R14",
+     "verdict": "needs_review",
+     "title": "单位可以单方调整工资、工作地点、岗位，不服从就算自动离职",
+     "clause": "第八条",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职。",
+     "basis": [
+      "ldhtf-35",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R16",
+     "verdict": "violation",
+     "title": "因为辞职扣工资或要求赔钱，这一条无效",
+     "clause": "第九条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1",
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f6",
+     "rule": null,
+     "verdict": "likely_violation",
+     "title": "约定由公司保管毕业证原件，可能违法，离职才退还的条款对你很不利",
+     "clause": "第七条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还。",
+     "basis": [
+      "ldhtf-9",
+      "ldhtf-84"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "上海市",
+     "city": "上海市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为销售代表，工作地点为上海市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2030-06-30",
+     "months": 36,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 6 个月。"
+     }
+    },
+    "probation": {
+     "months": 6,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 6 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 6000,
+     "regular": 6000,
+     "src": {
+      "clause": "第四条",
+      "quote": "乙方试用期月工资 6000 元，转正后月工资 6000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": {
+     "changes": [
+      "wage",
+      "location",
+      "position"
+     ],
+     "wageCut": false,
+     "refuseMeansResign": true,
+     "src": {
+      "clause": "第八条",
+      "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职。"
+     }
+    },
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": true,
+     "src": {
+      "clause": "第九条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。甲方解除合同的，按《中华人民共和国劳动合同法》的规定执行。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "扣押证件",
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还。"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s25",
+   "round": 1,
+   "ms": 10939,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 5824,
+    "plan": 5824,
+    "execute": 7409,
+    "verify": 7409,
+    "report": 10343
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 7 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "试用期内乙方月工资为 4200 元，试用期满后月工资为 6000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管",
+     "result": "miss",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 3 年，试用期最长 6 个月，这里写了 7 个月",
+     "clause": "第二条",
+     "quote": "其中试用期 7 个月",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "title": "试用期工资只有约定工资的 70%，低于 80%",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 4200 元，试用期满后月工资为 6000 元",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f3",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f4",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第八条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f5",
+     "rule": null,
+     "verdict": "likely_violation",
+     "title": "要求保管毕业证书原件，可能违法",
+     "clause": "第七条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还",
+     "basis": [
+      "ldhtf-9",
+      "ldhtf-84"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "广东省",
+     "city": "广州市",
+     "src": {
+      "clause": "第一条",
+      "quote": "工作地点为广东省广州市"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2030-06-30",
+     "months": 36,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止"
+     }
+    },
+    "probation": {
+     "months": 7,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "其中试用期 7 个月"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 4200,
+     "regular": 6000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 4200 元，试用期满后月工资为 6000 元"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第八条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "要求劳动者将毕业证书原件交甲方保管，扣押证件",
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s26",
+   "round": 1,
+   "ms": 14922,
+   "modelCalls": 3,
+   "stopped": null,
+   "steps": {
+    "extract": 7473,
+    "plan": 7473,
+    "execute": 9737,
+    "verify": 9737,
+    "report": 14921
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金3 万元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R07",
+     "verdict": "violation",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R09",
+     "verdict": "advice",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 2 个月的上限",
+     "clause": "第二条",
+     "quote": "其中试用期 1 个月",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R06",
+     "verdict": "violation",
+     "title": "提前离职要你付30000 元，这条约定无效",
+     "clause": "第七条",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金3 万元。",
+     "basis": [
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R07",
+     "verdict": "violation",
+     "title": "离职要付全部培训费，超过了按未履行服务期分摊的数额",
+     "clause": "第八条",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R09",
+     "verdict": "advice",
+     "title": "没有约定离职后的经济补偿",
+     "clause": "第九条",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职。",
+     "basis": [
+      "ldhtf-23-2",
+      "ldzy-js1-36"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f6",
+     "rule": "R09",
+     "verdict": "needs_review",
+     "title": "worker不一定在竞业限制的适用范围内",
+     "clause": "第九条",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职。",
+     "basis": [
+      "ldhtf-24",
+      "ldzy-js2-13"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f7",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f8",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第十条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "上海市",
+     "city": "上海市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为数据分析师，工作地点为上海市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2029-06-30",
+     "months": 24,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 1 个月。"
+     }
+    },
+    "probation": {
+     "months": 1,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "其中试用期 1 个月"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 4800,
+     "regular": 6000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元。"
+     }
+    },
+    "penalties": [
+     {
+      "party": "worker",
+      "trigger": "early_resign",
+      "amount": 30000,
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方在合同期内提前离职的，应向甲方支付违约金3 万元。"
+      }
+     }
+    ],
+    "servicePeriod": {
+     "trainingKind": "special",
+     "trainingCost": 20000,
+     "serviceMonths": 24,
+     "penalty": {
+      "kind": "full_cost",
+      "amount": 20000
+     },
+     "src": {
+      "clause": "第八条",
+      "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": {
+     "durationMonths": 24,
+     "compensation": "none",
+     "role": "worker",
+     "roleLevel": "ordinary",
+     "duringEmploymentOnly": false,
+     "src": {
+      "clause": "第九条",
+      "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职。"
+     }
+    },
+    "deposits": [],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第十条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [],
+    "others": []
+   }
+  },
+  {
+   "sample": "s27",
+   "round": 1,
+   "ms": 14017,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 7409,
+    "plan": 7409,
+    "execute": 9688,
+    "verify": 9688,
+    "report": 14017
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 6 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "乙方试用期月工资 5600 元，转正后月工资 8000 元",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R09",
+     "verdict": "advice",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管",
+     "result": "miss",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R14",
+     "verdict": "likely_violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 6 个月的上限",
+     "clause": "第二条",
+     "quote": "其中试用期 6 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "title": "试用期工资只有约定工资的 70%，低于 80%",
+     "clause": "第四条",
+     "quote": "乙方试用期月工资 5600 元，转正后月工资 8000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f3",
+     "rule": "R07",
+     "verdict": "ok",
+     "title": "服务期违约金按未履行部分分摊，符合第二十二条",
+     "clause": "第九条",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f4",
+     "rule": "R09",
+     "verdict": "advice",
+     "title": "没有约定离职后的经济补偿",
+     "clause": "第七条",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职。",
+     "basis": [
+      "ldhtf-23-2",
+      "ldzy-js1-36"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f6",
+     "rule": "R14",
+     "verdict": "likely_violation",
+     "title": "单位可以单方调整岗位、工作地点",
+     "clause": "第十条",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从。",
+     "basis": [
+      "ldhtf-35",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f7",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第十一条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f8",
+     "rule": null,
+     "verdict": "likely_violation",
+     "title": "约定由公司保管毕业证原件，可能违法",
+     "clause": "第八条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还。",
+     "basis": [
+      "ldhtf-9",
+      "ldhtf-84"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "湖北省",
+     "city": "武汉市",
+     "src": {
+      "clause": "第一条",
+      "quote": "工作地点为湖北省武汉市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2030-06-30",
+     "months": 36,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止，其中试用期 6 个月。"
+     }
+    },
+    "probation": {
+     "months": 6,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "其中试用期 6 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 5600,
+     "regular": 8000,
+     "src": {
+      "clause": "第四条",
+      "quote": "乙方试用期月工资 5600 元，转正后月工资 8000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": {
+     "trainingKind": "special",
+     "trainingCost": 6000,
+     "serviceMonths": 24,
+     "penalty": {
+      "kind": "prorated",
+      "amount": null
+     },
+     "src": {
+      "clause": "第九条",
+      "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": {
+     "durationMonths": 24,
+     "compensation": "none",
+     "role": "employee",
+     "roleLevel": "unknown",
+     "duringEmploymentOnly": false,
+     "src": {
+      "clause": "第七条",
+      "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职。"
+     }
+    },
+    "deposits": [],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": {
+     "changes": [
+      "position",
+      "location"
+     ],
+     "wageCut": false,
+     "refuseMeansResign": false,
+     "src": {
+      "clause": "第十条",
+      "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从。"
+     }
+    },
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第十一条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [],
+    "others": [
+     {
+      "concern": "证件",
+      "src": {
+       "clause": "第八条",
+       "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管，离职时退还。"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s28",
+   "round": 1,
+   "ms": 14770,
+   "modelCalls": 5,
+   "stopped": null,
+   "steps": {
+    "extract": 6806,
+    "plan": 6806,
+    "execute": 12296,
+    "verify": 8997,
+    "report": 14770
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 6 个月",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 4800 元，转正后月工资 6000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金1 万元",
+     "result": "miss",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "miss",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "violation",
+     "title": "合同满 1 年不满 3 年，试用期最长 2 个月，这里写了 6 个月",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 6 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "乙方试用期月工资 4800 元，转正后月工资 6000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R07",
+     "verdict": "ok",
+     "title": "服务期违约金按未履行部分分摊，符合第二十二条",
+     "clause": "第八条",
+     "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f4",
+     "rule": "R15",
+     "verdict": "needs_review",
+     "title": "\"乙方未满合同期限主动辞职的，须向甲方支付违约金1 万元。\"不在法定可以解除的情形里",
+     "clause": "第七条",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金1 万元。",
+     "basis": [
+      "ldhtf-39",
+      "ldhtf-40",
+      "ldhtf-41",
+      "ldhtf-87"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R16",
+     "verdict": "violation",
+     "title": "辞职不需要单位批准",
+     "clause": "第九条",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f6",
+     "rule": "R16",
+     "verdict": "violation",
+     "title": "因为辞职扣工资或要求赔钱，这一条无效",
+     "clause": "第九条",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1",
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": null,
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2029-06-30",
+     "months": 24,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 6 个月。"
+     }
+    },
+    "probation": {
+     "months": 6,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 6 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 4800,
+     "regular": 6000,
+     "src": {
+      "clause": "第四条",
+      "quote": "乙方试用期月工资 4800 元，转正后月工资 6000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": {
+     "trainingKind": "special",
+     "trainingCost": 12000,
+     "serviceMonths": 36,
+     "penalty": {
+      "kind": "prorated",
+      "amount": null
+     },
+     "src": {
+      "clause": "第八条",
+      "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用。"
+     }
+    },
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": null,
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [
+     {
+      "kind": "other",
+      "src": {
+       "clause": "第七条",
+       "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金1 万元。"
+      }
+     }
+    ],
+    "resignation": {
+     "noticeDays": null,
+     "probationNoticeDays": null,
+     "needsApproval": true,
+     "penaltyOrDeduction": true,
+     "src": {
+      "clause": "第九条",
+      "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第四条",
+       "quote": "乙方试用期月工资 4800 元，转正后月工资 6000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第五条",
+       "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "合同文本末尾声明本内容由程序生成，仅供评测用途，相关单位和人员均不存在，可能影响文书真实性与效力。",
+      "src": {
+       "clause": "其他",
+       "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s29",
+   "round": 1,
+   "ms": 30186,
+   "modelCalls": 4,
+   "stopped": null,
+   "steps": {
+    "extract": 5687,
+    "plan": 5687,
+    "execute": 30186,
+    "verify": 7718
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 2 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 6400 元，试用期满后月工资为 8000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "miss",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 2 个月的上限",
+     "clause": "第二条",
+     "quote": "其中试用期 2 个月",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "试用期内乙方月工资为 6400 元，试用期满后月工资为 8000 元。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R16",
+     "verdict": "ok",
+     "title": "辞职条款和第三十七条一致",
+     "clause": "第七条",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": false
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "广东省",
+     "city": "广州市",
+     "src": {
+      "clause": "第一条",
+      "quote": "工作地点为广东省广州市"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2029-06-30",
+     "months": 24,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 2 个月。"
+     }
+    },
+    "probation": {
+     "months": 2,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "其中试用期 2 个月"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 6400,
+     "regular": 8000,
+     "src": {
+      "clause": "第四条",
+      "quote": "试用期内乙方月工资为 6400 元，试用期满后月工资为 8000 元。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": null,
+    "specialBenefit": null,
+    "nonCompete": null,
+    "deposits": [],
+    "requiredClauses": null,
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": null,
+    "termination": [],
+    "resignation": {
+     "noticeDays": 30,
+     "probationNoticeDays": null,
+     "needsApproval": false,
+     "penaltyOrDeduction": false,
+     "src": {
+      "clause": "第七条",
+      "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第四条",
+       "quote": "甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     }
+    ],
+    "others": [
+     {
+      "concern": "合同文本生成声明",
+      "src": {
+       "clause": "第八条",
+       "quote": "（本合同由程序生成，用于评测，单位和人员均不存在。）"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "sample": "s30",
+   "round": 1,
+   "ms": 19164,
+   "modelCalls": 3,
+   "stopped": null,
+   "steps": {
+    "extract": 8566,
+    "plan": 8566,
+    "execute": 11718,
+    "verify": 11718,
+    "report": 19164
+   },
+   "scored": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 2 个月",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 4800 元，转正后月工资 6000 元",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": "",
+     "result": "hit",
+     "warned": null,
+     "falseAlarm": false
+    },
+    {
+     "rule": "R14",
+     "verdict": "likely_violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资",
+     "result": "hit",
+     "warned": true,
+     "falseAlarm": null
+    }
+   ],
+   "extra": [],
+   "findings": [
+    {
+     "id": "f1",
+     "rule": "R01",
+     "verdict": "ok",
+     "title": "试用期没有超过 2 个月的上限",
+     "clause": "第二条",
+     "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 2 个月。",
+     "basis": [
+      "ldhtf-19-1",
+      "ldhtf-83"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f2",
+     "rule": "R05",
+     "verdict": "ok",
+     "title": "试用期工资没有低于法定标准",
+     "clause": "第四条",
+     "quote": "乙方试用期月工资 4800 元，转正后月工资 6000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。",
+     "basis": [
+      "ldhtf-20-1",
+      "ldhtf-tl-15"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f3",
+     "rule": "R07",
+     "verdict": "needs_review",
+     "title": "服务期违约金要以单位出钱做专业技术培训为前提，这一条看不出是",
+     "clause": "第八条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还。",
+     "basis": [
+      "ldhtf-22-1",
+      "ldhtf-22-2",
+      "ldhtf-tl-16"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f4",
+     "rule": "R08",
+     "verdict": "needs_review",
+     "title": "用提供住房换服务期，再约定违约金，这条违约金无效",
+     "clause": "第八条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还。",
+     "basis": [
+      "ldhtf-25-1",
+      "ldzy-js2-12"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f5",
+     "rule": "R10",
+     "verdict": "violation",
+     "title": "要求交押金、保证金，违反第九条",
+     "clause": "第八条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还。",
+     "basis": [
+      "ldhtf-9-1",
+      "ldhtf-84"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f6",
+     "rule": "R11",
+     "verdict": "ok",
+     "title": "第十七条要求的必备条款都有",
+     "clause": null,
+     "quote": null,
+     "basis": [
+      "ldhtf-17-1",
+      "ldhtf-81"
+     ],
+     "reported": false
+    },
+    {
+     "id": "f7",
+     "rule": "R14",
+     "verdict": "likely_violation",
+     "title": "单位可以单方调整岗位、工作地点",
+     "clause": "第七条",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从。",
+     "basis": [
+      "ldhtf-35",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f8",
+     "rule": "R16",
+     "verdict": "violation",
+     "title": "辞职不需要单位批准",
+     "clause": "第九条",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1"
+     ],
+     "reported": true
+    },
+    {
+     "id": "f9",
+     "rule": "R16",
+     "verdict": "violation",
+     "title": "因为辞职扣工资或要求赔钱，这一条无效",
+     "clause": "第九条",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。",
+     "basis": [
+      "ldhtf-37-1",
+      "ldhtf-26-1",
+      "ldhtf-25-1"
+     ],
+     "reported": true
+    }
+   ],
+   "facts": {
+    "docKind": "劳动合同",
+    "workPlace": {
+     "province": "四川省",
+     "city": "成都市",
+     "src": {
+      "clause": "第一条",
+      "quote": "乙方的工作岗位为销售代表，工作地点为四川省成都市。"
+     }
+    },
+    "term": {
+     "kind": "fixed",
+     "start": "2027-07-01",
+     "end": "2029-06-30",
+     "months": 24,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 2 个月。"
+     }
+    },
+    "probation": {
+     "months": 2,
+     "days": null,
+     "src": {
+      "clause": "第二条",
+      "quote": "本合同为固定期限劳动合同，劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止，其中试用期 2 个月。"
+     }
+    },
+    "probationOnly": null,
+    "wage": {
+     "probation": 4800,
+     "regular": 6000,
+     "src": {
+      "clause": "第四条",
+      "quote": "乙方试用期月工资 4800 元，转正后月工资 6000 元。甲方于每月 15 日前以货币形式足额支付乙方上月工资。"
+     }
+    },
+    "penalties": [],
+    "servicePeriod": {
+     "trainingKind": "unknown",
+     "trainingCost": null,
+     "serviceMonths": null,
+     "penalty": {
+      "kind": "amount",
+      "amount": 500
+     },
+     "src": {
+      "clause": "第八条",
+      "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还。"
+     }
+    },
+    "specialBenefit": {
+     "benefit": "housing",
+     "serviceYears": null,
+     "amount": 500,
+     "src": {
+      "clause": "第八条",
+      "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还。"
+     }
+    },
+    "nonCompete": null,
+    "deposits": [
+     {
+      "kind": "deposit",
+      "amount": 500,
+      "src": {
+       "clause": "第八条",
+       "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还。"
+      }
+     }
+    ],
+    "requiredClauses": {
+     "employer": true,
+     "employee": true,
+     "term": true,
+     "job": true,
+     "hours": true,
+     "pay": true,
+     "social_insurance": true,
+     "protection": true
+    },
+    "socialInsurance": {
+     "waived": false,
+     "subsidy": null,
+     "src": {
+      "clause": "第五条",
+      "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+     }
+    },
+    "unilateralChange": {
+     "changes": [
+      "position",
+      "location"
+     ],
+     "wageCut": false,
+     "refuseMeansResign": false,
+     "src": {
+      "clause": "第七条",
+      "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从。"
+     }
+    },
+    "termination": [],
+    "resignation": {
+     "noticeDays": null,
+     "probationNoticeDays": null,
+     "needsApproval": true,
+     "penaltyOrDeduction": true,
+     "src": {
+      "clause": "第九条",
+      "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资。"
+     }
+    },
+    "standardTerms": [
+     {
+      "src": {
+       "clause": "第三条",
+       "quote": "乙方实行标准工时制度，每日工作 8 小时，每周工作 40 小时。甲方安排乙方延长工作时间的，按国家规定支付加班工资。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第五条",
+       "quote": "甲方依法为乙方缴纳社会保险和住房公积金。"
+      }
+     },
+     {
+      "src": {
+       "clause": "第六条",
+       "quote": "甲方为乙方提供符合国家规定的劳动安全卫生条件和必要的劳动防护用品。"
+      }
+     }
+    ],
+    "others": []
+   }
+  }
+ ]
+}

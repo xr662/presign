@@ -334,6 +334,19 @@ export function dropUnquotedAmounts(f: Facts): { facts: Facts; cleared: Dropped[
   };
 }
 
+/**
+ * "辞职要扣钱"必须写在辞职这一条原文里。不开思考的抽取看到合同别处有离职违约金，会把辞职条款的
+ * penaltyOrDeduction 也填成 true，规则 R16 就把"乙方提前三十日以书面形式通知甲方，可以解除本合同"
+ * 这句写对的话标成"因为辞职扣钱，无效"（10-31 示例合同评测、11-16 合成合同评测 30 份里 4 份）。
+ * 别处的违约金由违约金字段和规则 R06 管，这里只看辞职条款自己的原文。
+ */
+export function dropUnquotedDeduction(f: Facts): { facts: Facts; cleared: boolean } {
+  const r = f.resignation;
+  if (!r?.penaltyOrDeduction || /扣|赔|违约金|罚|元|费/.test(r.src.quote))
+    return { facts: f, cleared: false };
+  return { facts: { ...f, resignation: { ...r, penaltyOrDeduction: false } }, cleared: true };
+}
+
 // ── 给自检看的字段说明 ──────────────────────────────────
 
 type JsonNode = {
@@ -410,4 +423,131 @@ export function reconcile(f: Facts): { facts: Facts; merged: Dropped[] } {
     return !dup;
   });
   return { facts: { ...f, others, termination }, merged };
+}
+
+// ── 漏抽的兜底 ──────────────────────────────────────────
+
+/** 原文按句切开（句号、分号、换行），每句带上所在的条款编号（"第七条"或"五"） */
+function sentences(text: string): Src[] {
+  const out: Src[] = [];
+  let clause: string | null = null;
+  for (const line of text.split(/\r?\n/)) {
+    const head = line.match(
+      /^\s*(第[一二三四五六七八九十百零〇\d]+条)|^\s*([一二三四五六七八九十]+)、/,
+    );
+    if (head) clause = head[1] ?? head[2];
+    for (const s of line.split(/[。；;]/)) {
+      const quote = s.trim();
+      if (quote) out.push({ clause, quote });
+    }
+  }
+  return out;
+}
+
+/** 句子里写的金额：5000 元、5,000 元、2 万元、1.5 万元；中文数字不认，返回 null */
+function amountOf(quote: string): number | null {
+  const q = quote
+    .replace(/[０-９]/g, (d) => String.fromCharCode(d.charCodeAt(0) - 0xfee0))
+    .replace(/[\s,，]/g, "");
+  const m = q.match(/(\d+(?:\.\d+)?)(万)?元/);
+  if (!m) return null;
+  return Math.round(Number(m[1]) * (m[2] ? 10_000 : 1));
+}
+
+const NEGATED = /不得|不会|无需|不需|不收取|不要求|不予|免除/;
+// 劳动者付违约金：向单位支付，或者劳动者作主语承担、支付（排除"向乙方支付"这种单位付的）
+const WORKER_PAYS = [
+  /向(甲方|公司|单位|用人单位)[^，。]{0,4}(支付|赔偿|缴纳|交纳|赔付)/,
+  /(?<!向)(乙方|劳动者|员工|实习生)[^，。]{0,8}(承担|支付|赔偿|缴纳|交纳|赔付)[^。]{0,10}违约金/,
+];
+// 这几类违约金有自己的字段和规则（服务期 R07、特殊待遇 R08、竞业限制 R09），兜底不碰
+const OWN_FIELD = /服务期|培训|竞业|户口|落户|住房/;
+const CERTIFICATE = /(身份证|毕业证|学位证|学历证|资格证|证书|证件)[^。]{0,15}原件/;
+const KEEP = /保管|留存|扣留|扣押|押在|交(给|由|到|至)?(甲方|公司|单位|人事)/;
+const ONLY_CHECK = /核验|核对|查验|验看|当场(归还|退还)/;
+const MONEY_DEPOSIT = /押金|保证金|风险金|抵押金/;
+const PAY = /缴纳|交纳|交付|支付|收取|缴|交/;
+
+function penaltyTrigger(q: string): Facts["penalties"][number]["trigger"] {
+  if (/保密/.test(q)) return "confidentiality";
+  if (/试用期/.test(q)) return "probation_resign";
+  if (/规章|制度|纪律/.test(q)) return "rules_violation";
+  if (/离职|辞职|解除|未满/.test(q)) return "early_resign";
+  if (/通知/.test(q)) return "notice";
+  return "other";
+}
+
+/**
+ * 抽取漏掉的违约金、押金和扣证件，按原文补进规则字段。
+ * 11-16 合成合同评测（30 份，补救前）：12 处违约金只有 3 处进了 penalties，其余放进"其他条款"或整条漏掉，
+ * 其中 3 处用户完全看不到提醒；14 处扣毕业证原件有 7 处放进了"其他条款"，走了模型判断，等级只到"可能违法"。
+ * 示例合同里也出现过同样的情况（10-30 录用通知的证件原件、10-31 劳动合同的 20000 元违约金）。
+ * 规则字段描述里已经写明了归类，模型仍会放错，所以由程序按句子再找一遍：
+ *   - 违约金：句子里有"违约金"、是劳动者付、不属于服务期竞业限制这些有自己字段的情形，只补劳动合同和实习协议
+ *     （三方协议、录用通知的违约金双方都可能付，规则 R12 要分清是谁付，不在这里猜）；
+ *   - 证件原件交单位保管、扣留（只核验当场归还的不算）；押金、保证金、风险金。
+ * 带否定词（不得、不收取……）的句子不补。已经被规则字段引用的句子不重复补。
+ */
+export function rescueRuleClauses(f: Facts, text: string): { facts: Facts; added: Dropped[] } {
+  const added: Dropped[] = [];
+  const penalties = [...f.penalties];
+  const deposits = [...f.deposits];
+  const covered = (q: string, xs: ({ src: Src } | null)[]) =>
+    xs.some((x) => x !== null && sameSpot(x.src.quote, q));
+  for (const s of sentences(text)) {
+    const q = s.quote;
+    if (NEGATED.test(q)) continue;
+    if (
+      (f.docKind === "劳动合同" || f.docKind === "实习协议") &&
+      q.includes("违约金") &&
+      WORKER_PAYS.some((re) => re.test(q)) &&
+      !OWN_FIELD.test(q) &&
+      !covered(q, [...penalties, f.servicePeriod, f.specialBenefit, f.nonCompete])
+    ) {
+      penalties.push({ party: "worker", trigger: penaltyTrigger(q), amount: amountOf(q), src: s });
+      added.push({ field: "penalties", quote: q });
+      continue;
+    }
+    if (covered(q, deposits)) continue;
+    if (CERTIFICATE.test(q) && KEEP.test(q) && !ONLY_CHECK.test(q)) {
+      deposits.push({ kind: "keep_original_certificate", amount: null, src: s });
+      added.push({ field: "deposits", quote: q });
+    } else if (MONEY_DEPOSIT.test(q) && PAY.test(q)) {
+      deposits.push({ kind: "deposit", amount: amountOf(q), src: s });
+      added.push({ field: "deposits", quote: q });
+    }
+  }
+  return { facts: { ...f, penalties, deposits }, added };
+}
+
+type Required = NonNullable<Facts["requiredClauses"]>;
+// 第十七条九项里八项的常见写法（第九项"法律、法规规定的其他事项"不单独查）。只用来补"有"，不用来判"没有"
+const REQUIRED_HINTS: Record<keyof Required, RegExp> = {
+  employer: /法定代表人|主要负责人|(甲方|用人单位)[\s\S]{0,30}(住所|地址)/,
+  employee: /身份证|(乙方|劳动者)[\s\S]{0,30}(住址|住所)/,
+  term: /合同期限|固定期限|以完成一定工作任务为期限/,
+  job: /工作内容|工作地点|工作岗位/,
+  hours: /工作时间|休息休假|工时/,
+  pay: /劳动报酬|工资|薪酬/,
+  social_insurance: /社会保险|社保/,
+  protection: /劳动保护|劳动条件|职业危害|劳动安全|劳动防护/,
+};
+
+/**
+ * 劳动合同的必备条款，模型给的结果和原文关键词取"有"的并集。
+ * 11-16 合成合同评测：30 份劳动合同里 11 份 requiredClauses 是 null（规则 R11 没有调），
+ * 2 份八项全填 false（报"缺少 8 项"，实际都有）。条款标题和常见写法用关键词就能认出来，
+ * 所以关键词认出来的项算"有"；关键词认不出的，仍以模型的判断为准，不因为关键词没命中就判"没有"。
+ * 模型给 null 时，关键词要认出至少 6 项才补：只拍了一页的合同本来就缺条款，补出来会报"缺少必备条款"。
+ */
+export function fillRequiredClauses(f: Facts, text: string): { facts: Facts; filled: string[] } {
+  if (f.docKind !== "劳动合同") return { facts: f, filled: [] };
+  const keys = Object.keys(REQUIRED_HINTS) as (keyof Required)[];
+  const seen = new Set(keys.filter((k) => REQUIRED_HINTS[k].test(text)));
+  if (f.requiredClauses === null && seen.size < 6) return { facts: f, filled: [] };
+  const filled = keys.filter((k) => seen.has(k) && !f.requiredClauses?.[k]);
+  const present = Object.fromEntries(
+    keys.map((k) => [k, Boolean(f.requiredClauses?.[k]) || seen.has(k)]),
+  ) as Required;
+  return { facts: { ...f, requiredClauses: present }, filled };
 }

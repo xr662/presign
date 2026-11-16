@@ -168,7 +168,7 @@ export function ReviewView({
         <p role="note" className="rounded-sm bg-orange-bg px-3 py-2 text-sm leading-6 text-orange">
           合同里有 {injections.length} 段像是写给 AI 的话（
           {[...new Set(injections.map((h) => h.reason))].join("、")}
-          ），已在合同里用虚线框标出。检查时按普通合同文字处理，交给模型时写明这些话不是指令。正常合同里不该有这样的内容，签之前问清楚是谁加的。
+          ），已在合同里用虚线框标出。这几句没有发给模型，规则检查照常按原文做。正常合同里不该有这样的内容，签之前问清楚是谁加的。
         </p>
       )}
       {state.status === "done" && (

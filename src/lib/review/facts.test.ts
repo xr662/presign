@@ -4,9 +4,12 @@ import { describe, expect, it } from "vitest";
 import {
   amountInQuote,
   dropUnquotedAmounts,
+  dropUnquotedDeduction,
   dropUnsourced,
   fieldGuide,
+  fillRequiredClauses,
   reconcile,
+  rescueRuleClauses,
   type Facts,
 } from "./facts.ts";
 import { SAMPLE_FACTS } from "./sample-facts.ts";
@@ -121,5 +124,125 @@ describe("金额必须出自这一项的原文", () => {
   it("四份示例合同的人工字段全部通过，不误清", () => {
     for (const [id, facts] of Object.entries(SAMPLE_FACTS))
       expect(dropUnquotedAmounts(facts).cleared, id).toEqual([]);
+  });
+});
+
+describe("漏抽的违约金、押金和证件按原文补上", () => {
+  const OFFER = readFileSync("data/samples/offer.md", "utf8");
+  const INTERNSHIP = readFileSync("data/samples/internship.md", "utf8");
+  const none: Facts = {
+    ...labor,
+    penalties: [],
+    deposits: [],
+    servicePeriod: null,
+    nonCompete: null,
+  };
+
+  it("劳动合同的违约金没进字段时补上，金额和条款号取自那一句", () => {
+    const r = rescueRuleClauses(none, LABOR);
+    const p = r.facts.penalties.find((x) => x.src.quote.includes("20000"));
+    expect(p).toMatchObject({ party: "worker", trigger: "early_resign", amount: 20000 });
+    expect(p?.src.clause).toBe("第七条");
+    expect(r.added.some((a) => a.field === "penalties")).toBe(true);
+  });
+
+  it("已经在字段里的不重复补", () => {
+    expect(rescueRuleClauses(labor, LABOR).facts.penalties).toEqual(labor.penalties);
+  });
+
+  it("单位付、带否定词、服务期竞业限制的违约金不补；三方协议、录用通知不补违约金", () => {
+    const text = [
+      "第八条 违约责任",
+      "甲方违法解除本合同的，应向乙方支付违约金 5000 元。",
+      "甲方不得要求乙方支付违约金。",
+      "乙方服务期未满离职的，应向甲方支付违约金 8000 元。",
+      "乙方违反竞业限制约定的，应向甲方支付违约金 10 万元。",
+    ].join("\n");
+    expect(rescueRuleClauses(none, text).facts.penalties).toEqual([]);
+    const tri: Facts = { ...none, docKind: "三方协议" };
+    expect(
+      rescueRuleClauses(tri, "乙方不按时报到的，向甲方支付违约金 10000 元。").facts.penalties,
+    ).toEqual([]);
+  });
+
+  it("写成万元、触发条件按句子里的词归类", () => {
+    const r = rescueRuleClauses(none, "乙方试用期内离职的，须向甲方支付违约金 1.5 万元。");
+    expect(r.facts.penalties[0]).toMatchObject({ trigger: "probation_resign", amount: 15000 });
+  });
+
+  it("证件原件交单位保管补成扣证件；只带原件核验、当场归还的不补", () => {
+    const r = rescueRuleClauses({ ...none, docKind: "录用通知" }, OFFER);
+    expect(r.facts.deposits).toHaveLength(1);
+    expect(r.facts.deposits[0]).toMatchObject({ kind: "keep_original_certificate", amount: null });
+    expect(r.facts.deposits[0].src.quote).toContain("统一保管");
+    expect(r.facts.deposits[0].src.clause).toBe("五");
+    const check = rescueRuleClauses(none, "入职时携带毕业证原件供核验，核验后当场归还。");
+    expect(check.facts.deposits).toEqual([]);
+  });
+
+  it("押金补成押金，带上金额；不收取押金的句子不补", () => {
+    const r = rescueRuleClauses({ ...none, docKind: "实习协议" }, INTERNSHIP);
+    expect(r.facts.deposits).toEqual([expect.objectContaining({ kind: "deposit", amount: 500 })]);
+    expect(rescueRuleClauses(none, "甲方不收取乙方任何押金。").facts.deposits).toEqual([]);
+  });
+
+  it("补进来的句子在合同里找得到，过得了出处检查", () => {
+    const r = rescueRuleClauses(none, LABOR);
+    expect(dropUnsourced(r.facts, LABOR).dropped).toEqual([]);
+  });
+});
+
+describe("必备条款按关键词补成有", () => {
+  it("模型给 null、原文能认出 6 项以上时补上；关键词认不出的项保持没有", () => {
+    const r = fillRequiredClauses({ ...labor, requiredClauses: null }, LABOR);
+    expect(r.facts.requiredClauses).not.toBeNull();
+    expect(r.filled.length).toBeGreaterThanOrEqual(6);
+  });
+
+  it("模型全填 false 时，关键词认出的项改成有", () => {
+    const allFalse = Object.fromEntries(
+      Object.keys(labor.requiredClauses!).map((k) => [k, false]),
+    ) as NonNullable<Facts["requiredClauses"]>;
+    const r = fillRequiredClauses({ ...labor, requiredClauses: allFalse }, LABOR);
+    expect(r.facts.requiredClauses?.pay).toBe(true);
+    expect(r.facts.requiredClauses?.social_insurance).toBe(true);
+  });
+
+  it("模型给 null、只有一页的片段不补；不是劳动合同不动", () => {
+    const page = "第四条 劳动报酬\n乙方月工资 8000 元。";
+    expect(
+      fillRequiredClauses({ ...labor, requiredClauses: null }, page).facts.requiredClauses,
+    ).toBeNull();
+    const offer: Facts = { ...labor, docKind: "录用通知", requiredClauses: null };
+    expect(fillRequiredClauses(offer, LABOR).facts.requiredClauses).toBeNull();
+  });
+});
+
+describe("辞职扣钱必须写在辞职这一条里", () => {
+  const resign = (quote: string, penaltyOrDeduction = true): Facts => ({
+    ...labor,
+    resignation: {
+      noticeDays: 30,
+      probationNoticeDays: null,
+      needsApproval: false,
+      penaltyOrDeduction,
+      src: { clause: "第十一条", quote },
+    },
+  });
+
+  it("原文里没有扣钱、赔钱字样的改成不扣钱", () => {
+    const r = dropUnquotedDeduction(resign("乙方提前三十日以书面形式通知甲方，可以解除本合同"));
+    expect(r.cleared).toBe(true);
+    expect(r.facts.resignation?.penaltyOrDeduction).toBe(false);
+  });
+
+  it("原文写了扣发、违约金的保留", () => {
+    for (const q of ["未经批准擅自离开的，扣发当月实习补贴", "辞职须支付违约金 5000 元"])
+      expect(dropUnquotedDeduction(resign(q)).cleared).toBe(false);
+  });
+
+  it("本来就是不扣钱的不动", () => {
+    const f = resign("乙方提前三十日以书面形式通知甲方，可以解除本合同", false);
+    expect(dropUnquotedDeduction(f).facts).toBe(f);
   });
 });

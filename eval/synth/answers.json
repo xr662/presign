@@ -1,0 +1,1176 @@
+{
+ "$comment": "程序生成（scripts/eval/synth.ts），标准答案由正确字段经计划步骤和规则工具算出",
+ "dir": "eval/synth/contracts",
+ "samples": [
+  {
+   "id": "s01",
+   "file": "s01.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 6 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 12000 元，试用期满后月工资为 12000 元"
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 5000 元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+    },
+    {
+     "rule": "R09",
+     "verdict": "advice",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 1000 元，合同期满后无息退还"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "file": "s02.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 7 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 500 元"
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "file": "s03.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 6 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元"
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 30000 元"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "file": "s04.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 6000 元，转正后月工资 6000 元"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "file": "s05.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "试用期内乙方月工资为 7000 元，试用期满后月工资为 10000 元"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R14",
+     "verdict": "likely_violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从"
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "file": "s06.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 7 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 6400 元，转正后月工资 8000 元"
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 10000 元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+    },
+    {
+     "rule": "R09",
+     "verdict": "violation",
+     "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 500 元"
+    },
+    {
+     "rule": "R14",
+     "verdict": "violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职"
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "file": "s07.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "试用期内乙方月工资为 5600 元，试用期满后月工资为 8000 元"
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金2 万元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "violation",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元"
+    },
+    {
+     "rule": "R09",
+     "verdict": "violation",
+     "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "file": "s08.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 2 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "乙方试用期月工资 5600 元，转正后月工资 8000 元"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s09",
+   "file": "s09.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元"
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 5000 元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "violation",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "file": "s10.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 3 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 8000 元，试用期满后月工资为 10000 元"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "file": "s11.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 7 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "试用期内乙方月工资为 5600 元，试用期满后月工资为 8000 元"
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金1 万元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "file": "s12.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 10000 元，试用期满后月工资为 10000 元"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "file": "s13.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 6 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 12000 元，试用期满后月工资为 12000 元"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元"
+    },
+    {
+     "rule": "R14",
+     "verdict": "violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职"
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "file": "s14.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 6 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "试用期内乙方月工资为 8400 元，试用期满后月工资为 12000 元"
+    },
+    {
+     "rule": "R09",
+     "verdict": "advice",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元"
+    },
+    {
+     "rule": "R14",
+     "verdict": "violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职"
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "file": "s15.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 2 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 10000 元，试用期满后月工资为 10000 元"
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 10000 元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s16",
+   "file": "s16.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 3 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "乙方试用期月工资 4200 元，转正后月工资 6000 元"
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 20000 元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R14",
+     "verdict": "violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职"
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+    }
+   ]
+  },
+  {
+   "id": "s17",
+   "file": "s17.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元"
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 10000 元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "violation",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，须全额返还培训费用 6000 元"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 300 元"
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+    }
+   ]
+  },
+  {
+   "id": "s18",
+   "file": "s18.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 3 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 9600 元，试用期满后月工资为 12000 元"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R14",
+     "verdict": "likely_violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从"
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+    }
+   ]
+  },
+  {
+   "id": "s19",
+   "file": "s19.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 7 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 8000 元，试用期满后月工资为 8000 元"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s20",
+   "file": "s20.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 3 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 6400 元，试用期满后月工资为 8000 元"
+    },
+    {
+     "rule": "R09",
+     "verdict": "violation",
+     "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元"
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s21",
+   "file": "s21.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 7 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "乙方试用期月工资 4200 元，转正后月工资 6000 元"
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金3 万元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "violation",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，须全额返还培训费用 6000 元"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 2000 元，合同期满后无息退还"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s22",
+   "file": "s22.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+    },
+    {
+     "rule": "R09",
+     "verdict": "advice",
+     "quote": "乙方离职后 1 年内不得到与甲方有竞争关系的单位任职"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 1000 元，合同期满后无息退还"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s23",
+   "file": "s23.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 3 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 6000 元，试用期满后月工资为 6000 元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+    },
+    {
+     "rule": "R09",
+     "verdict": "violation",
+     "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R13",
+     "verdict": "violation",
+     "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元"
+    },
+    {
+     "rule": "R14",
+     "verdict": "violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职"
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s24",
+   "file": "s24.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 6 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 6000 元，转正后月工资 6000 元"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R14",
+     "verdict": "violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职"
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s25",
+   "file": "s25.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 7 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "试用期内乙方月工资为 4200 元，试用期满后月工资为 6000 元"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s26",
+   "file": "s26.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 1 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元"
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金3 万元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "violation",
+     "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元"
+    },
+    {
+     "rule": "R09",
+     "verdict": "advice",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s27",
+   "file": "s27.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 6 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "likely_violation",
+     "quote": "乙方试用期月工资 5600 元，转正后月工资 8000 元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+    },
+    {
+     "rule": "R09",
+     "verdict": "advice",
+     "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R14",
+     "verdict": "likely_violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从"
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s28",
+   "file": "s28.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "violation",
+     "quote": "其中试用期 6 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 4800 元，转正后月工资 6000 元"
+    },
+    {
+     "rule": "R06",
+     "verdict": "violation",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金1 万元"
+    },
+    {
+     "rule": "R07",
+     "verdict": "ok",
+     "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+    }
+   ]
+  },
+  {
+   "id": "s29",
+   "file": "s29.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 2 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "试用期内乙方月工资为 6400 元，试用期满后月工资为 8000 元"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R16",
+     "verdict": "ok",
+     "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+    }
+   ]
+  },
+  {
+   "id": "s30",
+   "file": "s30.md",
+   "kind": "劳动合同",
+   "findings": [
+    {
+     "rule": "R01",
+     "verdict": "ok",
+     "quote": "其中试用期 2 个月"
+    },
+    {
+     "rule": "R05",
+     "verdict": "ok",
+     "quote": "乙方试用期月工资 4800 元，转正后月工资 6000 元"
+    },
+    {
+     "rule": "R10",
+     "verdict": "violation",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还"
+    },
+    {
+     "rule": "R11",
+     "verdict": "ok",
+     "quote": ""
+    },
+    {
+     "rule": "R14",
+     "verdict": "likely_violation",
+     "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从"
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+    },
+    {
+     "rule": "R16",
+     "verdict": "violation",
+     "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+    }
+   ]
+  }
+ ]
+}

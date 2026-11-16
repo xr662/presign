@@ -1,0 +1,2715 @@
+{
+ "s01": {
+  "workPlace": {
+   "province": "北京",
+   "city": "北京",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为北京市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2029-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 6,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 6 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 12000,
+   "regular": 12000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 12000 元，试用期满后月工资为 12000 元"
+   }
+  },
+  "penalties": [
+   {
+    "party": "worker",
+    "trigger": "early_resign",
+    "amount": 5000,
+    "src": {
+     "clause": "第八条",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 5000 元"
+    }
+   }
+  ],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 12000,
+   "serviceMonths": 12,
+   "penalty": {
+    "kind": "prorated",
+    "amount": null
+   },
+   "src": {
+    "clause": "第十条",
+    "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": {
+   "durationMonths": 24,
+   "compensation": "none",
+   "role": "软件开发工程师",
+   "roleLevel": "unknown",
+   "duringEmploymentOnly": false,
+   "src": {
+    "clause": "第九条",
+    "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职"
+   }
+  },
+  "deposits": [
+   {
+    "kind": "deposit",
+    "amount": 1000,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 1000 元，合同期满后无息退还"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第十一条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s02": {
+  "workPlace": {
+   "province": "北京",
+   "city": "北京",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为北京市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2030-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 7,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 7 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 4800,
+   "regular": 6000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [
+   {
+    "kind": "keep_original_certificate",
+    "amount": null,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": {
+   "waived": true,
+   "subsidy": 500,
+   "src": {
+    "clause": "第五条",
+    "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 500 元"
+   }
+  },
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第八条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s03": {
+  "workPlace": {
+   "province": "四川",
+   "city": "成都",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为四川省成都市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2030-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 6,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 6 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 8000,
+   "regular": 10000,
+   "src": {
+    "clause": "第四条",
+    "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元"
+   }
+  },
+  "penalties": [
+   {
+    "party": "worker",
+    "trigger": "early_resign",
+    "amount": 30000,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 30000 元"
+    }
+   }
+  ],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第八条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s04": {
+  "workPlace": {
+   "province": "湖北",
+   "city": "武汉",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为湖北省武汉市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2029-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 1,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 1 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 6000,
+   "regular": 6000,
+   "src": {
+    "clause": "第四条",
+    "quote": "乙方试用期月工资 6000 元，转正后月工资 6000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第七条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s05": {
+  "workPlace": {
+   "province": "广东",
+   "city": "广州",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为广东省广州市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2029-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 1,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 1 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 7000,
+   "regular": 10000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 7000 元，试用期满后月工资为 10000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": {
+   "changes": [
+    "position",
+    "location"
+   ],
+   "wageCut": false,
+   "refuseMeansResign": false,
+   "src": {
+    "clause": "第七条",
+    "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从"
+   }
+  },
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第八条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s06": {
+  "workPlace": {
+   "province": "上海",
+   "city": "上海",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为上海市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2030-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 7,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 7 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 6400,
+   "regular": 8000,
+   "src": {
+    "clause": "第四条",
+    "quote": "乙方试用期月工资 6400 元，转正后月工资 8000 元"
+   }
+  },
+  "penalties": [
+   {
+    "party": "worker",
+    "trigger": "early_resign",
+    "amount": 10000,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 10000 元"
+    }
+   }
+  ],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 12000,
+   "serviceMonths": 36,
+   "penalty": {
+    "kind": "prorated",
+    "amount": null
+   },
+   "src": {
+    "clause": "第九条",
+    "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": {
+   "durationMonths": 36,
+   "compensation": "agreed",
+   "role": "行政专员",
+   "roleLevel": "unknown",
+   "duringEmploymentOnly": false,
+   "src": {
+    "clause": "第十条",
+    "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%"
+   }
+  },
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": {
+   "waived": true,
+   "subsidy": 500,
+   "src": {
+    "clause": "第五条",
+    "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 500 元"
+   }
+  },
+  "unilateralChange": {
+   "changes": [
+    "position",
+    "location"
+   ],
+   "wageCut": false,
+   "refuseMeansResign": true,
+   "src": {
+    "clause": "第八条",
+    "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职"
+   }
+  },
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第十一条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s07": {
+  "workPlace": {
+   "province": "湖北",
+   "city": "武汉",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为湖北省武汉市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2030-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 1,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 1 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 5600,
+   "regular": 8000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 5600 元，试用期满后月工资为 8000 元"
+   }
+  },
+  "penalties": [
+   {
+    "party": "worker",
+    "trigger": "early_resign",
+    "amount": 20000,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金2 万元"
+    }
+   }
+  ],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 20000,
+   "serviceMonths": 12,
+   "penalty": {
+    "kind": "full_cost",
+    "amount": 20000
+   },
+   "src": {
+    "clause": "第八条",
+    "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": {
+   "durationMonths": 36,
+   "compensation": "agreed",
+   "role": "行政专员",
+   "roleLevel": "unknown",
+   "duringEmploymentOnly": false,
+   "src": {
+    "clause": "第九条",
+    "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%"
+   }
+  },
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第十条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s08": {
+  "workPlace": {
+   "province": "广东",
+   "city": "广州",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为广东省广州市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2029-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 2,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 2 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 5600,
+   "regular": 8000,
+   "src": {
+    "clause": "第四条",
+    "quote": "乙方试用期月工资 5600 元，转正后月工资 8000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第七条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s09": {
+  "workPlace": {
+   "province": "上海",
+   "city": "上海",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为上海市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2030-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 1,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 1 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 4800,
+   "regular": 6000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元"
+   }
+  },
+  "penalties": [
+   {
+    "party": "worker",
+    "trigger": "early_resign",
+    "amount": 5000,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 5000 元"
+    }
+   }
+  ],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 20000,
+   "serviceMonths": 12,
+   "penalty": {
+    "kind": "full_cost",
+    "amount": 20000
+   },
+   "src": {
+    "clause": "第八条",
+    "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第九条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s10": {
+  "workPlace": {
+   "province": "上海",
+   "city": "上海",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为上海市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2029-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 3,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 3 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 8000,
+   "regular": 10000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 8000 元，试用期满后月工资为 10000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [
+   {
+    "kind": "deposit",
+    "amount": 500,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第八条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s11": {
+  "workPlace": {
+   "province": "浙江",
+   "city": "杭州",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为浙江省杭州市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2030-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 7,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 7 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 5600,
+   "regular": 8000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 5600 元，试用期满后月工资为 8000 元"
+   }
+  },
+  "penalties": [
+   {
+    "party": "worker",
+    "trigger": "early_resign",
+    "amount": 10000,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金1 万元"
+    }
+   }
+  ],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 20000,
+   "serviceMonths": 12,
+   "penalty": {
+    "kind": "prorated",
+    "amount": null
+   },
+   "src": {
+    "clause": "第八条",
+    "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第九条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s12": {
+  "workPlace": {
+   "province": "浙江",
+   "city": "杭州",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为浙江省杭州市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2028-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 1,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 1 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 10000,
+   "regular": 10000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 10000 元，试用期满后月工资为 10000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第七条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s13": {
+  "workPlace": {
+   "province": "广东",
+   "city": "广州",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为广东省广州市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2029-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 6,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 6 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 12000,
+   "regular": 12000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 12000 元，试用期满后月工资为 12000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": {
+   "waived": true,
+   "subsidy": 800,
+   "src": {
+    "clause": "第五条",
+    "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元"
+   }
+  },
+  "unilateralChange": {
+   "changes": [
+    "position",
+    "location"
+   ],
+   "wageCut": false,
+   "refuseMeansResign": true,
+   "src": {
+    "clause": "第七条",
+    "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职"
+   }
+  },
+  "termination": [],
+  "resignation": {
+   "noticeDays": null,
+   "probationNoticeDays": null,
+   "needsApproval": true,
+   "penaltyOrDeduction": true,
+   "src": {
+    "clause": "第八条",
+    "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s14": {
+  "workPlace": {
+   "province": "北京",
+   "city": "北京",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为北京市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2028-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 6,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 6 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 8400,
+   "regular": 12000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 8400 元，试用期满后月工资为 12000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": {
+   "durationMonths": 24,
+   "compensation": "none",
+   "role": "产品运营专员",
+   "roleLevel": "unknown",
+   "duringEmploymentOnly": false,
+   "src": {
+    "clause": "第七条",
+    "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职"
+   }
+  },
+  "deposits": [
+   {
+    "kind": "keep_original_certificate",
+    "amount": null,
+    "src": {
+     "clause": "第九条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": {
+   "waived": true,
+   "subsidy": 800,
+   "src": {
+    "clause": "第五条",
+    "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元"
+   }
+  },
+  "unilateralChange": {
+   "changes": [
+    "position",
+    "location"
+   ],
+   "wageCut": false,
+   "refuseMeansResign": true,
+   "src": {
+    "clause": "第八条",
+    "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职"
+   }
+  },
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第十条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s15": {
+  "workPlace": {
+   "province": "浙江",
+   "city": "杭州",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为浙江省杭州市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2028-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 2,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 2 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 10000,
+   "regular": 10000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 10000 元，试用期满后月工资为 10000 元"
+   }
+  },
+  "penalties": [
+   {
+    "party": "worker",
+    "trigger": "early_resign",
+    "amount": 10000,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 10000 元"
+    }
+   }
+  ],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 6000,
+   "serviceMonths": 12,
+   "penalty": {
+    "kind": "prorated",
+    "amount": null
+   },
+   "src": {
+    "clause": "第八条",
+    "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第九条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s16": {
+  "workPlace": {
+   "province": "四川",
+   "city": "成都",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为四川省成都市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2028-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 3,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 3 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 4200,
+   "regular": 6000,
+   "src": {
+    "clause": "第四条",
+    "quote": "乙方试用期月工资 4200 元，转正后月工资 6000 元"
+   }
+  },
+  "penalties": [
+   {
+    "party": "worker",
+    "trigger": "early_resign",
+    "amount": 20000,
+    "src": {
+     "clause": "第八条",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金人民币 20000 元"
+    }
+   }
+  ],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 6000,
+   "serviceMonths": 12,
+   "penalty": {
+    "kind": "prorated",
+    "amount": null
+   },
+   "src": {
+    "clause": "第十条",
+    "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 12 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [
+   {
+    "kind": "keep_original_certificate",
+    "amount": null,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": {
+   "changes": [
+    "position",
+    "location"
+   ],
+   "wageCut": false,
+   "refuseMeansResign": true,
+   "src": {
+    "clause": "第九条",
+    "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职"
+   }
+  },
+  "termination": [],
+  "resignation": {
+   "noticeDays": null,
+   "probationNoticeDays": null,
+   "needsApproval": true,
+   "penaltyOrDeduction": true,
+   "src": {
+    "clause": "第十一条",
+    "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s17": {
+  "workPlace": {
+   "province": "湖北",
+   "city": "武汉",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为湖北省武汉市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2028-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 1,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 1 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 8000,
+   "regular": 10000,
+   "src": {
+    "clause": "第四条",
+    "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元"
+   }
+  },
+  "penalties": [
+   {
+    "party": "worker",
+    "trigger": "early_resign",
+    "amount": 10000,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金人民币 10000 元"
+    }
+   }
+  ],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 6000,
+   "serviceMonths": 24,
+   "penalty": {
+    "kind": "full_cost",
+    "amount": 6000
+   },
+   "src": {
+    "clause": "第八条",
+    "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，须全额返还培训费用 6000 元"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": {
+   "waived": true,
+   "subsidy": 300,
+   "src": {
+    "clause": "第五条",
+    "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 300 元"
+   }
+  },
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": null,
+   "probationNoticeDays": null,
+   "needsApproval": true,
+   "penaltyOrDeduction": true,
+   "src": {
+    "clause": "第九条",
+    "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s18": {
+  "workPlace": {
+   "province": "四川",
+   "city": "成都",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为四川省成都市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2029-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 3,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 3 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 9600,
+   "regular": 12000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 9600 元，试用期满后月工资为 12000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [
+   {
+    "kind": "keep_original_certificate",
+    "amount": null,
+    "src": {
+     "clause": "第八条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": {
+   "changes": [
+    "position",
+    "location"
+   ],
+   "wageCut": false,
+   "refuseMeansResign": false,
+   "src": {
+    "clause": "第七条",
+    "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从"
+   }
+  },
+  "termination": [],
+  "resignation": {
+   "noticeDays": null,
+   "probationNoticeDays": null,
+   "needsApproval": true,
+   "penaltyOrDeduction": true,
+   "src": {
+    "clause": "第九条",
+    "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s19": {
+  "workPlace": {
+   "province": "浙江",
+   "city": "杭州",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为浙江省杭州市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2030-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 7,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 7 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 8000,
+   "regular": 8000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 8000 元，试用期满后月工资为 8000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第七条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s20": {
+  "workPlace": {
+   "province": "北京",
+   "city": "北京",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为北京市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2029-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 3,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 3 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 6400,
+   "regular": 8000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 6400 元，试用期满后月工资为 8000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": {
+   "durationMonths": 36,
+   "compensation": "agreed",
+   "role": "销售代表",
+   "roleLevel": "unknown",
+   "duringEmploymentOnly": false,
+   "src": {
+    "clause": "第七条",
+    "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%"
+   }
+  },
+  "deposits": [
+   {
+    "kind": "deposit",
+    "amount": 500,
+    "src": {
+     "clause": "第八条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": {
+   "waived": true,
+   "subsidy": 800,
+   "src": {
+    "clause": "第五条",
+    "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元"
+   }
+  },
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第九条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s21": {
+  "workPlace": {
+   "province": "广东",
+   "city": "广州",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为广东省广州市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2030-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 7,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 7 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 4200,
+   "regular": 6000,
+   "src": {
+    "clause": "第四条",
+    "quote": "乙方试用期月工资 4200 元，转正后月工资 6000 元"
+   }
+  },
+  "penalties": [
+   {
+    "party": "worker",
+    "trigger": "early_resign",
+    "amount": 30000,
+    "src": {
+     "clause": "第八条",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金3 万元"
+    }
+   }
+  ],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 6000,
+   "serviceMonths": 36,
+   "penalty": {
+    "kind": "full_cost",
+    "amount": 6000
+   },
+   "src": {
+    "clause": "第九条",
+    "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，须全额返还培训费用 6000 元"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": {
+   "durationMonths": 12,
+   "compensation": "agreed",
+   "role": "行政专员",
+   "roleLevel": "unknown",
+   "duringEmploymentOnly": false,
+   "src": {
+    "clause": "第十条",
+    "quote": "乙方离职后 1 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%"
+   }
+  },
+  "deposits": [
+   {
+    "kind": "deposit",
+    "amount": 2000,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 2000 元，合同期满后无息退还"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第十一条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s22": {
+  "workPlace": {
+   "province": "湖北",
+   "city": "武汉",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为湖北省武汉市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2028-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2028 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 1,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 1 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 8000,
+   "regular": 10000,
+   "src": {
+    "clause": "第四条",
+    "quote": "乙方试用期月工资 8000 元，转正后月工资 10000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 20000,
+   "serviceMonths": 24,
+   "penalty": {
+    "kind": "prorated",
+    "amount": null
+   },
+   "src": {
+    "clause": "第九条",
+    "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": {
+   "durationMonths": 12,
+   "compensation": "none",
+   "role": "财务助理",
+   "roleLevel": "unknown",
+   "duringEmploymentOnly": false,
+   "src": {
+    "clause": "第七条",
+    "quote": "乙方离职后 1 年内不得到与甲方有竞争关系的单位任职"
+   }
+  },
+  "deposits": [
+   {
+    "kind": "deposit",
+    "amount": 1000,
+    "src": {
+     "clause": "第八条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 1000 元，合同期满后无息退还"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第十条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s23": {
+  "workPlace": {
+   "province": "北京",
+   "city": "北京",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为北京市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2029-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 3,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 3 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 6000,
+   "regular": 6000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 6000 元，试用期满后月工资为 6000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 6000,
+   "serviceMonths": 36,
+   "penalty": {
+    "kind": "prorated",
+    "amount": null
+   },
+   "src": {
+    "clause": "第八条",
+    "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": {
+   "durationMonths": 36,
+   "compensation": "agreed",
+   "role": "销售代表",
+   "roleLevel": "unknown",
+   "duringEmploymentOnly": false,
+   "src": {
+    "clause": "第七条",
+    "quote": "乙方离职后 3 年内不得到与甲方有竞争关系的单位任职，甲方在此期间按月向乙方支付经济补偿，标准为乙方离职前十二个月平均工资的 30%"
+   }
+  },
+  "deposits": [
+   {
+    "kind": "keep_original_certificate",
+    "amount": null,
+    "src": {
+     "clause": "第十条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": {
+   "waived": true,
+   "subsidy": 800,
+   "src": {
+    "clause": "第五条",
+    "quote": "乙方自愿放弃缴纳社会保险，甲方每月向乙方发放社保补贴 800 元"
+   }
+  },
+  "unilateralChange": {
+   "changes": [
+    "position",
+    "location"
+   ],
+   "wageCut": false,
+   "refuseMeansResign": true,
+   "src": {
+    "clause": "第九条",
+    "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职"
+   }
+  },
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第十一条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s24": {
+  "workPlace": {
+   "province": "上海",
+   "city": "上海",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为上海市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2030-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 6,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 6 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 6000,
+   "regular": 6000,
+   "src": {
+    "clause": "第四条",
+    "quote": "乙方试用期月工资 6000 元，转正后月工资 6000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [
+   {
+    "kind": "keep_original_certificate",
+    "amount": null,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": {
+   "changes": [
+    "position",
+    "location"
+   ],
+   "wageCut": false,
+   "refuseMeansResign": true,
+   "src": {
+    "clause": "第八条",
+    "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从；不服从安排的，视为自动离职"
+   }
+  },
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第九条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s25": {
+  "workPlace": {
+   "province": "广东",
+   "city": "广州",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为广东省广州市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2030-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 7,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 7 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 4200,
+   "regular": 6000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 4200 元，试用期满后月工资为 6000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [
+   {
+    "kind": "keep_original_certificate",
+    "amount": null,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第八条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s26": {
+  "workPlace": {
+   "province": "上海",
+   "city": "上海",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为上海市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2029-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 1,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 1 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 4800,
+   "regular": 6000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 4800 元，试用期满后月工资为 6000 元"
+   }
+  },
+  "penalties": [
+   {
+    "party": "worker",
+    "trigger": "early_resign",
+    "amount": 30000,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方在合同期内提前离职的，应向甲方支付违约金3 万元"
+    }
+   }
+  ],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 20000,
+   "serviceMonths": 24,
+   "penalty": {
+    "kind": "full_cost",
+    "amount": 20000
+   },
+   "src": {
+    "clause": "第八条",
+    "quote": "甲方出资 20000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，须全额返还培训费用 20000 元"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": {
+   "durationMonths": 24,
+   "compensation": "none",
+   "role": "数据分析师",
+   "roleLevel": "unknown",
+   "duringEmploymentOnly": false,
+   "src": {
+    "clause": "第九条",
+    "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职"
+   }
+  },
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第十条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s27": {
+  "workPlace": {
+   "province": "湖北",
+   "city": "武汉",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为湖北省武汉市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2030-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2030 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 6,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 6 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 5600,
+   "regular": 8000,
+   "src": {
+    "clause": "第四条",
+    "quote": "乙方试用期月工资 5600 元，转正后月工资 8000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 6000,
+   "serviceMonths": 24,
+   "penalty": {
+    "kind": "prorated",
+    "amount": null
+   },
+   "src": {
+    "clause": "第九条",
+    "quote": "甲方出资 6000 元送乙方参加专业技术培训，双方约定服务期 24 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": {
+   "durationMonths": 24,
+   "compensation": "none",
+   "role": "数据分析师",
+   "roleLevel": "unknown",
+   "duringEmploymentOnly": false,
+   "src": {
+    "clause": "第七条",
+    "quote": "乙方离职后 2 年内不得到与甲方有竞争关系的单位任职"
+   }
+  },
+  "deposits": [
+   {
+    "kind": "keep_original_certificate",
+    "amount": null,
+    "src": {
+     "clause": "第八条",
+     "quote": "乙方入职时须将毕业证书原件交甲方人事部门保管"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": {
+   "changes": [
+    "position",
+    "location"
+   ],
+   "wageCut": false,
+   "refuseMeansResign": false,
+   "src": {
+    "clause": "第十条",
+    "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从"
+   }
+  },
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第十一条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s28": {
+  "workPlace": {
+   "province": "北京",
+   "city": "北京",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为北京市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2029-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 6,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 6 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 4800,
+   "regular": 6000,
+   "src": {
+    "clause": "第四条",
+    "quote": "乙方试用期月工资 4800 元，转正后月工资 6000 元"
+   }
+  },
+  "penalties": [
+   {
+    "party": "worker",
+    "trigger": "early_resign",
+    "amount": 10000,
+    "src": {
+     "clause": "第七条",
+     "quote": "乙方未满合同期限主动辞职的，须向甲方支付违约金1 万元"
+    }
+   }
+  ],
+  "servicePeriod": {
+   "trainingKind": "special",
+   "trainingCost": 12000,
+   "serviceMonths": 36,
+   "penalty": {
+    "kind": "prorated",
+    "amount": null
+   },
+   "src": {
+    "clause": "第八条",
+    "quote": "甲方出资 12000 元送乙方参加专业技术培训，双方约定服务期 36 个月。乙方服务期未满离职的，按服务期尚未履行的月数折算返还培训费用"
+   }
+  },
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": null,
+   "probationNoticeDays": null,
+   "needsApproval": true,
+   "penaltyOrDeduction": true,
+   "src": {
+    "clause": "第九条",
+    "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s29": {
+  "workPlace": {
+   "province": "广东",
+   "city": "广州",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为广东省广州市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2029-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 2,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 2 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 6400,
+   "regular": 8000,
+   "src": {
+    "clause": "第四条",
+    "quote": "试用期内乙方月工资为 6400 元，试用期满后月工资为 8000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": null,
+  "termination": [],
+  "resignation": {
+   "noticeDays": 30,
+   "probationNoticeDays": null,
+   "needsApproval": false,
+   "penaltyOrDeduction": false,
+   "src": {
+    "clause": "第七条",
+    "quote": "乙方提前三十日以书面形式通知甲方，可以解除本合同"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ },
+ "s30": {
+  "workPlace": {
+   "province": "四川",
+   "city": "成都",
+   "src": {
+    "clause": "第一条",
+    "quote": "工作地点为四川省成都市"
+   }
+  },
+  "term": {
+   "kind": "fixed",
+   "start": "2027-07-01",
+   "end": "2029-06-30",
+   "months": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "劳动合同期限自 2027 年 7 月 1 日起至 2029 年 6 月 30 日止"
+   }
+  },
+  "probation": {
+   "months": 2,
+   "days": null,
+   "src": {
+    "clause": "第二条",
+    "quote": "其中试用期 2 个月"
+   }
+  },
+  "probationOnly": null,
+  "wage": {
+   "probation": 4800,
+   "regular": 6000,
+   "src": {
+    "clause": "第四条",
+    "quote": "乙方试用期月工资 4800 元，转正后月工资 6000 元"
+   }
+  },
+  "penalties": [],
+  "servicePeriod": null,
+  "specialBenefit": null,
+  "nonCompete": null,
+  "deposits": [
+   {
+    "kind": "deposit",
+    "amount": 500,
+    "src": {
+     "clause": "第八条",
+     "quote": "乙方入职时须向甲方缴纳工作保证金 500 元，合同期满后无息退还"
+    }
+   }
+  ],
+  "requiredClauses": {
+   "employer": true,
+   "employee": true,
+   "term": true,
+   "job": true,
+   "hours": true,
+   "pay": true,
+   "social_insurance": true,
+   "protection": true
+  },
+  "socialInsurance": null,
+  "unilateralChange": {
+   "changes": [
+    "position",
+    "location"
+   ],
+   "wageCut": false,
+   "refuseMeansResign": false,
+   "src": {
+    "clause": "第七条",
+    "quote": "甲方可根据经营需要调整乙方的工作岗位和工作地点，乙方应当服从"
+   }
+  },
+  "termination": [],
+  "resignation": {
+   "noticeDays": null,
+   "probationNoticeDays": null,
+   "needsApproval": true,
+   "penaltyOrDeduction": true,
+   "src": {
+    "clause": "第九条",
+    "quote": "乙方提出辞职须经甲方书面批准，未经批准擅自离职的，扣发当月工资"
+   }
+  },
+  "standardTerms": [],
+  "others": [],
+  "docKind": "劳动合同"
+ }
+}
