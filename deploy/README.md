@@ -69,6 +69,8 @@ cd /tmp && node --env-file=/etc/presign/env probe-speed.mjs
 
 `--env-file` 直接读服务器上的密钥文件，不用复制。脚本只打印接口域名和模型名。
 
-## 还没做
+## 部署后检查
 
-- `/api/health` 和部署后自动检查脚本（项目方案第 11 节）。
+`BASE=https://<服务器地址> bash deploy/smoke.sh`：从外网检查 7 个页面、http 跳 https、健康检查（法规服务、模型配置、登录配置）、示例录像、三个调模型的接口未登录返回 401、证书剩余天数。不登录、不调模型，全部通过退出码为 0。11-16 第一次跑全部通过。
+
+`/api/health` 不用登录，返回 `{ ok, mcp, models, login, ms }`，只有状态，没有配置内容。
