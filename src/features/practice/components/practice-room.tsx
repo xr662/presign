@@ -9,6 +9,7 @@ import { VERDICT_STYLE } from "@/features/review/verdict";
 import type { ReviewEvent } from "@/lib/review/events";
 import { screenInput } from "@/lib/practice/practice";
 import { cn } from "@/lib/utils";
+import { HoldToTalk } from "./hold-to-talk";
 import {
   CUT_MARK,
   DEBRIEF_LABELS,
@@ -553,6 +554,11 @@ export function PracticeRoom() {
                 : "先说是哪一条，再说依据和你希望怎么改"
             }
             className="w-full rounded-md border border-line bg-card p-3 text-sm leading-6"
+          />
+          <HoldToTalk
+            disabled={busy !== null || rounds >= MAX_ROUNDS}
+            onText={(t) => setDraft((d) => (d.trim() ? `${d.trimEnd()}${t}` : t))}
+            onError={setNotice}
           />
           <div className="flex flex-wrap gap-3">
             <Button
