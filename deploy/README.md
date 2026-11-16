@@ -39,7 +39,13 @@
 
 ## 只更新网站
 
-法规服务没改时只换 `web/`，包小一半（11-01 是 11.6MB），法规服务也不用重启：
+法规服务没改时只换 `web/`，包小一半（11-01 是 11.6MB），法规服务也不用重启。`deploy/push-web.sh` 把下面几步连起来做（打包、切块上传、比对 sha256、替换、重启）：
+
+```bash
+DEPLOY_HOST=root@<服务器地址> DEPLOY_KEY=<SSH 私钥路径> bash deploy/push-web.sh
+```
+
+手动做的话：
 
 ```bash
 bash deploy/pack.sh && tar -czf deploy/build/web.tar.gz -C deploy/build web   # 本机
