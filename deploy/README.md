@@ -31,9 +31,10 @@
    gpg --dearmor < /tmp/caddy.key > /usr/share/keyrings/caddy-stable-archive-keyring.gpg
    echo "deb [signed-by=/usr/share/keyrings/caddy-stable-archive-keyring.gpg] https://dl.cloudsmith.io/public/caddy/stable/deb/debian any-version main" > /etc/apt/sources.list.d/caddy-stable.list
    apt-get update && apt-get install -y -o Dpkg::Options::=--force-confold caddy && caddy version
-   caddy validate --adapter caddyfile --config Caddyfile && cp Caddyfile /etc/caddy/Caddyfile && systemctl reload caddy
+   echo "SITE_ADDRESS=<服务器公网 IP 或域名>" > /etc/default/caddy   # Caddy 的 systemd 服务会读这个文件，Caddyfile 里的 {$SITE_ADDRESS} 从这里取
+   SITE_ADDRESS=<同上> caddy validate --adapter caddyfile --config Caddyfile && cp Caddyfile /etc/caddy/Caddyfile && systemctl restart caddy
    ```
-   重载后 Caddy 自己向 Let's Encrypt 申请证书（10-31 用了 6 秒），`journalctl -u caddy | grep "certificate obtained"` 能看到。证书有效期约 6 天，Caddy 到期前自动续，续期要 80 和 443 端口都开着。换服务器或换域名时改 `Caddyfile` 里的地址。
+   重载后 Caddy 自己向 Let's Encrypt 申请证书（10-31 用了 6 秒），`journalctl -u caddy | grep "certificate obtained"` 能看到。证书有效期约 6 天，Caddy 到期前自动续，续期要 80 和 443 端口都开着。换服务器或换域名时改 `/etc/default/caddy` 里的 `SITE_ADDRESS`，再 `systemctl restart caddy`。
 5. `/etc/presign/env` 按 `.env.example` 填，至少要有 `LLM_MAIN_*`、`LLM_ALT_*`、`SESSION_SECRET`（`openssl rand -hex 32`）、`JUDGE_ACCOUNTS`（本机 `npm run account:hash -- 用户名` 生成）。改完 `systemctl restart presign-web`。
 6. 检查：`systemctl is-active presign-mcp presign-web caddy`；`curl -I https://<服务器地址>/` 返回 200；`http://` 返回 308 跳到 https；不带登录 `POST /api/review` 返回 401；`echo | openssl s_client -connect <服务器地址>:443 -noservername | openssl x509 -noout -issuer -dates` 看证书签发方和有效期。
 

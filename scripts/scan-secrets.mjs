@@ -17,6 +17,10 @@ const RULES = [
   ["Git Bash 本机路径", /\/[a-z]\/Users\//],
   ["本机用户名", new RegExp(`\\b${userName}\\b`, "i")],
   ["个人邮箱", new RegExp(`${userName}\\d+@`, "i")],
+  // 服务器地址不进公开仓库（11-17 Rui 要求），地址写在提交材料里。本机、内网地址和 0.0.0.0 放过
+  ["公网 IP 地址", /\b(?!(?:127|10|0)\.)(?!192\.168\.)(?!172\.(?:1[6-9]|2\d|3[01])\.)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/],
+  // 部署用的私钥文件名
+  ["部署私钥文件", new RegExp(["qianqian", "deploy"].join("_"))],
 ];
 
 const files = execFileSync("git", ["ls-files", "--cached", "--others", "--exclude-standard"], {

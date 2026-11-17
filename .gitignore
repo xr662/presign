@@ -43,9 +43,6 @@ next-env.d.ts
 # env 模板要进仓库
 !.env.example
 
-# Next 16 运行 next dev 时自动生成的代理说明文件，不属于项目内容
-AGENTS.md
-
 # 生成物：法规库由 npm run corpus 重建
 /data/build/
 
