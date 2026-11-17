@@ -6,10 +6,11 @@
 //
 // 注意：四份示例合同在写提示词时看过，这里的数字是开发集上的；独立的评测集是 T17 的合成合同。
 //
-// 用法：node scripts/eval/review.ts [--set samples|synth|injection] [--config D|C|A] [--only labor,offer]
+// 用法：node scripts/eval/review.ts [--set samples|synth|injection|photos] [--config D|C|A] [--only labor,offer]
 //         [--rounds 1] [--tag x] [--no-save] [--quiet] [--debug] [--record]
 // --tag：结果文件名后面加的标记，同一天跑多次时不覆盖
-// --set：samples 四份示例合同（开发集）；synth 合成合同（scripts/eval/synth.ts 生成）；injection 夹了注入指令的合成合同
+// --set：samples 四份示例合同（开发集）；synth 合成合同（scripts/eval/synth.ts 生成）；injection 夹了注入指令的合成合同；
+//        photos 实拍照片识别出的文字（先跑 scripts/eval/photos.ts）
 // --config：D 完整流程（默认）；A 只用大模型，一次调用给全文和 15 条检查项，让模型直接列结论；
 //           C 完整流程去掉模型自检（程序检查照做）。项目方案的 B（大模型加检索、不用规则工具）没有做
 // --record：把第 1 轮每份合同的全文和完整事件存到 public/recordings/，示例合同页回放和端到端测试用
@@ -46,6 +47,7 @@ const ANSWERS: Record<string, string> = {
   samples: "data/samples/answers.json",
   synth: "eval/synth/answers.json",
   injection: "eval/synth/injection-answers.json",
+  photos: "eval/photos/answers.json",
 };
 if (!ANSWERS[set] || !["A", "C", "D"].includes(config)) throw new Error("--set 或 --config 不认识");
 

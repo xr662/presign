@@ -25,6 +25,7 @@ import { maskInjections } from "./injection.ts";
 import {
   dropUnquotedAmounts,
   dropUnquotedDeduction,
+  dropUnquotedRole,
   dropUnsourced,
   FactsSchema,
   FIELD_LABEL,
@@ -242,7 +243,7 @@ export async function runReview(
     const cleaned = dropUnsourced(facts, text);
     const amounts = dropUnquotedAmounts(cleaned.facts);
     // 补漏要在 reconcile 之前：补进规则字段的句子如果也在"其他条款"里，由 reconcile 去掉
-    const deduction = dropUnquotedDeduction(amounts.facts);
+    const deduction = dropUnquotedDeduction(dropUnquotedRole(amounts.facts, text));
     const rescued = rescueRuleClauses(deduction.facts, text);
     const required = fillRequiredClauses(rescued.facts, text);
     const reconciled = reconcile(required.facts);

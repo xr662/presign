@@ -5,6 +5,7 @@ import {
   amountInQuote,
   dropUnquotedAmounts,
   dropUnquotedDeduction,
+  dropUnquotedRole,
   dropUnsourced,
   fieldGuide,
   fillRequiredClauses,
@@ -244,5 +245,44 @@ describe("辞职扣钱必须写在辞职这一条里", () => {
   it("本来就是不扣钱的不动", () => {
     const f = resign("乙方提前三十日以书面形式通知甲方，可以解除本合同", false);
     expect(dropUnquotedDeduction(f).facts).toBe(f);
+  });
+});
+
+describe("落户换服务期和服务期是同一条时按落户算", () => {
+  const tri = SAMPLE_FACTS.tripartite;
+  const src = { clause: "四", quote: "甲方为乙方办理苏州市落户手续。乙方须在甲方服务满 5 年" };
+  const sp = {
+    trainingKind: "unknown" as const,
+    trainingCost: null,
+    serviceMonths: 60,
+    penalty: { kind: "amount" as const, amount: 50000 },
+    src: { clause: "四", quote: "未满 5 年离职的，向甲方支付违约金 50000 元" },
+  };
+  const sb = { benefit: "hukou" as const, serviceYears: 5, amount: 50000, src };
+
+  it("同一条款号、服务期没写培训费：去掉服务期", () => {
+    const f = { ...tri, servicePeriod: sp, specialBenefit: sb } as Facts;
+    const r = reconcile(f);
+    expect(r.facts.servicePeriod).toBeNull();
+    expect(r.merged.some((m) => m.field === "servicePeriod")).toBe(true);
+  });
+
+  it("服务期写了培训费的保留", () => {
+    const f = {
+      ...tri,
+      servicePeriod: { ...sp, trainingCost: 12000 },
+      specialBenefit: sb,
+    } as Facts;
+    expect(reconcile(f).facts.servicePeriod).not.toBeNull();
+  });
+});
+
+describe("竞业限制的岗位必须是原文里的字", () => {
+  it("原文里没有的岗位改成空，有的保留", () => {
+    const nc = labor.nonCompete!;
+    const bad = { ...labor, nonCompete: { ...nc, role: "worker" } };
+    expect(dropUnquotedRole(bad, LABOR).nonCompete?.role).toBeNull();
+    const good = { ...labor, nonCompete: { ...nc, role: "软件开发工程师" } };
+    expect(dropUnquotedRole(good, LABOR).nonCompete?.role).toBe("软件开发工程师");
   });
 });

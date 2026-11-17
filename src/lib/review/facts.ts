@@ -422,7 +422,26 @@ export function reconcile(f: Facts): { facts: Facts; merged: Dropped[] } {
     if (dup) merged.push({ field: "termination", quote: t.src.quote });
     return !dup;
   });
-  return { facts: { ...f, others, termination }, merged };
+  // 落户、住房换服务期（R08）同时被填进服务期（R07）：三方协议示例合同和实拍照片都出现过，
+  // 同一条既说"按未履行部分分摊，符合第二十二条"又说"这条违约金无效"。没写培训费的服务期
+  // 和特殊待遇在同一条（同一条款号或片段互相包含）时，按特殊待遇算
+  const sp = f.servicePeriod;
+  const sb = f.specialBenefit;
+  const sameClause = sp && sb && sp.src.clause !== null && sp.src.clause === sb.src.clause;
+  const dupService =
+    sp && sb && sp.trainingCost === null && (sameClause || sameSpot(sp.src.quote, sb.src.quote));
+  if (dupService) merged.push({ field: "servicePeriod", quote: sp.src.quote });
+  return { facts: { ...f, others, termination, servicePeriod: dupService ? null : sp }, merged };
+}
+
+/**
+ * 竞业限制的岗位必须是合同里写着的字。11-17 示例合同录像里模型填了英文的 worker，
+ * 规则 R09 的标题就成了"worker不一定在竞业限制的适用范围内"。原文里找不到的改成空，标题用"这个岗位"。
+ */
+export function dropUnquotedRole(f: Facts, text: string): Facts {
+  const role = f.nonCompete?.role;
+  if (!f.nonCompete || !role || containsQuote(text, role)) return f;
+  return { ...f, nonCompete: { ...f.nonCompete, role: null } };
 }
 
 // ── 漏抽的兜底 ──────────────────────────────────────────

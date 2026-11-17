@@ -1,0 +1,197 @@
+{
+ "date": "2026-11-17",
+ "prompt": "ocr-v1",
+ "rows": [
+  {
+   "id": "internship_a",
+   "doc": "internship",
+   "condition": "a",
+   "pages": 1,
+   "rate": 1,
+   "ms": 3240
+  },
+  {
+   "id": "internship_b",
+   "doc": "internship",
+   "condition": "b",
+   "pages": 1,
+   "rate": 1,
+   "ms": 25769
+  },
+  {
+   "id": "internship_c",
+   "doc": "internship",
+   "condition": "c",
+   "pages": 1,
+   "rate": 1,
+   "ms": 2773
+  },
+  {
+   "id": "internship_d",
+   "doc": "internship",
+   "condition": "d",
+   "pages": 1,
+   "rate": 1,
+   "ms": 2819
+  },
+  {
+   "id": "internship_e",
+   "doc": "internship",
+   "condition": "e",
+   "pages": 1,
+   "rate": 1,
+   "ms": 2959
+  },
+  {
+   "id": "labor_a",
+   "doc": "labor",
+   "condition": "a",
+   "pages": 2,
+   "rate": 0.9987113402061856,
+   "ms": 5743
+  },
+  {
+   "id": "labor_b",
+   "doc": "labor",
+   "condition": "b",
+   "pages": 2,
+   "rate": 1,
+   "ms": 5704
+  },
+  {
+   "id": "labor_c",
+   "doc": "labor",
+   "condition": "c",
+   "pages": 2,
+   "rate": 1,
+   "ms": 5965
+  },
+  {
+   "id": "labor_d",
+   "doc": "labor",
+   "condition": "d",
+   "pages": 2,
+   "rate": 1,
+   "ms": 5471
+  },
+  {
+   "id": "labor_e",
+   "doc": "labor",
+   "condition": "e",
+   "pages": 2,
+   "rate": 1,
+   "ms": 5212
+  },
+  {
+   "id": "offer_a",
+   "doc": "offer",
+   "condition": "a",
+   "pages": 1,
+   "rate": 1,
+   "ms": 3804
+  },
+  {
+   "id": "offer_b",
+   "doc": "offer",
+   "condition": "b",
+   "pages": 1,
+   "rate": 1,
+   "ms": 2704
+  },
+  {
+   "id": "offer_c",
+   "doc": "offer",
+   "condition": "c",
+   "pages": 1,
+   "rate": 1,
+   "ms": 2345
+  },
+  {
+   "id": "offer_d",
+   "doc": "offer",
+   "condition": "d",
+   "pages": 1,
+   "rate": 1,
+   "ms": 2369
+  },
+  {
+   "id": "offer_e",
+   "doc": "offer",
+   "condition": "e",
+   "pages": 1,
+   "rate": 1,
+   "ms": 11095
+  },
+  {
+   "id": "tripartite_a",
+   "doc": "tripartite",
+   "condition": "a",
+   "pages": 1,
+   "rate": 1,
+   "ms": 33351
+  },
+  {
+   "id": "tripartite_b",
+   "doc": "tripartite",
+   "condition": "b",
+   "pages": 1,
+   "rate": 1,
+   "ms": 3001
+  },
+  {
+   "id": "tripartite_c",
+   "doc": "tripartite",
+   "condition": "c",
+   "pages": 1,
+   "rate": 1,
+   "ms": 3046
+  },
+  {
+   "id": "tripartite_d",
+   "doc": "tripartite",
+   "condition": "d",
+   "pages": 1,
+   "rate": 1,
+   "ms": 2870
+  },
+  {
+   "id": "tripartite_e",
+   "doc": "tripartite",
+   "condition": "e",
+   "pages": 1,
+   "rate": 1,
+   "ms": 2898
+  }
+ ],
+ "usage": [
+  {
+   "role": "main",
+   "purpose": "ocr",
+   "calls": 25,
+   "ok": 24,
+   "requests": 25,
+   "input": 27096,
+   "output": 8070,
+   "avg_ms": 5325
+  },
+  {
+   "role": "alt",
+   "purpose": "ocr",
+   "calls": 1,
+   "ok": 1,
+   "requests": 1,
+   "input": 1129,
+   "output": 402,
+   "avg_ms": 3342
+  }
+ ],
+ "failures": [
+  {
+   "purpose": "ocr",
+   "role": "main",
+   "error": "HedgeCancelled",
+   "calls": 1,
+   "avg_ms": 33355
+  }
+ ]
+}

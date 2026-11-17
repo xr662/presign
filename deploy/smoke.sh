@@ -34,6 +34,15 @@ for p in /api/review /api/practice /api/ocr; do
   [ "$c" = 401 ] && ok "$p 未登录返回 401" || bad "$p 未登录返回 $c"
 done
 
+# 登录状态接口必须每次现算：11-17 它被构建时预渲染成固定的"没登录"，登录后页面仍要求登录。
+# 预渲染的响应带 x-nextjs-prerender 头；带一个随便的会话也应该老实返回 user:null
+s=$(curl -s -D - --max-time 20 -H "Cookie: presign_session=x.y" "$BASE/api/session")
+case "$s" in
+  *[Xx]-[Nn]extjs-[Pp]rerender*) bad "/api/session 被预渲染成了静态文件" ;;
+  *'"user":null'*) ok "/api/session 每次现算" ;;
+  *) bad "/api/session 返回异常" ;;
+esac
+
 # 证书还剩几天（Let's Encrypt 的 IP 证书约 6 天一换，Caddy 自动续；少于 2 天说明续期出了问题）
 end=$(echo | openssl s_client -connect "$host:443" -noservername 2>/dev/null | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2)
 if [ -n "$end" ]; then

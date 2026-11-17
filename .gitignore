@@ -49,9 +49,10 @@ AGENTS.md
 # 生成物：法规库由 npm run corpus 重建
 /data/build/
 
-# 只在本机测试用的真实材料（队友收集的合同照片），不能公开
+# 只在本机测试用的材料，不能公开。eval/photos/ 的照片是队友拍的示例合同，打印页脚印着
+# 打印用电脑的文件路径（含微信号），照片不进仓库；识别出的文字在 eval/photos/ocr/，路径已略去
 /_private/
-/eval/photos/
+/eval/photos/*.jpg
 
 # 测试输出
 /test-results/
@@ -74,3 +75,4 @@ AGENTS.md
 
 # 技术文档草稿（node scripts/doc-pdf.mjs --draft），定稿 PDF 才提交
 /docs/*-草稿.pdf
+
