@@ -1,9 +1,11 @@
 // 技术文档 HTML → PDF（任务书 T21）。用本机 Edge 无头打印，A4，页脚带页码。
 // 比赛要求不超过 30 页，超了就报错；还有没填的占位（class="todo"）也报错，加 --draft 可以先出草稿看排版。
 // 用法：node scripts/doc-pdf.mjs [--draft]      输出 docs/技术文档.pdf（草稿是 docs/技术文档-草稿.pdf）
-//       node scripts/doc-pdf.mjs --demo <演示地址> --out <仓库外的路径>
+//       node scripts/doc-pdf.mjs --demo <演示地址> [--account-file <账号文件>] --out <仓库外的路径>
 // 交给评委的那份封面要写演示地址，评委才打得开；仓库是公开的，不能写（11-18 Rui）。
 // 所以地址只在打印时填进封面 data-demo 那一行，而且输出路径必须在仓库目录外，免得带地址的 PDF 被提交。
+// 评审账号也可以印上封面，以防提交表里的账号评委没看到（11-18 Rui）。账号文件里要有"账号：…""密码：…"
+// 两行；密码只从文件读、只写进 PDF，不出现在命令行和输出里。
 import { readFileSync } from "node:fs";
 import { isAbsolute, relative, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -21,9 +23,26 @@ const fail = (msg) => {
 const draft = process.argv.includes("--draft");
 const demo = argOf("--demo");
 const outArg = argOf("--out");
+const accountFile = argOf("--account-file");
 const src = resolve("docs/技术文档.html");
 const out = resolve(outArg ?? (draft ? "docs/技术文档-草稿.pdf" : "docs/技术文档.pdf"));
 const MAX_PAGES = 30;
+
+// 每样只认一行"名称：值"，找不到或有多行就报错。报错只说缺哪一项，不带出文件内容
+const fieldOf = (text, name) => {
+  const hits = text
+    .split(/\r?\n/)
+    .map((l) => l.trim().match(new RegExp(`^${name}\\s*[：:]\\s*(\\S+)$`)))
+    .filter(Boolean);
+  if (hits.length !== 1) fail(`账号文件里要有且只有一行"${name}：…"，找到 ${hits.length} 行`);
+  return hits[0][1];
+};
+let account;
+if (accountFile !== undefined) {
+  if (demo === undefined) fail("--account-file 要和 --demo 一起用");
+  const text = readFileSync(resolve(accountFile), "utf8");
+  account = { user: fieldOf(text, "账号"), password: fieldOf(text, "密码") };
+}
 
 if (demo !== undefined) {
   if (!/^https?:\/\/\S+$/.test(demo)) fail(`--demo 要写完整网址（https://...），收到的是：${demo}`);
@@ -57,9 +76,17 @@ if (demo !== undefined) {
     await b.close();
     fail("封面上找不到演示地址那一行（data-demo）");
   }
-  await line.evaluate((el, url) => {
-    el.textContent = `在线演示：${url}（评审账号见提交表）`;
-  }, demo);
+  await line.evaluate(
+    (el, { url, account }) => {
+      el.textContent = `在线演示：${url}${account ? "" : "（评审账号见提交材料）"}`;
+      if (account) {
+        const next = document.createElement("p");
+        next.textContent = `评审账号：${account.user}　密码：${account.password}`;
+        el.after(next);
+      }
+    },
+    { url: demo, account },
+  );
 }
 
 await p.pdf({
