@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AccountLink } from "@/features/auth/account-link";
 
 // 全站页眉页脚。导航只放用户真正要去的几处；免责声明放页脚，每页都在。
 
@@ -19,9 +20,7 @@ export function SiteHeader() {
           <Link href="/about" className="hover:text-ink">
             说明
           </Link>
-          <Link href="/login" className="hover:text-ink">
-            登录
-          </Link>
+          <AccountLink />
         </nav>
       </div>
     </header>
