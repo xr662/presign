@@ -1,9 +1,9 @@
-// 把 data/samples/ 下的示例合同排成 A4 打印版 HTML，给队友打印出来拍测试照片。
+// 把 data/samples/ 下的示例合同排成 A4 打印版 HTML，打印出来拍实拍评测的照片；识别评测的标准答案也从这里渲染。
 // 用浏览器打开后 Ctrl+P 打印即可。宋体、小四号、1.8 倍行距，接近常见的纸质合同。
 // 用法：node scripts/samples-print.ts
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
-const OUT = "docs/team/示例合同打印版";
+const OUT = "eval/photos/print";
 const FILES = [
   ["labor", "劳动合同"],
   ["tripartite", "三方协议"],

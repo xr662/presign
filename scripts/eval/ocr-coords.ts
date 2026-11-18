@@ -126,7 +126,7 @@ for (const doc of docs) {
   for (const photoLike of [false, true]) {
     const tag = `${doc}-${photoLike ? "photo" : "flat"}${pixel ? "-px" : ""}`;
     const img = `test-results/ocr/${tag}.png`;
-    const truth = await renderTruth(`docs/team/示例合同打印版/${NAMES[doc]}.html`, photoLike, img);
+    const truth = await renderTruth(`eval/photos/print/${NAMES[doc]}.html`, photoLike, img);
     for (let run = 1; run <= runs; run++) {
       const t0 = performance.now();
       const meta = readFileSync(img);

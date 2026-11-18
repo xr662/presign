@@ -6,4 +6,4 @@ public/vendor
 test-results
 
 # 打印版合同由 npm run samples:print 生成，段落用 white-space: pre-wrap，格式化会改变打印出来的换行
-docs/team/示例合同打印版/
+eval/photos/print/

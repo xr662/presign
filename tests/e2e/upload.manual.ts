@@ -14,13 +14,13 @@ const make = await browser.newPage({
   viewport: { width: 900, height: 1200 },
   deviceScaleFactor: 1.5,
 });
-await make.goto(pathToFileURL(`${process.cwd()}/docs/team/示例合同打印版/劳动合同.html`).href);
+await make.goto(pathToFileURL(`${process.cwd()}/eval/photos/print/劳动合同.html`).href);
 await make.addStyleTag({
   content:
     "html{background:#8a8378} body{background:#fff;padding:24px;margin:40px auto;transform:rotate(2.5deg) scale(0.92);filter:blur(0.4px) contrast(0.92)}",
 });
 await make.screenshot({ path: "test-results/e2e/labor-photo.png" });
-await make.goto(pathToFileURL(`${process.cwd()}/docs/team/示例合同打印版/录用通知.html`).href);
+await make.goto(pathToFileURL(`${process.cwd()}/eval/photos/print/录用通知.html`).href);
 await make.pdf({ path: "test-results/e2e/offer.pdf", format: "A4" });
 await make.close();
 
